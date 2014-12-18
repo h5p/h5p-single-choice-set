@@ -1,0 +1,76 @@
+[
+  {
+    "name": "choices",
+    "type": "list",
+    "label": "List of choices",
+    "entity": "choice",
+    "min": 1,
+    "defaultNum": 2,
+    "field": {
+      "name": "choice",
+      "type": "group",
+      "label": "Choice",
+      "fields": [
+        {
+          "name": "question",
+          "type": "text",
+          "label": "Question"
+        },
+        {
+          "name": "answers",
+          "type": "list",
+          "label": "Alternatives",
+          "description": "The alternatives the user may choose from. First alternative is the correct one",
+          "entity": "answer",
+          "min": 2,
+          "max": 4,
+          "defaultNum": 2,
+          "field": {
+            "name": "answer",
+            "type": "text",
+            "label": "Answer"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "settings",
+    "type": "group",
+    "label": "Settings",
+    "fields": [
+      {
+        "name": "timeoutCorrect",
+        "type": "number",
+        "label": "Timeout on correct answers",
+        "description": "Value in milliseconds",
+        "default": 2000
+      },
+      {
+        "name": "timeoutWrong",
+        "type": "number",
+        "label": "Timeout on wrong answers",
+        "description": "Value in milliseconds",
+        "default": 3000
+      },
+      {
+        "name": "soundEffectsEnabled",
+        "type": "boolean",
+        "label": "Enable sound effects",
+        "default": true
+      },
+      {
+        "name": "retryEnabled",
+        "type": "boolean",
+        "label": "Enable retry",
+        "default": true
+      },
+      {
+        "name": "showSolutionEnabled",
+        "type": "boolean",
+        "label": "Enable show solution",
+        "default": true
+      }
+    ]
+  }
+]
