@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils) {
+H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundEffects) {
   /**
    * Constructor function.
    */
@@ -78,7 +78,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils) {
    SingleChoice.prototype.showResult = function (correct) {
     var self = this;
 
-    self.trigger('alternative-selected', {correct: correct});
+    SoundEffects.play(correct ? 'positive-short' : 'negative-short');
 
     var $correctAlternative = self.$choice.find('.is-correct');
 
@@ -93,4 +93,4 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils) {
 
   return SingleChoice;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter, H5P.SingleChoiceAlternative, H5P.BrowserUtils);
+})(H5P.jQuery, H5P.SingleChoiceEventEmitter, H5P.SingleChoiceAlternative, H5P.BrowserUtils, H5P.SoundEffects);

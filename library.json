@@ -19,6 +19,8 @@
   ],
   "preloadedJs": [
     {"path": "scripts/browser-utils.js"},
+    {"path": "scripts/soundjs-0.6.0.min.js"},
+    {"path": "scripts/sound-effects.js"},
     {"path": "scripts/event-emitter.js"},
     {"path": "scripts/result-slide.js"},
     {"path": "scripts/solution-view.js"},

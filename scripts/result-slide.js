@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceResultSlide = (function ($, EventEmitter, SolutionView) {
+H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
 
   function ResultSlide(maxscore, showSolutionEnabled, retryEnabled) {
     EventEmitter.call(this);
@@ -53,4 +53,4 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter, SolutionView) {
 
   return ResultSlide;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter, H5P.SingleChoiceSolutionView);
+})(H5P.jQuery, H5P.SingleChoiceEventEmitter);

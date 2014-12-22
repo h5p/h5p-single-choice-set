@@ -9,7 +9,7 @@
 
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide) {
+H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
   /**
    * Constructor function.
    */
@@ -36,35 +36,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide) {
 
     this.solutionView = new SolutionView(this.options.choices);
 
-    /*if (this.options.settings.soundEffectsEnabled === true && SingleChoiceSet.libraryPath === undefined) {
-      SingleChoiceSet.setupSoundEffects();
-    }*/
-  }
-
-  SingleChoiceSet.setupSoundEffects = function () {
-    if (SingleChoiceSet.libraryPath !== undefined) {
-      SingleChoiceSet.libraryPath = H5PIntegration.getLibraryPath('H5P.SingleChoiceSet-1.0');
-      SingleChoiceSet.positiveAudio = new Audio(SingleChoiceSet.libraryPath + '/positive.mp3');
-      SingleChoiceSet.positiveAudio.load();
-      /*$(SingleChoiceSet.positiveAudio).on('played', function(event) {
-        console.log(event);
-      });*/
-      SingleChoiceSet.negativeAudio = new Audio(SingleChoiceSet.libraryPath + '/negative.mp3');
-      SingleChoiceSet.negativeAudio.load();
-      /*SingleChoiceSet.negativeAudio.onerror = function() {
-        alert("Can start playing video");
-      };*/
-    }
-  };
-
-  SingleChoiceSet.playAudioFeedback = function (correct) {
-    SingleChoiceSet.setupSoundEffects();
-
-    if (correct === true) {
-      SingleChoiceSet.positiveAudio.play();
-    }
-    else {
-      SingleChoiceSet.negativeAudio.play();
+    if (this.options.settings.soundEffectsEnabled === true) {
+      SoundEffects.setup();
     }
   }
 
@@ -82,7 +55,9 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide) {
         self.results.wrongs++;
       }
 
-      /*if (self.options.resultUpdated) {
+      /* This was added when testing multiplayer mode. Leaving it here for the future, but should be
+       * replaced by a trigger.
+      if (self.options.resultUpdated) {
         self.options.resultUpdated(self.results.corrects, self.options.choices.length, self.options.playerNum);
       }*/
 
@@ -138,17 +113,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide) {
     // An array containin the SingleChoice instances
     self.choices = [];
 
-    var playSoundEffect = function (data) {
-      if (self.muted === false) {
-        SingleChoiceSet.playAudioFeedback(data.correct);
-      }
-    };
-
     for (var i=0; i<this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i);
-      if (self.options.settings.soundEffectsEnabled === true) {
-        choice.on('alternative-selected', playSoundEffect);
-      }
       choice.on('finished', function (data) {
         self.handleQuestionFinished(data);
       });
@@ -238,4 +204,4 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide) {
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.SingleChoice, H5P.SingleChoiceSolutionView, H5P.SingleChoiceResultSlide);
+})(H5P.jQuery, H5P.SingleChoice, H5P.SingleChoiceSolutionView, H5P.SingleChoiceResultSlide, H5P.SoundEffects);
