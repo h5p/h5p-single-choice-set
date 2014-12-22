@@ -1,5 +1,7 @@
 var H5P = H5P || {};
-
+/**
+ * BriwserUtils is a container for different browser utilities
+ */
 H5P.BrowserUtils = (function ($) {
 
   BrowserUtils = {};
@@ -14,6 +16,12 @@ H5P.BrowserUtils = (function ($) {
 
   BrowserUtils.cache = [];
 
+  /**
+   * Get the vendor property name for an event
+   *
+   * @param  {string} prop Generic property name
+   * @return {string}      Vendor specific property name
+   */
   BrowserUtils.getVendorPropertyName = function (prop) {
 
     if (BrowserUtils.cache[prop] !== undefined) {
@@ -47,10 +55,22 @@ H5P.BrowserUtils = (function ($) {
     return BrowserUtils.cache[prop];
   };
 
+  /**
+   * Get the name of the transition end event
+   *
+   * @return {string}  description
+   */
   BrowserUtils.getTransitionEndEventName = function () {
     return BrowserUtils.transitionEndEventNames[BrowserUtils.getVendorPropertyName('transition')] || undefined;
   };
 
+  /**
+   * Helper function for listening on transition end events
+   *
+   * @param  {domElement} $element The element which is transitioned
+   * @param  {function} callback The callback to be invoked when transition is finished
+   * @param  {number} timeout  Timeout in milliseconds. Fallback if transition event is never fired
+   */
   BrowserUtils.onTransitionEnd = function ($element, callback, timeout) {
     // Fallback on 1 second if transition event is not supported/triggered
     timeout = timeout || 1000;
@@ -74,6 +94,12 @@ H5P.BrowserUtils = (function ($) {
     });
   };
 
+
+  /**
+   * Check if this is a touch-device
+   *
+   * @return {boolean}  True if touch device, otherwise false
+   */
   BrowserUtils.isTouchDevice = function () {
     try {
       document.createEvent("TouchEvent");

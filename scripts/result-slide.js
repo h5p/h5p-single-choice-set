@@ -1,7 +1,16 @@
 var H5P = H5P || {};
 
+/**
+ * SingleChoiceResultSlide - Represents the result slide
+ */
 H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
 
+   /**
+   * @constructor
+   * @param  {number}  maxscore            Max score
+   * @param  {boolean} showSolutionEnabled Is Show solution enabled?
+   * @param  {boolean} retryEnabled        Is retry enabled?
+   */
   function ResultSlide(maxscore, showSolutionEnabled, retryEnabled) {
     EventEmitter.call(this);
     this.maxscore = maxscore;
@@ -38,17 +47,26 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
   ResultSlide.prototype = Object.create(EventEmitter.prototype);
   ResultSlide.prototype.constructor = ResultSlide;
 
+
+  /**
+   * Attach the resultslide to a container
+   *
+   * @param  {domElement} $container The container
+   * @return {domElement}            This dom element
+   */
   ResultSlide.prototype.attach = function ($container) {
     this.$resultSlide.appendTo($container);
     return this.$resultSlide;
   };
 
+
+  /**
+   * Set the score
+   *
+   * @param  {string} result The result
+   */   
   ResultSlide.prototype.setScore = function (result) {
     this.$resultSlide.find('.score').text(result);
-  };
-
-  ResultSlide.prototype.getSolutionButton = function () {
-    return this.$resultSlide.find('.h5p-button.show-solution');
   };
 
   return ResultSlide;

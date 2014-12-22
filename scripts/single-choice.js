@@ -13,7 +13,6 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     }, options);
     // Keep provided id.
     this.index = index;
-    this.muted = false;
 
     for (var i=0; i<this.options.answers.length; i++) {
       this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
@@ -54,6 +53,9 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
         return;
       }
 
+      // Can't play it after the transition end is received, since this is not
+      // accepted on iPad. Therefore we are playing it here with a delay instead
+      SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
       var correct = $(this).data('correct');
       BrowserUtils.onTransitionEnd($alternative.find('.progressbar'), function () {
         $alternative.addClass('drummed');
@@ -77,8 +79,6 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
    */
    SingleChoice.prototype.showResult = function (correct) {
     var self = this;
-
-    SoundEffects.play(correct ? 'positive-short' : 'negative-short');
 
     var $correctAlternative = self.$choice.find('.is-correct');
 

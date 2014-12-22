@@ -3,7 +3,9 @@ var H5P = H5P || {};
 H5P.SingleChoiceAlternative = (function ($) {
 
   /**
+  * @constructor
   *
+  * @param {object} options Options for the alternative
   */
   function Alternative(options){
     this.options = options;
@@ -26,22 +28,25 @@ H5P.SingleChoiceAlternative = (function ($) {
     }));
   }
 
+  /**
+   * Is this alternative the correct one?
+   *
+   * @return {boolean}  Correct or not?
+   */
   Alternative.prototype.isCorrect = function () {
     return this.options.correct;
   };
 
+
   /**
-  *
-  */
+   * Attach the alternative to a DOM container
+   *
+   * @param  {domElement} $container The Dom element to attach to
+   * @return {domElement}            This dom element
+   */
   Alternative.prototype.attach = function ($container) {
     var self = this;
     $container.append(this.$alternative);
-
-    /*this.$alternative.on('click', function() {
-    $container.trigger('answer-selected', {correct: self.options.correct});
-    return false;
-    });*/
-
     return this.$alternative;
   };
 

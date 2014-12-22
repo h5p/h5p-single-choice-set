@@ -1,10 +1,6 @@
 /*
-
 - Kommentere alle funksjoner med jsdoc syntax
-- Gjøre om resultview-visning
-- Dele opp attach i flere funksjoner!
-- Teste i ulike nettlesere!
-
+- Teste på windows!
 */
 
 var H5P = H5P || {};
@@ -32,7 +28,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
-    this.muted = false;
+    this.$slides = [];
 
     this.solutionView = new SolutionView(this.options.choices);
 
@@ -75,20 +71,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   };
 
   SingleChoiceSet.prototype.handleViewSolution = function () {
-    var self = this;
-
-    var $solutionButton = self.resultSlide.getSolutionButton();
-    var offset = $solutionButton.offset();
-    var width = $solutionButton.outerWidth();
-    var height = $solutionButton.outerHeight();
-
-    self.solutionView.$solutionView.css({
-      left: offset.left + 'px',
-      top: (offset.top - $('body').scrollTop()) + 'px',
-      width: width + 'px',
-      height: height + 'px'
-    });
-    self.solutionView.show();
+    this.solutionView.show();
   };
 
   /**
@@ -120,6 +103,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       });
       choice.attach(self.$choices, (i === 0));
       self.choices.push(choice);
+      self.$slides.push(choice.$choice);
     }
 
     self.resultSlide = new ResultSlide(self.options.choices.length, self.options.settings.showSolutionEnabled, self.options.settings.retryEnabled);
@@ -130,6 +114,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     self.resultSlide.on('view-solution', function () {
       self.handleViewSolution();
     });
+    self.$slides.push(self.resultSlide.$resultSlide);
 
     $container.append(self.$choices);
     $container.append(self.$progressbar);
@@ -138,12 +123,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       $container.append($('<div>', {
         'class': 'sound-control',
         'click': function () {
-          self.muted = !self.muted;
-          $(this).toggleClass('muted', self.muted);
-
-          self.choices.forEach(function (choice) {
-            choice.muted = self.muted;
-          });
+          SoundEffects.muted = !SoundEffects.muted;
+          $(this).toggleClass('muted', SoundEffects.muted);
         }
       }));
     }
@@ -167,18 +148,21 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       var choiceHeight = choice.$choice.outerHeight();
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
-    self.$choices.css({height: maxHeight + 'px'});
+    self.$choices.css({
+      height: maxHeight + 'px'/*,
+      width: ((self.choices.length+1)*self.$container.width()) + 'px'*/
+    });
   };
 
   SingleChoiceSet.prototype.move = function (index) {
     var translateX = 'translateX(' + (-index*100) + '%)';
-    var $previousSlide = this.$choices.find('.h5p-current');
+    var $previousSlide = this.$slides[this.currentIndex];
 
     BrowserUtils.onTransitionEnd(this.$choices, function () {
       $previousSlide.removeClass('h5p-current');
     }, 600);
 
-    this.$choices.find('.h5p-slide:nth-child(' + (index + 1) + ')').addClass('h5p-current');
+    this.$slides[index].addClass('h5p-current');
     this.$choices.css({
       '-webkit-transform': translateX,
       '-moz-transform': translateX,
