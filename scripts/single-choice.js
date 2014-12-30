@@ -47,6 +47,9 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
       'class': 'h5p-sc-alternatives'
     });
 
+    /**
+     * Handles click on an alternative
+     */     
     var handleAlternativeClick = function () {
       var $alternative = $(this);
       if($alternative.parent().hasClass('h5p-sc-selected')) {
@@ -76,9 +79,10 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
   };
 
   /**
-   *
+   * Reveals the result for a question
+   * @param  {boolean} correct True uf answer was correct, otherwise false
    */
-   SingleChoice.prototype.showResult = function (correct) {
+  SingleChoice.prototype.showResult = function (correct) {
     var self = this;
 
     var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');

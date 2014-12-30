@@ -20,12 +20,15 @@ H5P.SingleChoiceEventEmitter = (function () {
    * @param  {string} type        The name of the event
    * @param  {function} listener  The function to call when event is triggered
    */
-  EventEmitter.prototype.on = function(type, listener) {
+  EventEmitter.prototype.on = function (type, listener, self) {
     if (typeof listener === 'function') {
       if (this.listeners[type] === undefined) {
         this.listeners[type] = [];
       }
-      this.listeners[type].push(listener);
+      this.listeners[type].push({
+        function: listener,
+        self: self
+      });
     }
   };
 
@@ -58,7 +61,8 @@ H5P.SingleChoiceEventEmitter = (function () {
 
     if (this.listeners[type] !== undefined) {
       for (var i = 0; i < this.listeners[type].length; i++) {
-        this.listeners[type][i](event);
+        var listener = this.listeners[type][i];
+        listener.function.apply(listener.self, [event]);
       }
     }
   };

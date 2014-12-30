@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 /**
- * BriwserUtils is a container for different browser utilities
+ * BrowserUtils is a container for different browser utilities
  */
 H5P.BrowserUtils = (function ($) {
 
@@ -89,7 +89,7 @@ H5P.BrowserUtils = (function ($) {
       doCallback();
     }, timeout);
 
-    $element.on(BrowserUtils.getTransitionEndEventName(), function() {
+    $element.on(BrowserUtils.getTransitionEndEventName(), function () {
       doCallback();
     });
   };

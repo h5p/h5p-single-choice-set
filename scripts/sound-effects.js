@@ -11,6 +11,11 @@ H5P.SoundEffects = (function ($) {
     muted: false
   };
 
+  /**
+   * Setup defined sounds
+   *
+   * @return {boolean} True if setup was successfull, otherwise false
+   */
   SoundEffects.setup = function () {
     if (!H5P.createjs.Sound.initializeDefaultPlugins()) {
       return false;
@@ -26,6 +31,12 @@ H5P.SoundEffects = (function ($) {
     return true;
   };
 
+  /**
+   * Play a sound
+   *
+   * @param  {string} type  Name of the sound as defined in [SoundEffects.types]{@link H5P.SoundEffects.SoundEffects#types}
+   * @param  {number} delay Delay in milliseconds
+   */
   SoundEffects.play = function (type, delay) {
     if (SoundEffects.muted === false) {
       delay = delay || 0;
@@ -33,10 +44,16 @@ H5P.SoundEffects = (function ($) {
     }
   };
 
+  /**
+   * Mute. Subsequent invocations of SoundEffects.play() will not make any sounds beeing played.
+   */
   SoundEffects.mute = function () {
     SoundEffects.muted = true;
   };
 
+  /**
+   * Unmute
+   */
   SoundEffects.unmute = function () {
     SoundEffects.muted = false;
   };

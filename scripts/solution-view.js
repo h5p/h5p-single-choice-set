@@ -12,10 +12,17 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
     });
   }
 
+  /**
+   * Will append the solution view to a container DOM
+   * @param  {jQuery} $container The DOM object to append to
+   */
   SolutionView.prototype.appendTo = function ($container) {
     this.$solutionView.appendTo($container);
   };
 
+  /**
+   * Shows the solution view
+   */
   SolutionView.prototype.show = function () {
     var self = this;
 
@@ -51,6 +58,9 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
     });
   };
 
+  /**
+   * Hides the solution view
+   */
   SolutionView.prototype.hide = function () {
     var self = this;
 
@@ -63,6 +73,9 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
     }, 1200);
   };
 
+  /**
+   * Populates the solution view
+   */
   SolutionView.prototype.populate = function () {
     var self = this;
     self.$choices = $('<div>', {
@@ -84,7 +97,7 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
     self.$choices.appendTo(this.$solutionView);
 
     /* To avoid closing the popup when trying to select text */
-    self.$choices.on('click', function(){
+    self.$choices.on('click', function () {
       return false;
     });
   };
