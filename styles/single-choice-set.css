@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 .h5p-sc-set-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
   height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
   width: 100%;
   background: rgb(102, 102, 102);
@@ -31,7 +35,7 @@
   -ms-transition: width 0.25s ease-in-out;
   transition: width 0.25s ease-in-out;
 }
-.h5p-sc-set.h5p-animate {
+.h5p-sc-set.h5p-sc-animate {
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
   -moz-transition: -moz-transform 0.25s ease-in-out;
   -ms-transition: -ms-transform 0.25s ease-in-out;
@@ -46,15 +50,19 @@
   top: 0;
   padding-bottom: .5em;
 }
-.initialized .h5p-slide {
+.initialized .h5p-sc-slide {
   display: none;
 }
-.initialized .h5p-slide.h5p-current {
+.initialized .h5p-sc-slide.h5p-sc-current-slide {
   display: block;
 }
 .h5p-sc-question {
   font-size: 1.3em;
   padding: 1em 0 .5em 1em;
+}
+.h5p-sc-alternatives {
+  margin: 0;
+  padding: 0;
 }
 .h5p-sc-alternative.h5p-sc-reveal-correct,
 .h5p-sc-alternative.h5p-sc-reveal-correct:hover,
@@ -202,12 +210,12 @@
 .h5p-sc-sound-control {
   font-family: H5PFontAwesome4;
   font-size: 1.5em;
-  width: 1.5em;
+  width: 1.3em;
   height: 1.5em;
   position: absolute;
   top: 0.3em;
-  right: 0.1em;
-  text-align: center;
+  right: 0;
+  text-align: left;
   color: #AAA;
   cursor: pointer;
 }
