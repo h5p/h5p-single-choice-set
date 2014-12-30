@@ -14,7 +14,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     // Keep provided id.
     this.index = index;
 
-    for (var i=0; i<this.options.answers.length; i++) {
+    for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
     }
     // Randomize alternatives
@@ -49,10 +49,10 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
 
     /**
      * Handles click on an alternative
-     */     
+     */
     var handleAlternativeClick = function () {
       var $alternative = $(this);
-      if($alternative.parent().hasClass('h5p-sc-selected')) {
+      if ($alternative.parent().hasClass('h5p-sc-selected')) {
         return;
       }
       var correct = $(this).data('me').isCorrect();
@@ -69,7 +69,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
       $alternative.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
     };
 
-    for (var i=0; i<this.options.answers.length; i++) {
+    for (var i = 0; i < this.options.answers.length; i++) {
       var alternative = new Alternative(this.options.answers[i]);
       alternative.attach($alternatives).on(BrowserUtils.isTouchDevice() ? 'touchstart' : 'click', handleAlternativeClick);
     }

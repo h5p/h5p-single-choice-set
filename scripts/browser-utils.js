@@ -42,7 +42,7 @@ H5P.BrowserUtils = (function ($) {
         BrowserUtils.cache[prop] = prop;
       }
       else {
-        for (var i=0; i<prefixes.length; ++i) {
+        for (var i = 0; i < prefixes.length; ++i) {
           var vendorProp = prefixes[i] + prop_;
           if (vendorProp in div.style) {
             BrowserUtils.cache[prop] = vendorProp;

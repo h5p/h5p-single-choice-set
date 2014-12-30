@@ -93,7 +93,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     // An array containin the SingleChoice instances
     self.choices = [];
 
-    for (var i=0; i<this.options.choices.length; i++) {
+    for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i);
       choice.on('finished', self.handleQuestionFinished, self);
       choice.attach(self.$choices, (i === 0));
