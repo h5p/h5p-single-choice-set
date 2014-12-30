@@ -24,8 +24,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
   SingleChoice.prototype.constructor = SingleChoice;
 
   /**
-   * Attach function called by H5P framework to insert H5P content into
-   * page
+   * Attach function called by H5P framework to insert H5P content into page
    *
    * @param {jQuery} $container
    */
@@ -34,7 +33,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     this.$container = $container;
 
     this.$choice = $('<div>', {
-      'class': 'h5p-slide h5p-sc' + (current ? ' h5p-current' : ''),
+      'class': 'h5p-sc-slide h5p-sc' + (current ? ' h5p-sc-current-slide' : ''),
       css: {'left': (self.index*100) + '%'}
     });
 
@@ -46,6 +45,7 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     var $alternatives = $('<ul>', {
       'class': 'h5p-sc-alternatives'
     });
+
 
     /**
      * Handles click on an alternative

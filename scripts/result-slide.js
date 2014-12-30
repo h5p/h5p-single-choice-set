@@ -17,7 +17,7 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
     var self = this;
 
     this.$resultSlide = $('<div>', {
-      'class': 'h5p-slide h5p-sc-set-results',
+      'class': 'h5p-sc-slide h5p-sc-set-results',
       'css': {left: (maxscore*100) + '%'}
     }).append(
       '<span class="h5p-sc-feedback">You got <span class="h5p-sc-score">?</span> of ' + maxscore + ' correct</span>'

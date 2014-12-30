@@ -2,20 +2,24 @@ var H5P = H5P || {};
 
 H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
 
+
   /**
    * @constuctor
    * @param  {object} options Options for single choice set
    */
   function SingleChoiceSet(options) {
+
+
+
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
-      settings: {
+      behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
-        retryEnabled: true,
-        showSolutionEnabled: true
+        enableRetryButton: true,
+        enableSolutionsButton: true
       }
     }, options);
     this.currentIndex = 0;
@@ -27,7 +31,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     this.solutionView = new SolutionView(this.options.choices);
 
-    if (this.options.settings.soundEffectsEnabled === true) {
+    if (this.options.behaviour.soundEffectsEnabled === true) {
       SoundEffects.setup();
     }
   }
@@ -53,15 +57,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       }
 
       self.move(self.currentIndex+1);
-    }, data.correct ? self.options.settings.timeoutCorrect : self.options.settings.timeoutWrong);
-  };
-
-  /**
-   * Handler invoked when retry is selected
-   */
-  SingleChoiceSet.prototype.handleRetry = function () {
-    this.reset();
-    this.move(0);
+    }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
   };
 
   /**
@@ -80,8 +76,9 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    SingleChoiceSet.prototype.attach = function ($container) {
     var self = this;
     self.$container = $container;
+    self.$container.addClass('h5p-single-choice-set');
     self.$choices = $('<div>', {
-      'class': 'h5p-sc-set h5p-animate'
+      'class': 'h5p-sc-set h5p-sc-animate'
     });
     self.$progressbar = $('<div>', {
       'class': 'h5p-sc-set-progress'
@@ -101,20 +98,16 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       self.$slides.push(choice.$choice);
     }
 
-    self.resultSlide = new ResultSlide(self.options.choices.length, self.options.settings.showSolutionEnabled, self.options.settings.retryEnabled);
+    self.resultSlide = new ResultSlide(self.options.choices.length, self.options.behaviour.enableSolutionsButton, self.options.behaviour.enableRetryButton);
     self.resultSlide.attach(self.$choices);
-    self.resultSlide.on('retry', function () {
-      self.handleRetry();
-    });
-    self.resultSlide.on('view-solution', function () {
-      self.handleViewSolution();
-    });
+    self.resultSlide.on('retry', self.resetTask, self);
+    self.resultSlide.on('view-solution', self.handleViewSolution, self);
     self.$slides.push(self.resultSlide.$resultSlide);
 
     $container.append(self.$choices);
     $container.append(self.$progressbar);
 
-    if (self.options.settings.soundEffectsEnabled) {
+    if (self.options.behaviour.soundEffectsEnabled) {
       $container.append($('<div>', {
         'class': 'h5p-sc-sound-control',
         'click': function () {
@@ -134,6 +127,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     // Hide all other slides than the current one:
     $container.addClass('initialized');
   };
+
 
   /**
    * Resize if something outside resizes
@@ -158,10 +152,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     var $previousSlide = this.$slides[this.currentIndex];
 
     BrowserUtils.onTransitionEnd(this.$choices, function () {
-      $previousSlide.removeClass('h5p-current');
+      $previousSlide.removeClass('h5p-sc-current-slide');
     }, 600);
 
-    this.$slides[index].addClass('h5p-current');
+    this.$slides[index].addClass('h5p-sc-current-slide');
     this.$choices.css({
       '-webkit-transform': translateX,
       '-moz-transform': translateX,
@@ -173,10 +167,28 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.$progressCompleted.css({width: ((this.currentIndex+1)/(this.options.choices.length+1))*100 + '%'});
   };
 
+
+
   /**
-   * Reset all answers. Equal to refreshing the page.
+   * The following functions implements the CP and IV - Contracts v 1.0 documented here:
+   * http://h5p.org/node/1009
    */
-  SingleChoiceSet.prototype.reset = function () {
+  SingleChoiceSet.prototype.getScore = function () {
+    return this.results.corrects;
+  };
+  SingleChoiceSet.prototype.getMaxScore = function () {
+   return this.options.choices.length;
+  };
+  SingleChoiceSet.prototype.getAnswerGiven = function () {
+    return (this.results.corrects + this.results.wrongs) > 0;
+  };
+  SingleChoiceSet.prototype.showSolutions = function () {
+    // this.handleViewSolution();
+  };
+  /**
+   * Reset all answers. This is equal to refreshing the quiz
+   */
+  SingleChoiceSet.prototype.resetTask = function () {
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
     for (var i = 0; i < classes.length; i++) {
@@ -186,6 +198,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
+
+    this.move(0);
   };
 
   return SingleChoiceSet;
