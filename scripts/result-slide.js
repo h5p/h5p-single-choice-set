@@ -17,15 +17,15 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
     var self = this;
 
     this.$resultSlide = $('<div>', {
-      'class': 'h5p-slide h5p-single-choice-set-results',
+      'class': 'h5p-slide h5p-sc-set-results',
       'css': {left: (maxscore*100) + '%'}
     }).append(
-      '<span class="feedback">You got <span class="score">?</span> of ' + maxscore + ' correct</span>'
+      '<span class="h5p-sc-feedback">You got <span class="h5p-sc-score">?</span> of ' + maxscore + ' correct</span>'
     );
 
     if (showSolutionEnabled) {
       this.$resultSlide.append($('<button>', {
-        'class': 'h5p-button show-solution',
+        'class': 'h5p-button h5p-sc-show-solution',
         'text': 'Show solution',
         'click': function () {
           //alert('Solution view not implemented yet');
@@ -36,7 +36,7 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
 
     if (retryEnabled) {
       this.$resultSlide.append($('<button>', {
-        'class': 'h5p-button retry',
+        'class': 'h5p-button h5p-sc-retry',
         'text': 'Retry',
         'click': function () {
           self.trigger('retry');
@@ -64,9 +64,9 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
    * Set the score
    *
    * @param  {string} result The result
-   */   
+   */
   ResultSlide.prototype.setScore = function (result) {
-    this.$resultSlide.find('.score').text(result);
+    this.$resultSlide.find('.h5p-sc-score').text(result);
   };
 
   return ResultSlide;

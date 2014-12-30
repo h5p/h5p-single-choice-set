@@ -5,17 +5,17 @@
   margin: 0;
   padding: 0;
 }
-.h5p-single-choice-set {
+.h5p-sc-set {
   padding: .5em;
   position: relative;
   box-sizing: border-box;
 }
-.h5p-single-choice-set-progress {
+.h5p-sc-set-progress {
   height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
   width: 100%;
   background: rgb(102, 102, 102);
 }
-.h5p-single-choice-set-progress .h5p-completed {
+.h5p-sc-set-progress .h5p-sc-completed {
   height: 100%;
   width: 0;
 
@@ -31,13 +31,13 @@
   -ms-transition: width 0.25s ease-in-out;
   transition: width 0.25s ease-in-out;
 }
-.h5p-single-choice-set.h5p-animate {
+.h5p-sc-set.h5p-animate {
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
   -moz-transition: -moz-transform 0.25s ease-in-out;
   -ms-transition: -ms-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
 }
-.h5p-single-choice {
+.h5p-sc {
   box-sizing: border-box;
   width: 100%;
   height: auto;
@@ -52,22 +52,22 @@
 .initialized .h5p-slide.h5p-current {
   display: block;
 }
-.h5p-single-choice-question {
+.h5p-sc-question {
   font-size: 1.3em;
   padding: 1em 0 .5em 1em;
 }
-.h5p-single-choice-alternative.reveal-correct,
-.h5p-single-choice-alternative.reveal-correct:hover,
-.h5p-single-choice-alternative.reveal-correct:active {
+.h5p-sc-alternative.h5p-sc-reveal-correct,
+.h5p-sc-alternative.h5p-sc-reveal-correct:hover,
+.h5p-sc-alternative.h5p-sc-reveal-correct:active {
   background: #cce8cc;
 }
-.h5p-single-choice-alternative.reveal-wrong {
+.h5p-sc-alternative.h5p-sc-reveal-wrong {
   transform: scale(.95);
   -webkit-transform: scale(.95);
   -ms-transform: scale(.95);
   color: #BBB;
 }
-.h5p-single-choice-alternative {
+.h5p-sc-alternative {
   position: relative;
   box-sizing: border-box;
   list-style: none;
@@ -82,28 +82,54 @@
   -ms-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-.h5p-single-choice-alternative .progressbar {
+.h5p-sc-alternative .h5p-sc-progressbar {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 0%;
   background: #D0E5F2;
-  -webkit-transition: width 0.6s ease-in-out;
-  -moz-transition: width 0.6s ease-in-out;
-  -o-transition: width 0.6s ease-in-out;
-  transition: width 0.6s ease-in-out;
 }
-.drummed .progressbar {
-  display: none;
+.h5p-sc-drummed .h5p-sc-progressbar {
+  /*display: none;*/
+  background: transparent;
+  -webkit-transition: background 1s;
+  -moz-transition: background 1s;
+  -ms-transition: background 1s;
+  transition: background 1s;
 }
-.h5p-single-choice-alternative .label {
+/* Using animation instead of transition on width made this much
+   smoother on iPad */
+.h5p-sc-alternative.h5p-sc-selected .h5p-sc-progressbar {
+  -webkit-animation: progress 0.6s;
+  -moz-animation: progress 0.6s;
+  -o-animation: progress 0.6s;
+  animation: progress 0.6s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes progress {
+    from { } to { width: 100% }
+}
+@-moz-keyframes progress {
+    from { } to { width: 100% }
+}
+@-ms-keyframes progress {
+    from { } to { width: 100% }
+}
+@keyframes progress {
+    from { } to { width: 100% }
+}
+.h5p-sc-alternative .h5p-sc-label {
   position: relative;
 }
-.h5p-single-choice-alternative.selected .progressbar {
+/*.h5p-sc-alternative.h5p-sc-selected .h5p-sc-progressbar {
   width: 100%;
-}
-.h5p-single-choice-alternative .status {
+}*/
+.h5p-sc-alternative .h5p-sc-status {
   font-family: H5PFontAwesome4;
   font-size: 1.5em;
   width: 1.5em;
@@ -114,21 +140,21 @@
   right: 0;
   text-align: center;
 }
-.h5p-single-choice-alternative.is-correct.drummed .status:after{
+.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-drummed .h5p-sc-status:after{
   content: "\f00c";
   color: #39692e;
 }
-.h5p-single-choice-alternative.is-wrong.drummed .status:after{
+.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-drummed .h5p-sc-status:after{
   content: "\f00d";
   color: #c33f62;
 }
-.h5p-single-choice-alternative:hover {
+.h5p-sc-alternative:hover {
   background-color: #DDD;
 }
-.selected .h5p-single-choice-alternative {
+.h5p-sc-selected .h5p-sc-alternative {
   cursor: auto;
 }
-.h5p-single-choice-set-results {
+.h5p-sc-set-results {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -136,13 +162,13 @@
   text-align: center;
   box-sizing: border-box;
 }
-.h5p-single-choice-set-results > .feedback {
+.h5p-sc-set-results > .h5p-sc-feedback {
   display: block;
   font-size: 1.8em;
   margin-bottom: 1.3em;
 }
-.h5p-single-choice-set-results > .show-solution,
-.h5p-single-choice-set-results > .retry {
+.h5p-sc-set-results > .h5p-sc-show-solution,
+.h5p-sc-set-results > .h5p-sc-retry {
   display: inline-block;
   font-size: 1em;
   padding: 0.2em 1em;
@@ -161,9 +187,8 @@
   background: -ms-linear-gradient(top,rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6498fe',endColorstr='#0468ce',GradientType=0);
 }
-
-.h5p-single-choice-set-results > .show-solution:hover,
-.h5p-single-choice-set-results > .retry:hover {
+.h5p-sc-set-results > .h5p-sc-show-solution:hover,
+.h5p-sc-set-results > .h5p-sc-retry:hover {
   text-decoration: none;
   box-shadow: 0 0 0.5em #999;
   background: rgb(4,104,206);
@@ -174,8 +199,7 @@
   background: -ms-linear-gradient(top,rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0468ce',endColorstr='#6498fe',GradientType=0);
 }
-
-.sound-control {
+.h5p-sc-sound-control {
   font-family: H5PFontAwesome4;
   font-size: 1.5em;
   width: 1.5em;
@@ -187,13 +211,13 @@
   color: #AAA;
   cursor: pointer;
 }
-.sound-control:hover {
+.h5p-sc-sound-control:hover {
   color: #444;
 }
-.sound-control:after {
+.h5p-sc-sound-control:after {
   content: '\f028';
 }
-.sound-control.muted:after {
+.h5p-sc-sound-control.muted:after {
   content: '\f026';
 }
 .h5p-sc-solution-view {

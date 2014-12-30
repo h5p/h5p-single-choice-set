@@ -34,35 +34,36 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     this.$container = $container;
 
     this.$choice = $('<div>', {
-      'class': 'h5p-slide h5p-single-choice' + (current ? ' h5p-current' : ''),
+      'class': 'h5p-slide h5p-sc' + (current ? ' h5p-current' : ''),
       css: {'left': (self.index*100) + '%'}
     });
 
     this.$choice.append($('<div>', {
-      'class': 'h5p-single-choice-question',
+      'class': 'h5p-sc-question',
       'text': this.options.question
     }));
 
     var $alternatives = $('<ul>', {
-      'class': 'h5p-single-choice-alternatives'
+      'class': 'h5p-sc-alternatives'
     });
 
     var handleAlternativeClick = function () {
       var $alternative = $(this);
-      if($alternative.parent().hasClass('selected')) {
+      if($alternative.parent().hasClass('h5p-sc-selected')) {
         return;
       }
+      var correct = $(this).data('me').isCorrect();
 
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
-      var correct = $(this).data('correct');
-      BrowserUtils.onTransitionEnd($alternative.find('.progressbar'), function () {
-        $alternative.addClass('drummed');
+
+      BrowserUtils.onTransitionEnd($alternative.find('.h5p-sc-progressbar'), function () {
+        $alternative.addClass('h5p-sc-drummed');
         self.showResult(correct);
       }, 700);
 
-      $alternative.addClass('selected').parent().addClass('selected');
+      $alternative.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
     };
 
     for (var i=0; i<this.options.answers.length; i++) {
@@ -80,15 +81,15 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
    SingleChoice.prototype.showResult = function (correct) {
     var self = this;
 
-    var $correctAlternative = self.$choice.find('.is-correct');
+    var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
 
     BrowserUtils.onTransitionEnd($correctAlternative, function () {
       self.trigger('finished', {correct: correct});
     }, 600);
 
-    // Find the correct one!
-    self.$choice.find('.is-wrong').addClass('reveal-wrong');
-    $correctAlternative.addClass('reveal-correct');
+    // Reveal corrects and wrong
+    self.$choice.find('.h5p-sc-is-wrong').addClass('h5p-sc-reveal-wrong');
+    $correctAlternative.addClass('h5p-sc-reveal-correct');
   };
 
   return SingleChoice;

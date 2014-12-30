@@ -50,7 +50,7 @@ H5P.SingleChoiceEventEmitter = (function () {
    *
    * @param  {string} type  The name of the event
    * @param  {object} event Object data
-   */   
+   */
   EventEmitter.prototype.trigger = function (type, event) {
     if (event === null) {
       event = {};

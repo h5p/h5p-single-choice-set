@@ -6,10 +6,12 @@
 var H5P = H5P || {};
 
 H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
+
   /**
-   * Constructor function.
+   * @constuctor
+   * @param  {object} options Options for single choice set
    */
-  function SingleChoiceSet(options, id) {
+  function SingleChoiceSet(options) {
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
@@ -21,8 +23,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
         showSolutionEnabled: true
       }
     }, options);
-    // Keep provided id.
-    this.id = id;
     this.currentIndex = 0;
     this.results = {
       corrects: 0,
@@ -38,7 +38,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   }
 
   /**
+   * anonymous function - description
    *
+   * @param  {type} data description
+   * @return {type}      description
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
     var self = this;
@@ -50,12 +53,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       else {
         self.results.wrongs++;
       }
-
-      /* This was added when testing multiplayer mode. Leaving it here for the future, but should be
-       * replaced by a trigger.
-      if (self.options.resultUpdated) {
-        self.options.resultUpdated(self.results.corrects, self.options.choices.length, self.options.playerNum);
-      }*/
 
       if(self.currentIndex+1 >= self.options.choices.length) {
         self.resultSlide.setScore(self.results.corrects);
@@ -84,13 +81,13 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     var self = this;
     self.$container = $container;
     self.$choices = $('<div>', {
-      'class': 'h5p-single-choice-set h5p-animate'
+      'class': 'h5p-sc-set h5p-animate'
     });
     self.$progressbar = $('<div>', {
-      'class': 'h5p-single-choice-set-progress'
+      'class': 'h5p-sc-set-progress'
     });
     self.$progressCompleted = $('<div>', {
-      'class': 'h5p-completed'
+      'class': 'h5p-sc-completed'
     }).appendTo(self.$progressbar);
 
     // An array containin the SingleChoice instances
@@ -121,7 +118,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     if (self.options.settings.soundEffectsEnabled) {
       $container.append($('<div>', {
-        'class': 'sound-control',
+        'class': 'h5p-sc-sound-control',
         'click': function () {
           SoundEffects.muted = !SoundEffects.muted;
           $(this).toggleClass('muted', SoundEffects.muted);
@@ -148,10 +145,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       var choiceHeight = choice.$choice.outerHeight();
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
-    self.$choices.css({
-      height: maxHeight + 'px'/*,
-      width: ((self.choices.length+1)*self.$container.width()) + 'px'*/
-    });
+    
+    self.$choices.css({height: maxHeight + 'px'});
   };
 
   SingleChoiceSet.prototype.move = function (index) {
@@ -176,7 +171,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
   SingleChoiceSet.prototype.reset = function () {
     // Reset the user's answers
-    var classes = ['reveal-wrong', 'reveal-correct', 'selected', 'drummed', 'correct-answer'];
+    var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
     for (var i = 0; i < classes.length; i++) {
       this.$choices.find('.' + classes[i]).removeClass(classes[i]);
     }

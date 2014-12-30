@@ -11,20 +11,20 @@ H5P.SingleChoiceAlternative = (function ($) {
     this.options = options;
 
     this.$alternative = $('<li>', {
-      'class': 'h5p-single-choice-alternative is-' + (this.options.correct ? 'correct' : 'wrong')
-    });
+      'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong')
+    }).data({me: this}); // Placing a reference from the dom objekt to this object using jQuery data
 
     this.$alternative.append($('<div>', {
-      'class': 'progressbar'
+      'class': 'h5p-sc-progressbar'
     }));
 
     this.$alternative.append($('<div>', {
-      'class': 'label',
+      'class': 'h5p-sc-label',
       'text': this.options.text
     }));
 
     this.$alternative.append($('<div>', {
-      'class': 'status'
+      'class': 'h5p-sc-status'
     }));
   }
 
