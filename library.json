@@ -1,13 +1,14 @@
 {
+  "machineName": "H5P.SingleChoiceSet",
   "title": "Single choice set",
-  "description": "A set og single choices",
+  "description": "Create sets of single choice tasks",
+  "license": "MIT",
+  "author": "Joubel AS (fnoks)",
   "majorVersion": 1,
   "minorVersion": 0,
   "patchVersion": 5,
   "runnable": 1,
   "fullscreen": 0,
-  "machineName": "H5P.SingleChoiceSet",
-  "author": "Amendor AS",
   "embedTypes": [
     "div"
   ],
@@ -15,7 +16,6 @@
     "majorVersion": 1,
     "minorVersion": 2
   },
-  "license": "cc-by-sa",
   "preloadedCss": [
     {
       "path": "styles/single-choice-set.css"
