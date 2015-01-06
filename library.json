@@ -8,25 +8,47 @@
   "fullscreen": 0,
   "machineName": "H5P.SingleChoiceSet",
   "author": "Amendor AS",
-  "embedTypes": ["div"],
+  "embedTypes": [
+    "div"
+  ],
   "coreApi": {
     "majorVersion": 1,
     "minorVersion": 2
   },
   "license": "cc-by-sa",
   "preloadedCss": [
-    {"path": "styles/single-choice-set.css"}
+    {
+      "path": "styles/single-choice-set.css"
+    }
   ],
   "preloadedJs": [
-    {"path": "scripts/browser-utils.js"},
-    {"path": "scripts/soundjs-0.6.0.min.js"},
-    {"path": "scripts/sound-effects.js"},
-    {"path": "scripts/event-emitter.js"},
-    {"path": "scripts/result-slide.js"},
-    {"path": "scripts/solution-view.js"},
-    {"path": "scripts/single-choice-alternative.js"},
-    {"path": "scripts/single-choice.js"},
-    {"path": "scripts/single-choice-set.js"}
+    {
+      "path": "scripts/browser-utils.js"
+    },
+    {
+      "path": "scripts/soundjs-0.6.0.min.js"
+    },
+    {
+      "path": "scripts/sound-effects.js"
+    },
+    {
+      "path": "scripts/event-emitter.js"
+    },
+    {
+      "path": "scripts/result-slide.js"
+    },
+    {
+      "path": "scripts/solution-view.js"
+    },
+    {
+      "path": "scripts/single-choice-alternative.js"
+    },
+    {
+      "path": "scripts/single-choice.js"
+    },
+    {
+      "path": "scripts/single-choice-set.js"
+    }
   ],
   "preloadedDependencies": [
     {
