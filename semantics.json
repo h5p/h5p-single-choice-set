@@ -2,14 +2,14 @@
   {
     "name": "choices",
     "type": "list",
-    "label": "List of choices",
+    "label": "List of questions",
     "entity": "choice",
     "min": 1,
     "defaultNum": 2,
     "field": {
       "name": "choice",
       "type": "group",
-      "label": "Choice",
+      "label": "Question & alternatives",
       "fields": [
         {
           "name": "question",
@@ -37,7 +37,7 @@
   {
     "name": "behaviour",
     "type": "group",
-    "label": "Settings",
+    "label": "Behavioural settings",
     "fields": [
       {
         "name": "timeoutCorrect",
@@ -70,6 +70,45 @@
         "type": "boolean",
         "label": "Enable show solution button",
         "default": true
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "Localize single choice set",
+    "common": true,
+    "fields": [
+      {
+        "name": "resultSlideTitle",
+        "type": "text",
+        "label": "Title for result slide",
+        "default": "You got :numcorrect of :maxscore correct",
+        "description": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions"
+      },
+      {
+        "name": "showSolutionButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Show solution\" button",
+        "default": "Show solution"
+      },
+      {
+        "name": "retryButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Retry\" button",
+        "default": "Retry"
+      },
+      {
+        "name": "goBackButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Go back\" button",
+        "default": "Go back"
+      },
+      {
+        "name": "solutionViewTitle",
+        "type": "text",
+        "label": "Title for the show solution view",
+        "default": "Solution"
       }
     ]
   }

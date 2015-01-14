@@ -24,11 +24,11 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
   SingleChoice.prototype.constructor = SingleChoice;
 
   /**
-   * Attach function called by H5P framework to insert H5P content into page
+   * appendTo function invoked to append SingleChoice to container
    *
    * @param {jQuery} $container
    */
-   SingleChoice.prototype.attach = function ($container, current) {
+   SingleChoice.prototype.appendTo = function ($container, current) {
     var self = this;
     this.$container = $container;
 
@@ -50,28 +50,26 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
     /**
      * Handles click on an alternative
      */
-    var handleAlternativeClick = function () {
-      var $alternative = $(this);
-      if ($alternative.parent().hasClass('h5p-sc-selected')) {
+    var handleAlternativeSelected = function (data) {
+      if (data.$element.parent().hasClass('h5p-sc-selected')) {
         return;
       }
-      var correct = $(this).data('me').isCorrect();
-
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
-      SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
+      SoundEffects.play(data.correct ? 'positive-short' : 'negative-short', 700);
 
-      BrowserUtils.onTransitionEnd($alternative.find('.h5p-sc-progressbar'), function () {
-        $alternative.addClass('h5p-sc-drummed');
-        self.showResult(correct);
+      BrowserUtils.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
+        data.$element.addClass('h5p-sc-drummed');
+        self.showResult(data.correct);
       }, 700);
 
-      $alternative.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+      data.$element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
     };
 
     for (var i = 0; i < this.options.answers.length; i++) {
       var alternative = new Alternative(this.options.answers[i]);
-      alternative.attach($alternatives).on(BrowserUtils.isTouchDevice() ? 'touchstart' : 'click', handleAlternativeClick);
+      alternative.appendTo($alternatives);
+      alternative.on('alternative-selected', handleAlternativeSelected);
     }
     this.$choice.append($alternatives);
     $container.append(this.$choice);
@@ -98,4 +96,4 @@ H5P.SingleChoice = (function ($, EventEmitter, Alternative, BrowserUtils, SoundE
 
   return SingleChoice;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter, H5P.SingleChoiceAlternative, H5P.BrowserUtils, H5P.SoundEffects);
+})(H5P.jQuery, H5P.SingleChoiceEventEmitter, H5P.SingleChoiceAlternative, H5P.BrowserUtils, H5P.SingleChoiceSetSoundEffects);

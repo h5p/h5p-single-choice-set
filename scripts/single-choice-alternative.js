@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceAlternative = (function ($) {
+H5P.SingleChoiceAlternative = (function ($, EventEmitter) {
 
   /**
   * @constructor
@@ -8,12 +8,31 @@ H5P.SingleChoiceAlternative = (function ($) {
   * @param {object} options Options for the alternative
   */
   function Alternative(options){
+    EventEmitter.call(this);
+    var self = this;
+
     this.options = options;
 
-    this.$alternative = $('<li>', {
-      'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong')
-    }).data({me: this}); // Placing a reference from the dom objekt to this object using jQuery data
+    var triggerAlternativeSelected = function () {
+      self.trigger('alternative-selected', {
+        correct: self.options.correct,
+        $element: self.$alternative
+      });
+    };
 
+
+    this.$alternative = $('<li>', {
+      'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
+      tabindex: 1,
+      click: triggerAlternativeSelected,
+      keypress: function (event) {
+        // If enter or space has been pushed
+        if(event.which === 13 || event.which === 32) {
+          triggerAlternativeSelected();
+        }
+      }
+    });
+  
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-progressbar'
     }));
@@ -26,7 +45,10 @@ H5P.SingleChoiceAlternative = (function ($) {
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-status'
     }));
+    
   }
+  Alternative.prototype = Object.create(EventEmitter.prototype);
+  Alternative.prototype.constructor = Alternative;
 
   /**
    * Is this alternative the correct one?
@@ -39,12 +61,12 @@ H5P.SingleChoiceAlternative = (function ($) {
 
 
   /**
-   * Attach the alternative to a DOM container
+   * Append the alternative to a DOM container
    *
-   * @param  {domElement} $container The Dom element to attach to
+   * @param  {domElement} $container The Dom element to append to
    * @return {domElement}            This dom element
    */
-  Alternative.prototype.attach = function ($container) {
+  Alternative.prototype.appendTo = function ($container) {
     var self = this;
     $container.append(this.$alternative);
     return this.$alternative;
@@ -52,4 +74,4 @@ H5P.SingleChoiceAlternative = (function ($) {
 
   return Alternative;
 
-})(H5P.jQuery);
+})(H5P.jQuery, H5P.SingleChoiceEventEmitter);

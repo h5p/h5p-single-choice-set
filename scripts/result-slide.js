@@ -11,24 +11,23 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
    * @param  {boolean} showSolutionEnabled Is Show solution enabled?
    * @param  {boolean} retryEnabled        Is retry enabled?
    */
-  function ResultSlide(maxscore, showSolutionEnabled, retryEnabled) {
+  function ResultSlide(maxscore, showSolutionEnabled, retryEnabled, l10n) {
     EventEmitter.call(this);
     this.maxscore = maxscore;
     var self = this;
 
     this.$resultSlide = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc-set-results',
-      'css': {left: (maxscore*100) + '%'}
+      'css': {left: (maxscore * 100) + '%'}
     }).append(
-      '<span class="h5p-sc-feedback">You got <span class="h5p-sc-score">?</span> of ' + maxscore + ' correct</span>'
+      '<span class="h5p-sc-feedback">' + l10n.resultSlideTitle.replace(':numcorrect', '<span class="h5p-sc-score">?</span>').replace(':maxscore', maxscore) + '</span>'
     );
 
     if (showSolutionEnabled) {
       this.$resultSlide.append($('<button>', {
         'class': 'h5p-button h5p-sc-show-solution',
-        'text': 'Show solution',
+        'text': l10n.showSolutionButtonLabel,
         'click': function () {
-          //alert('Solution view not implemented yet');
           self.trigger('view-solution');
         }
       }));
@@ -37,7 +36,7 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
     if (retryEnabled) {
       this.$resultSlide.append($('<button>', {
         'class': 'h5p-button h5p-sc-retry',
-        'text': 'Retry',
+        'text': l10n.retryButtonLabel,
         'click': function () {
           self.trigger('retry');
         }
@@ -49,12 +48,12 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
 
 
   /**
-   * Attach the resultslide to a container
+   * Append the resultslide to a container
    *
    * @param  {domElement} $container The container
    * @return {domElement}            This dom element
    */
-  ResultSlide.prototype.attach = function ($container) {
+  ResultSlide.prototype.appendTo = function ($container) {
     this.$resultSlide.appendTo($container);
     return this.$resultSlide;
   };

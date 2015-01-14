@@ -1,16 +1,11 @@
 var H5P = H5P || {};
 
 H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
-
-
   /**
    * @constuctor
    * @param  {object} options Options for single choice set
    */
   function SingleChoiceSet(options) {
-
-
-
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
@@ -27,13 +22,50 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
-    this.$slides = [];
+    
+    this.l10n = H5P.jQuery.extend({
+      resultSlideTitle: 'You got :numcorrect of :maxscore correct',
+      showSolutionButtonLabel: 'Show solution',
+      retryButtonLabel: 'Retry',
+      goBackButtonLabel: 'Go back',
+      solutionViewTitle: 'Solution'
+    }, options.l10n !== undefined ? options.l10n : {});
 
-    this.solutionView = new SolutionView(this.options.choices);
+    //console.log(this.options, this.l10n);
+
+    this.$slides = [];
+    // An array containing the SingleChoice instances
+    this.choices = [];
+
+    this.solutionView = new SolutionView(this.options.choices, this.l10n);
 
     if (this.options.behaviour.soundEffectsEnabled === true) {
       SoundEffects.setup();
     }
+
+    this.$choices = $('<div>', {
+      'class': 'h5p-sc-set h5p-sc-animate'
+    });
+    this.$progressbar = $('<div>', {
+      'class': 'h5p-sc-set-progress'
+    });
+    this.$progressCompleted = $('<div>', {
+      'class': 'h5p-sc-completed'
+    }).appendTo(this.$progressbar);
+
+    for (var i = 0; i < this.options.choices.length; i++) {
+      var choice = new SingleChoice(this.options.choices[i], i);
+      choice.on('finished', this.handleQuestionFinished, this);
+      choice.appendTo(this.$choices, (i === 0));
+      this.choices.push(choice);
+      this.$slides.push(choice.$choice);
+    }
+
+    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetryButton, this.l10n);
+    this.resultSlide.appendTo(this.$choices);
+    this.resultSlide.on('retry', this.resetTask, this);
+    this.resultSlide.on('view-solution', this.handleViewSolution, this);
+    this.$slides.push(this.resultSlide.$resultSlide);
   }
 
   /**
@@ -44,20 +76,38 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
     var self = this;
 
-    setTimeout(function () {
-      if (data.correct) {
-        self.results.corrects++;
-      }
-      else {
-        self.results.wrongs++;
-      }
+    if (data.correct) {
+      self.results.corrects++;
+    }
+    else {
+      self.results.wrongs++;
+    }
 
-      if (self.currentIndex+1 >= self.options.choices.length) {
-        self.resultSlide.setScore(self.results.corrects);
-      }
+    if (self.currentIndex+1 >= self.options.choices.length) {
+      self.resultSlide.setScore(self.results.corrects);
+    }
 
+    var letsMove = function () {
+      // Handle impatient users
+      self.$container.off('click.impatient keydown.impatient');
+      clearTimeout(timeout);
       self.move(self.currentIndex+1);
+    };
+
+    var timeout = setTimeout(function () {
+      letsMove();
     }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
+
+    self.$container.on('click.impatient', function () {
+      letsMove();
+    });
+    self.$container.on('keydown.impatient', function (event) {
+      console.log(event.which);
+      // If return, space or right arrow
+      if(event.which === 13 || event.which === 32 || event.which === 39) {
+        letsMove();
+      }
+    });
   };
 
   /**
@@ -76,33 +126,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    SingleChoiceSet.prototype.attach = function ($container) {
     var self = this;
     self.$container = $container;
-    self.$container.addClass('h5p-single-choice-set');
-    self.$choices = $('<div>', {
-      'class': 'h5p-sc-set h5p-sc-animate'
-    });
-    self.$progressbar = $('<div>', {
-      'class': 'h5p-sc-set-progress'
-    });
-    self.$progressCompleted = $('<div>', {
-      'class': 'h5p-sc-completed'
-    }).appendTo(self.$progressbar);
-
-    // An array containin the SingleChoice instances
-    self.choices = [];
-
-    for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i);
-      choice.on('finished', self.handleQuestionFinished, self);
-      choice.attach(self.$choices, (i === 0));
-      self.choices.push(choice);
-      self.$slides.push(choice.$choice);
-    }
-
-    self.resultSlide = new ResultSlide(self.options.choices.length, self.options.behaviour.enableSolutionsButton, self.options.behaviour.enableRetryButton);
-    self.resultSlide.attach(self.$choices);
-    self.resultSlide.on('retry', self.resetTask, self);
-    self.resultSlide.on('view-solution', self.handleViewSolution, self);
-    self.$slides.push(self.resultSlide.$resultSlide);
+    $container.addClass('h5p-sc-set-wrapper');
 
     $container.append(self.$choices);
     $container.append(self.$progressbar);
@@ -117,10 +141,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       }));
     }
 
-    self.$progressCompleted.css({width: (1/(self.options.choices.length+1))*100 + '%'});
+    self.$progressCompleted.css({width: ((1 / (self.options.choices.length + 1)) * 100) + '%'});
 
     // Append solution view - hidden by default:
-    self.solutionView.appendTo($('body'));
+    self.solutionView.appendTo($container);
 
     self.resize();
 
@@ -167,8 +191,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.$progressCompleted.css({width: ((this.currentIndex+1)/(this.options.choices.length+1))*100 + '%'});
   };
 
-
-
   /**
    * The following functions implements the CP and IV - Contracts v 1.0 documented here:
    * http://h5p.org/node/1009
@@ -183,12 +205,15 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     return (this.results.corrects + this.results.wrongs) > 0;
   };
   SingleChoiceSet.prototype.showSolutions = function () {
-    // this.handleViewSolution();
+    this.handleViewSolution();
   };
   /**
    * Reset all answers. This is equal to refreshing the quiz
    */
   SingleChoiceSet.prototype.resetTask = function () {
+    // Close solution view if visible:
+    this.solutionView.hide();
+
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
     for (var i = 0; i < classes.length; i++) {
@@ -204,4 +229,4 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.SingleChoice, H5P.SingleChoiceSolutionView, H5P.SingleChoiceResultSlide, H5P.SoundEffects);
+})(H5P.jQuery, H5P.SingleChoice, H5P.SingleChoiceSolutionView, H5P.SingleChoiceResultSlide, H5P.SingleChoiceSetSoundEffects);

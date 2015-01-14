@@ -4,12 +4,28 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
   /**
   * Constructor function.
   */
-  function SolutionView (choices){
+  function SolutionView (choices, l10n){
+    var self = this;
     this.choices = choices;
 
     this.$solutionView = $('<div>', {
       'class': 'h5p-sc-solution-view'
     });
+
+    // Add header 
+    this.$header = $('<div>', {
+      'class': 'h5p-sc-solution-view-header'
+    }).appendTo(this.$solutionView);
+    this.$goBackButton = $('<button>', {
+      'class': 'h5p-button h5p-sc-close-solution-view',
+      'text': l10n.goBackButtonLabel,
+      'click': function () {
+        self.hide();
+      }
+    }).appendTo(this.$header);
+    this.$header.append('<div class="h5p-sc-solution-view-title">' + l10n.solutionViewTitle + '</div>');
+
+    self.populate();
   }
 
   /**
@@ -25,52 +41,21 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
    */
   SolutionView.prototype.show = function () {
     var self = this;
+    self.$solutionView.addClass('visible');
 
-    self.populate();
-    this.$solutionView.show();
-
-    setTimeout(function () {
-      self.$solutionView.css({
-        width: '100%',
-        height: '100%',
-        left: 0,
-        top: 0,
-        'background': 'rgba(0,0,0,0.8)'
-      });
-
-      var height = self.$choices.outerHeight();
-      var marginTop = (self.$solutionView.outerHeight()-height)/2;
-      self.$choices.css({
-        'margin-top': (marginTop > 0 ? marginTop : 0) + 'px'
-      });
-    }, 1);
-
-    $(document).on('keyup', function (event) {
-      if (event.keyCode === 27) {
+    $(document).on('keyup.solutionview', function (event) {
+      if (event.keyCode === 27) { // Escape
         self.hide();
-        $(document).off('keyup');
+        $(document).off('keyup.solutionview');
       }
-    });
-
-    self.$solutionView.on('click.solutionView', function (event) {
-      self.hide();
-      self.$solutionView.off('click.solutionView');
-    });
+    });    
   };
 
   /**
    * Hides the solution view
    */
   SolutionView.prototype.hide = function () {
-    var self = this;
-
-    this.$choices.css({'margin-top': self.$solutionView.height() + 'px'});
-    this.$solutionView.css({background: 'transparent'});
-
-    BrowserUtils.onTransitionEnd(self.$solutionView, function () {
-      self.$choices.remove();
-      self.$solutionView.hide();
-    }, 1200);
+    this.$solutionView.removeClass('visible');
   };
 
   /**
@@ -79,10 +64,7 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
   SolutionView.prototype.populate = function () {
     var self = this;
     self.$choices = $('<div>', {
-      'class': 'h5p-sc-solution-choices',
-      css: {
-        'margin-top': self.$solutionView.height() + 'px'
-      }
+      'class': 'h5p-sc-solution-choices'
     });
     this.choices.forEach(function (choice) {
       self.$choices.append($('<div>', {
@@ -95,11 +77,6 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
       }));
     });
     self.$choices.appendTo(this.$solutionView);
-
-    /* To avoid closing the popup when trying to select text */
-    self.$choices.on('click', function () {
-      return false;
-    });
   };
 
   return SolutionView;

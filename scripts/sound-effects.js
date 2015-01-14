@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SoundEffects = (function ($) {
+H5P.SingleChoiceSetSoundEffects = (function ($) {
   SoundEffects = {
     types: [
       'positive-short',
@@ -21,7 +21,7 @@ H5P.SoundEffects = (function ($) {
       return false;
     }
 
-    SoundEffects.libraryPath = H5PIntegration.getLibraryPath('H5P.SingleChoiceSet-1.0');
+    SoundEffects.libraryPath = H5P.getLibraryPath('H5P.SingleChoiceSet-1.0');
     H5P.createjs.Sound.alternateExtensions = ['mp3'];
     for (var i = 0; i < SoundEffects.types.length; i++) {
       var type = SoundEffects.types[i];
@@ -39,8 +39,7 @@ H5P.SoundEffects = (function ($) {
    */
   SoundEffects.play = function (type, delay) {
     if (SoundEffects.muted === false) {
-      delay = delay || 0;
-      var player = H5P.createjs.Sound.play(type, H5P.createjs.Sound.INTERRUPT_NONE, delay, 0, false, 1);
+      H5P.createjs.Sound.play(type, H5P.createjs.Sound.INTERRUPT_NONE, (delay || 0));
     }
   };
 
