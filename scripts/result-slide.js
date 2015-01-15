@@ -1,9 +1,9 @@
 var H5P = H5P || {};
-
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 /**
  * SingleChoiceResultSlide - Represents the result slide
  */
-H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
 
    /**
    * @constructor
@@ -70,4 +70,4 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
 
   return ResultSlide;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter);
+})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);

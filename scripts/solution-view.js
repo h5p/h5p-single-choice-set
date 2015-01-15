@@ -1,6 +1,7 @@
 var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
+H5P.SingleChoiceSet.SolutionView = (function ($) {
   /**
   * Constructor function.
   */
@@ -80,4 +81,4 @@ H5P.SingleChoiceSolutionView = (function ($, BrowserUtils) {
   };
 
   return SolutionView;
-})(H5P.jQuery, H5P.BrowserUtils);
+})(H5P.jQuery);

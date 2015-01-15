@@ -1,11 +1,11 @@
 var H5P = H5P || {};
-
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
 /**
  * SingleChoiceEventEmitter makes it possible for other classes to
  * trigger and listen to events
  */
-H5P.SingleChoiceEventEmitter = (function () {
+H5P.SingleChoiceSet.EventEmitter = (function () {
 
   /**
    * @constructor
