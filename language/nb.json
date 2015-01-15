@@ -1,0 +1,77 @@
+{
+  "semantics": [
+  {
+    "label": "Spørsmålsliste",
+    "entity": "spørsmål",
+    "field": {
+      "label": "Spørsmål & alternativer",
+      "fields": [
+        {
+          "label": "Spørsmål"
+        },
+        {
+          "label": "Alternativer",
+          "description": "Alternativene brukeren kan velge ifra. Det første alternativet er rett",
+          "entity": "svar",
+          "field": {
+            "label": "Svar"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "label": "Innstillinger for oppførsel",
+    "fields": [
+      {
+        "label": "Pause ved korrekt svar",
+        "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)",
+        "default": 2000
+      },
+      {
+        "label": "Pause ved feil svar",
+        "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)",
+        "default": 3000
+      },
+      {
+        "label": "Lydeffekter",
+        "default": true
+      },
+      {
+        "label": "\"Prøv igjen\" knapp",
+        "default": true
+      },
+      {
+        "label": "\"Vis svar\" knapp",
+        "default": true
+      }
+    ]
+  },
+  {
+    "label": "Ledetekster",
+    "fields": [
+      {
+        "label": "Tittel på resultatside",
+        "default": "Du fikk :numcorrect av :maxscore poeng",
+        "description": ":numcorrect byttes ut med antall korrekte svar og :maxscore byttes ut med antall spørsmål"
+      },
+      {
+        "label": "Etikett på \"Vis svar\" knappen",
+        "default": "Vis svar"
+      },
+      {
+        "label": "Etikett på \"Prøv igjen\" knappen",
+        "default": "Prøv igjen"
+      },
+      {
+        "label": "Etikett på \"Gå tilbake\" knappen",
+        "default": "Gå tilbake"
+      },
+      {
+        "label": "Tittelen på svarvisnings-siden",
+        "default": "Svar"
+      }
+    ]
+  }
+]
+}
