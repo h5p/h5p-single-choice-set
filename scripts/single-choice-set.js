@@ -7,9 +7,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * @param {string} id H5P instance id
    */
   function SingleChoiceSet(options, id) {
-
-    console.log(options);
-
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
@@ -34,8 +31,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       goBackButtonLabel: 'Go back',
       solutionViewTitle: 'Solution'
     }, options.l10n !== undefined ? options.l10n : {});
-
-    //console.log(this.options, this.l10n);
 
     this.$slides = [];
     // An array containing the SingleChoice instances
@@ -106,7 +101,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       letsMove();
     });
     self.$container.on('keydown.impatient', function (event) {
-      console.log(event.which);
       // If return, space or right arrow
       if(event.which === 13 || event.which === 32 || event.which === 39) {
         letsMove();
