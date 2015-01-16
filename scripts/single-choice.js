@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Transition, SoundEffects) {
+H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, SoundEffects) {
   /**
    * Constructor function.
    */
@@ -59,7 +59,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Tran
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(data.correct ? 'positive-short' : 'negative-short', 700);
 
-      Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
+      H5P.Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
         data.$element.addClass('h5p-sc-drummed');
         self.showResult(data.correct);
       }, 700);
@@ -86,7 +86,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Tran
 
     var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
 
-    Transition.onTransitionEnd($correctAlternative, function () {
+    H5P.Transition.onTransitionEnd($correctAlternative, function () {
       self.trigger('finished', {correct: correct});
     }, 600);
 
@@ -97,4 +97,4 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Tran
 
   return SingleChoice;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter, H5P.SingleChoiceSet.Alternative, H5P.Transition, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter, H5P.SingleChoiceSet.Alternative, H5P.SingleChoiceSet.SoundEffects);

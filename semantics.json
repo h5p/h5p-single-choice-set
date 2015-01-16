@@ -3,7 +3,7 @@
     "name": "choices",
     "type": "list",
     "label": "List of questions",
-    "entity": "choice",
+    "entity": "question",
     "min": 1,
     "defaultNum": 2,
     "field": {
@@ -19,8 +19,7 @@
         {
           "name": "answers",
           "type": "list",
-          "label": "Alternatives",
-          "description": "The alternatives the user may choose from. First alternative is the correct one",
+          "label": "Alternatives. First alternative is the correct one",
           "entity": "answer",
           "min": 2,
           "max": 4,
@@ -60,7 +59,7 @@
         "default": true
       },
       {
-        "name": "enableRetryButton",
+        "name": "enableRetry",
         "type": "boolean",
         "label": "Enable retry button",
         "default": true

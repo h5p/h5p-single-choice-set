@@ -1,7 +1,6 @@
-var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.SoundEffects = (function ($, Sound) {
+H5P.SingleChoiceSet.SoundEffects = (function ($) {
   SoundEffects = {
     types: [
       'positive-short',
@@ -18,15 +17,15 @@ H5P.SingleChoiceSet.SoundEffects = (function ($, Sound) {
    * @return {boolean} True if setup was successfull, otherwise false
    */
   SoundEffects.setup = function () {
-    if (!Sound.initializeDefaultPlugins()) {
+    if (!H5P.SoundJS.initializeDefaultPlugins()) {
       return false;
     }
 
     SoundEffects.libraryPath = H5P.getLibraryPath('H5P.SingleChoiceSet-1.0');
-    Sound.alternateExtensions = ['mp3'];
+    H5P.SoundJS.alternateExtensions = ['mp3'];
     for (var i = 0; i < SoundEffects.types.length; i++) {
       var type = SoundEffects.types[i];
-      Sound.registerSound(SoundEffects.libraryPath + '/sounds/' + type + '.ogg', type);
+      H5P.SoundJS.registerSound(SoundEffects.libraryPath + '/sounds/' + type + '.ogg', type);
     }
 
     return true;
@@ -40,7 +39,7 @@ H5P.SingleChoiceSet.SoundEffects = (function ($, Sound) {
    */
   SoundEffects.play = function (type, delay) {
     if (SoundEffects.muted === false) {
-      Sound.play(type, Sound.INTERRUPT_NONE, (delay || 0));
+      H5P.SoundJS.play(type, H5P.SoundJS.INTERRUPT_NONE, (delay || 0));
     }
   };
 
@@ -59,4 +58,4 @@ H5P.SingleChoiceSet.SoundEffects = (function ($, Sound) {
   };
 
   return SoundEffects;
-})(H5P.jQuery, H5P.SoundJS);
+})(H5P.jQuery);

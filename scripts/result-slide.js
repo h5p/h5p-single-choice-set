@@ -66,6 +66,10 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
    */
   ResultSlide.prototype.setScore = function (result) {
     this.$resultSlide.find('.h5p-sc-score').text(result);
+
+    this.$resultSlide.find('.h5p-sc-retry').css({
+      display: result === this.maxscore ? 'none' : 'inline-block'
+    });
   };
 
   return ResultSlide;

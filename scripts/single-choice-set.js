@@ -3,9 +3,13 @@ var H5P = H5P || {};
 H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
   /**
    * @constuctor
-   * @param  {object} options Options for single choice set
+   * @param {object} options Options for single choice set
+   * @param {string} id H5P instance id
    */
-  function SingleChoiceSet(options) {
+  function SingleChoiceSet(options, id) {
+
+    console.log(options);
+
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
@@ -13,7 +17,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
-        enableRetryButton: true,
+        enableRetry: true,
         enableSolutionsButton: true
       }
     }, options);
@@ -61,7 +65,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       this.$slides.push(choice.$choice);
     }
 
-    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetryButton, this.l10n);
+    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetry, this.l10n);
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', this.resetTask, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
@@ -175,7 +179,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     var translateX = 'translateX(' + (-index*100) + '%)';
     var $previousSlide = this.$slides[this.currentIndex];
 
-    BrowserUtils.onTransitionEnd(this.$choices, function () {
+    H5P.Transition.onTransitionEnd(this.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
     }, 600);
 
