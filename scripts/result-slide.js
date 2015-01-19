@@ -1,9 +1,9 @@
 var H5P = H5P || {};
-
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 /**
  * SingleChoiceResultSlide - Represents the result slide
  */
-H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
 
    /**
    * @constructor
@@ -66,8 +66,12 @@ H5P.SingleChoiceResultSlide = (function ($, EventEmitter) {
    */
   ResultSlide.prototype.setScore = function (result) {
     this.$resultSlide.find('.h5p-sc-score').text(result);
+
+    this.$resultSlide.find('.h5p-sc-retry').css({
+      display: result === this.maxscore ? 'none' : 'inline-block'
+    });
   };
 
   return ResultSlide;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter);
+})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);

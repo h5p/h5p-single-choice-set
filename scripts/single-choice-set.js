@@ -3,9 +3,10 @@ var H5P = H5P || {};
 H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
   /**
    * @constuctor
-   * @param  {object} options Options for single choice set
+   * @param {object} options Options for single choice set
+   * @param {string} id H5P instance id
    */
-  function SingleChoiceSet(options) {
+  function SingleChoiceSet(options, id) {
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       choices: [],
@@ -13,7 +14,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
-        enableRetryButton: true,
+        enableRetry: true,
         enableSolutionsButton: true
       }
     }, options);
@@ -30,8 +31,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       goBackButtonLabel: 'Go back',
       solutionViewTitle: 'Solution'
     }, options.l10n !== undefined ? options.l10n : {});
-
-    //console.log(this.options, this.l10n);
 
     this.$slides = [];
     // An array containing the SingleChoice instances
@@ -61,7 +60,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       this.$slides.push(choice.$choice);
     }
 
-    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetryButton, this.l10n);
+    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetry, this.l10n);
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', this.resetTask, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
@@ -102,7 +101,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       letsMove();
     });
     self.$container.on('keydown.impatient', function (event) {
-      console.log(event.which);
       // If return, space or right arrow
       if(event.which === 13 || event.which === 32 || event.which === 39) {
         letsMove();
@@ -175,7 +173,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     var translateX = 'translateX(' + (-index*100) + '%)';
     var $previousSlide = this.$slides[this.currentIndex];
 
-    BrowserUtils.onTransitionEnd(this.$choices, function () {
+    H5P.Transition.onTransitionEnd(this.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
     }, 600);
 
@@ -229,4 +227,4 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.SingleChoice, H5P.SingleChoiceSolutionView, H5P.SingleChoiceResultSlide, H5P.SingleChoiceSetSoundEffects);
+})(H5P.jQuery, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);

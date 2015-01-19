@@ -10,8 +10,7 @@
           "label": "Spørsmål"
         },
         {
-          "label": "Alternativer",
-          "description": "Alternativene brukeren kan velge ifra. Det første alternativet er rett",
+          "label": "Alternativer. Det første alternativet er rett",
           "entity": "svar",
           "field": {
             "label": "Svar"

@@ -1,6 +1,7 @@
 var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceAlternative = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
   /**
   * @constructor
@@ -74,4 +75,4 @@ H5P.SingleChoiceAlternative = (function ($, EventEmitter) {
 
   return Alternative;
 
-})(H5P.jQuery, H5P.SingleChoiceEventEmitter);
+})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
