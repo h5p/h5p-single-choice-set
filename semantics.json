@@ -19,7 +19,7 @@
         {
           "name": "answers",
           "type": "list",
-          "label": "Alternatives. First alternative is the correct one",
+          "label": "Alternatives - first alternative is the correct one",
           "entity": "answer",
           "min": 2,
           "max": 4,
@@ -27,7 +27,7 @@
           "field": {
             "name": "answer",
             "type": "text",
-            "label": "Answer"
+            "label": "Alternative"
           }
         }
       ]
