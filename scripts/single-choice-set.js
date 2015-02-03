@@ -6,8 +6,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * @param {object} options Options for single choice set
    * @param {string} id H5P instance id
    */
-  function SingleChoiceSet(options, id) {
+  function SingleChoiceSet(options, contentId) {
     // Extend defaults with provided options
+    this.contentId = contentId;
+    H5P.EventDispatcher.call(this);
     this.options = $.extend(true, {}, {
       choices: [],
       behaviour: {
@@ -66,6 +68,9 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
   }
+  
+  SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
+  SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
   /**
    * Handler invoked when question is done
@@ -84,6 +89,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.resultSlide.setScore(self.results.corrects);
+      self.triggerXAPICompleted(self.results.corrects, self.options.choices.length);
     }
 
     var letsMove = function () {
