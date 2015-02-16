@@ -23,7 +23,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
-    
+
     this.l10n = H5P.jQuery.extend({
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
@@ -37,10 +37,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.choices = [];
 
     this.solutionView = new SolutionView(this.options.choices, this.l10n);
-
-    if (this.options.behaviour.soundEffectsEnabled === true) {
-      SoundEffects.setup();
-    }
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
@@ -137,6 +133,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
           $(this).toggleClass('muted', SoundEffects.muted);
         }
       }));
+
+      setTimeout(function () {
+        SoundEffects.setup();
+      },1);
     }
 
     self.$progressCompleted.css({width: ((1 / (self.options.choices.length + 1)) * 100) + '%'});
