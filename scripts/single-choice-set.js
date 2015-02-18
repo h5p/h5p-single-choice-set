@@ -63,6 +63,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.resultSlide.on('retry', this.resetTask, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
+    this.on('resize', this.resize, this);
   }
   
   SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
