@@ -6,8 +6,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * @param {object} options Options for single choice set
    * @param {string} id H5P instance id
    */
-  function SingleChoiceSet(options, id) {
+  function SingleChoiceSet(options, contentId) {
     // Extend defaults with provided options
+    this.contentId = contentId;
+    H5P.EventDispatcher.call(this);
     this.options = $.extend(true, {}, {
       choices: [],
       behaviour: {
@@ -23,7 +25,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
-    
+
     this.l10n = H5P.jQuery.extend({
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
@@ -37,10 +39,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.choices = [];
 
     this.solutionView = new SolutionView(this.options.choices, this.l10n);
-
-    if (this.options.behaviour.soundEffectsEnabled === true) {
-      SoundEffects.setup();
-    }
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
@@ -65,7 +63,11 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.resultSlide.on('retry', this.resetTask, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
+    this.on('resize', this.resize, this);
   }
+  
+  SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
+  SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
   /**
    * Handler invoked when question is done
@@ -84,6 +86,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.resultSlide.setScore(self.results.corrects);
+      self.triggerXAPICompleted(self.results.corrects, self.options.choices.length);
     }
 
     var letsMove = function () {
@@ -137,6 +140,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
           $(this).toggleClass('muted', SoundEffects.muted);
         }
       }));
+
+      setTimeout(function () {
+        SoundEffects.setup();
+      },1);
     }
 
     self.$progressCompleted.css({width: ((1 / (self.options.choices.length + 1)) * 100) + '%'});
