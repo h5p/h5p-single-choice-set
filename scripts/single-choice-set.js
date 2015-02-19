@@ -65,7 +65,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.$slides.push(this.resultSlide.$resultSlide);
     this.on('resize', this.resize, this);
   }
-  
+
   SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
@@ -177,6 +177,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * @param  {number} index The slide number    to move to
    */
   SingleChoiceSet.prototype.move = function (index) {
+    if (index === this.currentIndex) {
+      return;
+    }
+
     var translateX = 'translateX(' + (-index*100) + '%)';
     var $previousSlide = this.$slides[this.currentIndex];
 
