@@ -76,7 +76,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
     var self = this;
-
+    self.triggerXAPI('attempted');
     if (data.correct) {
       self.results.corrects++;
     }
@@ -212,6 +212,9 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   };
   SingleChoiceSet.prototype.getAnswerGiven = function () {
     return (this.results.corrects + this.results.wrongs) > 0;
+  };
+  SingleChoiceSet.prototype.getH5PTitle = function() {
+    return H5P.createH5PTitle(this.options.choices[0].question);
   };
   SingleChoiceSet.prototype.showSolutions = function () {
     this.handleViewSolution();
