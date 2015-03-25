@@ -6,7 +6,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * @param {object} options Options for single choice set
    * @param {string} id H5P instance id
    */
-  function SingleChoiceSet(options, contentId) {
+  function SingleChoiceSet(options, contentId, contentData) {
     // Extend defaults with provided options
     this.contentId = contentId;
     H5P.EventDispatcher.call(this);
@@ -25,6 +25,10 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       corrects: 0,
       wrongs: 0
     };
+    if (contentData && contentData.previousState !== undefined) {
+      this.currentIndex = contentData.previousState.progress;
+      this.results = contentData.previousState.answers;
+    }
 
     this.l10n = H5P.jQuery.extend({
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
@@ -53,7 +57,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i);
       choice.on('finished', this.handleQuestionFinished, this);
-      choice.appendTo(this.$choices, (i === 0));
+      choice.appendTo(this.$choices, (i === this.currentIndex));
       this.choices.push(choice);
       this.$slides.push(choice.$choice);
     }
@@ -64,6 +68,15 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
     this.on('resize', this.resize, this);
+
+    // Use the correct starting slide
+    this.recklessJump(this.currentIndex);
+
+    if (this.options.choices.length === this.currentIndex) {
+      // Make sure results slide is displayed
+      this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
+      this.resultSlide.setScore(this.results.corrects);
+    }
   }
 
   SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
@@ -157,7 +170,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     $container.addClass('initialized');
   };
 
-
   /**
    * Resize if something outside resizes
    */
@@ -173,6 +185,16 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   };
 
   /**
+   * Will jump to the given slide without any though to animations,
+   * current slide etc.
+   *
+   * @public
+   */
+  SingleChoiceSet.prototype.recklessJump = function (index) {
+    var tX = 'translateX('+(-index*100)+'%)';this.$choices.css({'-webkit-transform':tX,'-moz-transform':tX,'-ms-transform':tX,'transform':tX});
+  };
+
+  /**
    * Move to slide n
    * @param  {number} index The slide number    to move to
    */
@@ -181,7 +203,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       return;
     }
 
-    var translateX = 'translateX(' + (-index*100) + '%)';
     var $previousSlide = this.$slides[this.currentIndex];
 
     H5P.Transition.onTransitionEnd(this.$choices, function () {
@@ -189,12 +210,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     }, 600);
 
     this.$slides[index].addClass('h5p-sc-current-slide');
-    this.$choices.css({
-      '-webkit-transform': translateX,
-      '-moz-transform': translateX,
-      '-ms-transform': translateX,
-      'transform': translateX
-    });
+    this.recklessJump(index);
 
     this.currentIndex = index;
     this.$progressCompleted.css({width: ((this.currentIndex+1)/(this.options.choices.length+1))*100 + '%'});
@@ -237,6 +253,19 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     };
 
     this.move(0);
+  };
+
+  /**
+   * Clever comment.
+   *
+   * @public
+   * @returns {object}
+   */
+  SingleChoiceSet.prototype.getCurrentState = function () {
+    return {
+      progress: this.currentIndex,
+      answers: this.results
+    };
   };
 
   return SingleChoiceSet;
