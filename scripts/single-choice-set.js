@@ -159,8 +159,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       },1);
     }
 
-    self.$progressCompleted.css({width: ((1 / (self.options.choices.length + 1)) * 100) + '%'});
-
     // Append solution view - hidden by default:
     self.solutionView.appendTo($container);
 
@@ -192,6 +190,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    */
   SingleChoiceSet.prototype.recklessJump = function (index) {
     var tX = 'translateX('+(-index*100)+'%)';this.$choices.css({'-webkit-transform':tX,'-moz-transform':tX,'-ms-transform':tX,'transform':tX});
+    this.$progressCompleted.css({width:((index+1)/(this.options.choices.length+1))*100 + '%'});
   };
 
   /**
@@ -213,7 +212,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     this.recklessJump(index);
 
     this.currentIndex = index;
-    this.$progressCompleted.css({width: ((this.currentIndex+1)/(this.options.choices.length+1))*100 + '%'});
   };
 
   /**
