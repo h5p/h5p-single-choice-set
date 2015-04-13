@@ -33,20 +33,20 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
         }
       }
     });
-  
+
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-progressbar'
     }));
 
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-label',
-      'text': this.options.text
+      'html': this.options.text
     }));
 
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-status'
     }));
-    
+
   }
   Alternative.prototype = Object.create(EventEmitter.prototype);
   Alternative.prototype.constructor = Alternative;
