@@ -65,7 +65,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
    * @param  {string} result The result
    */
   ResultSlide.prototype.setScore = function (result) {
-    this.$resultSlide.find('.h5p-sc-score').text(result);
+    this.$resultSlide.find('.h5p-sc-score').html(result);
 
     this.$resultSlide.find('.h5p-sc-retry').css({
       display: result === this.maxscore ? 'none' : 'inline-block'
