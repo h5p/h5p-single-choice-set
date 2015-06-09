@@ -13,13 +13,13 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
       'class': 'h5p-sc-solution-view'
     });
 
-    // Add header 
+    // Add header
     this.$header = $('<div>', {
       'class': 'h5p-sc-solution-view-header'
     }).appendTo(this.$solutionView);
     this.$goBackButton = $('<button>', {
       'class': 'h5p-button h5p-sc-close-solution-view',
-      'text': l10n.goBackButtonLabel,
+      'html': l10n.goBackButtonLabel,
       'click': function () {
         self.hide();
       }
@@ -49,7 +49,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
         self.hide();
         $(document).off('keyup.solutionview');
       }
-    });    
+    });
   };
 
   /**
@@ -70,11 +70,11 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
     this.choices.forEach(function (choice) {
       self.$choices.append($('<div>', {
         'class': 'h5p-sc-solution-question',
-        text: choice.question
+        html: choice.question
       }));
       self.$choices.append($('<div>', {
         'class': 'h5p-sc-solution-answer',
-        text: choice.answers[0]
+        html: choice.answers[0]
       }));
     });
     self.$choices.appendTo(this.$solutionView);

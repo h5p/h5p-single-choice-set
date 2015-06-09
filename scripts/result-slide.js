@@ -26,7 +26,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
     if (showSolutionEnabled) {
       this.$resultSlide.append($('<button>', {
         'class': 'h5p-button h5p-sc-show-solution',
-        'text': l10n.showSolutionButtonLabel,
+        'html': l10n.showSolutionButtonLabel,
         'click': function () {
           self.trigger('view-solution');
         }
@@ -36,7 +36,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
     if (retryEnabled) {
       this.$resultSlide.append($('<button>', {
         'class': 'h5p-button h5p-sc-retry',
-        'text': l10n.retryButtonLabel,
+        'html': l10n.retryButtonLabel,
         'click': function () {
           self.trigger('retry');
         }
@@ -65,7 +65,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
    * @param  {string} result The result
    */
   ResultSlide.prototype.setScore = function (result) {
-    this.$resultSlide.find('.h5p-sc-score').text(result);
+    this.$resultSlide.find('.h5p-sc-score').html(result);
 
     this.$resultSlide.find('.h5p-sc-retry').css({
       display: result === this.maxscore ? 'none' : 'inline-block'
