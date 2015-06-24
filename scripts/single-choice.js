@@ -40,7 +40,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
 
     this.$choice.append($('<div>', {
       'class': 'h5p-sc-question',
-      'text': this.options.question
+      'html': this.options.question
     }));
 
     var $alternatives = $('<ul>', {
