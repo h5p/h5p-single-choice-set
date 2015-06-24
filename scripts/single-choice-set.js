@@ -20,15 +20,15 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
         enableSolutionsButton: true
       }
     }, options);
-    this.currentIndex = 0;
-    this.results = {
-      corrects: 0,
-      wrongs: 0
-    };
     if (contentData && contentData.previousState !== undefined) {
       this.currentIndex = contentData.previousState.progress;
       this.results = contentData.previousState.answers;
     }
+    this.currentIndex = this.currentIndex || 0;
+    this.results = this.results || {
+      corrects: 0,
+      wrongs: 0
+    };
 
     this.l10n = H5P.jQuery.extend({
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
