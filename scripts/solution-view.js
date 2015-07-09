@@ -68,14 +68,16 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
       'class': 'h5p-sc-solution-choices'
     });
     this.choices.forEach(function (choice) {
-      self.$choices.append($('<div>', {
-        'class': 'h5p-sc-solution-question',
-        html: choice.question
-      }));
-      self.$choices.append($('<div>', {
-        'class': 'h5p-sc-solution-answer',
-        html: choice.answers[0]
-      }));
+      if (choice.question && choice.answers && choice.answers.length !== 0) {
+        self.$choices.append($('<div>', {
+          'class': 'h5p-sc-solution-question',
+          html: choice.question
+        }));
+        self.$choices.append($('<div>', {
+          'class': 'h5p-sc-solution-answer',
+          html: choice.answers[0]
+        }));
+      }
     });
     self.$choices.appendTo(this.$solutionView);
   };
