@@ -89,7 +89,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
     var self = this;
-    self.triggerXAPI('attempted');
+    self.triggerXAPI('interacted');
     if (data.correct) {
       self.results.corrects++;
     }
