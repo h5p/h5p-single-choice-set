@@ -99,7 +99,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.resultSlide.setScore(self.results.corrects);
-      self.triggerXAPICompleted(self.results.corrects, self.options.choices.length);
+      self.triggerXAPIScored(self.results.corrects, self.options.choices.length, 'completed');
     }
 
     var letsMove = function () {
@@ -137,7 +137,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    *
    * @param {jQuery} $container
    */
-   SingleChoiceSet.prototype.attach = function ($container) {
+  SingleChoiceSet.prototype.attach = function ($container) {
+    this.setActivityStarted();
     var self = this;
     self.$container = $container;
     $container.addClass('h5p-sc-set-wrapper');
