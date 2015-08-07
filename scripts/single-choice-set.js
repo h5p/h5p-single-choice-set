@@ -135,6 +135,9 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var self = this;
 
     // Find last selected alternative, and determine timeout before solution slide shows
+    if (!self.choices.length) {
+      return;
+    }
     var lastSelected = self.choices[self.choices.length - 1]
       .$choice
       .find('.h5p-sc-alternative.h5p-sc-selected');
