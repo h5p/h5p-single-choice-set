@@ -329,9 +329,10 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * Reset all answers. This is equal to refreshing the quiz
    */
   SingleChoiceSet.prototype.resetTask = function () {
+    var self = this;
+
     // Close solution view if visible:
     this.solutionView.hide();
-    this.setFeedback();
 
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
@@ -344,6 +345,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     };
 
     this.move(0);
+
+    // Wait for transition, then remove feedback.
+    H5P.Transition.onTransitionEnd(this.$choices, function () {
+      self.setFeedback();
+    }, 600);
   };
 
   /**

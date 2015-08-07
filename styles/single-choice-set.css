@@ -59,7 +59,7 @@
 }
 .h5p-sc-question {
   font-size: 1.125em;
-  padding: 1em 0 .5em 1em;
+  padding: 1em 2em .5em 1em;
 }
 ul.h5p-sc-alternatives {
   margin: 0;
@@ -179,7 +179,7 @@ li.h5p-sc-alternative .h5p-sc-status {
 }
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
-  background: #DDD;
+  background: rgb(238,228,239);
   outline: none;
 }
 .h5p-sc-selected li.h5p-sc-alternative {
@@ -205,12 +205,13 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   width: 1.3em;
   height: 1.5em;
   position: absolute;
-  top: 0.3em;
+  top: 0.75em;
   right: 0;
   text-align: left;
-  color: #AAA;
+  color: #757575;
   cursor: pointer;
 }
+
 .h5p-sc-sound-control:hover {
   color: #444;
 }
@@ -243,22 +244,20 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 .h5p-sc-solution-view-header {
   position: relative;
   background: #F1F1F1;
-  border-bottom: 1px solid #DDD;
   text-align: center;
+  height: 3.25em;
 }
 .h5p-sc-solution-view-title {
   display: inline-block;
   font-size: 1.2em;
   text-align: center;
-  line-height: 2em;
+  line-height: 2.75em;
 }
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 0.5em;
-  padding: 0.2em 0.5em;
-  font-size: 0.9em;
 }
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:before {
   font-family: H5PFontAwesome4;
@@ -274,7 +273,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
-  top: 2.2em;
+  top: 2.95em;
   width: 100%;
 }
 .h5p-sc-solution-question {
@@ -316,10 +315,41 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   width: 100%;
 }
 
+/* IV sepcific styles */
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] {
   width: 24.5em;
 }
 
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
+  top: 0.3em;
+}
+
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-question {
+  margin-right: 0;
+}
+
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] {
+  overflow: hidden;
+  padding: 0;
+}
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-inner {
+  overflow: hidden;
+  width: 100%;
+}
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
+  right: 1.5em;
+}
+
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-solution-view {
+  top: 2.5em;
+  height: calc(100% - 2.5em);
+}
+
+/* Standalone specific styles */
 .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
   line-height: 1em;
+}
+
+.h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-question {
+  padding-left: 0;
 }
