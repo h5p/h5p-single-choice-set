@@ -226,8 +226,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 }
 
 .h5p-sc-sound-control {
-  font-family: H5PFontAwesome4;
-  font-size: 1.5em;
   width: 1.3em;
   height: 1.5em;
   position: absolute;
@@ -242,6 +240,8 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   color: #444;
 }
 .h5p-sc-sound-control:after {
+  font-family: H5PFontAwesome4;
+  font-size: 1.5em;
   content: '\f028';
 }
 .h5p-sc-sound-control.muted:after {
@@ -410,4 +410,18 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 
 .h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-question {
   padding-left: 0;
+}
+
+/* Transparent specific styles */
+.h5p-single-choice-set.h5p-transparent .h5p-sc-alternatives,
+.h5p-single-choice-set.h5p-transparent .h5p-sc-question {
+  margin: 1.5em 0;
+}
+
+.h5p-single-choice-set.h5p-transparent .h5p-sc-question {
+  margin-top: 0;
+}
+
+.h5p-single-choice-set.h5p-transparent .h5p-sc-sound-control {
+  top: 0;
 }
