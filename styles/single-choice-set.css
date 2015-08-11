@@ -90,10 +90,10 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   box-shadow: none;
 }
 
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-correct,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-correct:hover,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-correct:active,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-correct:focus {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:hover,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:active,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:focus {
   background: #9dd8bb;
   color: #255c41;
   -webkit-box-shadow: none;
@@ -127,10 +127,13 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p
   box-shadow: none;
 }
 
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:hover,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:active,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:focus,
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:active,
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:focus {
-  background: #EEE;
+  background: #ddd;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
