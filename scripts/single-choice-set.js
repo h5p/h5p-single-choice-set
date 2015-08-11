@@ -36,7 +36,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
-      goBackButtonLabel: 'Go back',
       solutionViewTitle: 'Solution'
     }, options.l10n !== undefined ? options.l10n : {});
 

@@ -269,9 +269,11 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 }
 .h5p-sc-solution-view-header {
   position: relative;
-  background: #F1F1F1;
   text-align: center;
   height: 3.25em;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 0 0.2em rgba(0,0,0,0.2);
 }
 .h5p-sc-solution-view-title {
   display: inline-block;
@@ -283,7 +285,24 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 1em;
+  left: 0;
+  background: none;
+  color: #1a73d9;
+}
+
+.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: #104888;
+}
+
+.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:focus,
+.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: #1356a3;
 }
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:before {
   font-family: H5PFontAwesome4;
