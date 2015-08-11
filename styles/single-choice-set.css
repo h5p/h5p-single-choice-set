@@ -376,26 +376,25 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 /* IV sepcific styles */
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] {
   width: 24.5em;
+  overflow: hidden;
+  padding: 0;
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
-  top: 0.3em;
+  top: 0.55em;
+  right: 2.5em;
+}
+.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control:after {
+  font-size: 1.25em;
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-question {
   margin-right: 0;
 }
 
-.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] {
-  overflow: hidden;
-  padding: 0;
-}
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-inner {
   overflow: hidden;
   width: 100%;
-}
-.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
-  right: 1.5em;
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-solution-view {
@@ -408,8 +407,17 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   line-height: 1em;
 }
 
+.h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-alternatives,
 .h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-question {
-  padding-left: 0;
+  margin: 1.5em 0;
+}
+
+.h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-question {
+  margin-top: 0;
+}
+
+.h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-sound-control {
+  top: 0;
 }
 
 /* Transparent specific styles */
@@ -424,4 +432,19 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
 
 .h5p-single-choice-set.h5p-transparent .h5p-sc-sound-control {
   top: 0;
+}
+
+/* CP popup specific style */
+.h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
+  top: 0.45em;
+  right: 2.5em;
+  color: #000;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control:after {
+  font-size: 1.6em;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control:hover {
+  color: #555;
 }
