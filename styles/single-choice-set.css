@@ -80,11 +80,21 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   -ms-transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
 }
+
+ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
+  background: rgb(238,228,239);
   outline: none;
 }
 
-.h5p-single-choice-set ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-selected {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:hover,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:active,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:focus,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:hover,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:active,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:focus {
+  background: #ddd;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -96,9 +106,6 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-corre
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:focus {
   background: #9dd8bb;
   color: #255c41;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h5p-sc-reveal-correct .h5p-sc-progressbar {
@@ -110,34 +117,17 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
   transform: scale(.95);
   -webkit-transform: scale(.95);
   -ms-transform: scale(.95);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:hover,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:active,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p-sc-reveal-wrong .h5p-sc-progressbar {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:hover,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:active,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p-sc-reveal-wrong .h5p-sc-progressbar {
   background: #f7d0d0;
   color: #b71c1c;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:hover,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:focus,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:hover,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:active,
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong:focus {
-  background: #ddd;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
 li.h5p-sc-alternative .h5p-sc-progressbar {
   position: absolute;
   top: 0;
@@ -203,11 +193,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   content: "\f00d";
   color: #b71c1c;
 }
-ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
-ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
-  background: rgb(238,228,239);
-  outline: none;
-}
+
 .h5p-sc-selected li.h5p-sc-alternative {
   cursor: auto;
   -webkit-box-shadow: none;
@@ -277,6 +263,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   background: #fff;
   border-bottom: 1px solid #ddd;
   box-shadow: 0 0 0.2em rgba(0,0,0,0.2);
+  z-index: 1;
 }
 .h5p-sc-solution-view-title {
   display: inline-block;
