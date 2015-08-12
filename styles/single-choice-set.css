@@ -83,7 +83,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
-  background: rgb(238,228,239);
+  background: #e4d2e4;
   outline: none;
 }
 
@@ -134,7 +134,7 @@ li.h5p-sc-alternative .h5p-sc-progressbar {
   left: 0;
   height: 100%;
   width: 0%;
-  background: #d0e5f2;
+  background: #bcced5;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
