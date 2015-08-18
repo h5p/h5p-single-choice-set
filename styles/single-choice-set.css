@@ -1,4 +1,4 @@
-.h5p-container {
+.h5p-container.h5p-single-choice-set {
   overflow: hidden;
 }
 .h5p-container .h5p-sc-set ul {
