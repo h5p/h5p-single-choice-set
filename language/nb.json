@@ -58,10 +58,6 @@
           "default": "Prøv igjen"
         },
         {
-          "label": "Etikett på \"Gå tilbake\" knappen",
-          "default": "Gå tilbake"
-        },
-        {
           "label": "Tittelen på svarvisnings-siden",
           "default": "Svar"
         }

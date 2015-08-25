@@ -17,9 +17,10 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
     this.$header = $('<div>', {
       'class': 'h5p-sc-solution-view-header'
     }).appendTo(this.$solutionView);
-    this.$goBackButton = $('<button>', {
-      'class': 'h5p-button h5p-sc-close-solution-view',
-      'html': l10n.goBackButtonLabel,
+
+    // Close solution view button
+    $('<button>', {
+      'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
       'click': function () {
         self.hide();
       }

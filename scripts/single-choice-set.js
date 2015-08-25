@@ -1,15 +1,17 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
+H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
   /**
-   * @constuctor
+   * @constructor
+   * @extends Question
    * @param {object} options Options for single choice set
-   * @param {string} id H5P instance id
+   * @param {string} contentId H5P instance id
+   * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
     // Extend defaults with provided options
     this.contentId = contentId;
-    H5P.EventDispatcher.call(this);
+    Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
       behaviour: {
@@ -34,7 +36,6 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
-      goBackButtonLabel: 'Go back',
       solutionViewTitle: 'Solution'
     }, options.l10n !== undefined ? options.l10n : {});
 
@@ -62,7 +63,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       this.$slides.push(choice.$choice);
     }
 
-    this.resultSlide = new ResultSlide(this.options.choices.length, this.options.behaviour.enableSolutionsButton, this.options.behaviour.enableRetry, this.l10n);
+    this.resultSlide = new ResultSlide(this.options.choices.length);
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', this.resetTask, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
@@ -75,11 +76,11 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
-      this.resultSlide.setScore(this.results.corrects);
+      this.setScore(this.results.corrects);
     }
   }
 
-  SingleChoiceSet.prototype = Object.create(H5P.EventDispatcher.prototype);
+  SingleChoiceSet.prototype = Object.create(Question.prototype);
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
   /**
@@ -98,7 +99,7 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     }
 
     if (self.currentIndex+1 >= self.options.choices.length) {
-      self.resultSlide.setScore(self.results.corrects);
+      self.setScore(self.results.corrects);
       self.triggerXAPIScored(self.results.corrects, self.options.choices.length, 'completed');
     }
 
@@ -125,6 +126,59 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   };
 
   /**
+   * Set score and feedback
+   *
+   * @params {Number} score Number of correct answers
+   */
+  SingleChoiceSet.prototype.setScore = function (score) {
+    var self = this;
+
+    // Find last selected alternative, and determine timeout before solution slide shows
+    if (!self.choices.length) {
+      return;
+    }
+    var lastSelected = self.choices[self.choices.length - 1]
+      .$choice
+      .find('.h5p-sc-alternative.h5p-sc-selected');
+    var timeout = lastSelected.is('.h5p-sc-is-correct') ?
+      this.options.behaviour.timeoutCorrect :
+      this.options.behaviour.timeoutWrong;
+
+    /**
+     * Show feedback and buttons on result slide
+     */
+    var showFeedback = function () {
+      self.setFeedback(self.l10n.resultSlideTitle
+          .replace(':numcorrect', score)
+          .replace(':maxscore', self.options.choices.length),
+        score, self.options.choices.length);
+      if (score === self.options.choices.length) {
+        self.hideButton('try-again');
+      } else {
+        self.showButton('try-again');
+      }
+      self.showButton('show-solution');
+      self.trigger('resize');
+    };
+
+    /**
+     * Wait for result slide animation
+     */
+    var scoreTimeout = setTimeout(function () {
+      showFeedback();
+    }, (timeout));
+
+    /**
+     * Listen for impatient clicks.
+     * On impatient clicks clear timeout and immediately show feedback.
+     */
+    self.$container.on('click.impatient', function () {
+      clearTimeout(scoreTimeout);
+      showFeedback();
+    });
+  };
+
+  /**
    * Handler invoked when view solution is selected
    */
   SingleChoiceSet.prototype.handleViewSolution = function () {
@@ -132,14 +186,47 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
   };
 
   /**
-   * Attach function called by H5P framework to insert H5P content into
-   * page
-   *
-   * @param {jQuery} $container
+   * Register DOM elements before they are attached.
+   * Called from H5P.Question.
    */
-  SingleChoiceSet.prototype.attach = function ($container) {
+  SingleChoiceSet.prototype.registerDomElements = function () {
+    // Register task content area.
+    this.setContent(this.createQuestion());
+
+    // Register buttons with question.
+    this.addButtons();
+
+    // Insert feedback and buttons section on the result slide
+    this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
+    this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
+  };
+
+  /**
+   * Add Buttons to question.
+   */
+  SingleChoiceSet.prototype.addButtons = function () {
+    var self = this;
+
+    if (this.options.behaviour.enableSolutionsButton) {
+      this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
+        self.showSolutions();
+      }, false);
+    }
+
+    if (this.options.behaviour.enableRetry) {
+      this.addButton('try-again', this.l10n.retryButtonLabel, function () {
+        self.resetTask();
+      }, false);
+    }
+  };
+
+  /**
+   * Create main content
+   */
+  SingleChoiceSet.prototype.createQuestion = function () {
     this.setActivityStarted();
     var self = this;
+    var $container = $('<div>');
     self.$container = $container;
     $container.addClass('h5p-sc-set-wrapper');
 
@@ -167,6 +254,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
     // Hide all other slides than the current one:
     $container.addClass('initialized');
+
+    return $container;
   };
 
   /**
@@ -180,7 +269,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
 
-    self.$choices.css({height: maxHeight + 'px'});
+    // Set minimum height for choices
+    self.$choices.css({minHeight: maxHeight + 'px'});
   };
 
   /**
@@ -238,6 +328,8 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
    * Reset all answers. This is equal to refreshing the quiz
    */
   SingleChoiceSet.prototype.resetTask = function () {
+    var self = this;
+
     // Close solution view if visible:
     this.solutionView.hide();
 
@@ -252,6 +344,11 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
     };
 
     this.move(0);
+
+    // Wait for transition, then remove feedback.
+    H5P.Transition.onTransitionEnd(this.$choices, function () {
+      self.setFeedback();
+    }, 600);
   };
 
   /**
@@ -269,4 +366,4 @@ H5P.SingleChoiceSet = (function ($, SingleChoice, SolutionView, ResultSlide, Sou
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);

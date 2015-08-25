@@ -58,10 +58,6 @@
           "default": "Réessayer"
         },
         {
-          "label": "Texte pour le bouton \"Retour\"",
-          "default": "Retour"
-        },
-        {
           "label": "Titre pour voir la solution",
           "default": "Montrer la solution"
         }
