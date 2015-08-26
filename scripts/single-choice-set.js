@@ -55,6 +55,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       'class': 'h5p-sc-completed'
     }).appendTo(this.$progressbar);
 
+    // Validate "slides", reverse traversal since we remove entries as we go
+    for (var slideIndex = this.options.choices.length - 1; slideIndex >= 0; slideIndex--) {
+
+      // Prune invalid slide
+      if (!this.options.choices[slideIndex].answers) {
+        this.options.choices.splice(slideIndex, 1);
+      }
+    }
+
     for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i);
       choice.on('finished', this.handleQuestionFinished, this);

@@ -31,15 +31,10 @@
   box-shadow: 0 0 0.25em 0 #fff;
   background: #0097fd;
 
-  -webkit-transition: width 0.25s ease-in-out;
-  -moz-transition: width 0.25s ease-in-out;
-  -ms-transition: width 0.25s ease-in-out;
   transition: width 0.25s ease-in-out;
 }
 .h5p-sc-set.h5p-sc-animate {
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  -moz-transition: -moz-transform 0.25s ease-in-out;
-  -ms-transition: -ms-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
 }
 .h5p-sc {
@@ -75,9 +70,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   border-radius: 0.25em;
   box-shadow: 0 0.1em 0 rgba(0,0,0, 0.3);
 
-  -webkit-transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
-  -moz-transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
-  -ms-transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out, width 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
 }
 
@@ -114,9 +107,8 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
-  transform: scale(.95);
   -webkit-transform: scale(.95);
-  -ms-transform: scale(.95);
+  transform: scale(.95);
 }
 
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
@@ -141,9 +133,6 @@ li.h5p-sc-alternative .h5p-sc-progressbar {
 }
 .h5p-sc-drummed .h5p-sc-progressbar {
   background: transparent;
-  -webkit-transition: background 1s;
-  -moz-transition: background 1s;
-  -ms-transition: background 1s;
   transition: background 1s;
 }
 /* Using animation instead of transition on width made this much
@@ -247,9 +236,6 @@ li.h5p-sc-alternative .h5p-sc-status {
   background: #fff;
   box-sizing: border-box;
 
-  -webkit-transition: left .3s ease-in-out, visibility .3s ease-in-out;
-  -moz-transition: left .3s ease-in-out, visibility .3s ease-in-out;
-  -ms-transition: left .3s ease-in-out, visibility .3s ease-in-out;
   transition: left .3s ease-in-out, visibility .3s ease-in-out;
 }
 .h5p-sc-solution-view.visible {
@@ -274,6 +260,7 @@ li.h5p-sc-alternative .h5p-sc-status {
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view {
   position: absolute;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 0;
   background: none;
@@ -349,6 +336,7 @@ li.h5p-sc-alternative .h5p-sc-status {
 
 .h5p-single-choice-set .h5p-sc-result-container {
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   position: absolute;
   width: 100%;
