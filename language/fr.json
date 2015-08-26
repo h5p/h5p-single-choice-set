@@ -24,25 +24,20 @@
       "fields": [
         {
           "label": "Fin du temps en cas de réponse corrrecte",
-          "description": "En millisecondes",
-        "default": 2000
+          "description": "En millisecondes"
         },
         {
           "label": "Fin du temps en cas de réponse incorrecte",
-          "description": "En millisecondes",
-        "default": 3000
+          "description": "En millisecondes"
         },
         {
-          "label": "Activer les effets sonores",
-        "default": true
+          "label": "Activer les effets sonores"
         },
         {
-          "label": "Activer le bouton \"Réessayer\"",
-        "default": true
+          "label": "Activer le bouton \"Réessayer\""
         },
         {
-          "label": "Activer le bouton \"Montrer la solution\"",
-        "default": true
+          "label": "Activer le bouton \"Montrer la solution\""
         }
       ]
     },
@@ -65,10 +60,6 @@
         {
        "label": "Texte pour le bouton \"Retour\"",
       "default": "Retour"
-        },
-        {
-          "label": "Titre pour voir la solution",
-          "default": "Montrer la solution"
         }
       ]
     }
