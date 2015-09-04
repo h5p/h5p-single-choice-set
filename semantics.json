@@ -98,12 +98,6 @@
         "default": "Retry"
       },
       {
-        "name": "goBackButtonLabel",
-        "type": "text",
-        "label": "Label for the \"Go back\" button",
-        "default": "Go back"
-      },
-      {
         "name": "solutionViewTitle",
         "type": "text",
         "label": "Title for the show solution view",

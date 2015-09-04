@@ -1,6 +1,6 @@
 {
   "machineName": "H5P.SingleChoiceSet",
-  "title": "Single choice set",
+  "title": "Single Choice Set",
   "description": "Create sets of single choice tasks",
   "license": "MIT",
   "author": "Joubel AS (fnoks)",
@@ -14,7 +14,7 @@
   ],
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 5
+    "minorVersion": 6
   },
   "preloadedCss": [
     {
@@ -62,6 +62,11 @@
     },
     {
       "machineName": "H5P.SoundJS",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.Question",
       "majorVersion": 1,
       "minorVersion": 0
     }

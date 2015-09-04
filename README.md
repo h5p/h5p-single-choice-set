@@ -1,7 +1,7 @@
 H5P Single Choice Set
 =====================
 
-Single choice set content type
+Allows you to create sets of single choice tasks.
 
 ## License
 
