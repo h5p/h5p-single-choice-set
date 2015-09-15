@@ -87,6 +87,9 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
       this.setScore(this.results.corrects);
     }
+    setTimeout(function () {
+      SoundEffects.setup();
+    },1);
   }
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
@@ -250,10 +253,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
           $(this).toggleClass('muted', SoundEffects.muted);
         }
       }));
-
-      setTimeout(function () {
-        SoundEffects.setup();
-      },1);
     }
 
     // Append solution view - hidden by default:
