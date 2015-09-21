@@ -380,11 +380,11 @@ li.h5p-sc-alternative .h5p-sc-status {
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
-  top: -2.1em;
+  top: -2.075em;
   right: 2em;
 }
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control:after {
-  font-size: 1em;
+  font-size: 1.075em;
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-question {
