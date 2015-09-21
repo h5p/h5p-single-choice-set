@@ -114,7 +114,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       };
     })();
 
-    self.on('questionFinishedAnimationDone', function () {
+    self.on('questionFinished', function () {
       if (hideButtons.length) {
         hideButtons.forEach(function (id) {
           self.superHideButton(id);
@@ -153,7 +153,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       clearTimeout(self.finishedTimeout);
       self.finishedTimeout = undefined;
       self.move(self.currentIndex+1);
-      self.trigger('questionFinishedAnimationDone');
+      self.trigger('questionFinished');
     };
 
     this.finishedTimeout = setTimeout(function () {
