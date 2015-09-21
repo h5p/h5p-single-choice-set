@@ -396,6 +396,10 @@ li.h5p-sc-alternative .h5p-sc-status {
   height: 100%;
 }
 
+.h5p-interactive-video.mobile .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-interaction.h5p-single-choice-set {
+  height: 100%;
+}
+
 /* Standalone specific styles */
 .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
   line-height: 1em;
