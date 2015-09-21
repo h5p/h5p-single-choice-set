@@ -9,6 +9,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
+    var self = this;
+
     // Extend defaults with provided options
     this.contentId = contentId;
     Question.call(this, 'single-choice-set');
@@ -90,6 +92,36 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     setTimeout(function () {
       SoundEffects.setup();
     },1);
+
+    var hideButtons = [];
+
+    /**
+     * Override Question's hideButton function
+     * to be able to hide buttons after delay
+     *
+     * @override
+     * @param {string} id
+     */
+    this.superHideButton = self.hideButton;
+    this.hideButton = (function () {
+      return function (id) {
+        if (!self.finishedTimeout) {
+          return self.superHideButton(id);
+        }
+
+        hideButtons.push(id);
+        return this;
+      };
+    })();
+
+    self.on('questionFinishedAnimationDone', function () {
+      if (hideButtons.length) {
+        hideButtons.forEach(function (id) {
+          self.superHideButton(id);
+        });
+      }
+      hideButtons = [];
+    });
   }
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
@@ -118,11 +150,13 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var letsMove = function () {
       // Handle impatient users
       self.$container.off('click.impatient keydown.impatient');
-      clearTimeout(timeout);
+      clearTimeout(self.finishedTimeout);
+      self.finishedTimeout = undefined;
       self.move(self.currentIndex+1);
+      self.trigger('questionFinishedAnimationDone');
     };
 
-    var timeout = setTimeout(function () {
+    this.finishedTimeout = setTimeout(function () {
       letsMove();
     }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
