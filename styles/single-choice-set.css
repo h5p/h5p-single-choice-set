@@ -380,25 +380,20 @@ li.h5p-sc-alternative .h5p-sc-status {
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control {
-  top: 0.55em;
-  right: 2.5em;
+  top: -2.1em;
+  right: 2em;
 }
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-sound-control:after {
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-question {
   margin-right: 0;
 }
 
-.h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-dialog-inner {
-  overflow: hidden;
-  width: 100%;
-}
-
 .h5p-interactive-video .h5p-dialog[data-lib="H5P.SingleChoiceSet"] .h5p-sc-solution-view {
-  top: 2.5em;
-  height: calc(100% - 2.5em);
+  top: 0;
+  height: 100%;
 }
 
 /* Standalone specific styles */
@@ -435,15 +430,20 @@ li.h5p-sc-alternative .h5p-sc-status {
 
 /* CP popup specific style */
 .h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
-  top: 0.45em;
-  right: 2.5em;
+  top: 0.6em;
+  right: 3em;
   color: #000;
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control:after {
-  font-size: 1.6em;
+  font-size: 1.8em;
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control:hover {
   color: #555;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
+  min-height: initial;
+  max-height: none;
 }
