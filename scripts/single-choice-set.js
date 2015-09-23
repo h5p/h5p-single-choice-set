@@ -96,6 +96,12 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var hideButtons = [];
 
     /**
+     * Keeps track of buttons that will be hidden
+     * @type {Array}
+     */
+    self.buttonsToBeHidden = [];
+
+    /**
      * Override Question's hideButton function
      * to be able to hide buttons after delay
      *
@@ -105,23 +111,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     this.superHideButton = self.hideButton;
     this.hideButton = (function () {
       return function (id) {
-        if (!self.finishedTimeout) {
+
+        if (!self.scoreTimeout) {
           return self.superHideButton(id);
         }
 
-        hideButtons.push(id);
+        self.buttonsToBeHidden.push(id);
         return this;
       };
     })();
-
-    self.on('questionFinished', function () {
-      if (hideButtons.length) {
-        hideButtons.forEach(function (id) {
-          self.superHideButton(id);
-        });
-      }
-      hideButtons = [];
-    });
   }
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
@@ -150,13 +148,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var letsMove = function () {
       // Handle impatient users
       self.$container.off('click.impatient keydown.impatient');
-      clearTimeout(self.finishedTimeout);
-      self.finishedTimeout = undefined;
+      clearTimeout(timeout);
       self.move(self.currentIndex+1);
-      self.trigger('questionFinished');
     };
 
-    this.finishedTimeout = setTimeout(function () {
+    var timeout = setTimeout(function () {
       letsMove();
     }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
@@ -169,6 +165,20 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
         letsMove();
       }
     });
+  };
+
+  /**
+   * Handles buttons that are queued for hiding
+   */
+  SingleChoiceSet.prototype.handleQueuedButtonChanges = function () {
+    var self = this;
+
+    if (self.buttonsToBeHidden.length) {
+      self.buttonsToBeHidden.forEach(function (id) {
+        self.superHideButton(id);
+      });
+    }
+    self.buttonsToBeHidden = [];
   };
 
   /**
@@ -204,13 +214,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
         self.showButton('try-again');
       }
       self.showButton('show-solution');
+      self.handleQueuedButtonChanges();
+      self.scoreTimeout = undefined;
       self.trigger('resize');
     };
 
     /**
      * Wait for result slide animation
      */
-    var scoreTimeout = setTimeout(function () {
+    self.scoreTimeout = setTimeout(function () {
       showFeedback();
     }, (timeout));
 
@@ -219,7 +231,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
      * On impatient clicks clear timeout and immediately show feedback.
      */
     self.$container.on('click.impatient', function () {
-      clearTimeout(scoreTimeout);
+      clearTimeout(self.scoreTimeout);
       showFeedback();
     });
   };
