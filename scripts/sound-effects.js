@@ -21,7 +21,7 @@ H5P.SingleChoiceSet.SoundEffects = (function ($) {
       return false;
     }
 
-    SoundEffects.libraryPath = H5P.getLibraryPath('H5P.SingleChoiceSet-1.2');
+    SoundEffects.libraryPath = H5P.getLibraryPath('H5P.SingleChoiceSet-1.3');
     H5P.SoundJS.alternateExtensions = ['mp3'];
     for (var i = 0; i < SoundEffects.types.length; i++) {
       var type = SoundEffects.types[i];

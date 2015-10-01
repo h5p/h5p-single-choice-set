@@ -9,6 +9,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
+    var self = this;
+
     // Extend defaults with provided options
     this.contentId = contentId;
     Question.call(this, 'single-choice-set');
@@ -87,6 +89,37 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
       this.setScore(this.results.corrects);
     }
+    setTimeout(function () {
+      SoundEffects.setup();
+    },1);
+
+    var hideButtons = [];
+
+    /**
+     * Keeps track of buttons that will be hidden
+     * @type {Array}
+     */
+    self.buttonsToBeHidden = [];
+
+    /**
+     * Override Question's hideButton function
+     * to be able to hide buttons after delay
+     *
+     * @override
+     * @param {string} id
+     */
+    this.superHideButton = self.hideButton;
+    this.hideButton = (function () {
+      return function (id) {
+
+        if (!self.scoreTimeout) {
+          return self.superHideButton(id);
+        }
+
+        self.buttonsToBeHidden.push(id);
+        return this;
+      };
+    })();
   }
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
@@ -135,6 +168,20 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   };
 
   /**
+   * Handles buttons that are queued for hiding
+   */
+  SingleChoiceSet.prototype.handleQueuedButtonChanges = function () {
+    var self = this;
+
+    if (self.buttonsToBeHidden.length) {
+      self.buttonsToBeHidden.forEach(function (id) {
+        self.superHideButton(id);
+      });
+    }
+    self.buttonsToBeHidden = [];
+  };
+
+  /**
    * Set score and feedback
    *
    * @params {Number} score Number of correct answers
@@ -167,13 +214,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
         self.showButton('try-again');
       }
       self.showButton('show-solution');
+      self.handleQueuedButtonChanges();
+      self.scoreTimeout = undefined;
       self.trigger('resize');
     };
 
     /**
      * Wait for result slide animation
      */
-    var scoreTimeout = setTimeout(function () {
+    self.scoreTimeout = setTimeout(function () {
       showFeedback();
     }, (timeout));
 
@@ -182,7 +231,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
      * On impatient clicks clear timeout and immediately show feedback.
      */
     self.$container.on('click.impatient', function () {
-      clearTimeout(scoreTimeout);
+      clearTimeout(self.scoreTimeout);
       showFeedback();
     });
   };
@@ -250,10 +299,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
           $(this).toggleClass('muted', SoundEffects.muted);
         }
       }));
-
-      setTimeout(function () {
-        SoundEffects.setup();
-      },1);
     }
 
     // Append solution view - hidden by default:
