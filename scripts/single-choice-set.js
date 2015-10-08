@@ -87,7 +87,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
-      this.setScore(this.results.corrects);
+      this.setScore(this.results.corrects, true);
     }
     setTimeout(function () {
       SoundEffects.setup();
@@ -142,7 +142,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
 
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.setScore(self.results.corrects);
-      self.triggerXAPIScored(self.results.corrects, self.options.choices.length, 'completed');
     }
 
     var letsMove = function () {
@@ -186,7 +185,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    *
    * @params {Number} score Number of correct answers
    */
-  SingleChoiceSet.prototype.setScore = function (score) {
+  SingleChoiceSet.prototype.setScore = function (score, noXAPI) {
     var self = this;
 
     // Find last selected alternative, and determine timeout before solution slide shows
@@ -216,6 +215,10 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       self.showButton('show-solution');
       self.handleQueuedButtonChanges();
       self.scoreTimeout = undefined;
+      if (!noXAPI) {
+        self.triggerXAPIScored(score, self.options.choices.length, 'completed');
+      }
+
       self.trigger('resize');
     };
 
