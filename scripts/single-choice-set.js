@@ -41,6 +41,10 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       solutionViewTitle: 'Solution'
     }, options.l10n !== undefined ? options.l10n : {});
 
+    this.$container = $('<div>', {
+      'class': 'h5p-sc-set-wrapper'
+    });
+
     this.$slides = [];
     // An array containing the SingleChoice instances
     this.choices = [];
@@ -87,7 +91,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
-      this.setScore(this.results.corrects, true);
+      this.setScore(this.results.corrects, true, 0);
     }
     setTimeout(function () {
       SoundEffects.setup();
@@ -185,7 +189,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    *
    * @params {Number} score Number of correct answers
    */
-  SingleChoiceSet.prototype.setScore = function (score, noXAPI) {
+  SingleChoiceSet.prototype.setScore = function (score, noXAPI, timeout) {
     var self = this;
 
     // Find last selected alternative, and determine timeout before solution slide shows
@@ -195,9 +199,9 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var lastSelected = self.choices[self.choices.length - 1]
       .$choice
       .find('.h5p-sc-alternative.h5p-sc-selected');
-    var timeout = lastSelected.is('.h5p-sc-is-correct') ?
+    var timeout = (timeout !== undefined) ? timeout : (lastSelected.is('.h5p-sc-is-correct') ?
       this.options.behaviour.timeoutCorrect :
-      this.options.behaviour.timeoutWrong;
+      this.options.behaviour.timeoutWrong);
 
     /**
      * Show feedback and buttons on result slide
@@ -287,15 +291,12 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.createQuestion = function () {
     this.setActivityStarted();
     var self = this;
-    var $container = $('<div>');
-    self.$container = $container;
-    $container.addClass('h5p-sc-set-wrapper');
 
-    $container.append(self.$choices);
-    $container.append(self.$progressbar);
+    self.$container.append(self.$choices);
+    self.$container.append(self.$progressbar);
 
     if (self.options.behaviour.soundEffectsEnabled) {
-      $container.append($('<div>', {
+      self.$container.append($('<div>', {
         'class': 'h5p-sc-sound-control',
         'click': function () {
           SoundEffects.muted = !SoundEffects.muted;
@@ -305,14 +306,14 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     }
 
     // Append solution view - hidden by default:
-    self.solutionView.appendTo($container);
+    self.solutionView.appendTo(self.$container);
 
     self.resize();
 
     // Hide all other slides than the current one:
-    $container.addClass('initialized');
+    self.$container.addClass('initialized');
 
-    return $container;
+    return self.$container;
   };
 
   /**
@@ -337,7 +338,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * @public
    */
   SingleChoiceSet.prototype.recklessJump = function (index) {
-    var tX = 'translateX('+(-index*100)+'%)';this.$choices.css({'-webkit-transform':tX,'-moz-transform':tX,'-ms-transform':tX,'transform':tX});
+    var tX = 'translateX('+(-index*100)+'%)';
+    this.$choices.css({'-webkit-transform':tX,'-moz-transform':tX,'-ms-transform':tX,'transform':tX});
     this.$progressCompleted.css({width:((index+1)/(this.options.choices.length+1))*100 + '%'});
   };
 
