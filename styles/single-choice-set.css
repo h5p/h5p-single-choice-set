@@ -241,6 +241,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   width: 100%;
   height: 100%;
 
+  display:none;
   visibility: hidden;
   background: #fff;
   box-sizing: border-box;
@@ -250,6 +251,7 @@ li.h5p-sc-alternative .h5p-sc-status {
 .h5p-sc-solution-view.visible {
   left: 0;
   visibility: visible;
+  display: block;
 }
 .h5p-sc-solution-view-header {
   position: relative;
