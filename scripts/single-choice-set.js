@@ -290,7 +290,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * Create main content
    */
   SingleChoiceSet.prototype.createQuestion = function () {
-    this.setActivityStarted();
     var self = this;
 
     self.$container.append(self.$choices);
