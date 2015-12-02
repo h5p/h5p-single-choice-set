@@ -14,6 +14,8 @@
         {
           "name": "question",
           "type": "text",
+          "widget": "html",
+          "tags": ["p", "br", "strong", "em"],
           "label": "Question"
         },
         {
@@ -27,6 +29,8 @@
           "field": {
             "name": "answer",
             "type": "text",
+            "widget": "html",
+            "tags": ["p", "br", "strong", "em"],
             "label": "Alternative"
           }
         }
