@@ -273,13 +273,13 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.addButtons = function () {
     var self = this;
 
-    if (this.options.behaviour.enableSolutionsButton) {
-      if (this.options.behaviour.enableRetry) {
-        this.addButton('try-again', this.l10n.retryButtonLabel, function () {
-          self.resetTask();
-        }, false);
-      }
+    if (this.options.behaviour.enableRetry) {
+      this.addButton('try-again', this.l10n.retryButtonLabel, function () {
+        self.resetTask();
+      }, false);
+    }
 
+    if (this.options.behaviour.enableSolutionsButton) {
       this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
         self.showSolutions();
       }, false);
