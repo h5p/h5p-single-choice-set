@@ -97,6 +97,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       SoundEffects.setup();
     },1);
 
+    SoundEffects.muted = (this.options.behaviour.soundEffectsEnabled === false);
+
     var hideButtons = [];
 
     /**
