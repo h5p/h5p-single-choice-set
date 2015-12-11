@@ -267,6 +267,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     // Insert feedback and buttons section on the result slide
     this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
     this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
+
+    // Question is finished
+    if (this.options.choices.length === this.currentIndex) {
+      this.trigger('question-finished');
+    }
   };
 
   /**
