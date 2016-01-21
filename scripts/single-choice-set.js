@@ -97,6 +97,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       SoundEffects.setup();
     },1);
 
+    SoundEffects.muted = (this.options.behaviour.soundEffectsEnabled === false);
+
     var hideButtons = [];
 
     /**
@@ -265,6 +267,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     // Insert feedback and buttons section on the result slide
     this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
     this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
+
+    // Question is finished
+    if (this.options.choices.length === this.currentIndex) {
+      this.trigger('question-finished');
+    }
   };
 
   /**
@@ -273,16 +280,16 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.addButtons = function () {
     var self = this;
 
-    if (this.options.behaviour.enableSolutionsButton) {
-      if (this.options.behaviour.enableRetry) {
-        this.addButton('try-again', this.l10n.retryButtonLabel, function () {
-          self.resetTask();
-        }, false);
-      }
+    if (this.options.behaviour.enableRetry) {
+      this.addButton('try-again', this.l10n.retryButtonLabel, function () {
+        self.resetTask();
+      }, self.results.corrects !== self.options.choices.length);
+    }
 
+    if (this.options.behaviour.enableSolutionsButton) {
       this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
         self.showSolutions();
-      }, false);
+      }, self.results.corrects !== self.options.choices.length);
     }
   };
 
