@@ -97,6 +97,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       SoundEffects.setup();
     },1);
 
+    SoundEffects.muted = (this.options.behaviour.soundEffectsEnabled === false);
+
     var hideButtons = [];
 
     /**
@@ -213,10 +215,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
         score, self.options.choices.length);
       if (score === self.options.choices.length) {
         self.hideButton('try-again');
+        self.hideButton('show-solution');
       } else {
         self.showButton('try-again');
+        self.showButton('show-solution');
       }
-      self.showButton('show-solution');
       self.handleQueuedButtonChanges();
       self.scoreTimeout = undefined;
       if (!noXAPI) {
@@ -264,6 +267,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     // Insert feedback and buttons section on the result slide
     this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
     this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
+
+    // Question is finished
+    if (this.options.choices.length === this.currentIndex) {
+      this.trigger('question-finished');
+    }
   };
 
   /**
@@ -272,16 +280,16 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.addButtons = function () {
     var self = this;
 
-    if (this.options.behaviour.enableSolutionsButton) {
-      this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
-        self.showSolutions();
-      }, false);
-    }
-
     if (this.options.behaviour.enableRetry) {
       this.addButton('try-again', this.l10n.retryButtonLabel, function () {
         self.resetTask();
-      }, false);
+      }, self.results.corrects !== self.options.choices.length);
+    }
+
+    if (this.options.behaviour.enableSolutionsButton) {
+      this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
+        self.showSolutions();
+      }, self.results.corrects !== self.options.choices.length);
     }
   };
 
@@ -289,7 +297,6 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * Create main content
    */
   SingleChoiceSet.prototype.createQuestion = function () {
-    this.setActivityStarted();
     var self = this;
 
     self.$container.append(self.$choices);
