@@ -6,7 +6,7 @@
   "author": "Joubel AS (fnoks)",
   "majorVersion": 1,
   "minorVersion": 3,
-  "patchVersion": 3,
+  "patchVersion": 5,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -48,7 +48,7 @@
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,
-      "minorVersion": 3
+      "minorVersion": 5
     },
     {
       "machineName": "H5P.JoubelUI",

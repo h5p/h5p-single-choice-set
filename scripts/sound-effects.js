@@ -1,6 +1,8 @@
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
 H5P.SingleChoiceSet.SoundEffects = (function ($) {
+  var isDefined = false;
+
   SoundEffects = {
     types: [
       'positive-short',
@@ -17,7 +19,7 @@ H5P.SingleChoiceSet.SoundEffects = (function ($) {
    * @return {boolean} True if setup was successfull, otherwise false
    */
   SoundEffects.setup = function () {
-    if (!H5P.SoundJS.initializeDefaultPlugins()) {
+    if (isDefined || !H5P.SoundJS.initializeDefaultPlugins()) {
       return false;
     }
 
@@ -27,6 +29,7 @@ H5P.SingleChoiceSet.SoundEffects = (function ($) {
       var type = SoundEffects.types[i];
       H5P.SoundJS.registerSound(SoundEffects.libraryPath + '/sounds/' + type + '.ogg', type);
     }
+    isDefined = true;
 
     return true;
   };
