@@ -385,7 +385,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     return (this.results.corrects + this.results.wrongs) > 0;
   };
   SingleChoiceSet.prototype.getTitle = function() {
-    return H5P.createTitle(this.options.choices[0].question);
+    return (this.options.choices[0] ? H5P.createTitle(this.options.choices[0].question) : '');
   };
   SingleChoiceSet.prototype.showSolutions = function () {
     this.handleViewSolution();
