@@ -33,6 +33,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       corrects: 0,
       wrongs: 0
     };
+    this.muted = (this.options.behaviour.soundEffectsEnabled === false);
 
     this.l10n = H5P.jQuery.extend({
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
@@ -73,6 +74,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i);
       choice.on('finished', this.handleQuestionFinished, this);
+      choice.on('alternative-selected', this.handleAlternativeSelected, this)
       choice.appendTo(this.$choices, (i === this.currentIndex));
       this.choices.push(choice);
       this.$slides.push(choice.$choice);
@@ -93,11 +95,12 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
       this.setScore(this.results.corrects, true, 0);
     }
-    setTimeout(function () {
-      SoundEffects.setup();
-    },1);
 
-    SoundEffects.muted = (this.options.behaviour.soundEffectsEnabled === false);
+    if (!this.muted) {
+      setTimeout(function () {
+        SoundEffects.setup();
+      },1);
+    }
 
     var hideButtons = [];
 
@@ -131,6 +134,19 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype = Object.create(Question.prototype);
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
+  /**
+   * Handle alternative selected, i.e play sound if sound effects are enabled
+   * 
+   * @method handleAlternativeSelected
+   * @param  {boolean} correct Was alternative correct or not?
+   */
+  SingleChoiceSet.prototype.handleAlternativeSelected = function (correct) {
+    if (!this.muted) {
+      // Can't play it after the transition end is received, since this is not
+      // accepted on iPad. Therefore we are playing it here with a delay instead
+      SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
+    }
+  }
   /**
    * Handler invoked when question is done
    *
@@ -306,8 +322,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       self.$container.append($('<div>', {
         'class': 'h5p-sc-sound-control',
         'click': function () {
-          SoundEffects.muted = !SoundEffects.muted;
-          $(this).toggleClass('muted', SoundEffects.muted);
+          self.muted = !self.muted;
+          $(this).toggleClass('muted', self.muted);
         }
       }));
     }
