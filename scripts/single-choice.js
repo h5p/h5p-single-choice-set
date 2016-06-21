@@ -55,9 +55,8 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
       if (data.$element.parent().hasClass('h5p-sc-selected')) {
         return;
       }
-      // Can't play it after the transition end is received, since this is not
-      // accepted on iPad. Therefore we are playing it here with a delay instead
-      SoundEffects.play(data.correct ? 'positive-short' : 'negative-short', 700);
+      
+      self.trigger('alternative-selected', data.correct);
 
       H5P.Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
         data.$element.addClass('h5p-sc-drummed');
