@@ -4,16 +4,16 @@
       "label": "Liste des questions",
       "entity": "question",
       "field": {
-        "label": "Question & alternatives",
+        "label": "Question & réponses possibles",
         "fields": [
           {
             "label": "Question"
           },
           {
-            "label": "Alternatives - première réponse alternative possible",
+            "label": "Réponses possibles - la première de la liste est celle qui est juste",
             "entity": "réponse",
             "field": {
-              "label": "Réponse alternative"
+              "label": "Réponse possible"
             }
           }
         ]
@@ -23,43 +23,43 @@
       "label": "Options générales",
       "fields": [
         {
-          "label": "Fin du temps en cas de réponse corrrecte",
+          "label": "Temps de pause en cas de réponse correcte",
           "description": "En millisecondes"
         },
         {
-          "label": "Fin du temps en cas de réponse incorrecte",
+          "label": "Temps de pause en cas de réponse incorrecte",
           "description": "En millisecondes"
         },
         {
           "label": "Activer les effets sonores"
         },
         {
-          "label": "Activer le bouton \"Réessayer\""
+          "label": "Activer le bouton \"Recommencer\""
         },
         {
-          "label": "Activer le bouton \"Montrer la solution\""
+          "label": "Activer le bouton \"Voir la correction\""
         }
       ]
     },
     {
-      "label": "Localisation de la série de questions à choix unique",
+      "label": "Interface de la série de questions à choix unique",
       "fields": [
         {
-          "label": "Titre de la diapositive des résultats",
-          "default": "Vous avez :numcorrect sur :maxscore correct",
-          "description": ":numcorrect est remplacé par le nombre de réponses correctes et :maxscore par le nombre de questions"
+          "label": "Titre de la page des résultats",
+          "default": "Vous avez :numcorrect réponse(s) juste(s) sur :maxscore",
+          "description": ":numcorrect est remplacé par le nombre de réponses justes et :maxscore par le nombre de questions"
         },
         {
-      "label": "Texte pour le bouton \"Montrer la solution\"",
-      "default": "Solution"
+      "label": "Texte pour le bouton \"Voir la correction\"",
+      "default": "Voir la correction"
         },
         {
-      "label": "Texte pour le bouton \"Réessayer\"",
-      "default": "Réessayer"
+      "label": "Texte pour le bouton \"Recommencer\"",
+      "default": "Recommencer"
         },
         {
-       "label": "Texte pour le bouton \"Retour\"",
-      "default": "Retour"
+       "label": "Texte pour le mode \"Correction\"",
+      "default": "Correction"
         }
       ]
     }
