@@ -146,7 +146,8 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
     }
-  }
+  };
+
   /**
    * Handler invoked when question is done
    *
@@ -154,13 +155,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
     var self = this;
-    self.triggerXAPI('interacted');
+
     if (data.correct) {
       self.results.corrects++;
     }
     else {
       self.results.wrongs++;
     }
+
+    self.triggerXAPI('interacted');
 
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.setScore(self.results.corrects);
