@@ -379,12 +379,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     }
 
     var $previousSlide = this.$slides[this.currentIndex];
+    var $currentChoice = this.choices[index];
+    var $currentSlide = this.$slides[index];
 
     H5P.Transition.onTransitionEnd(this.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
+      $currentChoice.focusOnAlternative(0);
     }, 600);
 
-    this.$slides[index].addClass('h5p-sc-current-slide');
+    $currentSlide.addClass('h5p-sc-current-slide');
     this.recklessJump(index);
 
     this.currentIndex = index;
