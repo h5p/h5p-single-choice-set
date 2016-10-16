@@ -83,6 +83,18 @@
     "common": true,
     "fields": [
       {
+        "name": "correctText",
+        "type": "text",
+        "label": "Readspeaker text for correct answer",
+        "default": "Correct!"
+      },
+      {
+        "name": "incorrectText",
+        "type": "text",
+        "label": "Readspeaker text for incorrect answer",
+        "default": "Incorrect!"
+      },
+      {
         "name": "resultSlideTitle",
         "type": "text",
         "label": "Title for result slide",
@@ -102,10 +114,29 @@
         "default": "Retry"
       },
       {
+        "name": "backButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Back\" button",
+        "default": "Back"
+      },
+      {
         "name": "solutionViewTitle",
         "type": "text",
         "label": "Title for the show solution view",
         "default": "Solution"
+      },
+      {
+        "name": "slideOfTotal",
+        "type": "text",
+        "label": "Slide number text",
+        "description": "Announces current slide and total number of slides, variables are :num and :total",
+        "default": "Slide :num of :total"
+      },
+      {
+        "name": "muteButtonLabel",
+        "type": "text",
+        "label": "Label for the \"mute\" button, to disable feedback sound",
+        "default": "Mute feedback sound"
       }
     ]
   }

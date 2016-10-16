@@ -5,7 +5,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
   /**
    * Constructor function.
    */
-  function SingleChoice(options, index) {
+  function SingleChoice(options, index, id) {
     EventEmitter.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
@@ -14,6 +14,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
     }, options);
     // Keep provided id.
     this.index = index;
+    this.id = id;
 
     for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
@@ -29,7 +30,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
    *
    * @param {jQuery} $container
    */
-  SingleChoice.prototype.appendTo = function ($container, current) {
+  SingleChoice.prototype.appendTo = function ($container, isCurrent) {
     var self = this;
     this.$container = $container;
 
@@ -37,17 +38,22 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
     var focusedOption;
 
     this.$choice = $('<div>', {
-      'class': 'h5p-sc-slide h5p-sc' + (current ? ' h5p-sc-current-slide' : ''),
+      'class': 'h5p-sc-slide h5p-sc' + (isCurrent ? ' h5p-sc-current-slide' : ''),
       css: {'left': (self.index*100) + '%'}
     });
 
+    var questionId = 'single-choice-' + self.id + '-question-' + self.index;
+
     this.$choice.append($('<div>', {
+      'id' : questionId,
       'class': 'h5p-sc-question',
       'html': this.options.question
     }));
 
     var $alternatives = $('<ul>', {
-      'class': 'h5p-sc-alternatives'
+      'class': 'h5p-sc-alternatives',
+      'role': 'radiogroup',
+      'aria-labelledby': questionId
     });
 
     /**
@@ -67,8 +73,11 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
       if (data.$element.parent().hasClass('h5p-sc-selected')) {
         return;
       }
-      
-      self.trigger('alternative-selected', data.correct);
+
+      self.trigger('alternative-selected', {
+        correct: data.correct,
+        index: self.index
+      });
 
       H5P.Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
         data.$element.addClass('h5p-sc-drummed');

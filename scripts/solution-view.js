@@ -5,8 +5,9 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
   /**
   * Constructor function.
   */
-  function SolutionView (choices, l10n){
+  function SolutionView (id, choices, l10n){
     var self = this;
+    self.id = id;
     this.choices = choices;
 
     this.$solutionView = $('<div>', {
@@ -20,6 +21,9 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
 
     // Close solution view button
     $('<button>', {
+      'role': 'button',
+      'tabindex': 0,
+      'aria-label': l10n.backButtonLabel,
       'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
       'click': function () {
         self.hide();
@@ -65,16 +69,20 @@ H5P.SingleChoiceSet.SolutionView = (function ($) {
    */
   SolutionView.prototype.populate = function () {
     var self = this;
-    self.$choices = $('<div>', {
-      'class': 'h5p-sc-solution-choices'
+    self.$choices = $('<dl>', {
+      'class': 'h5p-sc-solution-choices',
+      'tabindex': 0
     });
-    this.choices.forEach(function (choice) {
+    this.choices.forEach(function (choice, index) {
+      var questionId = 'solution-single-choice-' + self.id + '-question-' + index;
+
       if (choice.question && choice.answers && choice.answers.length !== 0) {
-        self.$choices.append($('<div>', {
+        self.$choices.append($('<dt>', {
+          'id': questionId,
           'class': 'h5p-sc-solution-question',
           html: choice.question
         }));
-        self.$choices.append($('<div>', {
+        self.$choices.append($('<dd>', {
           'class': 'h5p-sc-solution-answer',
           html: choice.answers[0]
         }));
