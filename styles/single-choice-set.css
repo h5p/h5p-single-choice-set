@@ -59,7 +59,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   background: #edd6e9;
-  outline: none;
 }
 
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
