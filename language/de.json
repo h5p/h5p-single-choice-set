@@ -1,0 +1,90 @@
+{
+  "semantics": [
+    {
+
+      "label": "Fragenliste",
+
+      "field": {
+
+        "label": "Fragen & Alternativen",
+        "fields": [
+          {
+
+            "tags": [],
+            "label": "Frage"
+          },
+          {
+
+            "label": "Alternativen - die erste Alternative ist die Korrekte",
+
+            "field": {
+
+              "tags": [],
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+
+          "label": "Auszeit bei korrekten Antworten",
+          "description": "Wert in Millisekunden",
+
+        },
+        {
+
+          "label": "Auszeit bei falschen Antworten",
+          "description": "Wert in Millisekunden",
+
+        },
+        {
+
+          "label": "Soundeffekte aktivieren",
+
+        },
+        {
+
+          "label": "Wiederholen Button aktivieren",
+
+        },
+        {
+
+          "label": "Lösung anzeigen Button aktivieren",
+
+        }
+      ]
+    },
+    {
+
+      "label": "Lokalisierung des Single Choice Sets",
+
+      "fields": [
+        {
+
+          "label": "Titel für die Ergebnisfolie",
+          "default": ":numcorrect von :maxscore korrekt",
+          "description": ":numcorrect wir durch die Anzahl der korrekten Antworten ersetzt und :maxscore wir durch die Anzahl an Fragen ersetzt."
+        },
+        {
+
+          "label": "Label für den \"Lösung anzeigen\" Button",
+          "default": "Lösung anzeigen"
+        },
+        {
+
+          "label": "Label für den \"Wiederholen\" Button",
+          "default": "Wiederholen"
+        },
+        {
+
+          "label": "Titel für die Lösung anzeigen Ansicht",
+          "default": "Lösung"
+        }
+      ]
+    }
+  ]
