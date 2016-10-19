@@ -55,7 +55,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // An array containing the SingleChoice instances
     this.choices = [];
 
+    /**
+     * The solution dialog
+     * @type {SolutionView}
+     */
     this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
+
+    // Focus on "try-again"-button when closing solution view
+    this.solutionView.on('hide', function(){
+     self.focusButton('try-again');
+    });
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
