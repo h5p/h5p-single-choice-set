@@ -1,25 +1,25 @@
 {
   "semantics": [
     {
-
+      "englishLabel": "List of questions",
       "label": "Fragenliste",
-
+      "englishEntity": "question",
+      "entity": "Frage",
       "field": {
-
+        "englishLabel": "Question & alternatives",
         "label": "Fragen & Alternativen",
         "fields": [
           {
-
-            "tags": [],
+            "englishLabel": "Question",
             "label": "Frage"
           },
           {
-
+            "englishLabel": "Alternatives - first alternative is the correct one",
             "label": "Alternativen - die erste Alternative ist die Korrekte",
-
+            "englishEntity": "answer",
+            "entity": "alternative",
             "field": {
-
-              "tags": [],
+              "englishLabel": "Alternative",
               "label": "Alternative"
             }
           }
@@ -27,64 +27,98 @@
       }
     },
     {
-
+      "englishLabel": "Behavioural settings",
       "label": "Verhaltenseinstellungen",
       "fields": [
         {
-
+          "englishLabel": "Timeout on correct answers",
           "label": "Auszeit bei korrekten Antworten",
-          "description": "Wert in Millisekunden",
-
+          "englishDescription": "Value in milliseconds",
+          "description": "Wert in Millisekunden"
         },
         {
-
+          "englishLabel": "Timeout on wrong answers",
           "label": "Auszeit bei falschen Antworten",
-          "description": "Wert in Millisekunden",
-
+          "englishDescription": "Value in milliseconds",
+          "description": "Wert in Millisekunden"
         },
         {
-
-          "label": "Soundeffekte aktivieren",
-
+          "englishLabel": "Enable sound effects",
+          "label": "Soundeffekte aktivieren"
         },
         {
-
-          "label": "Wiederholen Button aktivieren",
-
+          "englishLabel": "Enable retry button",
+          "label": "Wiederholen Button aktivieren"
         },
         {
-
-          "label": "Lösung anzeigen Button aktivieren",
-
+          "englishLabel": "Enable show solution button",
+          "label": "Lösung anzeigen Button aktivieren"
         }
       ]
     },
     {
-
+      "englishLabel": "Localize single choice set",
       "label": "Lokalisierung des Single Choice Sets",
-
       "fields": [
         {
-
+          "englishLabel": "Title for result slide",
           "label": "Titel für die Ergebnisfolie",
+          "englishDefault": "You got :numcorrect of :maxscore correct",
           "default": ":numcorrect von :maxscore korrekt",
+          "englishDescription": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions",
           "description": ":numcorrect wir durch die Anzahl der korrekten Antworten ersetzt und :maxscore wir durch die Anzahl an Fragen ersetzt."
         },
         {
-
+          "englishLabel": "Label for the \"Show solution\" button",
           "label": "Label für den \"Lösung anzeigen\" Button",
+          "englishDefault": "Show solution",
           "default": "Lösung anzeigen"
         },
         {
-
+          "englishLabel": "Label for the \"Retry\" button",
           "label": "Label für den \"Wiederholen\" Button",
+          "englishDefault": "Retry",
           "default": "Wiederholen"
         },
         {
-
+          "englishLabel": "Title for the show solution view",
           "label": "Titel für die Lösung anzeigen Ansicht",
+          "englishDefault": "Solution",
           "default": "Lösung"
+        },
+        {
+          "englishLabel": "Readspeaker text for correct answer",
+          "label": "Text für korrekte Antwort",
+          "englishDefault": "Correct!",
+          "default": "Korrekt!"
+        },
+        {
+          "englishLabel": "Readspeaker text for incorrect answer",
+          "label": "Text für falsche Antwort",
+          "englishDefault": "Incorrect!",
+          "default": "Falsch!"
+        },
+        {
+          "englishLabel": "Label for the \"mute\" button, to disable feedback sound",
+          "label": "Label für die \"Mute\"-Taste, um Feedback-Sound zu deaktivieren",
+          "englishDefault": "Mute feedback sound",
+          "default": "Mute"
+        },
+        {
+          "englishLabel": "Label for the \"Back\" button",
+          "label": "Label für die \"Zurück\"-Taste",
+          "englishDefault": "Back",
+          "default": "Zurück"
+        },
+        {
+          "englishLabel": "Slide number text",
+          "label": "Foliennummerntext",
+          "englishDescription": "Announces current slide and total number of slides, variables are :num and :total",
+          "description": "Ankündigt die aktuelle Folie und die Gesamtanzahl der Folien, die Variablen sind :num und :total",
+          "englishDefault": "Slide :num of :total",
+          "default": "Folie :num von :total"
         }
       ]
     }
   ]
+}
