@@ -62,7 +62,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
      * @private
      * @type {Alternative[]}
      */
-    this.alternatives = self.options.answers.map(function(opts){
+    this.alternatives = self.options.answers.map(function (opts){
       return new Alternative(opts);
     });
 
@@ -91,12 +91,12 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
       * Handles focusing one of the options, making the rest non-tabbable.
       * @private
       */
-     var handleFocus = function(answer, index) {
+     var handleFocus = function (answer, index) {
        // Keep track of currently focused option
        focusedOption = index;
 
        // remove tabbable for all alternatives
-       this.alternatives.forEach(function(alternative){
+       this.alternatives.forEach(function (alternative){
          alternative.notTabbable();
        });
 
@@ -148,7 +148,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
    *
    * @param {Number} index The index of the alternative to focus on
    */
-  SingleChoice.prototype.focusOnAlternative = function(index){
+  SingleChoice.prototype.focusOnAlternative = function (index){
     this.alternatives[index].focus();
   };
 

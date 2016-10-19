@@ -62,7 +62,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
 
     // Focus on "try-again"-button when closing solution view
-    this.solutionView.on('hide', function(){
+    this.solutionView.on('hide', function (){
      self.focusButton('try-again');
     });
 
@@ -180,7 +180,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @returns {H5P.SingleChoiceSet.Alternative} The correct alternative
    */
   SingleChoiceSet.prototype.findCorrectAlternativeFromQuestion = function (question) {
-    return question.alternatives.find(function(alternative){
+    return question.alternatives.find(function (alternative){
       return alternative.options.correct;
     });
   };
@@ -228,7 +228,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     });
   };
 
-  SingleChoiceSet.prototype.dropLive = function() {
+  SingleChoiceSet.prototype.dropLive = function () {
     if (this.$liveRegion) {
       var node = this.$liveRegion[0];
       if (node.parentNode) {
@@ -237,7 +237,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }
   };
 
-  SingleChoiceSet.prototype.announce = function(text) {
+  SingleChoiceSet.prototype.announce = function (text) {
     this.$liveRegion = $('<div>', {
       'class': 'h5p-baq-live-feedback',
       'aria-live': 'assertive',
@@ -484,7 +484,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.getAnswerGiven = function () {
     return (this.results.corrects + this.results.wrongs) > 0;
   };
-  SingleChoiceSet.prototype.getTitle = function() {
+  SingleChoiceSet.prototype.getTitle = function () {
     return (this.options.choices[0] ? H5P.createTitle(this.options.choices[0].question) : '');
   };
   SingleChoiceSet.prototype.showSolutions = function () {

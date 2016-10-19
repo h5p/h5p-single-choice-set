@@ -9,7 +9,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
   * @constructor
   * @param {number} maxscore Max score
   */
-  function ResultSlide(maxscore) {
+  function ResultSlide (maxscore) {
     EventEmitter.call(this);
     this.maxscore = maxscore;
     var self = this;

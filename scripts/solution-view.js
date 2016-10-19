@@ -129,7 +129,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * @private
    * @param {String} text Input string
    */
-  SolutionView.prototype.hasPunctuation = function(text){
+  SolutionView.prototype.hasPunctuation = function (text){
     return /[,.?!]$/.test(text);
   };
 
