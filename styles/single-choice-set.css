@@ -15,24 +15,6 @@
   position: relative;
   box-sizing: border-box;
 }
-.h5p-sc-set-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
-  width: 100%;
-  background: rgb(102, 102, 102);
-}
-.h5p-sc-set-progress .h5p-sc-completed {
-  height: 100%;
-  width: 0;
-
-  box-shadow: 0 0 0.25em 0 #fff;
-  background: #0097fd;
-
-  transition: width 0.25s ease-in-out;
-}
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -77,7 +59,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   background: #edd6e9;
-  outline: none;
 }
 
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
@@ -101,11 +82,6 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-corre
   color: #255c41;
 }
 
-ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h5p-sc-reveal-correct .h5p-sc-progressbar {
-  background: #9dd8bb;
-  color: #255c41;
-}
-
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
   -webkit-transform: scale(.95);
   transform: scale(.95);
@@ -114,51 +90,9 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p-sc-reveal-wrong .h5p-sc-progressbar {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus {
   background: #f7d0d0;
   color: #b71c1c;
-}
-
-li.h5p-sc-alternative .h5p-sc-progressbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0%;
-  background: #cee0f4;
-  -webkit-border-radius: 0.25em;
-  -moz-border-radius: 0.25em;
-  border-radius: 0.25em;
-}
-.h5p-sc-drummed .h5p-sc-progressbar {
-  background: transparent;
-  transition: background 1s;
-}
-/* Using animation instead of transition on width made this much
-   smoother on iPad */
-li.h5p-sc-alternative.h5p-sc-selected .h5p-sc-progressbar {
-  -webkit-animation: progress 0.6s;
-  -moz-animation: progress 0.6s;
-  -o-animation: progress 0.6s;
-  animation: progress 0.6s;
-
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-@-webkit-keyframes progress {
-    from { } to { width: 100% }
-}
-@-moz-keyframes progress {
-    from { } to { width: 100% }
-}
-@-ms-keyframes progress {
-    from { } to { width: 100% }
-}
-@keyframes progress {
-    from { } to { width: 100% }
 }
 li.h5p-sc-alternative .h5p-sc-label {
   position: relative;
@@ -231,7 +165,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   font-size: 1.25em;
   content: '\f028';
 }
-.h5p-sc-sound-control.muted:after {
+[aria-pressed='true'].h5p-sc-sound-control:after {
   content: '\f026';
 }
 .h5p-sc-solution-view {

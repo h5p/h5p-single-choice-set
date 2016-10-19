@@ -5,7 +5,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
   /**
    * Constructor function.
    */
-  function SingleChoice(options, index) {
+  function SingleChoice(options, index, id) {
     EventEmitter.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
@@ -14,6 +14,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
     }, options);
     // Keep provided id.
     this.index = index;
+    this.id = id;
 
     for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
@@ -29,24 +30,41 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
    *
    * @param {jQuery} $container
    */
-   SingleChoice.prototype.appendTo = function ($container, current) {
+  SingleChoice.prototype.appendTo = function ($container, isCurrent) {
     var self = this;
     this.$container = $container;
 
+    // Index of the currently focused option.
+    var focusedOption;
+
     this.$choice = $('<div>', {
-      'class': 'h5p-sc-slide h5p-sc' + (current ? ' h5p-sc-current-slide' : ''),
+      'class': 'h5p-sc-slide h5p-sc' + (isCurrent ? ' h5p-sc-current-slide' : ''),
       css: {'left': (self.index*100) + '%'}
     });
 
+    var questionId = 'single-choice-' + self.id + '-question-' + self.index;
+
     this.$choice.append($('<div>', {
+      'id' : questionId,
       'class': 'h5p-sc-question',
       'html': this.options.question
     }));
 
     var $alternatives = $('<ul>', {
-      'class': 'h5p-sc-alternatives'
+      'class': 'h5p-sc-alternatives',
+      'role': 'radiogroup',
+      'aria-labelledby': questionId
     });
 
+    /**
+     * List of Alternatives
+     *
+     * @private
+     * @type {Alternative[]}
+     */
+    this.alternatives = self.options.answers.map(function(opts){
+      return new Alternative(opts);
+    });
 
     /**
      * Handles click on an alternative
@@ -55,8 +73,11 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
       if (data.$element.parent().hasClass('h5p-sc-selected')) {
         return;
       }
-      
-      self.trigger('alternative-selected', data.correct);
+
+      self.trigger('alternative-selected', {
+        correct: data.correct,
+        index: self.index
+      });
 
       H5P.Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
         data.$element.addClass('h5p-sc-drummed');
@@ -66,18 +87,74 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
       data.$element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
     };
 
-    for (var i = 0; i < this.options.answers.length; i++) {
-      var alternative = new Alternative(this.options.answers[i]);
+     /**
+      * Handles focusing one of the options, making the rest non-tabbable.
+      * @private
+      */
+     var handleFocus = function(answer, index) {
+       // Keep track of currently focused option
+       focusedOption = index;
+
+       // remove tabbable for all alternatives
+       this.alternatives.forEach(function(alternative){
+         alternative.notTabbable();
+       });
+
+       answer.tabbable();
+     };
+
+     /**
+      * Handles moving the focus from the current option to the previous option.
+      * @private
+      */
+     var handlePreviousOption = function () {
+       if (focusedOption !== 0) {
+         this.focusOnAlternative(focusedOption - 1);
+       }
+     };
+
+     /**
+      * Handles moving the focus from the current option to the next option.
+      * @private
+      */
+     var handleNextOption = function () {
+       if (focusedOption !== this.alternatives.length - 1) {
+         this.focusOnAlternative(focusedOption + 1);
+       }
+     };
+
+    for (var i = 0; i < this.alternatives.length; i++) {
+      var alternative = this.alternatives[i];
+
+      if(i === 0){
+        alternative.tabbable();
+      }
+
       alternative.appendTo($alternatives);
-      alternative.on('alternative-selected', handleAlternativeSelected);
+      alternative.on('focus', handleFocus.bind(this, alternative, i), this);
+      alternative.on('alternative-selected', handleAlternativeSelected, this);
+      alternative.on('previousOption', handlePreviousOption, this);
+      alternative.on('nextOption', handleNextOption, this);
+
     }
+
     this.$choice.append($alternatives);
     $container.append(this.$choice);
     return this.$choice;
   };
 
   /**
+   * Focus on an alternative by index
+   *
+   * @param {Number} index The index of the alternative to focus on
+   */
+  SingleChoice.prototype.focusOnAlternative = function(index){
+    this.alternatives[index].focus();
+  };
+
+  /**
    * Reveals the result for a question
+   *
    * @param  {boolean} correct True uf answer was correct, otherwise false
    */
   SingleChoice.prototype.showResult = function (correct) {

@@ -14,24 +14,51 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
     this.options = options;
 
-    var triggerAlternativeSelected = function () {
+    var triggerAlternativeSelected = function (event) {
       self.trigger('alternative-selected', {
         correct: self.options.correct,
         $element: self.$alternative
       });
-    };
 
+      event.preventDefault();
+    };
 
     this.$alternative = $('<li>', {
       'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
-      tabindex: 1,
-      click: triggerAlternativeSelected,
-      keypress: function (event) {
-        // If enter or space has been pushed
-        if(event.which === 13 || event.which === 32) {
-          triggerAlternativeSelected();
+      'role': 'radio',
+      'tabindex': -1,
+      'on': {
+        'keydown': function (event) {
+          switch (event.which) {
+            case 13: // Enter
+            case 32: // Space
+              // Answer question
+              triggerAlternativeSelected(event);
+              break;
+
+            case 37: // Left Arrow
+            case 38: // Up Arrow
+              // Go to previous Option
+              self.trigger('previousOption', event);
+              event.preventDefault();
+              break;
+
+            case 39: // Right Arrow
+            case 40: // Down Arrow
+              // Go to next Option
+              self.trigger('nextOption', event);
+              event.preventDefault();
+              break;
+          }
         }
-      }
+      },
+      'focus': function (event) {
+        /*if (self.$button.is('.reveal-correct, reveal-wrong')) {
+          return;
+        }*/
+        self.trigger('focus', event);
+      },
+      'click': triggerAlternativeSelected
     });
 
     this.$alternative.append($('<div>', {
@@ -46,7 +73,6 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-status'
     }));
-
   }
   Alternative.prototype = Object.create(EventEmitter.prototype);
   Alternative.prototype.constructor = Alternative;
@@ -60,6 +86,26 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
     return this.options.correct;
   };
 
+  /**
+   * Move focus to this option.
+   */
+  Alternative.prototype.focus = function () {
+    this.$alternative.focus();
+  };
+
+  /**
+   * Makes it possible to tab your way to this option.
+   */
+  Alternative.prototype.tabbable = function () {
+    this.$alternative.attr('tabindex', 0);
+  };
+
+  /**
+   * Make sure it's NOT possible to tab your way to this option.
+   */
+  Alternative.prototype.notTabbable = function () {
+    this.$alternative.attr('tabindex', -1);
+  };
 
   /**
    * Append the alternative to a DOM container
