@@ -3,14 +3,14 @@ H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 /**
  * SingleChoiceResultSlide - Represents the result slide
  */
-H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
   /**
   * @constructor
   * @param {number} maxscore Max score
   */
   function ResultSlide (maxscore) {
-    EventEmitter.call(this);
+    EventDispatcher.call(this);
     this.maxscore = maxscore;
     var self = this;
     this.$feedbackContainer = $('<div>', {
@@ -31,7 +31,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
       'css': {left: (maxscore * 100) + '%'}
     }).append($resultContainer);
   }
-  ResultSlide.prototype = Object.create(EventEmitter.prototype);
+  ResultSlide.prototype = Object.create(EventDispatcher.prototype);
   ResultSlide.prototype.constructor = ResultSlide;
 
 
@@ -48,4 +48,4 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
 
   return ResultSlide;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
+})(H5P.jQuery, H5P.EventDispatcher);

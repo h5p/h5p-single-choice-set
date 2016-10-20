@@ -26,9 +26,6 @@
       "path": "scripts/sound-effects.js"
     },
     {
-      "path": "scripts/event-emitter.js"
-    },
-    {
       "path": "scripts/result-slide.js"
     },
     {
@@ -53,7 +50,7 @@
     {
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     },
     {
       "machineName": "H5P.Transition",

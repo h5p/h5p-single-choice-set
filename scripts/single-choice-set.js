@@ -154,12 +154,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Handle alternative selected, i.e play sound if sound effects are enabled
    * 
    * @method handleAlternativeSelected
-   * @param  {Object} opts Was alternative correct or not, and index of question?
+   * @param  {Object} event Event that was fired
    */
-  SingleChoiceSet.prototype.handleAlternativeSelected = function (opts) {
+  SingleChoiceSet.prototype.handleAlternativeSelected = function (event) {
     var self = this;
-    var isCorrect = opts.correct;
-    var index = opts.index;
+    var isCorrect = event.data.correct;
+    var index = event.data.index;
     var question = self.choices[index];
     var correctAlternative = self.findCorrectAlternativeFromQuestion(question);
 
@@ -190,10 +190,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    *
    * @param  {object} data An object containing a single boolean property: "correct".
    */
-  SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
+  SingleChoiceSet.prototype.handleQuestionFinished = function (event) {
     var self = this;
 
-    if (data.correct) {
+    if (event.data.correct) {
       self.results.corrects++;
     }
     else {
@@ -215,7 +215,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     var timeout = setTimeout(function () {
       letsMove();
-    }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
+    }, event.data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
     self.$container.on('click.impatient', function () {
       letsMove();

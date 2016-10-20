@@ -1,12 +1,12 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, SoundEffects) {
+H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, SoundEffects) {
   /**
    * Constructor function.
    */
   function SingleChoice(options, index, id) {
-    EventEmitter.call(this);
+    EventDispatcher.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       question: '',
@@ -22,7 +22,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
     // Randomize alternatives
     this.options.answers = H5P.shuffleArray(this.options.answers);
   }
-  SingleChoice.prototype = Object.create(EventEmitter.prototype);
+  SingleChoice.prototype = Object.create(EventDispatcher.prototype);
   SingleChoice.prototype.constructor = SingleChoice;
 
   /**
@@ -69,22 +69,25 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
     /**
      * Handles click on an alternative
      */
-    var handleAlternativeSelected = function (data) {
-      if (data.$element.parent().hasClass('h5p-sc-selected')) {
+    var handleAlternativeSelected = function (event) {
+      var $element = event.data.$element;
+      var correct = event.data.correct;
+
+      if ($element.parent().hasClass('h5p-sc-selected')) {
         return;
       }
 
       self.trigger('alternative-selected', {
-        correct: data.correct,
+        correct: correct,
         index: self.index
       });
 
-      H5P.Transition.onTransitionEnd(data.$element.find('.h5p-sc-progressbar'), function () {
-        data.$element.addClass('h5p-sc-drummed');
-        self.showResult(data.correct);
+      H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), function () {
+        $element.addClass('h5p-sc-drummed');
+        self.showResult(correct);
       }, 700);
 
-      data.$element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+      $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
     };
 
      /**
@@ -173,4 +176,4 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventEmitter, Alternative, Soun
 
   return SingleChoice;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter, H5P.SingleChoiceSet.Alternative, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.EventDispatcher, H5P.SingleChoiceSet.Alternative, H5P.SingleChoiceSet.SoundEffects);

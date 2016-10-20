@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
   /**
   * @constructor
@@ -9,7 +9,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
   * @param {object} options Options for the alternative
   */
   function Alternative(options){
-    EventEmitter.call(this);
+    EventDispatcher.call(this);
     var self = this;
 
     this.options = options;
@@ -74,7 +74,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
       'class': 'h5p-sc-status'
     }));
   }
-  Alternative.prototype = Object.create(EventEmitter.prototype);
+  Alternative.prototype = Object.create(EventDispatcher.prototype);
   Alternative.prototype.constructor = Alternative;
 
   /**
@@ -121,4 +121,4 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
   return Alternative;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
+})(H5P.jQuery, H5P.EventDispatcher);
