@@ -163,6 +163,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var question = self.choices[index];
     var correctAlternative = self.findCorrectAlternativeFromQuestion(question);
 
+    // Announce by ARIA if answer is correct or incorrect
     self.announce(isCorrect ? self.l10n.correctText : self.l10n.incorrectText.replace(':text', correctAlternative.options.text));
     setTimeout(self.dropLive, 500);
 
