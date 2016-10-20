@@ -203,6 +203,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.triggerXAPI('interacted');
 
+    // if should show result slide
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.setScore(self.results.corrects);
     }
@@ -311,6 +312,15 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.scoreTimeout = setTimeout(function () {
       showFeedback();
     }, (timeout));
+
+    // listen for impatient keyboard clicks
+    self.$container.on('keydown.impatient', function (event) {
+      // If return, space or right arrow
+      if(event.which === 13 || event.which === 32 || event.which === 39) {
+        clearTimeout(self.scoreTimeout);
+        showFeedback();
+      }
+    });
 
     /**
      * Listen for impatient clicks.
