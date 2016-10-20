@@ -218,6 +218,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.$container.on('click.impatient', function () {
       letsMove();
     });
+
     self.$container.on('keydown.impatient', function (event) {
       // If return, space or right arrow
       if(event.which === 13 || event.which === 32 || event.which === 39) {
@@ -274,6 +275,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var lastSelected = self.choices[self.choices.length - 1]
       .$choice
       .find('.h5p-sc-alternative.h5p-sc-selected');
+
     var timeout = (timeout !== undefined) ? timeout : (lastSelected.is('.h5p-sc-is-correct') ?
       this.options.behaviour.timeoutCorrect :
       this.options.behaviour.timeoutWrong);
@@ -467,8 +469,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     H5P.Transition.onTransitionEnd(self.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
 
+      // on slides with answers focus on first alternative
       if(index < self.choices.length){
         $currentChoice.focusOnAlternative(0);
+      }
+      // on last slide, focus on try again button
+      else {
+        self.focusButton('try-again');
       }
     }, 600);
 
