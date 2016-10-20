@@ -15,6 +15,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
     // Keep provided id.
     this.index = index;
     this.id = id;
+    this.answered = false;
 
     for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
@@ -88,6 +89,9 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       }, 700);
 
       $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+
+      // indicate that this question is anwered
+      this.answered = true;
     };
 
      /**
@@ -111,7 +115,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       * @private
       */
      var handlePreviousOption = function () {
-       if (focusedOption !== 0) {
+       if (focusedOption !== 0 && !this.answered) {
          this.focusOnAlternative(focusedOption - 1);
        }
      };
@@ -121,7 +125,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       * @private
       */
      var handleNextOption = function () {
-       if (focusedOption !== this.alternatives.length - 1) {
+       if ((focusedOption !== this.alternatives.length - 1) && !this.answered) {
          this.focusOnAlternative(focusedOption + 1);
        }
      };
