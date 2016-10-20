@@ -70,6 +70,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       'class': 'h5p-sc-set h5p-sc-animate'
     });
 
+    // sometimes an empty object is in the choices
+    this.options.choices = this.options.choices.filter(function(choice){
+      return choice !=undefined && !!choice.answers;
+    });
+
     var numQuestions = this.options.choices.length;
 
     // Create progressbar
@@ -77,15 +82,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       progressText: this.l10n.slideOfTotal
     });
     self.progressbar.setProgress(this.currentIndex + 1);
-
-    // Validate "slides", reverse traversal since we remove entries as we go
-    for (var slideIndex = this.options.choices.length - 1; slideIndex >= 0; slideIndex--) {
-
-      // Prune invalid slide
-      if (!this.options.choices[slideIndex].answers) {
-        this.options.choices.splice(slideIndex, 1);
-      }
-    }
 
     for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i, this.contentId);
