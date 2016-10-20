@@ -15,6 +15,18 @@
   position: relative;
   box-sizing: border-box;
 }
+
+.h5p-single-choice-set .h5p-joubelui-progressbar {
+  height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
+  background-color: rgb(102, 102, 102);
+  box-shadow: none;
+}
+
+.h5p-single-choice-set .h5p-joubelui-progressbar-background {
+  box-shadow: 0 0 0.25em 0 #fff;
+  background-color: #0097fd;
+}
+
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
