@@ -81,7 +81,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.progressbar = UI.createProgressbar(numQuestions, {
       progressText: this.l10n.slideOfTotal
     });
-    self.progressbar.setProgress(this.currentIndex + 1);
+    self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
       var choice = new SingleChoice(this.options.choices[i], i, this.contentId);
