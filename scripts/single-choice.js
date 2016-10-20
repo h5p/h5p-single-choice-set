@@ -91,7 +91,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
 
       // indicate that this question is anwered
-      this.answered = true;
+      this.setAnswered(true);
     };
 
      /**
@@ -157,6 +157,15 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
    */
   SingleChoice.prototype.focusOnAlternative = function (index){
     this.alternatives[index].focus();
+  };
+
+  /**
+   * Sets if the question was answered
+   *
+   * @param {Boolean} answered If this question was answered
+   */
+  SingleChoice.prototype.setAnswered = function (answered){
+    this.answered = answered;
   };
 
   /**

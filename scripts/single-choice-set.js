@@ -516,6 +516,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       wrongs: 0
     };
 
+    this.choices.forEach(function (choice){
+      choice.setAnswered(false);
+    });
+
     this.move(0);
 
     // Wait for transition, then remove feedback.
