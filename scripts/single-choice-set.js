@@ -41,7 +41,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
-      backButtonLabel: 'Back',
+      closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
       muteButtonLabel: "Mute feedback sound"
