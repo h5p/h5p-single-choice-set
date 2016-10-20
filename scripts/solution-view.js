@@ -27,7 +27,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     // Close solution view button
     $('<button>', {
       'role': 'button',
-      'aria-label': l10n.backButtonLabel + '.',
+      'aria-label': l10n.closeButtonLabel + '.',
       'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
       'click': function () {
         self.hide();
