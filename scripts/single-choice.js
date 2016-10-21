@@ -94,55 +94,55 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       this.setAnswered(true);
     };
 
-     /**
-      * Handles focusing one of the options, making the rest non-tabbable.
-      * @private
-      */
-     var handleFocus = function (answer, index) {
-       // Keep track of currently focused option
-       focusedOption = index;
+    /**
+     * Handles focusing one of the options, making the rest non-tabbable.
+     * @private
+     */
+    var handleFocus = function (answer, index) {
+      // Keep track of currently focused option
+      focusedOption = index;
 
-       // remove tabbable and checked for all alternatives
-       this.alternatives.forEach(function (alternative){
-         alternative.setAriaChecked(false);
-         alternative.notTabbable();
-       });
+      // remove tabbable and checked for all alternatives
+      this.alternatives.forEach(function (alternative){
+        alternative.setAriaChecked(false);
+        alternative.notTabbable();
+      });
 
-       answer.setAriaChecked(true);
-       answer.tabbable();
-     };
+      answer.setAriaChecked(true);
+      answer.tabbable();
+    };
 
-     /**
-      * Handles moving the focus from the current option to the previous option.
-      * @private
-      */
-     var handlePreviousOption = function () {
-       if(!this.answered){
-         if (focusedOption === 0) {
-           // wrap around to last
-           this.focusOnAlternative(self.alternatives.length -1);
-         }
-         else {
-           this.focusOnAlternative(focusedOption - 1);
-         }
-       }
-     };
+    /**
+     * Handles moving the focus from the current option to the previous option.
+     * @private
+     */
+    var handlePreviousOption = function () {
+      if(!this.answered){
+        if (focusedOption === 0) {
+          // wrap around to last
+          this.focusOnAlternative(self.alternatives.length -1);
+        }
+        else {
+          this.focusOnAlternative(focusedOption - 1);
+        }
+      }
+    };
 
-     /**
-      * Handles moving the focus from the current option to the next option.
-      * @private
-      */
-     var handleNextOption = function () {
-       if(!this.answered){
-         if ((focusedOption === this.alternatives.length - 1)) {
-           // wrap around to first
-           this.focusOnAlternative(0);
-         }
-         else {
-           this.focusOnAlternative(focusedOption + 1);
-         }
-       }
-     };
+    /**
+     * Handles moving the focus from the current option to the next option.
+     * @private
+     */
+    var handleNextOption = function () {
+      if(!this.answered){
+        if ((focusedOption === this.alternatives.length - 1)) {
+          // wrap around to first
+          this.focusOnAlternative(0);
+        }
+        else {
+          this.focusOnAlternative(focusedOption + 1);
+        }
+      }
+    };
 
     for (var i = 0; i < this.alternatives.length; i++) {
       var alternative = this.alternatives[i];
