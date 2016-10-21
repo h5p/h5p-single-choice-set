@@ -172,8 +172,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var correctAlternative = self.findCorrectAlternativeFromQuestion(question);
 
     // Announce by ARIA if answer is correct or incorrect
-    self.announce(isCorrect ? self.l10n.correctText : self.l10n.incorrectText.replace(':text', correctAlternative.options.text));
-    setTimeout(self.dropLive, 500);
+    var text = isCorrect ? self.l10n.correctText : ('<span>' + self.l10n.incorrectText.replace(':text', correctAlternative.options.text) +'</span>');
+    self.read(text);
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
@@ -237,25 +237,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         letsMove();
       }
     });
-  };
-
-  SingleChoiceSet.prototype.dropLive = function () {
-    if (this.$liveRegion) {
-      var node = this.$liveRegion[0];
-      if (node.parentNode) {
-        node.parentNode.removeChild(node);
-      }
-    }
-  };
-
-  SingleChoiceSet.prototype.announce = function (text) {
-    this.$liveRegion = $('<div>', {
-      'class': 'h5p-baq-live-feedback',
-      'aria-live': 'assertive',
-      'width': '1px',
-      'height': '1px',
-      html: text
-    }).appendTo(document.body);
   };
 
   /**
