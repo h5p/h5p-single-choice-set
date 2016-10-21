@@ -149,9 +149,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
   /**
-   * Seta if a element is tabbable or not
+   * Set if a element is tabbable or not
    *
-   * @param {jQuery} $element The element to hide or show with ARIA
+   * @param {jQuery} $element The element
    * @param {boolean} tabbable If element should be tabbable
    * @returns {jQuery} The element
    */
