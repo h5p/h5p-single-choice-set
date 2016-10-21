@@ -47,6 +47,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       muteButtonLabel: "Mute feedback sound"
     }, options.l10n !== undefined ? options.l10n : {});
 
+    this.displayingSolution = false;
+
     this.$container = $('<div>', {
       'class': 'h5p-sc-set-wrapper'
     });
@@ -145,6 +147,18 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
+
+  /**
+   * Seta if a element is tabbable or not
+   *
+   * @param {jQuery} $element The element to hide or show with ARIA
+   * @param {boolean} tabbable If element should be tabbable
+   * @returns {jQuery} The element
+   */
+  SingleChoiceSet.prototype.setTabbable = function ($element, tabbable) {
+    $element.attr('tabindex', tabbable ? 0 : -1);
+    return $element;
+  };
 
   /**
    * Handle alternative selected, i.e play sound if sound effects are enabled
@@ -288,15 +302,18 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':numcorrect', score)
           .replace(':maxscore', self.options.choices.length),
         score, self.options.choices.length);
-      if (score === self.options.choices.length) {
+
+      if (score === self.options.choices.length || self.displayingSolution) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
-      } else {
+      }
+      else {
         self.showButton('try-again');
         self.showButton('show-solution');
       }
       self.handleQueuedButtonChanges();
       self.scoreTimeout = undefined;
+
       if (!noXAPI) {
         self.triggerXAPIScored(score, self.options.choices.length, 'completed');
       }
@@ -334,7 +351,17 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Handler invoked when view solution is selected
    */
   SingleChoiceSet.prototype.handleViewSolution = function () {
-    this.solutionView.show();
+    var self = this;
+
+    self.displayingSolution = true;
+    self.setTabbable(self.$muteButton, false);
+
+    self.solutionView.on('hide', function(){
+      self.displayingSolution = false;
+      self.setTabbable(self.$muteButton, true);
+    });
+
+    self.solutionView.show();
   };
 
   /**
@@ -394,7 +421,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }
 
     if (self.options.behaviour.soundEffectsEnabled) {
-      self.$container.append($('<div>', {
+      self.$muteButton = $('<div>', {
         'class': 'h5p-sc-sound-control',
         'tabindex' : 0,
         'role': 'button',
@@ -411,7 +438,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           }
         },
         'click': toggleMute
-      }));
+      });
+
+      self.$container.append(self.$muteButton);
     }
 
     // Append solution view - hidden by default:

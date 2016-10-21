@@ -82,7 +82,8 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     var self = this;
     self.$choices = $('<dl>', {
       'id': 'single-choice-' + self.id + '-solution-list',
-      'class': 'h5p-sc-solution-choices'
+      'class': 'h5p-sc-solution-choices',
+      'tabindex': 0
     });
 
     this.choices.forEach(function (choice, index) {
