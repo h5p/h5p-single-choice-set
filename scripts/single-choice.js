@@ -115,8 +115,14 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       * @private
       */
      var handlePreviousOption = function () {
-       if (focusedOption !== 0 && !this.answered) {
-         this.focusOnAlternative(focusedOption - 1);
+       if(!this.answered){
+         if (focusedOption === 0) {
+           // wrap around to last
+           this.focusOnAlternative(self.alternatives.length -1);
+         }
+         else {
+           this.focusOnAlternative(focusedOption - 1);
+         }
        }
      };
 
@@ -125,8 +131,14 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       * @private
       */
      var handleNextOption = function () {
-       if ((focusedOption !== this.alternatives.length - 1) && !this.answered) {
-         this.focusOnAlternative(focusedOption + 1);
+       if(!this.answered){
+         if ((focusedOption === this.alternatives.length - 1)) {
+           // wrap around to first
+           this.focusOnAlternative(0);
+         }
+         else {
+           this.focusOnAlternative(focusedOption + 1);
+         }
        }
      };
 
