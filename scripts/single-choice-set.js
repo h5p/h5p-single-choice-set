@@ -329,7 +329,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }, (timeout));
 
     // listen for impatient keyboard clicks
-    self.$container.on('keydown.impatient', function (event) {
+    self.$container.one('keydown.impatient', function (event) {
       // If return, space or right arrow
       if(event.which === 13 || event.which === 32 || event.which === 39) {
         clearTimeout(self.scoreTimeout);
@@ -341,7 +341,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * Listen for impatient clicks.
      * On impatient clicks clear timeout and immediately show feedback.
      */
-    self.$container.on('click.impatient', function () {
+    self.$container.one('click.impatient', function () {
       clearTimeout(self.scoreTimeout);
       showFeedback();
     });
