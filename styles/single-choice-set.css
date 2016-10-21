@@ -32,6 +32,11 @@
   background-color: #0097fd;
 }
 
+/* Hide aria-live text */
+.h5p-single-choice-set .h5p-joubelui-progressbar [aria-live="assertive"] {
+  font-size: 0;
+}
+
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -64,6 +69,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   margin: .5em 0;
   padding: .4em 1.2em;
   background: #ddd;
+  overflow: hidden;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
