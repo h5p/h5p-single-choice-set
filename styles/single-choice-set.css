@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+/* Temporarily disable drop from progressbar */
+.h5p-joubelui-drop.drop-element {
+  display: none ! important;
+}
+
 .h5p-single-choice-set .h5p-joubelui-progressbar {
   height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
   background-color: rgb(102, 102, 102);
