@@ -47,8 +47,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       muteButtonLabel: "Mute feedback sound"
     }, options.l10n !== undefined ? options.l10n : {});
 
-    this.displayingSolution = false;
-
     this.$container = $('<div>', {
       'class': 'h5p-sc-set-wrapper'
     });
@@ -303,7 +301,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':maxscore', self.options.choices.length),
         score, self.options.choices.length);
 
-      if (score === self.options.choices.length || self.displayingSolution) {
+      if (score === self.options.choices.length) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
       }
@@ -353,11 +351,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.handleViewSolution = function () {
     var self = this;
 
-    self.displayingSolution = true;
     self.setTabbable(self.$muteButton, false);
 
     self.solutionView.on('hide', function(){
-      self.displayingSolution = false;
       self.setTabbable(self.$muteButton, true);
     });
 
