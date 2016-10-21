@@ -188,12 +188,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Takes a question, and returns the correct alternative
    *
    * @param {H5P.SingleChoiceSet.SingleChoice} question The question you want to find the answer to
-   * @returns {H5P.SingleChoiceSet.Alternative} The correct alternative
+   * @returns {Alternative} The correct alternative
    */
   SingleChoiceSet.prototype.findCorrectAlternativeFromQuestion = function (question) {
-    return question.alternatives.find(function (alternative){
+    return question.alternatives.filter(function (alternative){
       return alternative.options.correct;
-    });
+    })[0];
   };
 
   /**
