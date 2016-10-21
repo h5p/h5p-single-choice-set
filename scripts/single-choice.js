@@ -102,11 +102,13 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
        // Keep track of currently focused option
        focusedOption = index;
 
-       // remove tabbable for all alternatives
+       // remove tabbable and checked for all alternatives
        this.alternatives.forEach(function (alternative){
+         alternative.setAriaChecked(false);
          alternative.notTabbable();
        });
 
+       answer.setAriaChecked(true);
        answer.tabbable();
      };
 
