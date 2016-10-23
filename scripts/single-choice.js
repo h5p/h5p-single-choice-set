@@ -102,12 +102,12 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
       // Keep track of currently focused option
       focusedOption = index;
 
-      // remove tabbable and checked for all alternatives
+      // remove tabbable all alternatives
       this.alternatives.forEach(function (alternative){
-        alternative.setAriaChecked(false);
         alternative.notTabbable();
       });
 
+      self.resetAnswers();
       answer.setAriaChecked(true);
       answer.tabbable();
     };
@@ -126,6 +126,15 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
           this.focusOnAlternative(focusedOption - 1);
         }
       }
+    };
+
+    /**
+     * Remove tabbable and aria-checked for all alternatives
+     */
+    self.resetAnswers = function (){
+      self.alternatives.forEach(function (alternative){
+        alternative.setAriaChecked(false);
+      });
     };
 
     /**

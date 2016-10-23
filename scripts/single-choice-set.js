@@ -175,6 +175,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var text = isCorrect ? self.l10n.correctText : ('<span>' + self.l10n.incorrectText.replace(':text', correctAlternative.options.text) +'</span>');
     self.read(text);
 
+    // resets answers for retry, and remove tabindex to be visible for future questions
+    question.resetAnswers();
+
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
@@ -332,10 +335,20 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.handleViewSolution = function () {
     var self = this;
 
-    self.setTabbable(self.$muteButton, false);
+    var $tryAgainButton = $('[data-content-id="' + self.contentId +'"] .h5p-question-try-again');
+    var $showSolutionButton = $('[data-content-id="' + self.contentId + '"] .h5p-question-show-solution');
+    var buttons = [self.$muteButton, $tryAgainButton, $showSolutionButton];
+
+    // remove tabbable for buttons in result view
+    buttons.forEach(function(button){
+      self.setTabbable(button, false);
+    });
 
     self.solutionView.on('hide', function(){
-      self.setTabbable(self.$muteButton, true);
+      // re-add tabbable for buttons in result view
+      buttons.forEach(function(button){
+        self.setTabbable(button, true);
+      });
     });
 
     self.solutionView.show();
