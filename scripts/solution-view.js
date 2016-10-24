@@ -15,7 +15,8 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
       'class': 'h5p-sc-solution-view',
       'role': 'dialog',
       'aria-labelledby': 'single-choice-' + self.id + '-solution-title',
-      'aria-describedby': 'single-choice-' + self.id + '-solution-list'
+      'aria-describedby': 'single-choice-' + self.id + '-solution-list',
+      'tabindex': 0
     });
 
     // Add header

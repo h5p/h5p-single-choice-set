@@ -160,7 +160,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   /**
    * Handle alternative selected, i.e play sound if sound effects are enabled
-   * 
+   *
    * @method handleAlternativeSelected
    * @param  {Object} event Event that was fired
    */
@@ -169,14 +169,18 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var isCorrect = event.data.correct;
     var index = event.data.index;
     var question = self.choices[index];
-    var correctAlternative = self.findCorrectAlternativeFromQuestion(question);
+
+    // correct answer
+    var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
+
+    console.log('correctAnswer', correctAnswer, self.l10n.incorrectText);
 
     // Announce by ARIA if answer is correct or incorrect
-    var text = isCorrect ? self.l10n.correctText : ('<span>' + self.l10n.incorrectText.replace(':text', correctAlternative.options.text) +'</span>');
-    self.read(text);
+    var text = isCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
 
-    // resets answers for retry, and remove tabindex to be visible for future questions
-    question.resetAnswers();
+    console.log('text', text);
+
+    self.read(text);
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
@@ -335,8 +339,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.handleViewSolution = function () {
     var self = this;
 
-    var $tryAgainButton = $('[data-content-id="' + self.contentId +'"] .h5p-question-try-again');
-    var $showSolutionButton = $('[data-content-id="' + self.contentId + '"] .h5p-question-show-solution');
+    var $tryAgainButton = $('.h5p-question-try-again', self.$container);
+    var $showSolutionButton = $('.h5p-question-show-solution', self.$container);
     var buttons = [self.$muteButton, $tryAgainButton, $showSolutionButton];
 
     // remove tabbable for buttons in result view
@@ -543,6 +547,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     };
 
     this.choices.forEach(function (choice){
+
       choice.setAnswered(false);
     });
 
