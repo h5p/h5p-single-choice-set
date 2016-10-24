@@ -167,19 +167,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.handleAlternativeSelected = function (event) {
     var self = this;
     var isCorrect = event.data.correct;
-    var index = event.data.index;
-    var question = self.choices[index];
 
     // correct answer
     var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
 
-    console.log('correctAnswer', correctAnswer, self.l10n.incorrectText);
-
     // Announce by ARIA if answer is correct or incorrect
     var text = isCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
-
-    console.log('text', text);
-
     self.read(text);
 
     if (!this.muted) {
