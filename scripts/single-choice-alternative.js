@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
   /**
   * @constructor
@@ -9,7 +9,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
   * @param {object} options Options for the alternative
   */
   function Alternative(options){
-    EventEmitter.call(this);
+    EventDispatcher.call(this);
     var self = this;
 
     this.options = options;
@@ -25,6 +25,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
     this.$alternative = $('<li>', {
       'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
+      'aria-checked': false,
       'role': 'radio',
       'tabindex': -1,
       'on': {
@@ -53,9 +54,6 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
         }
       },
       'focus': function (event) {
-        /*if (self.$button.is('.reveal-correct, reveal-wrong')) {
-          return;
-        }*/
         self.trigger('focus', event);
       },
       'click': triggerAlternativeSelected
@@ -74,7 +72,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
       'class': 'h5p-sc-status'
     }));
   }
-  Alternative.prototype = Object.create(EventEmitter.prototype);
+  Alternative.prototype = Object.create(EventDispatcher.prototype);
   Alternative.prototype.constructor = Alternative;
 
   /**
@@ -108,6 +106,15 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
   };
 
   /**
+   * Marks this field as aria-checked true/false
+   *
+   * @param {boolean} checked Should this field be checked
+   */
+  Alternative.prototype.setAriaChecked = function (checked) {
+    this.$alternative.attr('aria-checked', checked);
+  };
+
+  /**
    * Append the alternative to a DOM container
    *
    * @param  {domElement} $container The Dom element to append to
@@ -121,4 +128,4 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
   return Alternative;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
+})(H5P.jQuery, H5P.EventDispatcher);

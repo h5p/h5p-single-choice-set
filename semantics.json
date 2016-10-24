@@ -127,10 +127,10 @@
         "default": "Mute feedback sound"
       },
       {
-        "name": "backButtonLabel",
+        "name": "closeButtonLabel",
         "type": "text",
-        "label": "Label for the \"Back\" button",
-        "default": "Back"
+        "label": "Label for the \"Close\" button",
+        "default": "Close"
       },
       {
         "name": "slideOfTotal",

@@ -27,7 +27,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     // Close solution view button
     $('<button>', {
       'role': 'button',
-      'aria-label': l10n.backButtonLabel + '.',
+      'aria-label': l10n.closeButtonLabel + '.',
       'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
       'click': function () {
         self.hide();
@@ -82,7 +82,8 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     var self = this;
     self.$choices = $('<dl>', {
       'id': 'single-choice-' + self.id + '-solution-list',
-      'class': 'h5p-sc-solution-choices'
+      'class': 'h5p-sc-solution-choices',
+      'tabindex': 0
     });
 
     this.choices.forEach(function (choice, index) {
@@ -129,7 +130,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * @private
    * @param {String} text Input string
    */
-  SolutionView.prototype.hasPunctuation = function(text){
+  SolutionView.prototype.hasPunctuation = function (text){
     return /[,.?!]$/.test(text);
   };
 

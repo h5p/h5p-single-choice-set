@@ -15,6 +15,28 @@
   position: relative;
   box-sizing: border-box;
 }
+
+/* Temporarily disable drop from progressbar */
+.h5p-joubelui-drop.drop-element {
+  display: none ! important;
+}
+
+.h5p-single-choice-set .h5p-joubelui-progressbar {
+  height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
+  background-color: rgb(102, 102, 102);
+  box-shadow: none;
+}
+
+.h5p-single-choice-set .h5p-joubelui-progressbar-background {
+  box-shadow: 0 0 0.25em 0 #fff;
+  background-color: #0097fd;
+}
+
+/* Hide aria-live text */
+.h5p-single-choice-set .h5p-joubelui-progressbar [aria-live="assertive"] {
+  font-size: 0;
+}
+
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -47,6 +69,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   margin: .5em 0;
   padding: .4em 1.2em;
   background: #ddd;
+  overflow: hidden;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
@@ -82,6 +105,11 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-corre
   color: #255c41;
 }
 
+ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h5p-sc-reveal-correct .h5p-sc-progressbar {
+  background: #9dd8bb;
+  color: #255c41;
+}
+
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
   -webkit-transform: scale(.95);
   transform: scale(.95);
@@ -90,9 +118,51 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p-sc-reveal-wrong .h5p-sc-progressbar {
   background: #f7d0d0;
   color: #b71c1c;
+}
+
+li.h5p-sc-alternative .h5p-sc-progressbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #cee0f4;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+}
+.h5p-sc-drummed .h5p-sc-progressbar {
+  background: transparent;
+  transition: background 1s;
+}
+/* Using animation instead of transition on width made this much
+   smoother on iPad */
+li.h5p-sc-alternative.h5p-sc-selected .h5p-sc-progressbar {
+  -webkit-animation: progress 0.6s;
+  -moz-animation: progress 0.6s;
+  -o-animation: progress 0.6s;
+  animation: progress 0.6s;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes progress {
+    from { } to { width: 100% }
+}
+@-moz-keyframes progress {
+    from { } to { width: 100% }
+}
+@-ms-keyframes progress {
+    from { } to { width: 100% }
+}
+@keyframes progress {
+    from { } to { width: 100% }
 }
 li.h5p-sc-alternative .h5p-sc-label {
   position: relative;
@@ -175,6 +245,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   width: 100%;
   height: 100%;
 
+  outline: none;
   display:none;
   visibility: hidden;
   background: #fff;

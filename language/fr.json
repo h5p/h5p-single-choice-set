@@ -105,10 +105,10 @@
           "default": "Son de feedback Mute"
         },
         {
-          "englishLabel": "Label for the \"Back\" button",
-          "label": "Étiquette pour le bouton \"Retour\"",
-          "englishDefault": "Back",
-          "default": "Retour"
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "Étiquette pour le bouton \"Fermer\"",
+          "englishDefault": "Close",
+          "default": "Fermer"
         },
         {
           "englishLabel": "Slide number text",

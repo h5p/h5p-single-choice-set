@@ -105,10 +105,10 @@
           "default": "Mute"
         },
         {
-          "englishLabel": "Label for the \"Back\" button",
-          "label": "Label für die \"Zurück\"-Taste",
-          "englishDefault": "Back",
-          "default": "Zurück"
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "Label für die \"Schließen\"-Taste",
+          "englishDefault": "Close",
+          "default": "Schließen"
         },
         {
           "englishLabel": "Slide number text",

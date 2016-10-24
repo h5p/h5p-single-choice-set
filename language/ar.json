@@ -105,10 +105,10 @@
           "default": "صوت ردود الفعل البكم"
         },
         {
-          "englishLabel": "Label for the \"Back\" button",
-          "label": "تسمية الزر الخلف",
-          "englishDefault": "Back",
-          "default": "الى الخلف"
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "تسمية الزر إغلاق",
+          "englishDefault": "Close",
+          "default": "أغلق"
         },
         {
           "englishLabel": "Slide number text",

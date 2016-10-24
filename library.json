@@ -26,9 +26,6 @@
       "path": "scripts/sound-effects.js"
     },
     {
-      "path": "scripts/event-emitter.js"
-    },
-    {
       "path": "scripts/result-slide.js"
     },
     {

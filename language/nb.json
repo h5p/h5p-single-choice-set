@@ -105,10 +105,10 @@
           "default": "Skru av tilbakemeldingslyd"
         },
         {
-          "englishLabel": "Label for the \"Back\" button",
-          "label": "Merkelapp for \"Tilbake\"-knappen",
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "Merkelapp for \"Lukk\"-knappen",
           "englishDefault": "Back",
-          "default": "Tilbake"
+          "default": "Lukk"
         },
         {
           "englishLabel": "Slide number text",

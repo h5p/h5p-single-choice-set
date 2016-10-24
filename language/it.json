@@ -105,10 +105,10 @@
           "default": "Suono di feedback Muto"
         },
         {
-          "englishLabel": "Label for the \"Back\" button",
-          "label": "Etichetta pulsante \"Indietro\"",
-          "englishDefault": "Back",
-          "default": "Indietro"
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "Etichetta pulsante \"Vicino\"",
+          "englishDefault": "Close",
+          "default": "Vicino"
         },
         {
           "englishLabel": "Slide number text",
