@@ -461,7 +461,8 @@ li.h5p-sc-alternative .h5p-sc-status {
 /* Transparent specific styles */
 .h5p-transparent > div > .h5p-single-choice-set .h5p-sc-alternatives,
 .h5p-transparent > div > .h5p-single-choice-set .h5p-sc-question {
-  margin: 0.888888889em 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .h5p-transparent > div > .h5p-single-choice-set .h5p-sc-question {
