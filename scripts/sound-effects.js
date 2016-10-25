@@ -7,8 +7,7 @@ H5P.SingleChoiceSet.SoundEffects = (function ($) {
     types: [
       'positive-short',
       'negative-short'
-    ],
-    libraryPath: undefined
+    ]
   };
 
   /**
