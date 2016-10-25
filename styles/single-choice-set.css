@@ -15,24 +15,28 @@
   position: relative;
   box-sizing: border-box;
 }
-.h5p-sc-set-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
 
+/* Temporarily disable drop from progressbar */
+.h5p-joubelui-drop.drop-element {
+  display: none ! important;
+}
+
+.h5p-single-choice-set .h5p-joubelui-progressbar {
   height: 5px; /* Setting height in px is intentional. We don't want it to ever get bigger */
-  width: 100%;
-  background: rgb(102, 102, 102);
+  background-color: rgb(102, 102, 102);
+  box-shadow: none;
 }
-.h5p-sc-set-progress .h5p-sc-completed {
-  height: 100%;
-  width: 0;
 
+.h5p-single-choice-set .h5p-joubelui-progressbar-background {
   box-shadow: 0 0 0.25em 0 #fff;
-  background: #0097fd;
-
-  transition: width 0.25s ease-in-out;
+  background-color: #0097fd;
 }
+
+/* Hide aria-live text */
+.h5p-single-choice-set .h5p-joubelui-progressbar [aria-live="assertive"] {
+  font-size: 0;
+}
+
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -65,6 +69,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   margin: .5em 0;
   padding: .4em 1.2em;
   background: #ddd;
+  overflow: hidden;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
@@ -77,7 +82,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
   background: #edd6e9;
-  outline: none;
 }
 
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
@@ -231,7 +235,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   font-size: 1.25em;
   content: '\f028';
 }
-.h5p-sc-sound-control.muted:after {
+[aria-pressed='true'].h5p-sc-sound-control:after {
   content: '\f026';
 }
 .h5p-sc-solution-view {
@@ -241,6 +245,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   width: 100%;
   height: 100%;
 
+  outline: none;
   display:none;
   visibility: hidden;
   background: #fff;
@@ -454,17 +459,19 @@ li.h5p-sc-alternative .h5p-sc-status {
 }
 
 /* Transparent specific styles */
-.h5p-single-choice-set.h5p-transparent .h5p-sc-alternatives,
-.h5p-single-choice-set.h5p-transparent .h5p-sc-question {
-  margin: 1em 0;
+.h5p-transparent > div > .h5p-single-choice-set .h5p-sc-alternatives,
+.h5p-transparent > div > .h5p-single-choice-set .h5p-sc-question {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.h5p-single-choice-set.h5p-transparent .h5p-sc-question {
+.h5p-transparent > div > .h5p-single-choice-set .h5p-sc-question {
   margin-top: 0;
 }
 
-.h5p-single-choice-set.h5p-transparent .h5p-sc-sound-control {
+.h5p-transparent > div > .h5p-single-choice-set .h5p-sc-sound-control {
   top: 0;
+  right: 0;
 }
 
 /* CP popup specific style */

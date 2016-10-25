@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
+H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
   /**
    * @constructor
    * @extends Question
@@ -36,10 +36,15 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     this.muted = (this.options.behaviour.soundEffectsEnabled === false);
 
     this.l10n = H5P.jQuery.extend({
+      correctText: 'Correct!',
+      incorrectText: 'Incorrect! Correct answer was: :text',
       resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
-      solutionViewTitle: 'Solution'
+      closeButtonLabel: 'Close',
+      solutionViewTitle: 'Solution',
+      slideOfTotal: 'Slide :num of :total',
+      muteButtonLabel: "Mute feedback sound"
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
@@ -50,31 +55,38 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     // An array containing the SingleChoice instances
     this.choices = [];
 
-    this.solutionView = new SolutionView(this.options.choices, this.l10n);
+    /**
+     * The solution dialog
+     * @type {SolutionView}
+     */
+    this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
+
+    // Focus on "try-again"-button when closing solution view
+    this.solutionView.on('hide', function (){
+     self.focusButton('try-again');
+    });
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
     });
-    this.$progressbar = $('<div>', {
-      'class': 'h5p-sc-set-progress'
+
+    // sometimes an empty object is in the choices
+    this.options.choices = this.options.choices.filter(function(choice){
+      return choice !=undefined && !!choice.answers;
     });
-    this.$progressCompleted = $('<div>', {
-      'class': 'h5p-sc-completed'
-    }).appendTo(this.$progressbar);
 
-    // Validate "slides", reverse traversal since we remove entries as we go
-    for (var slideIndex = this.options.choices.length - 1; slideIndex >= 0; slideIndex--) {
+    var numQuestions = this.options.choices.length;
 
-      // Prune invalid slide
-      if (!this.options.choices[slideIndex].answers) {
-        this.options.choices.splice(slideIndex, 1);
-      }
-    }
+    // Create progressbar
+    self.progressbar = UI.createProgressbar(numQuestions, {
+      progressText: this.l10n.slideOfTotal
+    });
+    self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i);
+      var choice = new SingleChoice(this.options.choices[i], i, this.contentId);
       choice.on('finished', this.handleQuestionFinished, this);
-      choice.on('alternative-selected', this.handleAlternativeSelected, this)
+      choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
       this.choices.push(choice);
       this.$slides.push(choice.$choice);
@@ -98,7 +110,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
 
     if (!this.muted) {
       setTimeout(function () {
-        SoundEffects.setup();
+        SoundEffects.setup(self.getLibraryFilePath(''));
       },1);
     }
 
@@ -135,33 +147,71 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.constructor = SingleChoiceSet;
 
   /**
-   * Handle alternative selected, i.e play sound if sound effects are enabled
-   * 
-   * @method handleAlternativeSelected
-   * @param  {boolean} correct Was alternative correct or not?
+   * Set if a element is tabbable or not
+   *
+   * @param {jQuery} $element The element
+   * @param {boolean} tabbable If element should be tabbable
+   * @returns {jQuery} The element
    */
-  SingleChoiceSet.prototype.handleAlternativeSelected = function (correct) {
+  SingleChoiceSet.prototype.setTabbable = function ($element, tabbable) {
+    $element.attr('tabindex', tabbable ? 0 : -1);
+    return $element;
+  };
+
+  /**
+   * Handle alternative selected, i.e play sound if sound effects are enabled
+   *
+   * @method handleAlternativeSelected
+   * @param  {Object} event Event that was fired
+   */
+  SingleChoiceSet.prototype.handleAlternativeSelected = function (event) {
+    var self = this;
+    var isCorrect = event.data.correct;
+
+    // correct answer
+    var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
+
+    // Announce by ARIA if answer is correct or incorrect
+    var text = isCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
+    self.read(text);
+
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
-      SoundEffects.play(correct ? 'positive-short' : 'negative-short', 700);
+      SoundEffects.play(isCorrect ? 'positive-short' : 'negative-short', 700);
     }
-  }
+  };
+
+  /**
+   * Takes a question, and returns the correct alternative
+   *
+   * @param {H5P.SingleChoiceSet.SingleChoice} question The question you want to find the answer to
+   * @returns {Alternative} The correct alternative
+   */
+  SingleChoiceSet.prototype.findCorrectAlternativeFromQuestion = function (question) {
+    return question.alternatives.filter(function (alternative){
+      return alternative.options.correct;
+    })[0];
+  };
+
   /**
    * Handler invoked when question is done
    *
    * @param  {object} data An object containing a single boolean property: "correct".
    */
-  SingleChoiceSet.prototype.handleQuestionFinished = function (data) {
+  SingleChoiceSet.prototype.handleQuestionFinished = function (event) {
     var self = this;
-    self.triggerXAPI('interacted');
-    if (data.correct) {
+
+    if (event.data.correct) {
       self.results.corrects++;
     }
     else {
       self.results.wrongs++;
     }
 
+    self.triggerXAPI('interacted');
+
+    // if should show result slide
     if (self.currentIndex+1 >= self.options.choices.length) {
       self.setScore(self.results.corrects);
     }
@@ -175,11 +225,12 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
 
     var timeout = setTimeout(function () {
       letsMove();
-    }, data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
+    }, event.data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
     self.$container.on('click.impatient', function () {
       letsMove();
     });
+
     self.$container.on('keydown.impatient', function (event) {
       // If return, space or right arrow
       if(event.which === 13 || event.which === 32 || event.which === 39) {
@@ -217,6 +268,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var lastSelected = self.choices[self.choices.length - 1]
       .$choice
       .find('.h5p-sc-alternative.h5p-sc-selected');
+
     var timeout = (timeout !== undefined) ? timeout : (lastSelected.is('.h5p-sc-is-correct') ?
       this.options.behaviour.timeoutCorrect :
       this.options.behaviour.timeoutWrong);
@@ -229,15 +281,18 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
           .replace(':numcorrect', score)
           .replace(':maxscore', self.options.choices.length),
         score, self.options.choices.length);
+
       if (score === self.options.choices.length) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
-      } else {
+      }
+      else {
         self.showButton('try-again');
         self.showButton('show-solution');
       }
       self.handleQueuedButtonChanges();
       self.scoreTimeout = undefined;
+
       if (!noXAPI) {
         self.triggerXAPIScored(score, self.options.choices.length, 'completed');
       }
@@ -252,11 +307,20 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       showFeedback();
     }, (timeout));
 
+    // listen for impatient keyboard clicks
+    self.$container.one('keydown.impatient', function (event) {
+      // If return, space or right arrow
+      if(event.which === 13 || event.which === 32 || event.which === 39) {
+        clearTimeout(self.scoreTimeout);
+        showFeedback();
+      }
+    });
+
     /**
      * Listen for impatient clicks.
      * On impatient clicks clear timeout and immediately show feedback.
      */
-    self.$container.on('click.impatient', function () {
+    self.$container.one('click.impatient', function () {
       clearTimeout(self.scoreTimeout);
       showFeedback();
     });
@@ -266,7 +330,25 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * Handler invoked when view solution is selected
    */
   SingleChoiceSet.prototype.handleViewSolution = function () {
-    this.solutionView.show();
+    var self = this;
+
+    var $tryAgainButton = $('.h5p-question-try-again', self.$container);
+    var $showSolutionButton = $('.h5p-question-show-solution', self.$container);
+    var buttons = [self.$muteButton, $tryAgainButton, $showSolutionButton];
+
+    // remove tabbable for buttons in result view
+    buttons.forEach(function(button){
+      self.setTabbable(button, false);
+    });
+
+    self.solutionView.on('hide', function(){
+      // re-add tabbable for buttons in result view
+      buttons.forEach(function(button){
+        self.setTabbable(button, true);
+      });
+    });
+
+    self.solutionView.show();
   };
 
   /**
@@ -316,16 +398,36 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
     var self = this;
 
     self.$container.append(self.$choices);
-    self.$container.append(self.$progressbar);
+    self.progressbar.appendTo(self.$container);
+
+    function toggleMute(event){
+      var $button = $(event.target);
+      event.preventDefault();
+      self.muted = !self.muted;
+      $button.attr('aria-pressed', self.muted);
+    }
 
     if (self.options.behaviour.soundEffectsEnabled) {
-      self.$container.append($('<div>', {
+      self.$muteButton = $('<div>', {
         'class': 'h5p-sc-sound-control',
-        'click': function () {
-          self.muted = !self.muted;
-          $(this).toggleClass('muted', self.muted);
-        }
-      }));
+        'tabindex' : 0,
+        'role': 'button',
+        'aria-label': self.l10n.muteButtonLabel,
+        'aria-pressed': false,
+        'on': {
+          'keydown': function (event) {
+            switch (event.which) {
+              case 13: // Enter
+              case 32: // Space
+                toggleMute(event);
+                break;
+            }
+          }
+        },
+        'click': toggleMute
+      });
+
+      self.$container.append(self.$muteButton);
     }
 
     // Append solution view - hidden by default:
@@ -363,7 +465,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.recklessJump = function (index) {
     var tX = 'translateX('+(-index*100)+'%)';
     this.$choices.css({'-webkit-transform':tX,'-moz-transform':tX,'-ms-transform':tX,'transform':tX});
-    this.$progressCompleted.css({width:((index+1)/(this.options.choices.length+1))*100 + '%'});
+    this.progressbar.setProgress(index + 1);
   };
 
   /**
@@ -371,20 +473,32 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
    * @param  {number} index The slide number    to move to
    */
   SingleChoiceSet.prototype.move = function (index) {
+    var self = this;
     if (index === this.currentIndex) {
       return;
     }
 
-    var $previousSlide = this.$slides[this.currentIndex];
+    var $previousSlide = self.$slides[self.currentIndex];
+    var $currentChoice = self.choices[index];
+    var $currentSlide = self.$slides[index];
 
-    H5P.Transition.onTransitionEnd(this.$choices, function () {
+    H5P.Transition.onTransitionEnd(self.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
+
+      // on slides with answers focus on first alternative
+      if(index < self.choices.length){
+        $currentChoice.focusOnAlternative(0);
+      }
+      // on last slide, focus on try again button
+      else {
+        self.focusButton('try-again');
+      }
     }, 600);
 
-    this.$slides[index].addClass('h5p-sc-current-slide');
-    this.recklessJump(index);
+    $currentSlide.addClass('h5p-sc-current-slide');
+    self.recklessJump(index);
 
-    this.currentIndex = index;
+    self.currentIndex = index;
   };
 
   /**
@@ -400,7 +514,7 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
   SingleChoiceSet.prototype.getAnswerGiven = function () {
     return (this.results.corrects + this.results.wrongs) > 0;
   };
-  SingleChoiceSet.prototype.getTitle = function() {
+  SingleChoiceSet.prototype.getTitle = function () {
     return (this.options.choices[0] ? H5P.createTitle(this.options.choices[0].question) : '');
   };
   SingleChoiceSet.prototype.showSolutions = function () {
@@ -425,6 +539,11 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
       wrongs: 0
     };
 
+    this.choices.forEach(function (choice){
+
+      choice.setAnswered(false);
+    });
+
     this.move(0);
 
     // Wait for transition, then remove feedback.
@@ -448,4 +567,4 @@ H5P.SingleChoiceSet = (function ($, Question, SingleChoice, SolutionView, Result
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);

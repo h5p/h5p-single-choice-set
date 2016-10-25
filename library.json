@@ -5,8 +5,8 @@
   "license": "MIT",
   "author": "Joubel AS (fnoks)",
   "majorVersion": 1,
-  "minorVersion": 5,
-  "patchVersion": 1,
+  "minorVersion": 6,
+  "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -24,9 +24,6 @@
   "preloadedJs": [
     {
       "path": "scripts/sound-effects.js"
-    },
-    {
-      "path": "scripts/event-emitter.js"
     },
     {
       "path": "scripts/result-slide.js"

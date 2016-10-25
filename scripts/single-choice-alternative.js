@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
   /**
   * @constructor
@@ -9,29 +9,54 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
   * @param {object} options Options for the alternative
   */
   function Alternative(options){
-    EventEmitter.call(this);
+    EventDispatcher.call(this);
     var self = this;
 
     this.options = options;
 
-    var triggerAlternativeSelected = function () {
+    var triggerAlternativeSelected = function (event) {
       self.trigger('alternative-selected', {
         correct: self.options.correct,
         $element: self.$alternative
       });
-    };
 
+      event.preventDefault();
+    };
 
     this.$alternative = $('<li>', {
       'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
-      tabindex: 1,
-      click: triggerAlternativeSelected,
-      keypress: function (event) {
-        // If enter or space has been pushed
-        if(event.which === 13 || event.which === 32) {
-          triggerAlternativeSelected();
+      'aria-checked': false,
+      'role': 'radio',
+      'tabindex': -1,
+      'on': {
+        'keydown': function (event) {
+          switch (event.which) {
+            case 13: // Enter
+            case 32: // Space
+              // Answer question
+              triggerAlternativeSelected(event);
+              break;
+
+            case 37: // Left Arrow
+            case 38: // Up Arrow
+              // Go to previous Option
+              self.trigger('previousOption', event);
+              event.preventDefault();
+              break;
+
+            case 39: // Right Arrow
+            case 40: // Down Arrow
+              // Go to next Option
+              self.trigger('nextOption', event);
+              event.preventDefault();
+              break;
+          }
         }
-      }
+      },
+      'focus': function (event) {
+        self.trigger('focus', event);
+      },
+      'click': triggerAlternativeSelected
     });
 
     this.$alternative.append($('<div>', {
@@ -46,9 +71,8 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-status'
     }));
-
   }
-  Alternative.prototype = Object.create(EventEmitter.prototype);
+  Alternative.prototype = Object.create(EventDispatcher.prototype);
   Alternative.prototype.constructor = Alternative;
 
   /**
@@ -60,6 +84,35 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
     return this.options.correct;
   };
 
+  /**
+   * Move focus to this option.
+   */
+  Alternative.prototype.focus = function () {
+    this.$alternative.focus();
+  };
+
+  /**
+   * Makes it possible to tab your way to this option.
+   */
+  Alternative.prototype.tabbable = function () {
+    this.$alternative.attr('tabindex', 0);
+  };
+
+  /**
+   * Make sure it's NOT possible to tab your way to this option.
+   */
+  Alternative.prototype.notTabbable = function () {
+    this.$alternative.attr('tabindex', -1);
+  };
+
+  /**
+   * Marks this field as aria-checked true/false
+   *
+   * @param {boolean} checked Should this field be checked
+   */
+  Alternative.prototype.setAriaChecked = function (checked) {
+    this.$alternative.attr('aria-checked', checked);
+  };
 
   /**
    * Append the alternative to a DOM container
@@ -75,4 +128,4 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventEmitter) {
 
   return Alternative;
 
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
+})(H5P.jQuery, H5P.EventDispatcher);
