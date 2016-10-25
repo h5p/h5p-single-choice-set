@@ -110,7 +110,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     if (!this.muted) {
       setTimeout(function () {
-        SoundEffects.setup();
+        SoundEffects.setup(self.getLibraryFilePath(''));
       },1);
     }
 
