@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, SoundEffects) {
+H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
   /**
    * Constructor function.
    */
@@ -18,11 +18,15 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
     this.answered = false;
 
     for (var i = 0; i < this.options.answers.length; i++) {
-      this.options.answers[i] = {text: this.options.answers[i], correct: i===0};
+      this.options.answers[i] = {
+        text: this.options.answers[i],
+        correct: i === 0
+      };
     }
     // Randomize alternatives
     this.options.answers = H5P.shuffleArray(this.options.answers);
   }
+
   SingleChoice.prototype = Object.create(EventDispatcher.prototype);
   SingleChoice.prototype.constructor = SingleChoice;
 
@@ -30,6 +34,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
    * appendTo function invoked to append SingleChoice to container
    *
    * @param {jQuery} $container
+   * @param {boolean} isCurrent Current slide we are on
    */
   SingleChoice.prototype.appendTo = function ($container, isCurrent) {
     var self = this;
@@ -40,13 +45,13 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
 
     this.$choice = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc' + (isCurrent ? ' h5p-sc-current-slide' : ''),
-      css: {'left': (self.index*100) + '%'}
+      css: {'left': (self.index * 100) + '%'}
     });
 
     var questionId = 'single-choice-' + self.id + '-question-' + self.index;
 
     this.$choice.append($('<div>', {
-      'id' : questionId,
+      'id': questionId,
       'class': 'h5p-sc-question',
       'html': this.options.question
     }));
@@ -60,10 +65,9 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
     /**
      * List of Alternatives
      *
-     * @private
      * @type {Alternative[]}
      */
-    this.alternatives = self.options.answers.map(function (opts){
+    this.alternatives = self.options.answers.map(function (opts) {
       return new Alternative(opts);
     });
 
@@ -98,17 +102,14 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
      * Handles focusing one of the options, making the rest non-tabbable.
      * @private
      */
-    var handleFocus = function (answer, index) {
+    var handleFocus = function (answer, index) {
       // Keep track of currently focused option
       focusedOption = index;
 
       // remove tabbable all alternatives
-      this.alternatives.forEach(function (alternative){
+      self.alternatives.forEach(function (alternative) {
         alternative.notTabbable();
       });
-
-      self.resetAnswers();
-      answer.setAriaChecked(true);
       answer.tabbable();
     };
 
@@ -116,11 +117,11 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
      * Handles moving the focus from the current option to the previous option.
      * @private
      */
-    var handlePreviousOption = function () {
-      if(!this.answered){
+    var handlePreviousOption = function () {
+      if (!this.answered) {
         if (focusedOption === 0) {
           // wrap around to last
-          this.focusOnAlternative(self.alternatives.length -1);
+          this.focusOnAlternative(self.alternatives.length - 1);
         }
         else {
           this.focusOnAlternative(focusedOption - 1);
@@ -129,20 +130,11 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
     };
 
     /**
-     * Remove tabbable and aria-checked for all alternatives
-     */
-    self.resetAnswers = function (){
-      self.alternatives.forEach(function (alternative){
-        alternative.setAriaChecked(false);
-      });
-    };
-
-    /**
      * Handles moving the focus from the current option to the next option.
      * @private
      */
-    var handleNextOption = function () {
-      if(!this.answered){
+    var handleNextOption = function () {
+      if (!this.answered) {
         if ((focusedOption === this.alternatives.length - 1)) {
           // wrap around to first
           this.focusOnAlternative(0);
@@ -156,7 +148,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
     for (var i = 0; i < this.alternatives.length; i++) {
       var alternative = this.alternatives[i];
 
-      if(i === 0){
+      if (i === 0) {
         alternative.tabbable();
       }
 
@@ -178,7 +170,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
    *
    * @param {Number} index The index of the alternative to focus on
    */
-  SingleChoice.prototype.focusOnAlternative = function (index){
+  SingleChoice.prototype.focusOnAlternative = function (index) {
     this.alternatives[index].focus();
   };
 
@@ -187,7 +179,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
    *
    * @param {Boolean} answered If this question was answered
    */
-  SingleChoice.prototype.setAnswered = function (answered){
+  SingleChoice.prototype.setAnswered = function (answered) {
     this.answered = answered;
   };
 
@@ -212,4 +204,4 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative, S
 
   return SingleChoice;
 
-})(H5P.jQuery, H5P.EventDispatcher, H5P.SingleChoiceSet.Alternative, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.EventDispatcher, H5P.SingleChoiceSet.Alternative);

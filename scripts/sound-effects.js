@@ -1,9 +1,9 @@
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-H5P.SingleChoiceSet.SoundEffects = (function ($) {
+H5P.SingleChoiceSet.SoundEffects = (function () {
   var isDefined = false;
 
-  SoundEffects = {
+  var SoundEffects = {
     types: [
       'positive-short',
       'negative-short'
@@ -42,4 +42,4 @@ H5P.SingleChoiceSet.SoundEffects = (function ($) {
   };
 
   return SoundEffects;
-})(H5P.jQuery);
+})();
