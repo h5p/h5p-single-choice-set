@@ -32,11 +32,6 @@
   background-color: #0097fd;
 }
 
-/* Hide aria-live text */
-.h5p-single-choice-set .h5p-joubelui-progressbar [aria-live="assertive"] {
-  font-size: 0;
-}
-
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
