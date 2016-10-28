@@ -3,18 +3,18 @@ H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 /**
  * SingleChoiceResultSlide - Represents the result slide
  */
-H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
+H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
   /**
-  * @constructor
-  * @param {number} maxscore Max score
-  */
+   * @constructor
+   * @param {number} maxscore Max score
+   */
   function ResultSlide(maxscore) {
-    EventEmitter.call(this);
-    this.maxscore = maxscore;
-    var self = this;
+    EventDispatcher.call(this);
+
     this.$feedbackContainer = $('<div>', {
-     'class': 'h5p-sc-feedback-container'
+      'class': 'h5p-sc-feedback-container',
+      'tabindex': '-1'
     });
 
     this.$buttonContainer = $('<div/>', {
@@ -31,15 +31,25 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
       'css': {left: (maxscore * 100) + '%'}
     }).append($resultContainer);
   }
-  ResultSlide.prototype = Object.create(EventEmitter.prototype);
+
+  // inherits from EventDispatchers prototype
+  ResultSlide.prototype = Object.create(EventDispatcher.prototype);
+
+  // set the constructor
   ResultSlide.prototype.constructor = ResultSlide;
 
+  /**
+   * Focus feedback container.
+   */
+  ResultSlide.prototype.focusScore = function () {
+    this.$feedbackContainer.focus();
+  };
 
   /**
    * Append the resultslide to a container
    *
-   * @param  {domElement} $container The container
-   * @return {domElement}            This dom element
+   * @param  {jQuery} $container The container
+   * @return {jQuery}            This dom element
    */
   ResultSlide.prototype.appendTo = function ($container) {
     this.$resultSlide.appendTo($container);
@@ -47,5 +57,4 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventEmitter) {
   };
 
   return ResultSlide;
-
-})(H5P.jQuery, H5P.SingleChoiceSet.EventEmitter);
+})(H5P.jQuery, H5P.EventDispatcher);
