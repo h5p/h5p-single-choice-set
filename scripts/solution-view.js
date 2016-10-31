@@ -3,9 +3,9 @@ H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
 H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   /**
-  * Constructor function.
-  */
-  function SolutionView (id, choices, l10n){
+   * Constructor function.
+   */
+  function SolutionView(id, choices, l10n) {
     EventDispatcher.call(this);
     var self = this;
     self.id = id;
@@ -14,15 +14,20 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     this.$solutionView = $('<div>', {
       'class': 'h5p-sc-solution-view',
       'role': 'dialog',
-      'aria-labelledby': 'single-choice-' + self.id + '-solution-title',
-      'aria-describedby': 'single-choice-' + self.id + '-solution-list',
-      'tabindex': 0
     });
 
     // Add header
     this.$header = $('<div>', {
       'class': 'h5p-sc-solution-view-header'
     }).appendTo(this.$solutionView);
+
+    this.$title = $('<div>', {
+      'class': 'h5p-sc-solution-view-title',
+      'html': l10n.solutionViewTitle,
+      'tabindex': '-1'
+    });
+    this.$title = this.addAriaPunctuation(this.$title);
+    this.$header.append(this.$title);
 
     // Close solution view button
     $('<button>', {
@@ -33,11 +38,6 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
         self.hide();
       }
     }).appendTo(this.$header);
-
-    var titleId = 'single-choice-' + self.id + '-solution-list';
-    var $title = $('<div class="h5p-sc-solution-view-title" id="' + titleId + '">' + l10n.solutionViewTitle + '</div>');
-    $title = this.addAriaPunctuation($title);
-    this.$header.append($title);
 
     self.populate();
   }
@@ -56,7 +56,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   SolutionView.prototype.show = function () {
     var self = this;
     self.$solutionView.addClass('visible');
-    self.$solutionView.focus();
+    self.$title.focus();
 
     $(document).on('keyup.solutionview', function (event) {
       if (event.keyCode === 27) { // Escape
@@ -81,12 +81,11 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   SolutionView.prototype.populate = function () {
     var self = this;
     self.$choices = $('<dl>', {
-      'id': 'single-choice-' + self.id + '-solution-list',
       'class': 'h5p-sc-solution-choices',
       'tabindex': 0
     });
 
-    this.choices.forEach(function (choice, index) {
+    this.choices.forEach(function (choice) {
       if (choice.question && choice.answers && choice.answers.length !== 0) {
         var $question = self.addAriaPunctuation($('<dt>', {
           'class': 'h5p-sc-solution-question',
@@ -110,14 +109,13 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * If a jQuery elements text is missing punctuation, add an aria-label to the element
    * containing the text, and adding an extra "period"-symbol at the end.
    *
-   * @private
    * @param {jQuery} $element A jQuery-element
    * @returns {jQuery} The mutated jQuery-element
    */
   SolutionView.prototype.addAriaPunctuation = function ($element) {
     var text = $element.text().trim();
 
-    if(!this.hasPunctuation(text)) {
+    if (!this.hasPunctuation(text)) {
       $element.attr('aria-label', text + '.');
     }
 
@@ -130,7 +128,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * @private
    * @param {String} text Input string
    */
-  SolutionView.prototype.hasPunctuation = function (text){
+  SolutionView.prototype.hasPunctuation = function (text) {
     return /[,.?!]$/.test(text);
   };
 

@@ -32,11 +32,6 @@
   background-color: #0097fd;
 }
 
-/* Hide aria-live text */
-.h5p-single-choice-set .h5p-joubelui-progressbar [aria-live="assertive"] {
-  font-size: 0;
-}
-
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -272,6 +267,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   font-size: 1.2em;
   text-align: center;
   line-height: 2.75em;
+  outline: none;
 }
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view {
   position: absolute;
@@ -373,6 +369,10 @@ li.h5p-sc-alternative .h5p-sc-status {
   transform: translateY(-50%);
   position: absolute;
   width: 100%;
+}
+
+.h5p-single-choice-set .h5p-sc-feedback-container {
+  outline: none;
 }
 
 /* Introduction */

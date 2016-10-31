@@ -4,11 +4,11 @@ H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
   /**
-  * @constructor
-  *
-  * @param {object} options Options for the alternative
-  */
-  function Alternative(options){
+   * @constructor
+   *
+   * @param {object} options Options for the alternative
+   */
+  function Alternative(options) {
     EventDispatcher.call(this);
     var self = this;
 
@@ -25,7 +25,6 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
     this.$alternative = $('<li>', {
       'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
-      'aria-checked': false,
       'role': 'radio',
       'tabindex': -1,
       'on': {
@@ -53,7 +52,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
           }
         }
       },
-      'focus': function (event) {
+      'focus': function (event) {
         self.trigger('focus', event);
       },
       'click': triggerAlternativeSelected
@@ -72,6 +71,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
       'class': 'h5p-sc-status'
     }));
   }
+
   Alternative.prototype = Object.create(EventDispatcher.prototype);
   Alternative.prototype.constructor = Alternative;
 
@@ -87,41 +87,31 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
   /**
    * Move focus to this option.
    */
-  Alternative.prototype.focus = function () {
+  Alternative.prototype.focus = function () {
     this.$alternative.focus();
   };
 
   /**
    * Makes it possible to tab your way to this option.
    */
-  Alternative.prototype.tabbable = function () {
+  Alternative.prototype.tabbable = function () {
     this.$alternative.attr('tabindex', 0);
   };
 
   /**
    * Make sure it's NOT possible to tab your way to this option.
    */
-  Alternative.prototype.notTabbable = function () {
+  Alternative.prototype.notTabbable = function () {
     this.$alternative.attr('tabindex', -1);
-  };
-
-  /**
-   * Marks this field as aria-checked true/false
-   *
-   * @param {boolean} checked Should this field be checked
-   */
-  Alternative.prototype.setAriaChecked = function (checked) {
-    this.$alternative.attr('aria-checked', checked);
   };
 
   /**
    * Append the alternative to a DOM container
    *
-   * @param  {domElement} $container The Dom element to append to
-   * @return {domElement}            This dom element
+   * @param  {jQuery} $container The Dom element to append to
+   * @return {jQuery}            This dom element
    */
   Alternative.prototype.appendTo = function ($container) {
-    var self = this;
     $container.append(this.$alternative);
     return this.$alternative;
   };
