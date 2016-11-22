@@ -26,6 +26,9 @@
       "path": "scripts/sound-effects.js"
     },
     {
+      "path": "scripts/xapi-event-builder.js"
+    },
+    {
       "path": "scripts/result-slide.js"
     },
     {

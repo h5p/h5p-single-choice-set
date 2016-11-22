@@ -17,7 +17,8 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
     var triggerAlternativeSelected = function (event) {
       self.trigger('alternative-selected', {
         correct: self.options.correct,
-        $element: self.$alternative
+        $element: self.$alternative,
+        answerIndex: self.options.answerIndex
       });
 
       event.preventDefault();
