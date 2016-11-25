@@ -250,11 +250,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    *
    * @param {object} question
    * @param {number} userAnswer
-   * @param {H5P.Question} instance
+   * @param {number} index
    *
    * @return {H5P.XAPIEvent}
    */
-  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer) {
+  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer, index) {
     var self = this;
     var types = XApiEventBuilder.interactionTypes;
 
@@ -275,7 +275,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     return XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
       .objectDefinition(definition)
-      .contentId(self.contentId, question.subContentId) // TODO Get subContentId from semantics
+      .contentId(self.contentId, index) // TODO Get subContentId from semantics
       .result(result)
       .build();
   };
@@ -619,7 +619,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var children =  self.userResponses.map(function(userResponse, index) {
       if (userResponse != undefined) {
         var question = self.options.choices[index];
-        return self.createXApiAnsweredEvent(question, userResponse);
+        var event = self.createXApiAnsweredEvent(question, userResponse, index);
+        return {
+          statement: event.data.statement
+        }
       }
     });
 
@@ -627,12 +630,27 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       .score(self.getScore(), self.getMaxScore())
       .build();
 
-    return XApiEventBuilder.create()
+    // creates the definition object
+    var definition = XApiEventBuilder.createDefinition()
+      .interactionType(XApiEventBuilder.interactionTypes.COMPOUND)
+      .build();
+
+    var xAPIEvent = XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
-      .children(children)
       .contentId(self.contentId)
+      .objectDefinition(definition)
       .result(result)
       .build();
+
+    console.log('getXAPIData',{
+      statement: xAPIEvent.data.statement,
+      children: children
+    });
+
+    return {
+      statement: xAPIEvent.data.statement,
+      children: children
+    };
   };
 
   SingleChoiceSet.prototype.showSolutions = function () {
