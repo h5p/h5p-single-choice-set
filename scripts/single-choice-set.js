@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects) {
+H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects, XApiEventBuilder) {
   /**
    * @constructor
    * @extends Question
@@ -33,6 +33,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         corrects: 0,
         wrongs: 0
       };
+
+    /**
+     * The users input on the questions. Uses the same index as this.options.choices
+     * @type {number[]}
+     */
+    this.userResponses = [];
+
     this.muted = (this.options.behaviour.soundEffectsEnabled === false);
 
     this.l10n = H5P.jQuery.extend({
@@ -195,6 +202,19 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.results.wrongs++;
     }
 
+    var index = event.data.index;
+
+    // saves user response
+    var userResponse = self.userResponses[index] = event.data.answerIndex;
+
+    // trigger answered event
+    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse, {
+      contentId: self.contentId,
+      subContentId: 'test2'
+    });
+
+    self.trigger(xapiEvent);
+
     self.triggerXAPI('interacted');
 
     // if should show result slide
@@ -223,6 +243,67 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         letsMove();
       }
     });
+  };
+
+  /**
+   * Creates an xAPI answered event
+   *
+   * @param {object} question
+   * @param {number} userAnswer
+   * @param {number} index
+   *
+   * @return {H5P.XAPIEvent}
+   */
+  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer, index) {
+    var self = this;
+    var types = XApiEventBuilder.interactionTypes;
+
+    // creates the definition object
+    var definition = XApiEventBuilder.createDefinition()
+      .interactionType(types.CHOICE)
+      .description(question.question)
+      .correctResponsesPattern(self.getXApiCorrectResponsePattern())
+      .optional( self.getXApiChoices(question.answers))
+      .build();
+
+    // create the result object
+    var result = XApiEventBuilder.createResult()
+      .response(userAnswer.toString())
+      .score((userAnswer === 0) ? 1 : 0, 1)
+      .build();
+
+    return XApiEventBuilder.create()
+      .verb(XApiEventBuilder.verbs.ANSWERED)
+      .objectDefinition(definition)
+      .contentId(self.contentId, index) // TODO Get subContentId from semantics
+      .result(result)
+      .build();
+  };
+
+  /**
+   * Returns the 'correct response pattern' for xApi
+   *
+   * @return {string[]}
+   */
+  SingleChoiceSet.prototype.getXApiCorrectResponsePattern = function () {
+    return [XApiEventBuilder.createCorrectResponsePattern([(0).toString()])]; // is always '0' for SCS
+  };
+
+  /**
+   * Returns the choices array for xApi statements
+   *
+   * @param {String[]} answers
+   *
+   * @return {{ choices: []}}
+   */
+  SingleChoiceSet.prototype.getXApiChoices = function (answers) {
+    var choices = answers.map(function(answer, index){
+      return XApiEventBuilder.createChoice(index.toString(), answer);
+    });
+
+    return {
+      choices: choices
+    }
   };
 
   /**
@@ -514,18 +595,63 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.getScore = function () {
     return this.results.corrects;
   };
+
   SingleChoiceSet.prototype.getMaxScore = function () {
     return this.options.choices.length;
   };
+
   SingleChoiceSet.prototype.getAnswerGiven = function () {
     return (this.results.corrects + this.results.wrongs) > 0;
   };
+
   SingleChoiceSet.prototype.getTitle = function () {
     return (this.options.choices[0] ? H5P.createTitle(this.options.choices[0].question) : '');
   };
+
+  /**
+   * Retrieves the xAPI data necessary for generating result reports.
+   *
+   * @return {H5P.XAPIEvent}
+   */
+  SingleChoiceSet.prototype.getXAPIData = function(){
+    var self = this;
+    // create array with userAnswer
+    var children =  self.userResponses.map(function(userResponse, index) {
+      if (userResponse != undefined) {
+        var question = self.options.choices[index];
+        var event = self.createXApiAnsweredEvent(question, userResponse, index);
+        return {
+          statement: event.data.statement
+        }
+      }
+    });
+
+    var result = XApiEventBuilder.createResult()
+      .score(self.getScore(), self.getMaxScore())
+      .build();
+
+    // creates the definition object
+    var definition = XApiEventBuilder.createDefinition()
+      .interactionType(XApiEventBuilder.interactionTypes.COMPOUND)
+      .build();
+
+    var xAPIEvent = XApiEventBuilder.create()
+      .verb(XApiEventBuilder.verbs.ANSWERED)
+      .contentId(self.contentId)
+      .objectDefinition(definition)
+      .result(result)
+      .build();
+
+    return {
+      statement: xAPIEvent.data.statement,
+      children: children
+    };
+  };
+
   SingleChoiceSet.prototype.showSolutions = function () {
     this.handleViewSolution();
   };
+
   /**
    * Reset all answers. This is equal to refreshing the quiz
    */
@@ -573,4 +699,4 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects);
+})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder);

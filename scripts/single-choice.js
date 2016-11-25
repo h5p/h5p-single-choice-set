@@ -20,7 +20,8 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {
         text: this.options.answers[i],
-        correct: i === 0
+        correct: i === 0,
+        answerIndex: i
       };
     }
     // Randomize alternatives
@@ -77,6 +78,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     var handleAlternativeSelected = function (event) {
       var $element = event.data.$element;
       var correct = event.data.correct;
+      var answerIndex = event.data.answerIndex;
 
       if ($element.parent().hasClass('h5p-sc-selected')) {
         return;
@@ -84,12 +86,13 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
       self.trigger('alternative-selected', {
         correct: correct,
-        index: self.index
+        index: self.index,
+        answerIndex: answerIndex
       });
 
       H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), function () {
         $element.addClass('h5p-sc-drummed');
-        self.showResult(correct);
+        self.showResult(correct, answerIndex);
       }, 700);
 
       $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
@@ -187,14 +190,19 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    * Reveals the result for a question
    *
    * @param  {boolean} correct True uf answer was correct, otherwise false
+   * @param  {number} answerIndex Original index of answer
    */
-  SingleChoice.prototype.showResult = function (correct) {
+  SingleChoice.prototype.showResult = function (correct, answerIndex) {
     var self = this;
 
     var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
 
     H5P.Transition.onTransitionEnd($correctAlternative, function () {
-      self.trigger('finished', {correct: correct});
+      self.trigger('finished', {
+        correct: correct,
+        index: self.index,
+        answerIndex: answerIndex
+      });
     }, 600);
 
     // Reveal corrects and wrong
