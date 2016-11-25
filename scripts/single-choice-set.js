@@ -642,11 +642,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       .result(result)
       .build();
 
-    console.log('getXAPIData',{
-      statement: xAPIEvent.data.statement,
-      children: children
-    });
-
     return {
       statement: xAPIEvent.data.statement,
       children: children

@@ -300,10 +300,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
       setAttribute(extensions, 'http://h5p.org/x-api/h5p-subContentId', this.attributes.subContentId);
     }
 
-    return {
-      statement: event.data.statement,
-      children: this.attributes.children
-    }
+    return event;
   };
 
   /**
