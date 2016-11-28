@@ -9,6 +9,7 @@
     "field": {
       "name": "choice",
       "type": "group",
+      "isSubContent": true,
       "label": "Question & alternatives",
       "fields": [
         {

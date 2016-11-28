@@ -9,6 +9,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
+    console.log('SingleChoiceSet', options);
+
     var self = this;
 
     // Extend defaults with provided options
@@ -208,10 +210,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var userResponse = self.userResponses[index] = event.data.answerIndex;
 
     // trigger answered event
-    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse, {
-      contentId: self.contentId,
-      subContentId: 'test2'
-    });
+    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse);
 
     self.trigger(xapiEvent);
 
@@ -254,7 +253,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    *
    * @return {H5P.XAPIEvent}
    */
-  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer, index) {
+  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer) {
     var self = this;
     var types = XApiEventBuilder.interactionTypes;
 
@@ -275,7 +274,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     return XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
       .objectDefinition(definition)
-      .contentId(self.contentId, index) // TODO Get subContentId from semantics
+      .contentId(self.contentId, question.subContentId)
       .result(result)
       .build();
   };
@@ -397,6 +396,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Handler invoked when view solution is selected
    */
   SingleChoiceSet.prototype.handleViewSolution = function () {
+    console.log('handleViewSolution', this.getXAPIData());
     var self = this;
 
     var $tryAgainButton = $('.h5p-question-try-again', self.$container);
@@ -616,13 +616,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.getXAPIData = function(){
     var self = this;
     // create array with userAnswer
-    var children =  self.userResponses.map(function(userResponse, index) {
-      if (userResponse != undefined) {
-        var question = self.options.choices[index];
-        var event = self.createXApiAnsweredEvent(question, userResponse, index);
-        return {
-          statement: event.data.statement
-        }
+    var children =  self.options.choices.map(function(question, index) {
+      var userResponse = self.userResponses[index] || '';
+      var event = self.createXApiAnsweredEvent(question, userResponse);
+
+      return {
+        statement: event.data.statement
       }
     });
 
