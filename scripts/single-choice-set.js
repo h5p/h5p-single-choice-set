@@ -615,9 +615,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    */
   SingleChoiceSet.prototype.getXAPIData = function(){
     var self = this;
+
     // create array with userAnswer
     var children =  self.options.choices.map(function(question, index) {
-      var userResponse = self.userResponses[index] || '';
+      var userResponse = self.userResponses[index] >= 0 ? self.userResponses[index] : '';
       var event = self.createXApiAnsweredEvent(question, userResponse);
 
       return {
