@@ -9,8 +9,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
-    console.log('SingleChoiceSet', options);
-
     var self = this;
 
     // Extend defaults with provided options
@@ -396,7 +394,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Handler invoked when view solution is selected
    */
   SingleChoiceSet.prototype.handleViewSolution = function () {
-    console.log('handleViewSolution', this.getXAPIData());
     var self = this;
 
     var $tryAgainButton = $('.h5p-question-try-again', self.$container);
