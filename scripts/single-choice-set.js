@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects, XApiEventBuilder) {
+H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects, XApiEventBuilder, StopWatch) {
   /**
    * @constructor
    * @extends Question
@@ -33,6 +33,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         corrects: 0,
         wrongs: 0
       };
+
+    /**
+     * @property {StopWatch[]} Stop watches for tracking duration of slides
+     */
+    this.stopWatches = [];
+    this.startStopWatch(this.currentIndex);
 
     /**
      * The users input on the questions. Uses the same index as this.options.choices
@@ -208,7 +214,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var userResponse = self.userResponses[index] = event.data.answerIndex;
 
     // trigger answered event
-    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse);
+    var duration = this.stopStopWatch(index);
+    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse, duration);
 
     self.trigger(xapiEvent);
 
@@ -247,11 +254,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    *
    * @param {object} question
    * @param {number} userAnswer
-   * @param {number} index
+   * @param {number} duration
    *
    * @return {H5P.XAPIEvent}
    */
-  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer) {
+  SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer, duration) {
     var self = this;
     var types = XApiEventBuilder.interactionTypes;
 
@@ -266,6 +273,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // create the result object
     var result = XApiEventBuilder.createResult()
       .response(userAnswer.toString())
+      .duration(duration)
       .score((userAnswer === 0) ? 1 : 0, 1)
       .build();
 
@@ -579,10 +587,50 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       }
     }, 600);
 
+    // start timing of new slide
+    this.startStopWatch(index);
+
+    // move to slide
     $currentSlide.addClass('h5p-sc-current-slide');
     self.recklessJump(index);
 
     self.currentIndex = index;
+  };
+
+  /**
+   * Starts a stopwatch for indexed slide
+   *
+   * @param {number} index
+   */
+  SingleChoiceSet.prototype.startStopWatch = function (index) {
+    this.stopWatches[index] = this.stopWatches[index] || new StopWatch();
+    this.stopWatches[index].start();
+  };
+
+  /**
+   * Stops a stopwatch for indexed slide
+   *
+   * @param {number|undefined} index
+   */
+  SingleChoiceSet.prototype.stopStopWatch = function (index) {
+    if(this.stopWatches[index]){
+      this.stopWatches[index].stop();
+    }
+  };
+
+  /**
+   * Returns the time the user has spent on all questions so far
+   *
+   * @return {number}
+   */
+  SingleChoiceSet.prototype.getTotalPassedTime = function () {
+    return this.stopWatches
+      .filter(function(watch){
+        return watch != undefined;
+      })
+      .reduce(function(sum, watch){
+        return sum + watch.passedTime();
+      }, 0);
   };
 
   /**
@@ -616,7 +664,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // create array with userAnswer
     var children =  self.options.choices.map(function(question, index) {
       var userResponse = self.userResponses[index] >= 0 ? self.userResponses[index] : '';
-      var event = self.createXApiAnsweredEvent(question, userResponse);
+      var duration = self.stopWatches[index].passedTime();
+      var event = self.createXApiAnsweredEvent(question, userResponse, duration);
 
       return {
         statement: event.data.statement
@@ -625,6 +674,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     var result = XApiEventBuilder.createResult()
       .score(self.getScore(), self.getMaxScore())
+      .duration(self.getTotalPassedTime())
       .build();
 
     // creates the definition object
@@ -669,8 +719,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     };
 
     this.choices.forEach(function (choice) {
-
       choice.setAnswered(false);
+    });
+
+    this.stopWatches.forEach(function(stopWatch){
+      if(stopWatch){
+        stopWatch.reset();
+      }
     });
 
     this.move(0);
@@ -696,4 +751,4 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   return SingleChoiceSet;
 
-})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder);
+})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);

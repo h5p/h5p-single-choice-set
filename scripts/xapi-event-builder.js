@@ -142,6 +142,15 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
   };
 
   /**
+   * @param {number} duration The duraction in seconds
+   * @return {XApiEventResultBuilder}
+   */
+  XApiEventResultBuilder.prototype.duration = function (duration) {
+    this.attributes.duration = duration;
+    return this;
+  };
+
+  /**
    * Sets response
    * @param {string|string[]} response
    * @return {XApiEventResultBuilder}
@@ -173,6 +182,10 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
     setAttribute(result, 'response', this.attributes.response);
     setAttribute(result, 'completion', this.attributes.completion);
     setAttribute(result, 'success', this.attributes.success);
+
+    if(isDefined(this.attributes.duration)){
+      setAttribute(result, 'duration','PT' +  this.attributes.duration + 'S');
+    }
 
     // sets score
     if (isDefined(this.attributes.rawScore)) {

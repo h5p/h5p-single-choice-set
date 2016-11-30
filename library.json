@@ -14,7 +14,7 @@
   ],
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 6
+    "minorVersion": 11
   },
   "preloadedCss": [
     {
@@ -22,6 +22,9 @@
     }
   ],
   "preloadedJs": [
+    {
+      "path": "scripts/stop-watch.js"
+    },
     {
       "path": "scripts/sound-effects.js"
     },
