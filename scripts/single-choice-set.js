@@ -618,6 +618,22 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   /**
+   * Returns the passed time of a stopwatch on an indexed slide,
+   * or 0 if not existing
+   *
+   * @param {number} index
+   */
+  SingleChoiceSet.prototype.timePassedInStopWatch = function (index) {
+    if(this.stopWatches[index]){
+      this.stopWatches[index].passedTime();
+    }
+    else {
+      // if not created, return no passed time,
+      return 0;
+    }
+  };
+
+  /**
    * Returns the time the user has spent on all questions so far
    *
    * @return {number}
@@ -663,7 +679,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // create array with userAnswer
     var children =  self.options.choices.map(function(question, index) {
       var userResponse = self.userResponses[index] >= 0 ? self.userResponses[index] : '';
-      var duration = self.stopWatches[index].passedTime();
+      var duration = self.timePassedInStopWatch(index);
       var event = self.createXApiAnsweredEvent(question, userResponse, duration);
 
       return {
