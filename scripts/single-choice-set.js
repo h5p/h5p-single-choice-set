@@ -609,7 +609,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   /**
    * Stops a stopwatch for indexed slide
    *
-   * @param {number} [index]
+   * @param {number} index
    */
   SingleChoiceSet.prototype.stopStopWatch = function (index) {
     if(this.stopWatches[index]){
@@ -618,10 +618,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   /**
-   * Returns the passed time of a stopwatch on an indexed slide,
+   * Returns the passed time in seconds of a stopwatch on an indexed slide,
    * or 0 if not existing
    *
    * @param {number} index
+   * @return {number}
    */
   SingleChoiceSet.prototype.timePassedInStopWatch = function (index) {
     if(this.stopWatches[index] !== undefined){
