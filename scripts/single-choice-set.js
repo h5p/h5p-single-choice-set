@@ -280,6 +280,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     return XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
       .objectDefinition(definition)
+      .context(self.contentId, self.subContentId)
       .contentId(self.contentId, question.subContentId)
       .result(result)
       .build();
@@ -610,7 +611,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   /**
    * Stops a stopwatch for indexed slide
    *
-   * @param {number|undefined} index
+   * @param {number} [index]
    */
   SingleChoiceSet.prototype.stopStopWatch = function (index) {
     if(this.stopWatches[index]){
@@ -656,7 +657,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   /**
    * Retrieves the xAPI data necessary for generating result reports.
    *
-   * @return {H5P.XAPIEvent}
+   * @return {object}
    */
   SingleChoiceSet.prototype.getXAPIData = function(){
     var self = this;
@@ -684,7 +685,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     var xAPIEvent = XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
-      .contentId(self.contentId)
+      .contentId(self.contentId, self.subContentId)
+      .context(self.getParentAttribute('contentId'), self.getParentAttribute('subContentId'))
       .objectDefinition(definition)
       .result(result)
       .build();
@@ -693,6 +695,20 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       statement: xAPIEvent.data.statement,
       children: children
     };
+  };
+
+  /**
+   * Returns an attribute from this.parent if it exists
+   *
+   * @param {string} attributeName
+   * @return {*|undefined}
+   */
+  SingleChoiceSet.prototype.getParentAttribute = function (attributeName) {
+    var self = this;
+
+    if(self.parent !== undefined){
+      return self.parent[attributeName];
+    }
   };
 
   SingleChoiceSet.prototype.showSolutions = function () {

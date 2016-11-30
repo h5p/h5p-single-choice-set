@@ -264,6 +264,19 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
   };
 
   /**
+   * Sets parent in context
+   *
+   * @param {string} parentContentId
+   * @param {string} [parentSubContentId]
+   * @return {H5P.SingleChoiceSet.XApiEventBuilder}
+   */
+  XApiEventBuilder.prototype.context = function (parentContentId, parentSubContentId) {
+    this.attributes.parentContentId = parentContentId;
+    this.attributes.parentSubContentId = parentSubContentId;
+    return this;
+  };
+
+  /**
    * @param {object} result
    *
    * @public
@@ -295,7 +308,20 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
 
     event.setActor();
     event.setVerb(this.attributes.verb);
-    //event.setContext(instance);
+
+    // sets context
+    if(this.attributes.parentContentId || this.attributes.parentSubContentId){
+      event.data.statement.context = {
+        'contextActivities': {
+          'parent': [
+            {
+              'id': getContentXAPIId(this.attributes.parentContentId, this.attributes.parentSubContentId),
+              'objectType': "Activity"
+            }
+          ]
+        }
+      };
+    }
 
     event.data.statement.object = {
       'id': getContentXAPIId(this.attributes.contentId, this.attributes.subContentId),
@@ -332,8 +358,8 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
 
   /**
    * Generates an id for the content
-   * @param contentId
-   * @param subContentId
+   * @param {string} contentId
+   * @param {string} [subContentId]
    *
    * @see {@link https://github.com/h5p/h5p-php-library/blob/master/js/h5p-x-api-event.js#L240-L249}
    * @return {string}
