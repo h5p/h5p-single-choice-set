@@ -219,8 +219,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.trigger(xapiEvent);
 
-    self.triggerXAPI('interacted');
-
     // if should show result slide
     if (self.currentIndex + 1 >= self.options.choices.length) {
       self.setScore(self.results.corrects);
