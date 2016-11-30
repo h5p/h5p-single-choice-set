@@ -624,8 +624,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @param {number} index
    */
   SingleChoiceSet.prototype.timePassedInStopWatch = function (index) {
-    if(this.stopWatches[index]){
-      this.stopWatches[index].passedTime();
+    if(this.stopWatches[index] !== undefined){
+      return this.stopWatches[index].passedTime();
     }
     else {
       // if not created, return no passed time,
