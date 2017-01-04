@@ -30,7 +30,7 @@
         {
           "name": "answers",
           "type": "list",
-          "label": "Alternatives - first alternative is the correct one",
+          "label": "Alternatives - first alternative is the correct one.",
           "importance": "medium",
           "entity": "answer",
           "min": 2,

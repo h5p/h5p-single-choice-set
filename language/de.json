@@ -10,7 +10,7 @@
             "label": "Frage"
           },
           {
-            "label": "Alternativen - die erste Alternative ist die Richtige",
+            "label": "Alternativen - die erste Alternative ist die Richtige.",
             "entity": "antwort",
             "field": {
               "label": "Alternative"
