@@ -14,8 +14,8 @@
             "label": "Spørsmål"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one",
-            "label": "Alternativer. Det første alternativet er rett",
+            "englishLabel": "Alternatives - first alternative is the correct one.",
+            "label": "Alternativer. Det første alternativet er rett.",
             "englishEntity": "answer",
             "entity": "svar",
             "field": {

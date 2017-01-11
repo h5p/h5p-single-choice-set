@@ -14,8 +14,8 @@
             "label": "Question"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one",
-            "label": "Réponses possibles - la première de la liste est celle qui est juste",
+            "englishLabel": "Alternatives - first alternative is the correct one.",
+            "label": "Réponses possibles - la première de la liste est celle qui est juste.",
             "englishEntity": "answer",
             "entity": "réponse",
             "field": {
