@@ -14,7 +14,7 @@
             "label": "السؤال"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one",
+            "englishLabel": "Alternatives - first alternative is the correct one.",
             "label": "اجوبة بديلة - أول جواب هو الصحيح",
             "englishEntity": "answer",
             "entity": "جواب",
