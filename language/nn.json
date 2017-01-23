@@ -53,6 +53,10 @@
         {
           "englishLabel": "Enable show solution button",
           "label": "\"Vis svar\" knapp"
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
         }
       ]
     },
