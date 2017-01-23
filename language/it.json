@@ -14,8 +14,8 @@
             "label": "Domanda"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one",
-            "label": "Alternative - La prima alternativa è quella giusta",
+            "englishLabel": "Alternatives - first alternative is the correct one.",
+            "label": "Alternative - La prima alternativa è quella giusta.",
             "englishEntity": "answer",
             "entity": "risposta",
             "field": {
