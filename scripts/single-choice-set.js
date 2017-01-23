@@ -16,13 +16,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
-      passPercentage: 100,
       behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
         enableRetry: true,
-        enableSolutionsButton: true
+        enableSolutionsButton: true,
+        passPercentage: 100
       }
     }, options);
     if (contentData && contentData.previousState !== undefined) {
@@ -354,7 +354,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
 
-      if ((100 * score / self.options.choices.length) >= self.options.passPercentage) {
+      if ((100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
       }
