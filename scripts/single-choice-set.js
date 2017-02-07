@@ -21,7 +21,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
         enableRetry: true,
-        enableSolutionsButton: true
+        enableSolutionsButton: true,
+        passPercentage: 100
       }
     }, options);
     if (contentData && contentData.previousState !== undefined) {
@@ -353,7 +354,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
 
-      if (score === self.options.choices.length) {
+      if ((100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
       }
