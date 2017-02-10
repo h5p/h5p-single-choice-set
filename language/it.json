@@ -53,6 +53,10 @@
         {
           "englishLabel": "Enable show solution button",
           "label": "Abilita pulsante Mostra soluzione"
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
         }
       ]
     },

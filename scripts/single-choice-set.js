@@ -21,7 +21,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
         enableRetry: true,
-        enableSolutionsButton: true
+        enableSolutionsButton: true,
+        passPercentage: 100
       }
     }, options);
     if (contentData && contentData.previousState !== undefined) {
@@ -365,7 +366,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.scoreTimeout = undefined;
 
       if (!noXAPI) {
-        self.triggerXAPIScored(score, self.options.choices.length, 'completed');
+        self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
       }
 
       self.trigger('resize');
