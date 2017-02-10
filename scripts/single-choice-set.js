@@ -354,7 +354,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
 
-      if ((100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage) {
+      if (score === self.options.choices.length) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
       }
@@ -366,7 +366,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.scoreTimeout = undefined;
 
       if (!noXAPI) {
-        self.triggerXAPIScored(score, self.options.choices.length, 'completed');
+        self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
       }
 
       self.trigger('resize');
