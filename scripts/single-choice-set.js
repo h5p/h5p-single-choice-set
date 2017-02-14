@@ -16,6 +16,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
+      passPercentage: 100,
       behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
@@ -354,7 +355,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
 
-      if (score === self.options.choices.length) {
+      if ((100 * score / self.options.choices.length) >= self.options.passPercentage) {
         self.hideButton('try-again');
         self.hideButton('show-solution');
       }
