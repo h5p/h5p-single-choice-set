@@ -1,0 +1,128 @@
+{
+  "semantics": [
+    {
+      "englishLabel": "List of questions",
+      "label": "Kysymyslista",
+      "englishEntity": "question",
+      "entity": "kysymys",
+      "field": {
+        "englishLabel": "Question & alternatives",
+        "label": "Kysymys & vaihtoehdot",
+        "fields": [
+          {
+            "englishLabel": "Question",
+            "label": "Kysymys"
+          },
+          {
+            "englishLabel": "Alternatives - first alternative is the correct one.",
+            "label": "Vaihtoehdot - ensimmäinen vaihtoehto on oikea.",
+            "englishEntity": "answer",
+            "entity": "vastaus",
+            "field": {
+              "englishLabel": "Alternative",
+              "label": "Mahdollinen vastaus"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "englishLabel": "Behavioural settings",
+      "label": "Yleisasetukset",
+      "fields": [
+        {
+          "englishLabel": "Timeout on correct answers",
+          "label": "Aikaraja oikeille vastauksille",
+          "englishDescription": "Value in milliseconds",
+          "description": "Arvo millisekunneissa"
+        },
+        {
+          "englishLabel": "Timeout on wrong answers",
+          "label": "Aikaraja väärille vastauksille",
+          "englishDescription": "Value in milliseconds",
+          "description": "Arvo millisekunneissa"
+        },
+        {
+          "englishLabel": "Enable sound effects",
+          "label": "Salli ääniefektit"
+        },
+        {
+          "englishLabel": "Enable retry button",
+          "label": "Salli painike \"Yritä uudelleen\""
+        },
+        {
+          "englishLabel": "Enable show solution button",
+          "label": "Salli painike \"Katso vastaukset\""
+        },
+        {
+          "label": "Läpipääsyprosentti",
+          "description": "Kuinka monta prosenttia maksimipisteistä vaaditaan tehtävän läpäisyyn."
+        }
+      ]
+    },
+    {
+      "englishLabel": "Localize single choice set",
+      "label": "Käyttöliittymän kääntäminen",
+      "fields": [
+        {
+          "englishLabel": "Title for result slide",
+          "label": "Tulossivun otsikko",
+          "englishDefault": "You got :numcorrect of :maxscore correct",
+          "default": "Sait :numcorrect\/:maxscore oikein",
+          "englishDescription": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions",
+          "description": ":numcorrect korvautuu oikeiden vastausten määrällä ja :maxscore kysymyksien määrällä"
+        },
+        {
+          "englishLabel": "Label for the \"Show solution\" button",
+          "label": "Nimike painikkeelle \"Katso vastaus\"",
+          "englishDefault": "Show solution",
+          "default": "Katso vastaus"
+        },
+        {
+          "englishLabel": "Label for the \"Retry\" button",
+          "label": "Nimike painikkeelle \"Yritä uudelleen\"",
+          "englishDefault": "Retry",
+          "default": "Yritä uudelleen"
+        },
+        {
+          "englishLabel": "Title for the show solution view",
+          "label": "Nimike näkymälle \"Oikea vastaus\"",
+          "englishDefault": "Solution",
+          "default": "Oikea vastaus"
+        },
+        {
+          "englishLabel": "Readspeaker text for correct answer",
+          "label": "Tekstinlukijalle nimike oikealle vastaukselle",
+          "englishDefault": "Correct!",
+          "default": "Oikein!"
+        },
+        {
+          "englishLabel": "Readspeaker text for incorrect answer",
+          "label": "Tekstinlukijalle nimike väärälle vastaukselle",
+          "englishDefault": "Incorrect!",
+          "default": "Väärin!"
+        },
+        {
+          "englishLabel": "Label for the \"mute\" button, to disable feedback sound",
+          "label": "Nimike painikkeelle \"Mykistä\", äänipalautteen vaimentamiseksi",
+          "englishDefault": "Mute feedback sound",
+          "default": "Mykistä äänipalaute"
+        },
+        {
+          "englishLabel": "Label for the \"Close\" button",
+          "label": "Nimike painikkeelle \"Sulje\"",
+          "englishDefault": "Close",
+          "default": "Sulje"
+        },
+        {
+          "englishLabel": "Slide number text",
+          "label": "Sivun numero",
+          "englishDescription": "Announces current slide and total number of slides, variables are :num and :total",
+          "description": "Ilmoittaa meneillään olevan sivun ja kokonaissivumäärän, muuttujina käytössä ovat :sum ja :total",
+          "englishDefault": "Slide :num of :total",
+          "default": "Sivu :num\/:total"
+        }
+      ]
+    }
+  ]
+}
