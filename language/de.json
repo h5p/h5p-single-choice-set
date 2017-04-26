@@ -20,10 +20,10 @@
       }
     },
     {
-      "label": "Verhaltenseinstellungen",
+      "label": "Interaktionseinstellungen",
       "fields": [
         {
-          "label": "Timeout bei korrekten Antworten",
+          "label": "Timeout bei richtigen Antworten",
           "description": "Wert in Millisekunden"
         },
         {
@@ -37,11 +37,11 @@
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {
-          "label": "\"Lösung zeigen\"-Button anzeigen"
+          "label": "\"Lösung anzeigen\"-Button anzeigen"
         },
         {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "label": "Bestanden-Prozentsatz",
+          "description": "Prozentsatz der Gesamtpunktzahl, der benötigt wird, um das Quiz bzw. die Aufgabe erfolgreich abzuschließen."
         }
       ]
     },
@@ -54,8 +54,8 @@
           "description": ":numcorrect wird durch die Anzahl der richtigen Antworten ersetzt und :maxscore durch die Anzahl der Fragen"
         },
         {
-          "label": "Beschriftung für den \"Lösung zeigen\"-Button",
-          "default": "Lösung zeigen"
+          "label": "Beschriftung für den \"Lösung anzeigen\"-Button",
+          "default": "Lösung anzeigen"
         },
         {
           "label": "Beschriftung für den \"Wiederholen\"-Button",
@@ -67,7 +67,7 @@
         },
         {
           "label": "\"Readspeaker\"-Text für eine richtige Antwort",
-          "default": "Korrekt!"
+          "default": "Richtig!"
         },
         {
           "label": "\"Readspeaker\"-Text für eine falsche Antwort",
