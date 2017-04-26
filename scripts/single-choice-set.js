@@ -274,6 +274,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       .response(userAnswer.toString())
       .duration(duration)
       .score((userAnswer === 0) ? 1 : 0, 1)
+      .completion(true)
+      .success(userAnswer === 0)
       .build();
 
     return XApiEventBuilder.create()
