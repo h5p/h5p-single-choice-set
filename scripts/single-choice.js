@@ -148,6 +148,26 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
       }
     };
 
+    /**
+     * Handles moving the focus to the first option
+     * @private
+     */
+    var handleFirstOption = function () {
+      if (!this.answered) {
+        this.focusOnAlternative(0);
+      }
+    };
+
+    /**
+     * Handles moving the focus to the last option
+     * @private
+     */
+    var handleLastOption = function () {
+      if (!this.answered) {
+        this.focusOnAlternative(self.alternatives.length - 1);
+      }
+    };
+
     for (var i = 0; i < this.alternatives.length; i++) {
       var alternative = this.alternatives[i];
 
@@ -160,6 +180,8 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
       alternative.on('alternative-selected', handleAlternativeSelected, this);
       alternative.on('previousOption', handlePreviousOption, this);
       alternative.on('nextOption', handleNextOption, this);
+      alternative.on('firstOption', handleFirstOption, this);
+      alternative.on('lastOption', handleLastOption, this);
 
     }
 
