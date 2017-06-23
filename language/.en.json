@@ -1,0 +1,92 @@
+{
+  "semantics": [
+    {
+      "label": "List of questions",
+      "entity": "question",
+      "field": {
+        "label": "Question & alternatives",
+        "fields": [
+          {
+            "label": "Question"
+          },
+          {
+            "label": "Alternatives - first alternative is the correct one.",
+            "entity": "answer",
+            "field": {
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Timeout on wrong answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Enable sound effects"
+        },
+        {
+          "label": "Enable retry button"
+        },
+        {
+          "label": "Enable show solution button"
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Localize single choice set",
+      "fields": [
+        {
+          "label": "Title for result slide",
+          "default": "You got :numcorrect of :maxscore correct",
+          "description": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions"
+        },
+        {
+          "label": "Label for the \"Show solution\" button",
+          "default": "Show solution"
+        },
+        {
+          "label": "Label for the \"Retry\" button",
+          "default": "Retry"
+        },
+        {
+          "label": "Title for the show solution view",
+          "default": "Solution"
+        },
+        {
+          "label": "Readspeaker text for correct answer",
+          "default": "Correct!"
+        },
+        {
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect!"
+        },
+        {
+          "label": "Label for the \"mute\" button, to disable feedback sound",
+          "default": "Mute feedback sound"
+        },
+        {
+          "label": "Label for the \"Close\" button",
+          "default": "Close"
+        },
+        {
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Slide :num of :total"
+        }
+      ]
+    }
+  ]
+}
