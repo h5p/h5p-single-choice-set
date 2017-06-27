@@ -20,6 +20,32 @@
       }
     },
     {
+      "englishLabel": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "englishLabel": "Default"
+            }
+          ],
+          "englishLabel": "Define custom feedback for any score range",
+          "englishDescription": "Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!\nAvailable variables: :numcorrect and :maxscore. Example: 'You got :numcorrect of :maxscore correct'",
+          "field": {
+            "fields": [
+              {
+                "englishLabel": "Score Range"
+              },
+              {},
+              {
+                "englishLabel": "Feedback for defined score range",
+                "englishPlaceholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "label": "Impostazioni esecuzione",
       "fields": [
         {

@@ -16,6 +16,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
+      overallFeedback: [
+        {
+          'from': 0,
+          'to': 100,
+          'feedback': 'You got :numcorrect of :maxscore correct'
+        }
+      ],
       behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
@@ -52,7 +59,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.l10n = H5P.jQuery.extend({
       correctText: 'Correct!',
       incorrectText: 'Incorrect! Correct answer was: :text',
-      resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
@@ -351,7 +357,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * Show feedback and buttons on result slide
      */
     var showFeedback = function () {
-      self.setFeedback(self.l10n.resultSlideTitle
+      self.setFeedback(determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
           .replace(':numcorrect', score)
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
@@ -783,6 +789,46 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     };
   };
 
-  return SingleChoiceSet;
+  /**
+   * Determine the overall feedback to display for the question.
+   * If no range fits the closest one will be picked.
+   *
+   * @param {Object[]} feedbacks
+   * @param {number} scoreRatio
+   * @return {string}
+   */
+  var determineOverallFeedback = function (feedbacks, scoreRatio) {
+    scoreRatio = Math.floor(scoreRatio * 100);
 
+    var i, feedback;
+    for (i = 0; i < feedbacks.length; i++) {
+      feedback = feedbacks[i];
+
+      if (feedback.from <= scoreRatio && feedback.to >= scoreRatio) {
+        return feedback.feedback || '';
+      }
+    }
+
+    // No feedback found, determine which is closest
+    var closest, distance;
+    for (i = 0; i < feedbacks.length; i++) {
+      feedback = feedbacks[i];
+
+      var fromDistance = Math.abs(feedback.from - scoreRatio);
+      if (!distance || fromDistance < distance) {
+        distance = fromDistance;
+        closest = feedback;
+      }
+
+      var toDistance = Math.abs(feedback.to - scoreRatio);
+      if (toDistance < distance) {
+        distance = fromDistance;
+        closest = feedback;
+      }
+    }
+
+    return closest.feedback || '';
+  };
+
+  return SingleChoiceSet;
 })(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);
