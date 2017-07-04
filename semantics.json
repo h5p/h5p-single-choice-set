@@ -103,6 +103,8 @@
               "label": "Feedback for defined score range",
               "importance": "low",
               "placeholder": "Fill in the feedback",
+              "default": "You got :numcorrect of :maxscore correct",
+              "showDefaultOnFirstRow": true,
               "optional": true
             }
           ]

@@ -16,13 +16,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
-      overallFeedback: [
-        {
-          'from': 0,
-          'to': 100,
-          'feedback': 'You got :numcorrect of :maxscore correct'
-        }
-      ],
+      overallFeedback: [],
       behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
@@ -38,9 +32,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }
     this.currentIndex = this.currentIndex || 0;
     this.results = this.results || {
-        corrects: 0,
-        wrongs: 0
-      };
+      corrects: 0,
+      wrongs: 0
+    };
 
     /**
      * @property {StopWatch[]} Stop watches for tracking duration of slides
