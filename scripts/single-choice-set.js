@@ -766,7 +766,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Wait for transition, then remove feedback.
     H5P.Transition.onTransitionEnd(this.$choices, function () {
-      self.setFeedback();
+      self.removeFeedback();
     }, 600);
   };
 
