@@ -75,9 +75,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      */
     this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
 
-    // Focus on "try-again"-button when closing solution view
+    // Focus on first button when closing solution view
     this.solutionView.on('hide', function () {
-      self.focusButton('try-again');
+      self.focusButton();
     });
 
     this.$choices = $('<div>', {
