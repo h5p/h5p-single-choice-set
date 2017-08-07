@@ -58,6 +58,7 @@
     "type": "group",
     "label": "Overall Feedback",
     "importance": "low",
+    "expanded": true,
     "fields": [
       {
         "name": "overallFeedback",
@@ -70,7 +71,7 @@
         ],
         "importance": "high",
         "label": "Define custom feedback for any score range",
-        "description": "Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!\nAvailable variables: :numcorrect and :maxscore. Example: 'You got :numcorrect of :maxscore correct'",
+        "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
         "entity": "range",
         "min": 1,
         "defaultNum": 1,
