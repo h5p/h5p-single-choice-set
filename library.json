@@ -10,7 +10,7 @@
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
-    "div"
+    "iframe"
   ],
   "coreApi": {
     "majorVersion": 1,
