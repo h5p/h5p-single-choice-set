@@ -7,7 +7,7 @@
         "label":"Question & alternatives",
         "fields":[
           {
-            "label":"Question"
+            "label":"Soru"
           },
           {
             "label":"Alternatives - first alternative is the correct one.",
@@ -25,7 +25,7 @@
         {
           "widgets":[
             {
-              "label":"Default"
+              "label":"Varsayılan"
             }
           ],
           "label":"Define custom feedback for any score range",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "label":"Behavioural settings",
+      "label":"Davranış ayarları",
       "fields":[
         {
           "label":"Timeout on correct answers",
@@ -69,8 +69,8 @@
           "label":"Enable show solution button"
         },
         {
-          "label":"Pass percentage",
-          "description":"Percentage of Total score required for passing the quiz."
+          "label":"Geçiş yüzdesi",
+          "description":"Quizi geçmek için gerekli toplam puan yüzdesi."
         }
       ]
     },
@@ -79,11 +79,11 @@
       "fields":[
         {
           "label":"Label for the \"Show solution\" button",
-          "default":"Show solution"
+          "default":"Çözümü göster"
         },
         {
           "label":"Label for the \"Retry\" button",
-          "default":"Retry"
+          "default":"Yeniden dene"
         },
         {
           "label":"Title for the show solution view",
