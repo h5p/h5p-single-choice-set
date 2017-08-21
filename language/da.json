@@ -20,7 +20,36 @@
       }
     },
     {
-      "label":"Behavioural settings",
+      "label":"Overall Feedback",
+      "fields":[
+        {
+          "widgets":[
+            {
+              "label":"Default"
+            }
+          ],
+          "label":"Define custom feedback for any score range",
+          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity":"range",
+          "field":{
+            "fields":[
+              {
+                "label":"Score Range"
+              },
+              {
+                
+              },
+              {
+                "label":"Feedback for defined score range",
+                "placeholder":"Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label":"Indstillinger for opgave-opførsel",
       "fields":[
         {
           "label":"Timeout on correct answers",
@@ -49,11 +78,6 @@
       "label":"Localize single choice set",
       "fields":[
         {
-          "label":"Title for result slide",
-          "default":"You got :numcorrect of :maxscore correct",
-          "description":":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions"
-        },
-        {
           "label":"Label for the \"Show solution\" button",
           "default":"Show solution"
         },
@@ -79,7 +103,7 @@
         },
         {
           "label":"Label for the \"Close\" button",
-          "default":"Close"
+          "default":"Luk"
         },
         {
           "label":"Slide number text",
