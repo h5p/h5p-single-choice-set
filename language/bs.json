@@ -2,7 +2,7 @@
   "semantics":[
     {
       "label":"Set pitanja",
-      "entity":"pitanje",
+      "entity":"Pitanje",
       "field":{
         "label":"Pitanja & Mogući odgovori",
         "fields":[
@@ -18,6 +18,35 @@
           }
         ]
       }
+    },
+    {
+      "label":"Pozadinska zamućenost za elemente za uzimanje",
+      "fields":[
+        {
+          "widgets":[
+            {
+              "label":"Standard"
+            }
+          ],
+          "label":"Define custom feedback for any score range",
+          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity":"range",
+          "field":{
+            "fields":[
+              {
+                "label":"Score Range"
+              },
+              {
+                
+              },
+              {
+                "label":"Feedback for defined score range",
+                "placeholder":"Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "label":"Interaktionseinstellungen",
@@ -40,19 +69,14 @@
           "label":"Prikaži dugme \"Prikaži rješenje\""
         },
         {
-          "label":"Procenat za uspješan prolaz",
-          "description":"Procenat tačnih odgovora kao preduvijet da je kviz\/zadatak uspješno završen."
+          "label":"Minimalno procenata za prolaz",
+          "description":"Minimalno osvojenih procenata da bi se kviz smatrao uspješno prođenim."
         }
       ]
     },
     {
       "label":"Podešavanja za Set pitanja",
       "fields":[
-        {
-          "label":"Naslov za slajd sa rezultatom",
-          "default":"Na :numcorrect od :maxscore pitanja tačno odgovoreno",
-          "description":":numcorrect se ijenja sa brojem tačnih odgovora i :maxscore se mijenja sa brojem pitanja"
-        },
         {
           "label":"Oznaka za dugme \"Prikaži rješenje\" ",
           "default":"Prikaži rješenje"
