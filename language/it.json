@@ -20,6 +20,35 @@
       }
     },
     {
+      "label":"Feedback generale",
+      "fields":[
+        {
+          "widgets":[
+            {
+              "label":"Predefinito"
+            }
+          ],
+          "label":"Definisci un feedback personalizzato per ogni intervallo di punteggio",
+          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity":"Intervallo",
+          "field":{
+            "fields":[
+              {
+                "label":"Intervallo di punteggio"
+              },
+              {
+                
+              },
+              {
+                "label":"Feedback per un intervallo di punteggio definito",
+                "placeholder":"Compila il feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "label":"Impostazioni esecuzione",
       "fields":[
         {
@@ -40,8 +69,8 @@
           "label":"Abilita pulsante Mostra soluzione"
         },
         {
-          "label":"Pass percentage",
-          "description":"Percentage of Total score required for passing the quiz."
+          "label":"Percentuale di superamento della prova",
+          "description":"Percentuale del punteggio totale richiesto per passare il quiz."
         }
       ]
     },
@@ -49,13 +78,8 @@
       "label":"Localizza set scelta singola",
       "fields":[
         {
-          "label":"Titolo risultato diapositiva",
-          "default":"Hai :numcorrect di :maxscore corretta",
-          "description":":numcorrect viene sostituito dal numero di risposte corrette e :maxscore è sostituito dal numero di domande."
-        },
-        {
           "label":"Etichetta pulsante \"Mostra soluzione\"",
-          "default":"Mostra soluzione"
+          "default":"Mostra la soluzione"
         },
         {
           "label":"Etichetta pulsante \"Riprova\"",
@@ -66,25 +90,25 @@
           "default":"Soluzione"
         },
         {
-          "label":"Testo ReadSpeaker per la risposta corretta",
-          "default":"Corretta"
+          "label":"Readspeaker text for correct answer",
+          "default":"Correct!"
         },
         {
-          "label":"Testo ReadSpeaker per risposta errata",
-          "default":"Scorretto!"
+          "label":"Readspeaker text for incorrect answer",
+          "default":"Incorrect!"
         },
         {
-          "label":"Etichetta per il pulsante \"mute \", disabilitare il suono di retroazione",
-          "default":"Suono di feedback Muto"
+          "label":"Label for the \"mute\" button, to disable feedback sound",
+          "default":"Mute feedback sound"
         },
         {
-          "label":"Etichetta pulsante \"Vicino\"",
-          "default":"Vicino"
+          "label":"Label for the \"Close\" button",
+          "default":"Close"
         },
         {
-          "label":"Testo Numero diapositiva",
-          "description":"Annuncia diapositiva corrente e il numero totale di diapositive, le variabili sono :num e :total",
-          "default":":num diapositiva del :total"
+          "label":"Slide number text",
+          "description":"Announces current slide and total number of slides, variables are :num and :total",
+          "default":"Slide :num of :total"
         }
       ]
     }
