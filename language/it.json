@@ -90,25 +90,25 @@
           "default":"Soluzione"
         },
         {
-          "label":"Readspeaker text for correct answer",
-          "default":"Correct!"
+          "label":"Testo ReadSpeaker per la risposta corretta",
+          "default":"Corretta!"
         },
         {
-          "label":"Readspeaker text for incorrect answer",
-          "default":"Incorrect!"
+          "label":"Testo ReadSpeaker per risposta errata",
+          "default":"Non corretta"
         },
         {
-          "label":"Label for the \"mute\" button, to disable feedback sound",
-          "default":"Mute feedback sound"
+          "label":"Etichetta per il pulsante \"mute \", disabilitare il suono di retroazione",
+          "default":"Suono di feedback Muto"
         },
         {
-          "label":"Label for the \"Close\" button",
-          "default":"Close"
+          "label":"Etichetta pulsante \"Vicino\"",
+          "default":"Vicino"
         },
         {
-          "label":"Slide number text",
-          "description":"Announces current slide and total number of slides, variables are :num and :total",
-          "default":"Slide :num of :total"
+          "label":"Testo Numero diapositiva",
+          "description":"Annuncia diapositiva corrente e il numero totale di diapositive, le variabili sono :num e :total",
+          "default":":num diapositiva del :total"
         }
       ]
     }
