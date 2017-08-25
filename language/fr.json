@@ -1,44 +1,47 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "label": "Liste des questions",
-      "entity": "question",
-      "field": {
-        "label": "Question & réponses possibles",
-        "fields": [
+      "label":"Liste des questions",
+      "entity":"question",
+      "field":{
+        "label":"Question & réponses possibles",
+        "fields":[
           {
-            "label": "Question"
+            "label":"Question"
           },
           {
-            "label": "Réponses possibles - la première de la liste est celle qui est juste.",
-            "entity": "réponse",
-            "field": {
-              "label": "Réponse possible"
+            "label":"Réponses possibles - la première de la liste est celle qui est juste.",
+            "entity":"réponse",
+            "field":{
+              "label":"Réponse possible"
             }
           }
         ]
       }
     },
     {
-      "englishLabel": "Overall Feedback",
-      "fields": [
+      "label":"Opacité des étiquettes",
+      "fields":[
         {
-          "widgets": [
+          "widgets":[
             {
-              "englishLabel": "Default"
+              "label":"Par défaut"
             }
           ],
-          "englishLabel": "Define custom feedback for any score range",
-          "englishDescription": "Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!\nAvailable variables: :numcorrect and :maxscore. Example: 'You got :numcorrect of :maxscore correct'",
-          "field": {
-            "fields": [
+          "label":"Define custom feedback for any score range",
+          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity":"range",
+          "field":{
+            "fields":[
               {
-                "englishLabel": "Score Range"
+                "label":"Score Range"
               },
-              {},
               {
-                "englishLabel": "Feedback for defined score range",
-                "englishPlaceholder": "Fill in the feedback"
+                
+              },
+              {
+                "label":"Feedback for defined score range",
+                "placeholder":"Fill in the feedback"
               }
             ]
           }
@@ -46,71 +49,66 @@
       ]
     },
     {
-      "label": "Options générales",
-      "fields": [
+      "label":"Options générales.",
+      "fields":[
         {
-          "label": "Temps de pause en cas de réponse correcte",
-          "description": "En millisecondes"
+          "label":"Temps de pause en cas de réponse correcte",
+          "description":"En millisecondes"
         },
         {
-          "label": "Temps de pause en cas de réponse incorrecte",
-          "description": "En millisecondes"
+          "label":"Temps de pause en cas de réponse incorrecte",
+          "description":"En millisecondes"
         },
         {
-          "label": "Activer les effets sonores"
+          "label":"Activer les effets sonores"
         },
         {
-          "label": "Activer le bouton \"Recommencer\""
+          "label":"Activer le bouton \"Recommencer\""
         },
         {
-          "label": "Activer le bouton \"Voir la correction\""
+          "label":"Activer le bouton \"Voir la correction\""
         },
         {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "label":"Pourcentage de réussite",
+          "description":"Pourcentage exigé pour considérer que le quiz est réussi."
         }
       ]
     },
     {
-      "label": "Interface de la série de questions à choix unique",
-      "fields": [
+      "label":"Interface de la série de questions à choix unique",
+      "fields":[
         {
-          "label": "Titre de la page des résultats",
-          "default": "Vous avez :numcorrect réponse(s) juste(s) sur :maxscore",
-          "description": ":numcorrect est remplacé par le nombre de réponses justes et :maxscore par le nombre de questions"
+          "label":"Texte pour le bouton \"Voir la correction\"",
+          "default":"Voir la solution"
         },
         {
-          "label": "Texte pour le bouton \"Voir la correction\"",
-          "default": "Voir la correction"
+          "label":"Texte pour le bouton \"Recommencer\"",
+          "default":"Recommencer"
         },
         {
-          "label": "Texte pour le bouton \"Recommencer\"",
-          "default": "Recommencer"
+          "label":"Texte pour le mode \"Correction\"",
+          "default":"Correction"
         },
         {
-          "label": "Texte pour le mode \"Correction\"",
-          "default": "Correction"
+          "label":"Texte exprimé par la synthèse vocale en cas de réponse correcte",
+          "default":"Correct!"
         },
         {
-          "label": "Texte Readspeaker pour la réponse correcte",
-          "default": "Correct!"
+          "label":"Texte exprimé par la synthèse vocale en cas de réponse incorrecte",
+          "default":"Incorrect!"
         },
         {
-          "label": "Texte Readspeaker pour réponse incorrecte",
-          "default": "Incorrect!"
+          "label":"Étiquette pour le bouton \"mute\", pour désactiver la rétroaction sonore",
+          "default":"Son de feedback Mute"
         },
         {
-          "label": "Étiquette pour le bouton \"mute\", pour désactiver la rétroaction sonore",
-          "default": "Son de feedback Mute"
+          "label":"Étiquette pour le bouton \"Fermer\"",
+          "default":"Fermer"
         },
         {
-          "label": "Étiquette pour le bouton \"Fermer\"",
-          "default": "Fermer"
-        },
-        {
-          "label": "Texte du numéro de diapositive",
-          "description": "Annonce la diapositive en cours et le nombre total de diapositives, les variables sont :sum et :total",
-          "default": "Diapositive :num sur :total"
+          "label":"Texte du numéro de diapositive",
+          "description":"Annonce la diapositive en cours et le nombre total de diapositives, les variables sont :sum et :total",
+          "default":"Diapositive :num sur :total"
         }
       ]
     }

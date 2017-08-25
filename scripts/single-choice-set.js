@@ -310,7 +310,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     return {
       choices: choices
-    }
+    };
   };
 
   /**
@@ -688,7 +688,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
       return {
         statement: event.data.statement
-      }
+      };
     });
 
     var result = XApiEventBuilder.createResult()
