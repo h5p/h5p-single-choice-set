@@ -7,7 +7,7 @@
         "label":"Question & alternatives",
         "fields":[
           {
-            "label":"Question"
+            "label":"Küsimus"
           },
           {
             "label":"Alternatives - first alternative is the correct one.",
@@ -79,11 +79,11 @@
       "fields":[
         {
           "label":"Label for the \"Show solution\" button",
-          "default":"Show solution"
+          "default":"Õige vastus"
         },
         {
           "label":"Label for the \"Retry\" button",
-          "default":"Yritä uudelleen"
+          "default":"Proovi uuesti"
         },
         {
           "label":"Title for the show solution view",

@@ -16,6 +16,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
+      overallFeedback: [],
       behaviour: {
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
@@ -31,9 +32,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }
     this.currentIndex = this.currentIndex || 0;
     this.results = this.results || {
-        corrects: 0,
-        wrongs: 0
-      };
+      corrects: 0,
+      wrongs: 0
+    };
 
     /**
      * @property {StopWatch[]} Stop watches for tracking duration of slides
@@ -52,7 +53,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.l10n = H5P.jQuery.extend({
       correctText: 'Correct!',
       incorrectText: 'Incorrect! Correct answer was: :text',
-      resultSlideTitle: 'You got :numcorrect of :maxscore correct',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
@@ -75,9 +75,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      */
     this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
 
-    // Focus on "try-again"-button when closing solution view
+    // Focus on first button when closing solution view
     this.solutionView.on('hide', function () {
-      self.focusButton('try-again');
+      self.focusButton();
     });
 
     this.$choices = $('<div>', {
@@ -274,6 +274,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       .response(userAnswer.toString())
       .duration(duration)
       .score((userAnswer === 0) ? 1 : 0, 1)
+      .completion(true)
+      .success(userAnswer === 0)
       .build();
 
     return XApiEventBuilder.create()
@@ -308,7 +310,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     return {
       choices: choices
-    }
+    };
   };
 
   /**
@@ -349,7 +351,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * Show feedback and buttons on result slide
      */
     var showFeedback = function () {
-      self.setFeedback(self.l10n.resultSlideTitle
+      self.setFeedback(determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
           .replace(':numcorrect', score)
           .replace(':maxscore', self.options.choices.length.toString()),
         score, self.options.choices.length);
@@ -686,7 +688,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
       return {
         statement: event.data.statement
-      }
+      };
     });
 
     var result = XApiEventBuilder.createResult()
@@ -764,7 +766,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Wait for transition, then remove feedback.
     H5P.Transition.onTransitionEnd(this.$choices, function () {
-      self.setFeedback();
+      self.removeFeedback();
     }, 600);
   };
 
@@ -781,6 +783,28 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     };
   };
 
-  return SingleChoiceSet;
+  /**
+   * Determine the overall feedback to display for the question.
+   * Returns empty string if no matching range is found.
+   *
+   * @param {Object[]} feedbacks
+   * @param {number} scoreRatio
+   * @return {string}
+   */
+  var determineOverallFeedback = function (feedbacks, scoreRatio) {
+    scoreRatio = Math.floor(scoreRatio * 100);
 
+    for (var i = 0; i < feedbacks.length; i++) {
+      var feedback = feedbacks[i];
+      var hasFeedback = (feedback.feedback !== undefined && feedback.feedback.trim().length !== 0);
+
+      if (feedback.from <= scoreRatio && feedback.to >= scoreRatio && hasFeedback) {
+        return feedback.feedback;
+      }
+    }
+
+    return '';
+  };
+
+  return SingleChoiceSet;
 })(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);

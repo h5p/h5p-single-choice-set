@@ -3,14 +3,14 @@
   "title": "Single Choice Set",
   "description": "Create sets of single choice tasks",
   "license": "MIT",
-  "author": "Joubel AS (fnoks)",
+  "author": "Joubel",
   "majorVersion": 1,
-  "minorVersion": 8,
-  "patchVersion": 1,
+  "minorVersion": 9,
+  "patchVersion": 2,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
-    "div"
+    "iframe"
   ],
   "coreApi": {
     "majorVersion": 1,
@@ -56,7 +56,7 @@
     {
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     },
     {
       "machineName": "H5P.Transition",
@@ -71,7 +71,7 @@
     {
       "machineName": "H5P.Question",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     }
   ],
   "editorDependencies": [
@@ -79,6 +79,11 @@
       "machineName": "H5PEditor.VerticalTabs",
       "majorVersion": 1,
       "minorVersion": 3
+    },
+    {
+      "machineName": "H5PEditor.RangeList",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }

@@ -83,7 +83,7 @@
         },
         {
           "label":"Label for the \"Retry\" button",
-          "default":"Yritä uudelleen"
+          "default":"Försök på nytt"
         },
         {
           "label":"Title for the show solution view",

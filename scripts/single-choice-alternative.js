@@ -37,6 +37,18 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
               triggerAlternativeSelected(event);
               break;
 
+            case 35: // End button
+              // Go to previous Option
+              self.trigger('lastOption', event);
+              event.preventDefault();
+              break;
+
+            case 36: // Home button
+              // Go to previous Option
+              self.trigger('firstOption', event);
+              event.preventDefault();
+              break;
+
             case 37: // Left Arrow
             case 38: // Up Arrow
               // Go to previous Option

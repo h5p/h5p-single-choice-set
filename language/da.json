@@ -49,7 +49,7 @@
       ]
     },
     {
-      "label":"Behavioural settings",
+      "label":"Indstillinger for opgave-opførsel",
       "fields":[
         {
           "label":"Timeout on correct answers",
@@ -83,7 +83,7 @@
         },
         {
           "label":"Label for the \"Retry\" button",
-          "default":"Yritä uudelleen"
+          "default":"Retry"
         },
         {
           "label":"Title for the show solution view",
@@ -103,7 +103,7 @@
         },
         {
           "label":"Label for the \"Close\" button",
-          "default":"Close"
+          "default":"Luk"
         },
         {
           "label":"Slide number text",

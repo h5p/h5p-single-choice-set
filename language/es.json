@@ -25,7 +25,7 @@
         {
           "widgets":[
             {
-              "label":"Default"
+              "label":"Predeterminado"
             }
           ],
           "label":"Define custom feedback for any score range",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "label":"Behavioural settings",
+      "label":"Ajustes de comportamiento",
       "fields":[
         {
           "label":"Timeout on correct answers",
@@ -79,11 +79,11 @@
       "fields":[
         {
           "label":"Label for the \"Show solution\" button",
-          "default":"Show solution"
+          "default":"Mostrar solución"
         },
         {
           "label":"Label for the \"Retry\" button",
-          "default":"Yritä uudelleen"
+          "default":"Reintentar"
         },
         {
           "label":"Title for the show solution view",
@@ -103,7 +103,7 @@
         },
         {
           "label":"Label for the \"Close\" button",
-          "default":"Close"
+          "default":"Cerrar"
         },
         {
           "label":"Slide number text",
