@@ -12,8 +12,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     this.choices = choices;
 
     this.$solutionView = $('<div>', {
-      'class': 'h5p-sc-solution-view',
-      'role': 'dialog',
+      'class': 'h5p-sc-solution-view'
     });
 
     // Add header

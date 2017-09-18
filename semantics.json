@@ -192,7 +192,7 @@
         "type": "text",
         "label": "Title for the show solution view",
         "importance": "low",
-        "default": "Solution"
+        "default": "Solution list"
       },
       {
         "name": "correctText",

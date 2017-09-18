@@ -85,7 +85,7 @@
         },
         {
           "label": "Title for the show solution view",
-          "default": "Solution"
+          "default": "Solution list"
         },
         {
           "label": "Readspeaker text for correct answer",
