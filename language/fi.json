@@ -1,5 +1,5 @@
 {
-  "semantics":[
+  "semantics": [
     {
       "label":"Kysymyslista",
       "entity":"Kysymys",
@@ -23,7 +23,7 @@
       "label":"Yleinen palaute",
       "fields":[
         {
-          "widgets":[
+          "widgets": [
             {
               "label":"Oletus"
             }
@@ -36,8 +36,8 @@
               {
                 "label":"Pisteraja"
               },
+              {},
               {
-                
               },
               {
                 "label":"Palaute määritellylle pisterajalle",
@@ -109,6 +109,10 @@
           "label":"Sivun numero",
           "description":"Ilmoittaa meneillään olevan sivun ja kokonaissivumäärän, muuttujia ovat :sum ja :total.",
           "default":"Sivu :num\/:total"
+        },
+        {
+          "label": "Ruudunlukijan teksti ilmaisemaan pisteitä",
+          "default": "Sinulla on :num\/:total pistettä."
         }
       ]
     }

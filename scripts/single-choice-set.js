@@ -58,7 +58,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
-      muteButtonLabel: "Mute feedback sound"
+      muteButtonLabel: "Mute feedback sound",
+      scoreBarLabel: 'You got :num out of :total points',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
@@ -354,7 +355,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.setFeedback(determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
           .replace(':numcorrect', score)
           .replace(':maxscore', self.options.choices.length.toString()),
-        score, self.options.choices.length);
+        score, self.options.choices.length, self.l10n.scoreBarLabel);
 
       if (score === self.options.choices.length) {
         self.hideButton('try-again');
