@@ -1,47 +1,45 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "label":"Spørsmålsliste",
-      "entity":"spørsmål",
-      "field":{
-        "label":"Spørsmål & alternativer",
-        "fields":[
+      "label": "Spørsmålsliste",
+      "entity": "spørsmål",
+      "field": {
+        "label": "Spørsmål & alternativer",
+        "fields": [
           {
-            "label":"Spørsmål"
+            "label": "Spørsmål"
           },
           {
-            "label":"Alternativer. Det første alternativet er rett.",
-            "entity":"svar",
-            "field":{
-              "label":"Svar"
+            "label": "Alternativer. Det første alternativet er rett.",
+            "entity": "svar",
+            "field": {
+              "label": "Svar"
             }
           }
         ]
       }
     },
     {
-      "label":"Bakgrunnsopasitet på flyttbare elementer",
-      "fields":[
+      "label": "Bakgrunnsopasitet på flyttbare elementer",
+      "fields": [
         {
-          "widgets":[
+          "widgets": [
             {
-              "label":"Standard"
+              "label": "Standard"
             }
           ],
-          "label":"Define custom feedback for any score range",
-          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity":"range",
-          "field":{
-            "fields":[
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
               {
-                "label":"Score Range"
+                "label": "Score Range"
               },
+              {},
               {
-                
-              },
-              {
-                "label":"Feedback for defined score range",
-                "placeholder":"Fill in the feedback"
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
               }
             ]
           }
@@ -49,66 +47,70 @@
       ]
     },
     {
-      "label":"Innstillinger for oppgave-oppførsel",
-      "fields":[
+      "label": "Innstillinger for oppgave-oppførsel",
+      "fields": [
         {
-          "label":"Pause ved korrekt svar",
-          "description":"Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Pause ved korrekt svar",
+          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
         },
         {
-          "label":"Pause ved feil svar",
-          "description":"Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Pause ved feil svar",
+          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
         },
         {
-          "label":"Lydeffekter"
+          "label": "Lydeffekter"
         },
         {
-          "label":"\"Prøv igjen\" knapp"
+          "label": "\"Prøv igjen\" knapp"
         },
         {
-          "label":"\"Vis svar\" knapp"
+          "label": "\"Vis svar\" knapp"
         },
         {
-          "label":"Krav for å bestå",
-          "description":"Antall prosent riktig som kreves for å bestå spørsmålssettet."
+          "label": "Krav for å bestå",
+          "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
         }
       ]
     },
     {
-      "label":"Ledetekster",
-      "fields":[
+      "label": "Ledetekster",
+      "fields": [
         {
-          "label":"Etikett på \"Vis svar\" knappen",
-          "default":"Fasit"
+          "label": "Etikett på \"Vis svar\" knappen",
+          "default": "Fasit"
         },
         {
-          "label":"Etikett på \"Prøv igjen\" knappen",
-          "default":"Prøv igjen"
+          "label": "Etikett på \"Prøv igjen\" knappen",
+          "default": "Prøv igjen"
         },
         {
-          "label":"Tittelen på svarvisnings-siden",
-          "default":"Svar"
+          "label": "Tittelen på svarvisnings-siden",
+          "default": "Svar"
         },
         {
-          "label":"Readspeaker tekst for korrekt svar",
-          "default":"Riktig"
+          "label": "Readspeaker tekst for korrekt svar",
+          "default": "Riktig"
         },
         {
-          "label":"Readspeaker tekst for feil svar",
-          "default":"Feil"
+          "label": "Readspeaker tekst for feil svar",
+          "default": "Feil"
         },
         {
-          "label":"Merkelapp for \"mute\"-knappen",
-          "default":"Skru av tilbakemeldingslyd"
+          "label": "Merkelapp for \"mute\"-knappen",
+          "default": "Skru av tilbakemeldingslyd"
         },
         {
-          "label":"Merkelapp for \"Lukk\"-knappen",
-          "default":"Lukk"
+          "label": "Merkelapp for \"Lukk\"-knappen",
+          "default": "Lukk"
         },
         {
-          "label":"Side nummer tekst",
-          "description":"Angir nåværende side og totalt antall sider, variabler er :num og :total",
-          "default":"Side :num av :total"
+          "label": "Side nummer tekst",
+          "description": "Angir nåværende side og totalt antall sider, variabler er :num og :total",
+          "default": "Side :num av :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "default": "You got :num out of :total points"
         }
       ]
     }

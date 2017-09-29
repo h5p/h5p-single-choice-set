@@ -1,47 +1,47 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "label":"List of questions",
-      "entity":"question",
+      "label":"Kysymyslista",
+      "entity":"Kysymys",
       "field":{
-        "label":"Question & alternatives",
+        "label":"Kysymys ja vaihtoehdot",
         "fields":[
           {
-            "label":"Question"
+            "label":"Kysymys"
           },
           {
-            "label":"Alternatives - first alternative is the correct one.",
-            "entity":"answer",
+            "label":"Vaihtoehdot, ensimmäinen vaihtoehto on oikein.",
+            "entity":"Vaihtoehto",
             "field":{
-              "label":"Alternative"
+              "label":"Vaihtoehto"
             }
           }
         ]
       }
     },
     {
-      "label":"Overall Feedback",
+      "label":"Yleinen palaute",
       "fields":[
         {
-          "widgets":[
+          "widgets": [
             {
-              "label":"Default"
+              "label":"Oletus"
             }
           ],
-          "label":"Define custom feedback for any score range",
-          "description":"Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity":"range",
+          "label":"Määritä muokattu palaute pisterajojen mukaan.",
+          "description":"Klikkaa \"Lisää alue\" painiketta lisätäksesi niin monta pisterajaa kuin tarvit. Esimerkiksi: 0-20% Huono tulos, 21-91% Kelpo tulos, 91-100% Mahtava tulos!",
+          "entity":"alue",
           "field":{
             "fields":[
               {
-                "label":"Score Range"
+                "label":"Pisteraja"
+              },
+              {},
+              {
               },
               {
-                
-              },
-              {
-                "label":"Feedback for defined score range",
-                "placeholder":"Fill in the feedback"
+                "label":"Palaute määritellylle pisterajalle",
+                "placeholder":"Kirjoita palaute"
               }
             ]
           }
@@ -49,66 +49,70 @@
       ]
     },
     {
-      "label":"Behavioural settings",
+      "label":"Yleisasetukset",
       "fields":[
         {
-          "label":"Timeout on correct answers",
-          "description":"Value in milliseconds"
+          "label":"Tauko oikean vastauksen jälkeen",
+          "description":"Arvo millisekunneissa"
         },
         {
-          "label":"Timeout on wrong answers",
-          "description":"Value in milliseconds"
+          "label":"Tauko väärän vastauksen jälkeen",
+          "description":"Arvo millisekunneissa"
         },
         {
-          "label":"Enable sound effects"
+          "label":"Salli ääniefektit"
         },
         {
-          "label":"Enable retry button"
+          "label":"Salli painike \"Yritä uudelleen\""
         },
         {
-          "label":"Enable show solution button"
+          "label":"Salli painike \"Katso vastaukset\""
         },
         {
-          "label":"Pass percentage",
-          "description":"Percentage of Total score required for passing the quiz."
+          "label":"Läpäisyprosentti",
+          "description":"Kuinka monta prosenttia maksimipisteistä vaaditaan tehtävän läpäisyyn."
         }
       ]
     },
     {
-      "label":"Localize single choice set",
+      "label":"Muokkaa käännöksiä",
       "fields":[
         {
-          "label":"Label for the \"Show solution\" button",
-          "default":"Show solution"
+          "label":"Painikkeen \"Katso vastaus\" nimi",
+          "default":"Katso vastaus"
         },
         {
-          "label":"Label for the \"Retry\" button",
+          "label":"Painikkeen \"Yritä uudelleen\" nimi",
           "default":"Yritä uudelleen"
         },
         {
-          "label":"Title for the show solution view",
-          "default":"Solution"
+          "label":"Sivun \"Oikea vastaus\" otsikko",
+          "default":"Oikea vastaus"
         },
         {
-          "label":"Readspeaker text for correct answer",
-          "default":"Correct!"
+          "label":"Ruudunlukijan palaute oikeasta vastauksesta",
+          "default":"Oikein!"
         },
         {
-          "label":"Readspeaker text for incorrect answer",
-          "default":"Incorrect!"
+          "label":"Ruudunlukijan palaute väärästä vastauksesta",
+          "default":"Väärin!"
         },
         {
-          "label":"Label for the \"mute\" button, to disable feedback sound",
-          "default":"Mute feedback sound"
+          "label":"Painikkeen \"Mykistä äänipalaute\" nimi",
+          "default":"Mykistä äänipalaute"
         },
         {
-          "label":"Label for the \"Close\" button",
-          "default":"Close"
+          "label":"Painikkeen \"Sulje\" nimi",
+          "default":"Sulje"
         },
         {
-          "label":"Slide number text",
-          "description":"Announces current slide and total number of slides, variables are :num and :total",
-          "default":"Slide :num of :total"
+          "label":"Sivun numero",
+          "description":"Ilmoittaa meneillään olevan sivun ja kokonaissivumäärän, muuttujia ovat :sum ja :total.",
+          "default":"Sivu :num\/:total"
+        },
+        {
+          "label": "Ruudunlukijan teksti ilmaisemaan pisteitä",
+          "default": "Sinulla on :num\/:total pistettä."
         }
       ]
     }
