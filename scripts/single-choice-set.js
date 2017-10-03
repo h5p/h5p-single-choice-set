@@ -181,6 +181,15 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var self = this;
     var isCorrect = event.data.correct;
 
+    if (isCorrect) {
+      self.results.corrects++;
+    }
+    else {
+      self.results.wrongs++;
+    }
+
+    self.triggerXAPI('interacted');
+
     // correct answer
     var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
 
@@ -193,8 +202,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(isCorrect ? 'positive-short' : 'negative-short', 700);
     }
-
-    self.triggerXAPI('interacted')
   };
 
   /**
@@ -204,13 +211,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (event) {
     var self = this;
-
-    if (event.data.correct) {
-      self.results.corrects++;
-    }
-    else {
-      self.results.wrongs++;
-    }
 
     var index = event.data.index;
 
