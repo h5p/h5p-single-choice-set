@@ -193,6 +193,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(isCorrect ? 'positive-short' : 'negative-short', 700);
     }
+
+    self.triggerXAPI('interacted')
   };
 
   /**
@@ -223,7 +225,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // if should show result slide
     if (self.currentIndex + 1 >= self.options.choices.length) {
-      self.triggerXAPI('interacted');
       self.setScore(self.results.corrects);
     }
 
