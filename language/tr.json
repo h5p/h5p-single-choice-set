@@ -67,6 +67,9 @@
           "label": "Enable show solution button"
         },
         {
+          "label": "Automatically check answers after selection"
+        },
+        {
           "label": "Geçiş yüzdesi",
           "description": "Quizi geçmek için gerekli toplam puan yüzdesi."
         }

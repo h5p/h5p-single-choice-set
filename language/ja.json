@@ -67,6 +67,9 @@
           "label": "Enable show solution button"
         },
         {
+          "label": "Automatically check answers after selection"
+        },
+        {
           "label": "合格パーセンテージ",
           "description": "クイズにパスするために必要となる合計点のパーセンテージです。"
         }

@@ -67,6 +67,9 @@
           "label": "Activer le bouton \"Voir la correction\""
         },
         {
+          "label": "Automatically check answers after selection"
+        },
+        {
           "label": "Pourcentage de réussite",
           "description": "Pourcentage exigé pour considérer que le quiz est réussi."
         }

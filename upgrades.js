@@ -43,8 +43,15 @@ H5PUpgrades['H5P.SingleChoiceSet'] = (function ($) {
         }
 
         finished(null, parameters);
-      }
+      },
 
+      10: function (parameters, finished) {
+        if (parameters && parameters.behaviour) {
+          parameters.behaviour.autoCheck = true;
+        }
+
+        finished(null, parameters);
+      }
     }
   };
 })(H5P.jQuery);

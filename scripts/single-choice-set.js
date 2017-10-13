@@ -23,6 +23,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         soundEffectsEnabled: true,
         enableRetry: true,
         enableSolutionsButton: true,
+        autoCheck: true,
         passPercentage: 100
       }
     }, options);
