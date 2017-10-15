@@ -1,12 +1,5 @@
-var H5P = H5P || {};
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
-
-H5P.SingleChoiceSet.StopWatch = (function () {
-  /**
-   * @class {H5P.SingleChoiceSet.StopWatch}
-   * @constructor
-   */
-  function StopWatch() {
+export default class StopWatch {
+  constructor() {
     /**
      * @property {number} duration in ms
      */
@@ -17,9 +10,9 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * Starts the stop watch
    *
    * @public
-   * @return {H5P.SingleChoiceSet.StopWatch}
+   * @return {StopWatch}
    */
-  StopWatch.prototype.start = function(){
+  start(){
     /**
      * @property {number}
      */
@@ -33,7 +26,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {number}
    */
-  StopWatch.prototype.stop = function(){
+  stop() {
     this.duration = this.duration + Date.now() - this.startTime;
     return this.passedTime();
   };
@@ -43,7 +36,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    *
    * @public
    */
-  StopWatch.prototype.reset = function(){
+  reset() {
     this.duration = 0;
   };
 
@@ -53,9 +46,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {number}
    */
-  StopWatch.prototype.passedTime = function(){
+  passedTime() {
     return Math.round(this.duration / 10) / 100;
   };
-
-  return StopWatch;
-})();
+};

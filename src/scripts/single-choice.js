@@ -1,12 +1,12 @@
-var H5P = H5P || {};
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
+import { jQuery as $, EventDispatcher } from "./globals";
+import Alternative from './single-choice-alternative';
 
-H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
+export default class SingleChoice extends EventDispatcher{
   /**
    * Constructor function.
    */
-  function SingleChoice(options, index, id) {
-    EventDispatcher.call(this);
+  constructor (options, index, id) {
+    super();
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       question: '',
@@ -28,16 +28,13 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     this.options.answers = H5P.shuffleArray(this.options.answers);
   }
 
-  SingleChoice.prototype = Object.create(EventDispatcher.prototype);
-  SingleChoice.prototype.constructor = SingleChoice;
-
   /**
    * appendTo function invoked to append SingleChoice to container
    *
    * @param {jQuery} $container
    * @param {boolean} isCurrent Current slide we are on
    */
-  SingleChoice.prototype.appendTo = function ($container, isCurrent) {
+  appendTo ($container, isCurrent) {
     var self = this;
     this.$container = $container;
 
@@ -187,7 +184,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    *
    * @param {Number} index The index of the alternative to focus on
    */
-  SingleChoice.prototype.focusOnAlternative = function (index) {
+  focusOnAlternative (index) {
     if (!this.answered) {
       this.alternatives[index].focus();
     }
@@ -198,7 +195,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    *
    * @param {Boolean} answered If this question was answered
    */
-  SingleChoice.prototype.setAnswered = function (answered) {
+  setAnswered (answered) {
     this.answered = answered;
   };
 
@@ -208,7 +205,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    * @param  {boolean} correct True uf answer was correct, otherwise false
    * @param  {number} answerIndex Original index of answer
    */
-  SingleChoice.prototype.showResult = function (correct, answerIndex) {
+  showResult (correct, answerIndex) {
     var self = this;
 
     var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
@@ -225,7 +222,4 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     self.$choice.find('.h5p-sc-is-wrong').addClass('h5p-sc-reveal-wrong');
     $correctAlternative.addClass('h5p-sc-reveal-correct');
   };
-
-  return SingleChoice;
-
-})(H5P.jQuery, H5P.EventDispatcher, H5P.SingleChoiceSet.Alternative);
+}

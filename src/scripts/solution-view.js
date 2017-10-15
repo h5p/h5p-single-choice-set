@@ -1,12 +1,11 @@
-var H5P = H5P || {};
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
+import { jQuery as $, EventDispatcher } from "./globals";
 
-H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
+export default class SolutionView extends EventDispatcher {
   /**
    * Constructor function.
    */
-  function SolutionView(id, choices, l10n) {
-    EventDispatcher.call(this);
+  constructor(id, choices, l10n) {
+    super();
     var self = this;
     self.id = id;
     this.choices = choices;
@@ -42,17 +41,28 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   }
 
   /**
+   * Add a new event listener
+   *
+   * @param {string} type
+   * @param {function} listener
+   * @param {*} [instance]
+   */
+  on(type, listener, instance) {
+    this.on(type, listener, instance);
+  }
+
+  /**
    * Will append the solution view to a container DOM
    * @param  {jQuery} $container The DOM object to append to
    */
-  SolutionView.prototype.appendTo = function ($container) {
+  appendTo ($container) {
     this.$solutionView.appendTo($container);
   };
 
   /**
    * Shows the solution view
    */
-  SolutionView.prototype.show = function () {
+  show () {
     var self = this;
     self.$solutionView.addClass('visible');
     self.$title.focus();
@@ -68,7 +78,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   /**
    * Hides the solution view
    */
-  SolutionView.prototype.hide = function () {
+  hide () {
     this.$solutionView.removeClass('visible');
     this.trigger('hide', this);
   };
@@ -77,7 +87,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   /**
    * Populates the solution view
    */
-  SolutionView.prototype.populate = function () {
+  populate () {
     var self = this;
     self.$choices = $('<dl>', {
       'class': 'h5p-sc-solution-choices',
@@ -111,7 +121,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * @param {jQuery} $element A jQuery-element
    * @returns {jQuery} The mutated jQuery-element
    */
-  SolutionView.prototype.addAriaPunctuation = function ($element) {
+  addAriaPunctuation ($element) {
     var text = $element.text().trim();
 
     if (!this.hasPunctuation(text)) {
@@ -127,9 +137,8 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
    * @private
    * @param {String} text Input string
    */
-  SolutionView.prototype.hasPunctuation = function (text) {
+  hasPunctuation (text) {
     return /[,.?!]$/.test(text);
   };
 
-  return SolutionView;
-})(H5P.jQuery, H5P.EventDispatcher);
+}

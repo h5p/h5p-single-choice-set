@@ -1,15 +1,11 @@
-var H5P = H5P || {};
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
+import { jQuery as $, EventDispatcher } from "./globals";
 
-H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
-
+export default class Alternative extends EventDispatcher {
   /**
-   * @constructor
-   *
    * @param {object} options Options for the alternative
    */
-  function Alternative(options) {
-    EventDispatcher.call(this);
+  constructor(options) {
+    super();
     var self = this;
 
     this.options = options;
@@ -85,36 +81,33 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
     }));
   }
 
-  Alternative.prototype = Object.create(EventDispatcher.prototype);
-  Alternative.prototype.constructor = Alternative;
-
   /**
    * Is this alternative the correct one?
    *
    * @return {boolean}  Correct or not?
    */
-  Alternative.prototype.isCorrect = function () {
+  isCorrect () {
     return this.options.correct;
   };
 
   /**
    * Move focus to this option.
    */
-  Alternative.prototype.focus = function () {
+  focus () {
     this.$alternative.focus();
   };
 
   /**
    * Makes it possible to tab your way to this option.
    */
-  Alternative.prototype.tabbable = function () {
+  tabbable () {
     this.$alternative.attr('tabindex', 0);
   };
 
   /**
    * Make sure it's NOT possible to tab your way to this option.
    */
-  Alternative.prototype.notTabbable = function () {
+  notTabbable () {
     this.$alternative.attr('tabindex', -1);
   };
 
@@ -124,11 +117,8 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
    * @param  {jQuery} $container The Dom element to append to
    * @return {jQuery}            This dom element
    */
-  Alternative.prototype.appendTo = function ($container) {
+  appendTo ($container) {
     $container.append(this.$alternative);
     return this.$alternative;
   };
-
-  return Alternative;
-
-})(H5P.jQuery, H5P.EventDispatcher);
+}

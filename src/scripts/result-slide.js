@@ -1,17 +1,14 @@
-var H5P = H5P || {};
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
+import { jQuery as $, EventDispatcher } from "./globals";
+
 /**
  * SingleChoiceResultSlide - Represents the result slide
  */
-H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
-
+export default class ResultSlide extends EventDispatcher {
   /**
-   * @constructor
    * @param {number} maxscore Max score
    */
-  function ResultSlide(maxscore) {
-    EventDispatcher.call(this);
-
+  constructor (maxscore) {
+    super();
     this.$feedbackContainer = $('<div>', {
       'class': 'h5p-sc-feedback-container',
       'tabindex': '-1'
@@ -32,16 +29,10 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
     }).append($resultContainer);
   }
 
-  // inherits from EventDispatchers prototype
-  ResultSlide.prototype = Object.create(EventDispatcher.prototype);
-
-  // set the constructor
-  ResultSlide.prototype.constructor = ResultSlide;
-
   /**
    * Focus feedback container.
    */
-  ResultSlide.prototype.focusScore = function () {
+  focusScore () {
     this.$feedbackContainer.focus();
   };
 
@@ -51,10 +42,8 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
    * @param  {jQuery} $container The container
    * @return {jQuery}            This dom element
    */
-  ResultSlide.prototype.appendTo = function ($container) {
+  appendTo ($container) {
     this.$resultSlide.appendTo($container);
     return this.$resultSlide;
   };
-
-  return ResultSlide;
-})(H5P.jQuery, H5P.EventDispatcher);
+};

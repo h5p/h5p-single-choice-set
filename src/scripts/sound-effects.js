@@ -1,6 +1,4 @@
-H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
-
-H5P.SingleChoiceSet.SoundEffects = (function () {
+const SoundEffects = (function () {
   var isDefined = false;
 
   var SoundEffects = {
@@ -43,3 +41,5 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
 
   return SoundEffects;
 })();
+
+export default SoundEffects;
