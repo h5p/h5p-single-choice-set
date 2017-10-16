@@ -73,6 +73,10 @@ const SingleChoiceSet = (function () {
       'class': 'h5p-sc-set-wrapper'
     });
 
+    if(options.behaviour.autoCheck) {
+      this.$container.addClass('h5p-auto-check');
+    }
+
     this.$slides = [];
     // An array containing the SingleChoice instances
     this.choices = [];
@@ -106,7 +110,7 @@ const SingleChoiceSet = (function () {
     self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i, this.contentId);
+      var choice = new SingleChoice(this.options.choices[i], i, this.contentId, self.options.behaviour.autoCheck);
       choice.on('finished', this.handleQuestionFinished, this);
       choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
@@ -583,7 +587,7 @@ const SingleChoiceSet = (function () {
     }
 
     var $previousSlide = self.$slides[self.currentIndex];
-    var $currentChoice = self.choices[index];
+    var currentChoice = self.choices[index];
     var $currentSlide = self.$slides[index];
 
     H5P.Transition.onTransitionEnd(self.$choices, function () {
@@ -591,7 +595,7 @@ const SingleChoiceSet = (function () {
 
       // on slides with answers focus on first alternative
       if (index < self.choices.length) {
-        $currentChoice.focusOnAlternative(0);
+        currentChoice.focusOnAlternative(0);
       }
       // on last slide, focus on try again button
       else {
