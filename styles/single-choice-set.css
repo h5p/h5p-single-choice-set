@@ -10,9 +10,14 @@
   -ms-scroll-limit: 0 0 0 0; /* IE11 bugfix for where this element can be out of line, when focusing on elements. */
   height: 100%;
 }
+
+.h5p-sc-set-wrapper.next-button-mode {
+  margin-bottom: 2.5em;
+}
+
 .h5p-sc-set {
   height: 100%;
-  padding: .5em;
+  padding: 0.5em;
   position: relative;
   box-sizing: border-box;
 }
@@ -47,6 +52,35 @@
 }
 .initialized .h5p-sc-slide.h5p-sc-current-slide {
   display: block;
+}
+
+.h5p-ssc-next-button {
+  display: none;
+  position: absolute;
+  right: 0.5em;
+  bottom: 0;
+  width: 2.1875em;
+  padding: 0.5em 0;
+  transition: transform 0.2s;
+  font-family: H5PFontAwesome4;
+  text-align: center;
+}
+.h5p-ssc-next-button:before {
+  content: "\f054";
+  position: relative;
+  left: 2px;
+  padding: 0;
+}
+.h5p-ssc-next-button:active {
+  /* Overriding JoubelUI, which sets it to relative positioning */
+  position: absolute;
+}
+.navigatable .h5p-ssc-next-button {
+  display: inline-block;
+}
+.h5p-ssc-next-button[aria-disabled="true"] {
+  transform: scale(0.01);
+  visibility: hidden;
 }
 
 ul.h5p-sc-alternatives {

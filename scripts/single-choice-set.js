@@ -18,6 +18,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       choices: [],
       overallFeedback: [],
       behaviour: {
+        autoContinue: true,
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
         soundEffectsEnabled: true,
@@ -36,6 +37,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       wrongs: 0
     };
 
+    if (!this.options.behaviour.autoContinue) {
+      this.options.behaviour.timeoutCorrect = 0;
+      this.options.behaviour.timeoutWrong = 0;
+    }
+
     /**
      * @property {StopWatch[]} Stop watches for tracking duration of slides
      */
@@ -53,17 +59,18 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.l10n = H5P.jQuery.extend({
       correctText: 'Correct!',
       incorrectText: 'Incorrect! Correct answer was: :text',
+      nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
       muteButtonLabel: "Mute feedback sound",
-      scoreBarLabel: 'You got :num out of :total points',
+      scoreBarLabel: 'You got :num out of :total points'
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
-      'class': 'h5p-sc-set-wrapper'
+      'class': 'h5p-sc-set-wrapper navigatable' + (!this.options.behaviour.autoContinue ? ' next-button-mode' : '')
     });
 
     this.$slides = [];
@@ -75,11 +82,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * @type {SolutionView}
      */
     this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
-
-    // Focus on first button when closing solution view
-    this.solutionView.on('hide', function () {
-      self.focusButton();
-    });
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
@@ -181,6 +183,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var self = this;
     var isCorrect = event.data.correct;
 
+    self.toggleNextButton(true);
+
     if (isCorrect) {
       self.results.corrects++;
     }
@@ -223,32 +227,59 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.trigger(xapiEvent);
 
-    // if should show result slide
-    if (self.currentIndex + 1 >= self.options.choices.length) {
-      self.setScore(self.results.corrects);
+    self.continue(event.data.correct);
+  };
+
+  /**
+   * Setup auto continue
+   *
+   * @param {boolean} correct Answer given was correct or incorrect
+   */
+  SingleChoiceSet.prototype.continue = function (correct) {
+    var self = this;
+
+    if (!self.options.behaviour.autoContinue) {
+      // Set focus to next button
+      self.$nextButton.focus();
+      return;
     }
 
+    var timeout;
     var letsMove = function () {
       // Handle impatient users
       self.$container.off('click.impatient keydown.impatient');
       clearTimeout(timeout);
-      self.move(self.currentIndex + 1);
+      self.next();
     };
 
-    var timeout = setTimeout(function () {
+    timeout = setTimeout(function () {
       letsMove();
-    }, event.data.correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
+    }, correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
-    self.$container.on('click.impatient', function () {
-      letsMove();
-    });
+    self.onImpatientUser(letsMove);
+  };
 
-    self.$container.on('keydown.impatient', function (event) {
+  /**
+   * Listen to impatience
+   * @param  {Function} action Callback
+   */
+  SingleChoiceSet.prototype.onImpatientUser = function (action) {
+    this.$container.off('click.impatient keydown.impatient');
+
+    this.$container.one('click.impatient', action);
+    this.$container.one('keydown.impatient', function (event) {
       // If return, space or right arrow
-      if (event.which === 13 || event.which === 32 || event.which === 39) {
-        letsMove();
+      if ([13,32,39].indexOf(event.which)) {
+        action();
       }
     });
+  };
+
+  /**
+   * Go to next slide
+   */
+  SingleChoiceSet.prototype.next = function () {
+    this.move(this.currentIndex + 1);
   };
 
   /**
@@ -335,72 +366,34 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    *
    * @params {Number} score Number of correct answers
    */
-  SingleChoiceSet.prototype.setScore = function (score, noXAPI, timeout) {
+  SingleChoiceSet.prototype.setScore = function (score, noXAPI) {
     var self = this;
 
-    // Find last selected alternative, and determine timeout before solution slide shows
     if (!self.choices.length) {
       return;
     }
-    var lastSelected = self.choices[self.choices.length - 1]
-      .$choice
-      .find('.h5p-sc-alternative.h5p-sc-selected');
 
-    timeout = (timeout !== undefined) ? timeout : (lastSelected.is('.h5p-sc-is-correct') ?
-      this.options.behaviour.timeoutCorrect :
-      this.options.behaviour.timeoutWrong);
+    self.setFeedback(determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
+        .replace(':numcorrect', score)
+        .replace(':maxscore', self.options.choices.length.toString()),
+      score, self.options.choices.length, self.l10n.scoreBarLabel);
 
-    /**
-     * Show feedback and buttons on result slide
-     */
-    var showFeedback = function () {
-      self.setFeedback(determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
-          .replace(':numcorrect', score)
-          .replace(':maxscore', self.options.choices.length.toString()),
-        score, self.options.choices.length, self.l10n.scoreBarLabel);
+    if (score === self.options.choices.length) {
+      self.hideButton('try-again');
+      self.hideButton('show-solution');
+    }
+    else {
+      self.showButton('try-again');
+      self.showButton('show-solution');
+    }
+    self.handleQueuedButtonChanges();
+    self.scoreTimeout = undefined;
 
-      if (score === self.options.choices.length) {
-        self.hideButton('try-again');
-        self.hideButton('show-solution');
-      }
-      else {
-        self.showButton('try-again');
-        self.showButton('show-solution');
-      }
-      self.handleQueuedButtonChanges();
-      self.scoreTimeout = undefined;
+    if (!noXAPI) {
+      self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
+    }
 
-      if (!noXAPI) {
-        self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
-      }
-
-      self.trigger('resize');
-    };
-
-    /**
-     * Wait for result slide animation
-     */
-    self.scoreTimeout = setTimeout(function () {
-      showFeedback();
-    }, (timeout));
-
-    // listen for impatient keyboard clicks
-    self.$container.one('keydown.impatient', function (event) {
-      // If return, space or right arrow
-      if (event.which === 13 || event.which === 32 || event.which === 39) {
-        clearTimeout(self.scoreTimeout);
-        showFeedback();
-      }
-    });
-
-    /**
-     * Listen for impatient clicks.
-     * On impatient clicks clear timeout and immediately show feedback.
-     */
-    self.$container.one('click.impatient', function () {
-      clearTimeout(self.scoreTimeout);
-      showFeedback();
-    });
+    self.trigger('resize');
   };
 
   /**
@@ -424,6 +417,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.setTabbable(button, true);
       });
       self.toggleAriaVisibility(true);
+      // Focus on first button when closing solution view
+      self.focusButton();
     });
 
     self.solutionView.show();
@@ -462,6 +457,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (this.options.choices.length === this.currentIndex) {
       this.trigger('question-finished');
     }
+
+    this.trigger('resize');
   };
 
   /**
@@ -499,6 +496,33 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       $button.attr('aria-pressed', self.muted);
     }
 
+    // Keep this out of H5P.Question, since we are moving the button & feedback
+    // region to the last slide
+    if (!this.options.behaviour.autoContinue) {
+
+      var handleNextClick = function () {
+        if(self.$nextButton.attr('aria-disabled') !== 'true') {
+          self.next();
+        }
+      };
+
+      self.$nextButton = UI.createButton({
+        'class': 'h5p-ssc-next-button',
+        'aria-label': self.l10n.nextButtonLabel,
+        click: handleNextClick,
+        keydown: function (event) {
+          switch (event.which) {
+            case 13: // Enter
+            case 32: // Space
+              handleNextClick();
+              event.preventDefault();
+          }
+        },
+        appendTo: self.$container
+      });
+      self.toggleNextButton(false);
+    }
+
     if (self.options.behaviour.soundEffectsEnabled) {
       self.$muteButton = $('<div>', {
         'class': 'h5p-sc-sound-control',
@@ -516,10 +540,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
             }
           }
         },
-        'click': toggleMute
+        'click': toggleMute,
+        appendTo: self.$container
       });
-
-      self.$container.append(self.$muteButton);
     }
 
     // Append solution view - hidden by default:
@@ -549,6 +572,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   /**
+   * Disable/enable the next button
+   * @param  {boolean} enable
+   */
+  SingleChoiceSet.prototype.toggleNextButton = function(enable) {
+    if (this.$nextButton) {
+      this.$nextButton.attr('aria-disabled', !enable);
+    }
+  };
+
+  /**
    * Will jump to the given slide without any though to animations,
    * current slide etc.
    *
@@ -571,19 +604,22 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    */
   SingleChoiceSet.prototype.move = function (index) {
     var self = this;
-    if (index === this.currentIndex) {
+    if (index === this.currentIndex || index > self.$slides.length-1) {
       return;
     }
 
     var $previousSlide = self.$slides[self.currentIndex];
     var $currentChoice = self.choices[index];
     var $currentSlide = self.$slides[index];
+    var isResultSlide = (index >= self.choices.length);
+
+    self.toggleNextButton(false);
 
     H5P.Transition.onTransitionEnd(self.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
 
       // on slides with answers focus on first alternative
-      if (index < self.choices.length) {
+      if (!isResultSlide) {
         $currentChoice.focusOnAlternative(0);
       }
       // on last slide, focus on try again button
@@ -591,6 +627,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.resultSlide.focusScore();
       }
     }, 600);
+
+    // if should show result slide
+    if (isResultSlide) {
+      self.setScore(self.results.corrects);
+    }
+
+    self.$container.toggleClass('navigatable', !isResultSlide);
 
     // start timing of new slide
     this.startStopWatch(index);
