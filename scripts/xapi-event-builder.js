@@ -1,6 +1,7 @@
-import { jQuery as $, EventDispatcher } from "./globals";
+var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-const XApiEventBuilder = (function () {
+H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
   /**
    * @typedef {object} LocalizedString
    * @property {string} en-US
@@ -487,6 +488,4 @@ const XApiEventBuilder = (function () {
   };
 
   return XApiEventBuilder;
-})();
-
-export default XApiEventBuilder;
+})(H5P.jQuery, H5P.EventDispatcher);

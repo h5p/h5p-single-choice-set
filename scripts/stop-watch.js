@@ -1,5 +1,12 @@
-export default class StopWatch {
-  constructor() {
+var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
+
+H5P.SingleChoiceSet.StopWatch = (function () {
+  /**
+   * @class {H5P.SingleChoiceSet.StopWatch}
+   * @constructor
+   */
+  function StopWatch() {
     /**
      * @property {number} duration in ms
      */
@@ -10,9 +17,9 @@ export default class StopWatch {
    * Starts the stop watch
    *
    * @public
-   * @return {StopWatch}
+   * @return {H5P.SingleChoiceSet.StopWatch}
    */
-  start(){
+  StopWatch.prototype.start = function(){
     /**
      * @property {number}
      */
@@ -26,7 +33,7 @@ export default class StopWatch {
    * @public
    * @return {number}
    */
-  stop() {
+  StopWatch.prototype.stop = function(){
     this.duration = this.duration + Date.now() - this.startTime;
     return this.passedTime();
   };
@@ -36,7 +43,7 @@ export default class StopWatch {
    *
    * @public
    */
-  reset() {
+  StopWatch.prototype.reset = function(){
     this.duration = 0;
   };
 
@@ -46,7 +53,9 @@ export default class StopWatch {
    * @public
    * @return {number}
    */
-  passedTime() {
+  StopWatch.prototype.passedTime = function(){
     return Math.round(this.duration / 10) / 100;
   };
-};
+
+  return StopWatch;
+})();

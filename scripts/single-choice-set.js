@@ -1,12 +1,6 @@
-import SingleChoice from './single-choice';
-import SolutionView from './solution-view';
-import ResultSlide from './result-slide';
-import SoundEffects from './sound-effects';
-import XApiEventBuilder from './xapi-event-builder';
-import StopWatch from './stop-watch';
-import { jQuery as $, JoubelUI as UI, Question } from "./globals";
+var H5P = H5P || {};
 
-const SingleChoiceSet = (function () {
+H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects, XApiEventBuilder, StopWatch) {
   /**
    * @constructor
    * @extends Question
@@ -817,6 +811,4 @@ const SingleChoiceSet = (function () {
   };
 
   return SingleChoiceSet;
-})();
-
-export default SingleChoiceSet;
+})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);

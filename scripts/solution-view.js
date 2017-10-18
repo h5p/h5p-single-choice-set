@@ -1,11 +1,12 @@
-import { jQuery as $, EventDispatcher } from "./globals";
+var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-export default class SolutionView extends EventDispatcher {
+H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
   /**
    * Constructor function.
    */
-  constructor(id, choices, l10n) {
-    super();
+  function SolutionView(id, choices, l10n) {
+    EventDispatcher.call(this);
     var self = this;
     self.id = id;
     this.choices = choices;
@@ -41,28 +42,17 @@ export default class SolutionView extends EventDispatcher {
   }
 
   /**
-   * Add a new event listener
-   *
-   * @param {string} type
-   * @param {function} listener
-   * @param {*} [instance]
-   */
-  on(type, listener, instance) {
-    this.on(type, listener, instance);
-  }
-
-  /**
    * Will append the solution view to a container DOM
    * @param  {jQuery} $container The DOM object to append to
    */
-  appendTo ($container) {
+  SolutionView.prototype.appendTo = function ($container) {
     this.$solutionView.appendTo($container);
   };
 
   /**
    * Shows the solution view
    */
-  show () {
+  SolutionView.prototype.show = function () {
     var self = this;
     self.$solutionView.addClass('visible');
     self.$title.focus();
@@ -78,7 +68,7 @@ export default class SolutionView extends EventDispatcher {
   /**
    * Hides the solution view
    */
-  hide () {
+  SolutionView.prototype.hide = function () {
     this.$solutionView.removeClass('visible');
     this.trigger('hide', this);
   };
@@ -87,7 +77,7 @@ export default class SolutionView extends EventDispatcher {
   /**
    * Populates the solution view
    */
-  populate () {
+  SolutionView.prototype.populate = function () {
     var self = this;
     self.$choices = $('<dl>', {
       'class': 'h5p-sc-solution-choices',
@@ -121,7 +111,7 @@ export default class SolutionView extends EventDispatcher {
    * @param {jQuery} $element A jQuery-element
    * @returns {jQuery} The mutated jQuery-element
    */
-  addAriaPunctuation ($element) {
+  SolutionView.prototype.addAriaPunctuation = function ($element) {
     var text = $element.text().trim();
 
     if (!this.hasPunctuation(text)) {
@@ -137,8 +127,9 @@ export default class SolutionView extends EventDispatcher {
    * @private
    * @param {String} text Input string
    */
-  hasPunctuation (text) {
+  SolutionView.prototype.hasPunctuation = function (text) {
     return /[,.?!]$/.test(text);
   };
 
-}
+  return SolutionView;
+})(H5P.jQuery, H5P.EventDispatcher);

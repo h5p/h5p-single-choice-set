@@ -1,11 +1,15 @@
-import { jQuery as $, EventDispatcher } from "./globals";
+var H5P = H5P || {};
+H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
-export default class Alternative extends EventDispatcher {
+H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
+
   /**
+   * @constructor
+   *
    * @param {object} options Options for the alternative
    */
-  constructor(options) {
-    super();
+  function Alternative(options) {
+    EventDispatcher.call(this);
     var self = this;
 
     this.options = options;
@@ -81,33 +85,36 @@ export default class Alternative extends EventDispatcher {
     }));
   }
 
+  Alternative.prototype = Object.create(EventDispatcher.prototype);
+  Alternative.prototype.constructor = Alternative;
+
   /**
    * Is this alternative the correct one?
    *
    * @return {boolean}  Correct or not?
    */
-  isCorrect () {
+  Alternative.prototype.isCorrect = function () {
     return this.options.correct;
   };
 
   /**
    * Move focus to this option.
    */
-  focus () {
+  Alternative.prototype.focus = function () {
     this.$alternative.focus();
   };
 
   /**
    * Makes it possible to tab your way to this option.
    */
-  tabbable () {
+  Alternative.prototype.tabbable = function () {
     this.$alternative.attr('tabindex', 0);
   };
 
   /**
    * Make sure it's NOT possible to tab your way to this option.
    */
-  notTabbable () {
+  Alternative.prototype.notTabbable = function () {
     this.$alternative.attr('tabindex', -1);
   };
 
@@ -117,8 +124,11 @@ export default class Alternative extends EventDispatcher {
    * @param  {jQuery} $container The Dom element to append to
    * @return {jQuery}            This dom element
    */
-  appendTo ($container) {
+  Alternative.prototype.appendTo = function ($container) {
     $container.append(this.$alternative);
     return this.$alternative;
   };
-}
+
+  return Alternative;
+
+})(H5P.jQuery, H5P.EventDispatcher);
