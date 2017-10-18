@@ -1,19 +1,12 @@
-import { jQuery as $, EventDispatcher, shuffleArray } from "./globals";
-import Controls from 'h5p-lib-controls/src/scripts/controls';
-import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
+import { jQuery as $, EventDispatcher } from "./globals";
+import Alternative from './single-choice-alternative';
 
-export default class SingleChoice extends EventDispatcher {
+export default class SingleChoice extends EventDispatcher{
   /**
    * Constructor function.
-   * @constructor
-   * @param {object} options
-   * @param {number} index
-   * @param {number} id
-   * @param {boolean} autoCheck
    */
-  constructor (options, index, id, autoCheck) {
+  constructor (options, index, id) {
     super();
-
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       question: '',
@@ -23,21 +16,16 @@ export default class SingleChoice extends EventDispatcher {
     this.index = index;
     this.id = id;
     this.answered = false;
-    /**
-     * @type {boolean}
-     */
-    this.autoCheck = autoCheck;
 
-    // add keyboard controls
-    this.controls = new Controls([new UIKeyboard()]);
-    this.controls.on('select', this.handleAlternativeSelected, this);
-
-    // create config
-    this.options.answers = shuffleArray(this.options.answers.map((answer, index) => ({
-      text: this.options.answers[index],
-      correct: index === 0,
-      answerIndex: index
-    })));
+    for (var i = 0; i < this.options.answers.length; i++) {
+      this.options.answers[i] = {
+        text: this.options.answers[i],
+        correct: i === 0,
+        answerIndex: i
+      };
+    }
+    // Randomize alternatives
+    this.options.answers = H5P.shuffleArray(this.options.answers);
   }
 
   /**
@@ -47,13 +35,18 @@ export default class SingleChoice extends EventDispatcher {
    * @param {boolean} isCurrent Current slide we are on
    */
   appendTo ($container, isCurrent) {
-    const questionId = `single-choice-${this.id}-question-${this.index}`;
+    var self = this;
     this.$container = $container;
+
+    // Index of the currently focused option.
+    var focusedOption;
 
     this.$choice = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc' + (isCurrent ? ' h5p-sc-current-slide' : ''),
-      css: {'left': (this.index * 100) + '%'}
+      css: {'left': (self.index * 100) + '%'}
     });
+
+    var questionId = 'single-choice-' + self.id + '-question-' + self.index;
 
     this.$choice.append($('<div>', {
       'id': questionId,
@@ -67,25 +60,121 @@ export default class SingleChoice extends EventDispatcher {
       'aria-labelledby': questionId
     });
 
-    this.$nextButton = $('<button>', {
-      html: 'Next',
-      'class': 'h5p-joubelui-button h5p-question-next',
-      'aria-disabled': 'true',
-      'tabindex': '-1',
-      'click': () => {
-        if(this.$nextButton.attr('aria-disabled') !== 'true') {
-          this.toggleNextButton(false);
-          this.checkAnswer();
-        }
+    /**
+     * List of Alternatives
+     *
+     * @type {Alternative[]}
+     */
+    this.alternatives = self.options.answers.map(function (opts) {
+      return new Alternative(opts);
+    });
+
+    /**
+     * Handles click on an alternative
+     */
+    var handleAlternativeSelected = function (event) {
+      var $element = event.data.$element;
+      var correct = event.data.correct;
+      var answerIndex = event.data.answerIndex;
+
+      if ($element.parent().hasClass('h5p-sc-selected')) {
+        return;
       }
-    }).toggle(!this.autoCheck);
 
-    this.alternativeElements = this.options.answers.map(opts => this.createAlternativeElement(opts));
+      self.trigger('alternative-selected', {
+        correct: correct,
+        index: self.index,
+        answerIndex: answerIndex
+      });
 
-    $alternatives.append(this.alternativeElements);
+      H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), function () {
+        $element.addClass('h5p-sc-drummed');
+        self.showResult(correct, answerIndex);
+      }, 700);
+
+      $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+
+      // indicate that this question is anwered
+      this.setAnswered(true);
+    };
+
+    /**
+     * Handles focusing one of the options, making the rest non-tabbable.
+     * @private
+     */
+    var handleFocus = function (answer, index) {
+      // Keep track of currently focused option
+      focusedOption = index;
+
+      // remove tabbable all alternatives
+      self.alternatives.forEach(function (alternative) {
+        alternative.notTabbable();
+      });
+      answer.tabbable();
+    };
+
+    /**
+     * Handles moving the focus from the current option to the previous option.
+     * @private
+     */
+    var handlePreviousOption = function () {
+      if (focusedOption === 0) {
+        // wrap around to last
+        this.focusOnAlternative(self.alternatives.length - 1);
+      }
+      else {
+        this.focusOnAlternative(focusedOption - 1);
+      }
+    };
+
+    /**
+     * Handles moving the focus from the current option to the next option.
+     * @private
+     */
+    var handleNextOption = function () {
+      if ((focusedOption === this.alternatives.length - 1)) {
+        // wrap around to first
+        this.focusOnAlternative(0);
+      }
+      else {
+        this.focusOnAlternative(focusedOption + 1);
+      }
+    };
+
+    /**
+     * Handles moving the focus to the first option
+     * @private
+     */
+    var handleFirstOption = function () {
+      this.focusOnAlternative(0);
+    };
+
+    /**
+     * Handles moving the focus to the last option
+     * @private
+     */
+    var handleLastOption = function () {
+      this.focusOnAlternative(self.alternatives.length - 1);
+    };
+
+    for (var i = 0; i < this.alternatives.length; i++) {
+      var alternative = this.alternatives[i];
+
+      if (i === 0) {
+        alternative.tabbable();
+      }
+
+      alternative.appendTo($alternatives);
+      alternative.on('focus', handleFocus.bind(this, alternative, i), this);
+      alternative.on('alternative-selected', handleAlternativeSelected, this);
+      alternative.on('previousOption', handlePreviousOption, this);
+      alternative.on('nextOption', handleNextOption, this);
+      alternative.on('firstOption', handleFirstOption, this);
+      alternative.on('lastOption', handleLastOption, this);
+
+    }
 
     this.$choice.append($alternatives);
-    this.$choice.append(this.$nextButton);
     $container.append(this.$choice);
     return this.$choice;
   };
@@ -97,68 +186,9 @@ export default class SingleChoice extends EventDispatcher {
    */
   focusOnAlternative (index) {
     if (!this.answered) {
-      this.controls.setTabbableByIndex(index);
-      this.$choice.find('[tabindex="0"]').focus();
+      this.alternatives[index].focus();
     }
   };
-
-  /**
-   * Handles selection an alternative
-   *
-   * @param {Element} element
-   * @param {number} index
-   */
-  handleAlternativeSelected ({ element }) {
-    const $element = $(element);
-    this.selectedElement = element;
-
-    // sets aria selected on this element
-    this.alternativeElements.forEach((el) => {
-      el.setAttribute('aria-selected', element.isEqualNode(el).toString());
-    });
-
-    if (this.autoCheck && !$element.parent().hasClass('h5p-sc-selected')) {
-      $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
-      this.checkAnswer();
-    }
-    else {
-      this.toggleNextButton();
-    }
-  }
-
-  /**
-   * Enables the next button
-   *
-   * @param {boolean} [enable]
-   */
-  toggleNextButton(enable = true) {
-    this.$nextButton.attr('aria-disabled', (!enable).toString());
-    this.$nextButton.attr('tabindex', enable ? '0' : '-1');
-  }
-
-  /**
-   * Checks if it's the correct answer
-   */
-  checkAnswer() {
-    const $element = $(this.selectedElement);
-    const index = this.alternativeElements.indexOf(this.selectedElement);
-    const correct = this.options.answers[index].correct;
-
-    H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), () => {
-      $element.addClass('h5p-sc-drummed');
-      this.showResult(correct, index);
-    }, 700);
-
-    // indicate that this question is answered
-    this.answered = true;
-
-    // trigger event
-    this.trigger('alternative-selected', {
-      correct: correct,
-      $element: $element,
-      answerIndex: index
-    });
-  }
 
   /**
    * Sets if the question was answered
@@ -167,32 +197,7 @@ export default class SingleChoice extends EventDispatcher {
    */
   setAnswered (answered) {
     this.answered = answered;
-  }
-
-  /**
-   * Creates an alternative
-   *
-   * @param {Object} options
-   * @return {Element}
-   */
-  createAlternativeElement (options) {
-    const element = document.createElement('li');
-    element.className = 'h5p-sc-alternative h5p-sc-is-' + (options.correct ? 'correct' : 'wrong');
-    element.setAttribute('role', 'radio');
-    element.innerHTML =
-      `<div class="h5p-sc-progressbar"></div>
-       <div class="h5p-sc-label">${options.text}</div>
-       <div class="h5p-sc-status"></div>`;
-
-    // Add keyboard controls
-    this.controls.addElement(element);
-
-    element.addEventListener('click', () => {
-      this.handleAlternativeSelected({ element })
-    });
-
-    return element;
-  }
+  };
 
   /**
    * Reveals the result for a question
@@ -201,18 +206,20 @@ export default class SingleChoice extends EventDispatcher {
    * @param  {number} answerIndex Original index of answer
    */
   showResult (correct, answerIndex) {
-    var $correctAlternative = this.$choice.find('.h5p-sc-is-correct');
+    var self = this;
 
-    H5P.Transition.onTransitionEnd($correctAlternative, () => {
-      this.trigger('finished', {
+    var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
+
+    H5P.Transition.onTransitionEnd($correctAlternative, function () {
+      self.trigger('finished', {
         correct: correct,
-        index: this.index,
+        index: self.index,
         answerIndex: answerIndex
       });
     }, 600);
 
     // Reveal corrects and wrong
-    this.$choice.find('.h5p-sc-is-wrong').addClass('h5p-sc-reveal-wrong');
+    self.$choice.find('.h5p-sc-is-wrong').addClass('h5p-sc-reveal-wrong');
     $correctAlternative.addClass('h5p-sc-reveal-correct');
-  }
+  };
 }
