@@ -59,7 +59,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
     var $alternatives = $('<ul>', {
       'class': 'h5p-sc-alternatives',
-      'role': 'radiogroup',
+      'role': 'application',
       'aria-labelledby': questionId
     });
 
