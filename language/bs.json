@@ -67,9 +67,6 @@
           "label": "Prikaži dugme \"Prikaži rješenje\""
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "Minimalno procenata za prolaz",
           "description": "Minimalno osvojenih procenata da bi se kviz smatrao uspješno prođenim."
         }

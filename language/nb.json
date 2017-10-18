@@ -67,9 +67,6 @@
           "label": "\"Vis svar\" knapp"
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "Krav for å bestå",
           "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
         }

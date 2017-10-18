@@ -155,13 +155,6 @@
         "default": true
       },
       {
-        "name": "autoCheck",
-        "type": "boolean",
-        "label": "Automatically check answers after selection",
-        "importance": "low",
-        "default": true
-      },
-      {
         "name": "passPercentage",
         "type": "number",
         "label": "Pass percentage",

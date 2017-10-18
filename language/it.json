@@ -67,9 +67,6 @@
           "label": "Abilita pulsante Mostra soluzione"
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "Percentuale di superamento della prova",
           "description": "Percentuale del punteggio totale richiesto per passare il quiz."
         }

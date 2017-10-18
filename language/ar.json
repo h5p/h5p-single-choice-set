@@ -67,9 +67,6 @@
           "label": "تفعيل إظهار زر الحل"
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "نسبة النجاح",
           "description": "النسبة المئوية لمجموع النقاط المطلوبة لاجتياز الاختبار"
         }

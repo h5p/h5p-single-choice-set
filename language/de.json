@@ -67,9 +67,6 @@
           "label": "\"Lösung anzeigen\"-Button anzeigen"
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "Prozentsatz zum Bestehen",
           "description": "Prozentsatz der Gesamtpunktzahl, der nötig ist, um das Quiz zu bestehen"
         }

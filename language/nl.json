@@ -67,9 +67,6 @@
           "label": "Enable show solution button"
         },
         {
-          "label": "Automatically check answers after selection"
-        },
-        {
           "label": "Slagingspercentage",
           "description": "Percentage van de Totale score die vereist is om te slagen."
         }
