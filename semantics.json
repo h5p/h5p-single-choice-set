@@ -118,12 +118,29 @@
     "importance": "low",
     "fields": [
       {
+
+        "name": "autoContinue",
+        "type": "boolean",
+        "label": "Auto continue",
+        "description": "Automatically go to next question when alternative is selected",
+        "default": true
+      },
+      {
         "name": "timeoutCorrect",
         "type": "number",
         "label": "Timeout on correct answers",
         "importance": "low",
         "description": "Value in milliseconds",
-        "default": 2000
+        "default": 2000,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "autoContinue",
+              "equals": true
+            }
+          ]
+        }
       },
       {
         "name": "timeoutWrong",
@@ -131,7 +148,16 @@
         "label": "Timeout on wrong answers",
         "importance": "low",
         "description": "Value in milliseconds",
-        "default": 3000
+        "default": 3000,
+          "widget": "showWhen",
+          "showWhen": {
+            "rules": [
+              {
+                "field": "autoContinue",
+                "equals": true
+              }
+            ]
+          }
       },
       {
         "name": "soundEffectsEnabled",
@@ -173,6 +199,13 @@
     "importance": "low",
     "common": true,
     "fields": [
+      {
+        "name": "nextButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Next\" button",
+        "importance": "low",
+        "default": "Next question"
+      },
       {
         "name": "showSolutionButtonLabel",
         "type": "text",
