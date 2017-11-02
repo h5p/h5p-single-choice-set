@@ -169,8 +169,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @returns {jQuery} The element
    */
   SingleChoiceSet.prototype.setTabbable = function ($element, tabbable) {
-    $element.attr('tabindex', tabbable ? 0 : -1);
-    return $element;
+    if ($element) {
+      $element.attr('tabindex', tabbable ? 0 : -1);
+    }
   };
 
   /**
@@ -427,7 +428,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.toggleAriaVisibility = function (enable) {
     var self = this;
     var ariaHidden = enable ? '' : 'true';
-    self.$muteButton.attr('aria-hidden', ariaHidden);
+    if (self.$muteButton) {
+      self.$muteButton.attr('aria-hidden', ariaHidden);
+    }
     self.progressbar.$progressbar.attr('aria-hidden', ariaHidden);
     self.$choices.attr('aria-hidden', ariaHidden);
   };
