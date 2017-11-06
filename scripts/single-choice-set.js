@@ -78,6 +78,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.choices = [];
 
     /**
+     * Keeps track of buttons that will be hidden
+     * @type {Array}
+     */
+    self.buttonsToBeHidden = [];
+
+    /**
      * The solution dialog
      * @type {SolutionView}
      */
@@ -122,7 +128,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
-      this.setScore(this.results.corrects, true, 0);
+      this.setScore(this.results.corrects, true);
     }
 
     if (!this.muted) {
@@ -130,12 +136,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         SoundEffects.setup(self.getLibraryFilePath(''));
       }, 1);
     }
-
-    /**
-     * Keeps track of buttons that will be hidden
-     * @type {Array}
-     */
-    self.buttonsToBeHidden = [];
 
     /**
      * Override Question's hideButton function
@@ -169,8 +169,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @returns {jQuery} The element
    */
   SingleChoiceSet.prototype.setTabbable = function ($element, tabbable) {
-    $element.attr('tabindex', tabbable ? 0 : -1);
-    return $element;
+    if ($element) {
+      $element.attr('tabindex', tabbable ? 0 : -1);
+    }
   };
 
   /**
@@ -181,16 +182,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    */
   SingleChoiceSet.prototype.handleAlternativeSelected = function (event) {
     var self = this;
-    var isCorrect = event.data.correct;
+    this.lastAnswerIsCorrect = event.data.correct;
 
     self.toggleNextButton(true);
-
-    if (isCorrect) {
-      self.results.corrects++;
-    }
-    else {
-      self.results.wrongs++;
-    }
 
     self.triggerXAPI('interacted');
 
@@ -198,13 +192,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
 
     // Announce by ARIA if answer is correct or incorrect
-    var text = isCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
+    var text = this.lastAnswerIsCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
     self.read(text);
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
-      SoundEffects.play(isCorrect ? 'positive-short' : 'negative-short', 700);
+      SoundEffects.play(this.lastAnswerIsCorrect ? 'positive-short' : 'negative-short', 700);
     }
   };
 
@@ -227,15 +221,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.trigger(xapiEvent);
 
-    self.continue(event.data.correct);
+    self.continue();
   };
 
   /**
    * Setup auto continue
-   *
-   * @param {boolean} correct Answer given was correct or incorrect
    */
-  SingleChoiceSet.prototype.continue = function (correct) {
+  SingleChoiceSet.prototype.continue = function () {
     var self = this;
 
     if (!self.options.behaviour.autoContinue) {
@@ -254,7 +246,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     timeout = setTimeout(function () {
       letsMove();
-    }, correct ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
+    }, self.lastAnswerIsCorrect ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
     self.onImpatientUser(letsMove);
   };
@@ -279,6 +271,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Go to next slide
    */
   SingleChoiceSet.prototype.next = function () {
+    // Keep track of num correct/wrong answers
+    this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
+
     this.move(this.currentIndex + 1);
   };
 
@@ -433,7 +428,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.toggleAriaVisibility = function (enable) {
     var self = this;
     var ariaHidden = enable ? '' : 'true';
-    self.$muteButton.attr('aria-hidden', ariaHidden);
+    if (self.$muteButton) {
+      self.$muteButton.attr('aria-hidden', ariaHidden);
+    }
     self.progressbar.$progressbar.attr('aria-hidden', ariaHidden);
     self.$choices.attr('aria-hidden', ariaHidden);
   };
