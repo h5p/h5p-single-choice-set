@@ -50,6 +50,10 @@
       "label": "Innstillinger for oppgave-oppførsel",
       "fields": [
         {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected"
+        },
+        {
           "label": "Pause ved korrekt svar",
           "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
         },
@@ -105,8 +109,12 @@
         },
         {
           "label": "Side nummer tekst",
-          "description": "Angir nåværende side og totalt antall sider, variabler er :num og :total",
           "default": "Side :num av :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "You got :num out of :total points"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

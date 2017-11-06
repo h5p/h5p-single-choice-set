@@ -118,7 +118,6 @@
     "importance": "low",
     "fields": [
       {
-
         "name": "autoContinue",
         "type": "boolean",
         "label": "Auto continue",
@@ -149,15 +148,15 @@
         "importance": "low",
         "description": "Value in milliseconds",
         "default": 3000,
-          "widget": "showWhen",
-          "showWhen": {
-            "rules": [
-              {
-                "field": "autoContinue",
-                "equals": true
-              }
-            ]
-          }
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "autoContinue",
+              "equals": true
+            }
+          ]
+        }
       },
       {
         "name": "soundEffectsEnabled",

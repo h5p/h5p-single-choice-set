@@ -50,6 +50,10 @@
       "label": "Verhaltenseinstellungen",
       "fields": [
         {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected"
+        },
+        {
           "label": "Timeout bei richtigen Antworten",
           "description": "Wert in Millisekunden"
         },
@@ -105,8 +109,12 @@
         },
         {
           "label": "Text für die Nummer des Schaubilds",
-          "description": "Gibt das aktuelle Schaubild und die Gesamtzahl der Schaubilder an, Variablen sind :num und :total",
           "default": "Schaubild :num von :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "You got :num out of :total points"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

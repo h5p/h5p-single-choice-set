@@ -50,6 +50,10 @@
       "label": "Interaktionseinstellungen",
       "fields": [
         {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected"
+        },
+        {
           "label": "Vrijeme za tačan odgovor",
           "description": "Vrijednost u milisekundama"
         },
@@ -105,8 +109,12 @@
         },
         {
           "label": "Tekst za broj slajda",
-          "description": "Prikazuje aktuelni slajd i broj svih slajdova, a mogućnosti su :num i :total",
           "default": "Slajd :num od :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "You got :num out of :total points"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",
