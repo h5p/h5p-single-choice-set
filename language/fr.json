@@ -84,12 +84,12 @@
           "default": "Voir la solution"
         },
         {
-          "label": "Texte pour le bouton \"Recommencer\"",
-          "default": "Recommencer"
-        },
-        {
           "label": "Texte pour le mode \"Correction\"",
           "default": "Correction"
+        },
+        {
+          "label": "Texte pour le bouton \"Recommencer\"",
+          "default": "Recommencer"
         },
         {
           "label": "Texte exprimé par la synthèse vocale en cas de réponse correcte",
