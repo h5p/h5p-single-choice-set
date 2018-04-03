@@ -80,6 +80,10 @@
       "label": "Interface de la série de questions à choix unique",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "Texte pour le bouton \"Voir la correction\"",
           "default": "Voir la solution"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "Texte du numéro de diapositive",
-          "default": "Diapositive :num sur :total"
-        },
-        {
-          "label": "Textual representation of the score bar for those using a readspeaker",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "You got :num out of :total points"
+          "default": "Diapositive :num sur :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

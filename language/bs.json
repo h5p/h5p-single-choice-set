@@ -80,6 +80,10 @@
       "label": "Podešavanja za Set pitanja",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "Oznaka za dugme \"Prikaži rješenje\" ",
           "default": "Prikaži rješenje"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "Tekst za broj slajda",
-          "default": "Slajd :num od :total"
-        },
-        {
-          "label": "Textual representation of the score bar for those using a readspeaker",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "You got :num out of :total points"
+          "default": "Slajd :num od :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

@@ -80,6 +80,10 @@
       "label": "Sprachanpassungen für Single-Choice-Set",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "Beschriftung für den \"Lösung anzeigen\"-Button",
           "default": "Lösung anzeigen"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "Text für die Nummer des Schaubilds",
-          "default": "Schaubild :num von :total"
-        },
-        {
-          "label": "Textual representation of the score bar for those using a readspeaker",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "You got :num out of :total points"
+          "default": "Schaubild :num von :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

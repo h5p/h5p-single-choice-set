@@ -80,6 +80,10 @@
       "label": "Ändra texter",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "Beskrivning av \"Visa rätt svar\" knappen",
           "default": "Visa rätt svar"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "Sidnummer text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
           "default": "Sida :num av :total"
-        },
-        {
-          "label": "Texten som läses upp när poängen presenteras för de som använder en readspeaker",
-          "description": "Variabler är :num och :total",
-          "default": "Du fick :num rätt av :total totalt"
         },
         {
           "label": "Texten som läses upp när poängen presenteras för de som använder en readspeaker",

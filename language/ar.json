@@ -80,6 +80,10 @@
       "label": "توطين مجموعة الخيار واحد",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "تسمية لزر \"مشاهدة حل \"",
           "default": "مشاهدة الحل"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "النص رقم الشريحة",
-          "default": "الشريحة :num أو :total"
-        },
-        {
-          "label": "Textual representation of the score bar for those using a readspeaker",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "You got :num out of :total points"
+          "default": "الشريحة :num أو :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

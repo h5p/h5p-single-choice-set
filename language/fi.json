@@ -80,6 +80,10 @@
       "label": "Muokkaa käännöksiä",
       "fields": [
         {
+          "label": "Label for the \"Next\" button",
+          "default": "Next question"
+        },
+        {
           "label": "Painikkeen \"Katso vastaus\" nimi",
           "default": "Katso vastaus"
         },
@@ -109,12 +113,8 @@
         },
         {
           "label": "Sivun numero",
-          "default": "Sivu :num/:total"
-        },
-        {
-          "label": "Ruudunlukijan teksti ilmaisemaan pisteitä",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "Sinulla on :num/:total pistettä."
+          "default": "Sivu :num/:total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",
