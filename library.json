@@ -5,8 +5,8 @@
   "license": "MIT",
   "author": "Joubel",
   "majorVersion": 1,
-  "minorVersion": 9,
-  "patchVersion": 7,
+  "minorVersion": 10,
+  "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -14,7 +14,7 @@
   ],
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 11
+    "minorVersion": 15
   },
   "preloadedCss": [
     {

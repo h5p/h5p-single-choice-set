@@ -43,8 +43,20 @@ H5PUpgrades['H5P.SingleChoiceSet'] = (function ($) {
         }
 
         finished(null, parameters);
-      }
+      },
+      10: function (parameters, finished, extras) {
+        var title;
 
+        if (parameters && parameters.choices[0] && parameters.choices[0].question) {
+          title = parameters.choices[0].question;
+        }
+
+        extras = extras || {};
+        extras.metadata = extras.metadata || {};
+        extras.metadata.title = (title) ? title.replace(/<[^>]*>?/g, '') : ((extras.metadata.title) ? extras.metadata.title : 'Single Choice Set');
+
+        finished(null, parameters, extras);
+      }
     }
   };
 })(H5P.jQuery);
