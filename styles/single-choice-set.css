@@ -242,6 +242,15 @@ li.h5p-sc-alternative .h5p-sc-status {
   margin-bottom: 1.3em;
 }
 
+.h5p-sc-set-results .h5p-sc-button-container {
+  margin-top: 1em;
+}
+
+.h5p-sc-set-results .h5p-question-buttons.has-scorebar {
+  width: calc(100% - 1.5em);
+  margin: 0 0.5em 0 1em;
+}
+
 .h5p-sc-sound-control {
   width: 1.3em;
   height: 1.5em;
