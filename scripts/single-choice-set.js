@@ -449,6 +449,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Insert feedback and buttons section on the result slide
     this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
+    this.insertSectionAtElement('scorebar', this.resultSlide.$feedbackContainer);
     this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
 
     // Question is finished
