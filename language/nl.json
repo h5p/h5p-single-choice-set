@@ -1,26 +1,26 @@
 {
   "semantics": [
     {
-      "label": "List of questions",
-      "entity": "question",
+      "label": "Vragenoverzicht",
+      "entity": "vraag",
       "field": {
-        "label": "Question & alternatives",
+        "label": "Vraag & alternatieven",
         "fields": [
           {
             "label": "Vraag"
           },
           {
-            "label": "Alternatives - first alternative is the correct one.",
-            "entity": "answer",
+            "label": "Alternatieven - het eerste alternatief is het juiste antwoord.",
+            "entity": "antwoord",
             "field": {
-              "label": "Alternative"
+              "label": "Alternatief"
             }
           }
         ]
       }
     },
     {
-      "label": "Overall Feedback",
+      "label": "Algehele feedback",
       "fields": [
         {
           "widgets": [
@@ -28,18 +28,18 @@
               "label": "Standaard"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Definieer aangepaste feedback voor elke scorereeks",
+          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "entity": "reeks",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Scorereeks"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Feedback voor de gedefinieerde scorereeks",
+                "placeholder": "Vul de aangepaste feedback in"
               }
             ]
           }
@@ -50,75 +50,75 @@
       "label": "Gedragsinstellingen",
       "fields": [
         {
-          "label": "Auto continue",
-          "description": "Automatically go to next question when alternative is selected"
+          "label": "Automatisch doorgaan",
+          "description": "Ga automatisch naar de volgende vraag wanneer een alternatief is geselecteerd"
         },
         {
-          "label": "Timeout on correct answers",
-          "description": "Value in milliseconds"
+          "label": "Time-out bij juiste antwoorden",
+          "description": "Waarde in milliseconden"
         },
         {
-          "label": "Timeout on wrong answers",
-          "description": "Value in milliseconds"
+          "label": "Time-out bij onjuiste antwoorden",
+          "description": "Waarde in milliseconden"
         },
         {
-          "label": "Enable sound effects"
+          "label": "Activeer geluidseffecten"
         },
         {
-          "label": "Enable retry button"
+          "label": "Activeer opnieuw knop"
         },
         {
-          "label": "Enable show solution button"
+          "label": "Activeer toon oplossing knop"
         },
         {
           "label": "Slagingspercentage",
-          "description": "Percentage van de Totale score die vereist is om te slagen."
+          "description": "Percentage van de totale score die vereist is om te slagen."
         }
       ]
     },
     {
-      "label": "Localize single choice set",
+      "label": "Lokaliseer enkele keuze set",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "Tekst voor de \"Volgende vraag\" -knop",
+          "default": "Volgende vraag"
         },
         {
-          "label": "Label for the \"Show solution\" button",
+          "label": "Tekst voor de \"Toon oplossing\" -knop",
           "default": "Toon oplossing"
         },
         {
-          "label": "Label for the \"Retry\" button",
+          "label": "Tekst voorde de \"Opnieuw\" -knop",
           "default": "Opnieuw proberen"
         },
         {
-          "label": "Title for the show solution view",
-          "default": "Solution"
+          "label": "Titel voor het tonen van de oplossing",
+          "default": "Oplossing"
         },
         {
-          "label": "Readspeaker text for correct answer",
-          "default": "Correct!"
+          "label": "Readspeaker tekst voor het juiste antwoord",
+          "default": "Juist!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect!"
+          "label": "Readspeaker tekst voor het onjuiste antwoord",
+          "default": "Onjuist!"
         },
         {
-          "label": "Label for the \"mute\" button, to disable feedback sound",
-          "default": "Mute feedback sound"
+          "label": "Tekst voor de \"demp\" -knop, om het feedbackgeluid uit te schakelen",
+          "default": "Demp het feedbackgeluid"
         },
         {
-          "label": "Label for the \"Close\" button",
-          "default": "Close"
+          "label": "Tekst voor de \"Afsluiten\" -knop",
+          "default": "Afsluiten"
         },
         {
-          "label": "Slide number text",
-          "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "Slide :num of :total"
+          "label": "Tekst voor het dianummer",
+          "description": "Geeft de huidige dia en het totale aantal dia's weer, variabelen zijn :num and :total",
+          "default": "Dia :num van :total"
         },
         {
-          "label": "Textual representation of the score bar for those using a readspeaker",
-          "default": "You got :num out of :total points"
+          "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de readspeaker",
+          "default": "Je hebt :num van de :total punten"
         }
       ]
     }
