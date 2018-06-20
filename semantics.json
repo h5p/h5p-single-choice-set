@@ -13,7 +13,7 @@
         "label": "Default"
       },
       {
-        "name": "SingleChoiceSetEditor",
+        "name": "SingleChoiceSetTextualEditor",
         "label": "Textual"
       }
     ],

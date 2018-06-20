@@ -3,6 +3,14 @@
     {
       "label": "Spørsmålsliste",
       "entity": "spørsmål",
+      "widgets": [
+        {
+          "label": "Standard"
+        },
+        {
+          "label": "Tekstlig"
+        }
+      ],
       "field": {
         "label": "Spørsmål & alternativer",
         "fields": [
