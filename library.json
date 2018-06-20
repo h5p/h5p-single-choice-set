@@ -91,7 +91,7 @@
       "minorVersion": 0
     },
     {
-      "machineName": "H5PEditor.SingleChoiceSetEditor",
+      "machineName": "H5PEditor.SingleChoiceSetTextualEditor",
       "majorVersion": 1,
       "minorVersion": 0
     }
