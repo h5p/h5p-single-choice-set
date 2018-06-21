@@ -3,6 +3,14 @@
     {
       "label": "Liste der Fragen",
       "entity": "Frage",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
         "label": "Frage & Alternativen",
         "fields": [

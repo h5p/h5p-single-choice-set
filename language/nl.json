@@ -3,6 +3,14 @@
     {
       "label": "Vragenoverzicht",
       "entity": "vraag",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
         "label": "Vraag & alternatieven",
         "fields": [

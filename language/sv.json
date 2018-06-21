@@ -3,6 +3,14 @@
     {
       "label": "Frågelista",
       "entity": "question",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
         "label": "Frågor och svar",
         "fields": [
