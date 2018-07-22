@@ -1,8 +1,16 @@
 {
   "semantics": [
     {
-      "label": "قائمة الاسئلة",
-      "entity": "question",
+      "label": "قائمة الأسئلة",
+      "entity": "السؤال",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
         "label": "السؤال والبدائل",
         "fields": [
