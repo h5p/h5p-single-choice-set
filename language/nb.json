@@ -36,18 +36,18 @@
               "label": "Standard"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Definer standard tilbakemelding for alle poengsummer",
+          "description": "Klikk på \"Legg til poengområde\" knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "entity": "område",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Poengområde"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Tilbakemelding for definert poengområde",
+                "placeholder": "Fyll inn tilbakemelding"
               }
             ]
           }
@@ -58,8 +58,8 @@
       "label": "Innstillinger for oppgaveoppførsel",
       "fields": [
         {
-          "label": "Auto continue",
-          "description": "Automatically go to next question when alternative is selected"
+          "label": "Fortsett automatisk",
+          "description": "Hopp automatisk til neste spørsmål når et alternativ er valgt"
         },
         {
           "label": "Pause ved korrekt svar",
@@ -73,10 +73,10 @@
           "label": "Lydeffekter"
         },
         {
-          "label": "\"Prøv igjen\" knapp"
+          "label": "\"Prøv igjen\"-knapp"
         },
         {
-          "label": "\"Vis svar\" knapp"
+          "label": "\"Vis svar\"-knapp"
         },
         {
           "label": "Krav for å bestå",
@@ -88,15 +88,15 @@
       "label": "Ledetekster",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "Etikett for \"Neste\"-knappen",
+          "default": "Neste spørsmål"
         },
         {
-          "label": "Etikett på \"Vis svar\" knappen",
+          "label": "Etikett på \"Vis svar\"-knappen",
           "default": "Fasit"
         },
         {
-          "label": "Etikett på \"Prøv igjen\" knappen",
+          "label": "Etikett på \"Prøv igjen\"-knappen",
           "default": "Prøv igjen"
         },
         {
@@ -120,13 +120,13 @@
           "default": "Lukk"
         },
         {
-          "label": "Side nummer tekst",
-          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "label": "Sidenummer-tekst",
+          "description": "Viser hvilket nummer siden du står på har, og det totale antallet. Variablene er :num av :total",
           "default": "Side :num av :total"
         },
         {
-          "label": "Textual representation of the score bar for those using a readspeaker",
-          "default": "You got :num out of :total points"
+          "label": "Tekstlig gjengivelse av poengsum for hjelpemiddelteknologi",
+          "default": "Du fikk :num av :total poeng"
         }
       ]
     }
