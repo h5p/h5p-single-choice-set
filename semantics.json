@@ -7,6 +7,16 @@
     "entity": "question",
     "min": 1,
     "defaultNum": 2,
+    "widgets": [
+      {
+        "name": "ListEditor",
+        "label": "Default"
+      },
+      {
+        "name": "SingleChoiceSetTextualEditor",
+        "label": "Textual"
+      }
+    ],
     "field": {
       "name": "choice",
       "type": "group",

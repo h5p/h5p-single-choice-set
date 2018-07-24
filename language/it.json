@@ -3,6 +3,14 @@
     {
       "label": "Elenco domande",
       "entity": "domanda",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
         "label": "Domande & alternative",
         "fields": [
