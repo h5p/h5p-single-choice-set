@@ -121,7 +121,7 @@
         },
         {
           "label": "Sidenummer-tekst",
-          "description": "Viser hvilket nummer siden du står på har, og det totale antallet. Variablene er :num av :total",
+          "description": "Viser hvilket nummer gjeldende side har og det totale antall sider. Variablene er :num av :total",
           "default": "Side :num av :total"
         },
         {
