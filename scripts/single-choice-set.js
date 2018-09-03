@@ -13,6 +13,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Extend defaults with provided options
     this.contentId = contentId;
+    this.contentData = contentData;
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
@@ -713,7 +714,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   SingleChoiceSet.prototype.getTitle = function () {
-    return (this.options.choices[0] ? H5P.createTitle(this.options.choices[0].question) : '');
+    return H5P.createTitle((this.contentData && this.contentData.metadata && this.contentData.metadata.title) ? this.contentData.metadata.title : 'Single Choice Set');
   };
 
   /**
