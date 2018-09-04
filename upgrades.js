@@ -47,7 +47,7 @@ H5PUpgrades['H5P.SingleChoiceSet'] = (function () {
       11: function (parameters, finished, extras) {
         var title;
 
-        if (parameters && parameters.choices[0] && parameters.choices[0].question) {
+        if (parameters && parameters.choices && parameters.choices[0] && parameters.choices[0].question) {
           title = parameters.choices[0].question;
         }
 
