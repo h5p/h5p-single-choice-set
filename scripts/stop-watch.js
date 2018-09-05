@@ -19,7 +19,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {H5P.SingleChoiceSet.StopWatch}
    */
-  StopWatch.prototype.start = function(){
+  StopWatch.prototype.start = function () {
     /**
      * @property {number}
      */
