@@ -11,7 +11,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @class {H5P.SingleChoiceSet.XApiEventDefinitionBuilder}
    * @constructor
    */
-  function XApiEventDefinitionBuilder(){
+  function XApiEventDefinitionBuilder() {
     EventDispatcher.call(this);
     /**
      * @property {object} attributes
@@ -94,7 +94,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
     setAttribute(definition, 'type', 'http://adlnet.gov/expapi/activities/cmi.interaction');
 
     // adds the optional object to the definition
-    if(this.attributes.optional){
+    if (this.attributes.optional) {
       $.extend(definition, this.attributes.optional);
     }
 
@@ -107,7 +107,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    *
    * @constructor
    */
-  function XApiEventResultBuilder(){
+  function XApiEventResultBuilder() {
     EventDispatcher.call(this);
     /**
      * @property {object} attributes
@@ -183,7 +183,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
     setAttribute(result, 'completion', this.attributes.completion);
     setAttribute(result, 'success', this.attributes.success);
 
-    if(isDefined(this.attributes.duration)){
+    if (isDefined(this.attributes.duration)) {
       setAttribute(result, 'duration','PT' +  this.attributes.duration + 'S');
     }
 
@@ -303,14 +303,14 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @public
    * @return {H5P.XAPIEvent}
    */
-  XApiEventBuilder.prototype.build = function(){
+  XApiEventBuilder.prototype.build = function () {
     var event = new H5P.XAPIEvent();
 
     event.setActor();
     event.setVerb(this.attributes.verb);
 
     // sets context
-    if(this.attributes.parentContentId || this.attributes.parentSubContentId){
+    if (this.attributes.parentContentId || this.attributes.parentSubContentId) {
       event.data.statement.context = {
         'contextActivities': {
           'parent': [
@@ -333,7 +333,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
     setAttribute(event.data.statement.object, 'definition', this.attributes.objectDefinition);
 
     // sets h5p specific attributes
-    if(event.data.statement.object.definition && (this.attributes.contentId || this.attributes.subContentId)) {
+    if (event.data.statement.object.definition && (this.attributes.contentId || this.attributes.subContentId)) {
       var extensions = event.data.statement.object.definition.extensions = {};
       setAttribute(extensions, 'http://h5p.org/x-api/h5p-local-content-id', this.attributes.contentId);
       setAttribute(extensions, 'http://h5p.org/x-api/h5p-subContentId', this.attributes.subContentId);
@@ -348,8 +348,8 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @param str
    * @return {LocalizedString}
    */
-  var localizeToEnUS = function(str){
-    if(str != undefined){
+  var localizeToEnUS = function (str) {
+    if (str != undefined) {
       return {
         'en-US': cleanString(str)
       };
@@ -386,14 +386,15 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
     return $('<div>' + str + '</div>').text().trim();
   };
 
-  var isDefined = function(val){
+  var isDefined = function (val) {
     return typeof val !== 'undefined';
   };
 
-  function setAttribute(obj, key, value, required){
-    if(isDefined(value)){
+  function setAttribute(obj, key, value, required) {
+    if (isDefined(value)) {
       obj[key] = value;
-    } else if (required) {
+    }
+    else if (required) {
       console.error("xApiEventBuilder: No value for [" + key + "] in", obj);
     }
   }
@@ -405,7 +406,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @static
    * @return {H5P.SingleChoiceSet.XApiEventBuilder}
    */
-  XApiEventBuilder.create = function(){
+  XApiEventBuilder.create = function () {
     return new XApiEventBuilder();
   };
 
@@ -416,7 +417,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @static
    * @return {XApiEventDefinitionBuilder}
    */
-  XApiEventBuilder.createDefinition = function(){
+  XApiEventBuilder.createDefinition = function () {
     return new XApiEventDefinitionBuilder();
   };
 
@@ -427,7 +428,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @static
    * @return {XApiEventResultBuilder}
    */
-  XApiEventBuilder.createResult = function(){
+  XApiEventBuilder.createResult = function () {
     return new XApiEventResultBuilder();
   };
 
@@ -442,7 +443,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @see {@link https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#choice|xAPI-Spec}
    * @return {object}
    */
-  XApiEventBuilder.createChoice = function(id, description){
+  XApiEventBuilder.createChoice = function (id, description) {
     return {
       id: id,
       description: localizeToEnUS(description)
@@ -459,7 +460,7 @@ H5P.SingleChoiceSet.XApiEventBuilder = (function ($, EventDispatcher) {
    * @see {@link https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md#choice|xAPI-Spec}
    * @return {string}
    */
-  XApiEventBuilder.createCorrectResponsePattern = function(ids){
+  XApiEventBuilder.createCorrectResponsePattern = function (ids) {
     return ids.join('[,]');
   };
 
