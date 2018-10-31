@@ -15,7 +15,11 @@ H5PPresave['H5P.SingleChoiceSet'] = function (content, finished) {
     throw new presave.exceptions.InvalidContentSemanticsException('Invalid Single Choice Error');
   }
 
-  score = content.choices.length;
+  score = content.choices
+    .filter(function (choice) {
+      return choice.hasOwnProperty('question') && choice.question.length > 0;
+    })
+    .length;
 
   presave.validateScore(score);
 
