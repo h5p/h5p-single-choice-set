@@ -19,7 +19,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {H5P.SingleChoiceSet.StopWatch}
    */
-  StopWatch.prototype.start = function(){
+  StopWatch.prototype.start = function () {
     /**
      * @property {number}
      */
@@ -33,7 +33,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {number}
    */
-  StopWatch.prototype.stop = function(){
+  StopWatch.prototype.stop = function () {
     this.duration = this.duration + Date.now() - this.startTime;
     return this.passedTime();
   };
@@ -43,7 +43,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    *
    * @public
    */
-  StopWatch.prototype.reset = function(){
+  StopWatch.prototype.reset = function () {
     this.duration = 0;
   };
 
@@ -53,7 +53,7 @@ H5P.SingleChoiceSet.StopWatch = (function () {
    * @public
    * @return {number}
    */
-  StopWatch.prototype.passedTime = function(){
+  StopWatch.prototype.passedTime = function () {
     return Math.round(this.duration / 10) / 100;
   };
 
