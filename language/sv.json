@@ -2,24 +2,24 @@
   "semantics": [
     {
       "label": "Frågelista",
-      "entity": "question",
+      "entity": "fråga",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Standard"
         },
         {
-          "label": "Textual"
+          "label": "Textformat"
         }
       ],
       "field": {
-        "label": "Frågor och svar",
+        "label": "Fråga och svarsalternativ",
         "fields": [
           {
             "label": "Fråga"
           },
           {
-            "label": "Svar - första ska vara det rätta svaret.",
-            "entity": "answer",
+            "label": "Svarsalternativ - första ska vara det rätta svaret.",
+            "entity": "svar",
             "field": {
               "label": "Svar"
             }
@@ -33,12 +33,12 @@
         {
           "widgets": [
             {
-              "label": "Default"
+              "label": "Standard"
             }
           ],
-          "label": "Skriv in feedback beroende på poängresultat",
-          "description": "Klicka på \"Nytt intervall\" knappen för att lägga till ett nytt poängintervall där du vill ge speciell feedback. Exempel: 0-20% Underkänt, 21-91% Godkänt, 91-100% Mycket väl godkänt.",
-          "entity": "range",
+          "label": "Ge feedback utifrån poängresultat",
+          "description": "Klicka på \"Nytt intervall\"-knappen för att lägga till ett nytt poängintervall där du vill ge speciell feedback. Exempel: 0-20% Underkänt, 21-91% Godkänt, 91-100% Mycket väl godkänt.",
+          "entity": "intervall",
           "field": {
             "fields": [
               {
@@ -46,7 +46,7 @@
               },
               {},
               {
-                "label": "Feedback till detta intervall",
+                "label": "Feedback för detta intervall",
                 "placeholder": "Skriv in feedback här"
               }
             ]
@@ -55,32 +55,32 @@
       ]
     },
     {
-      "label": "Inställningar",
+      "label": "Allmänna inställningar",
       "fields": [
         {
           "label": "Fortsätt automatiskt",
-          "description": "Gå till nästa fråga automatiskt efter ett svar är valt"
+          "description": "Gå till nästa fråga automatiskt när ett svarsalternativ är valt"
         },
         {
-          "label": "Väntetid efter rätt svar",
-          "description": "Värde i millisekunder. Hur länge vi väntar före vi går vidare automatiskt."
+          "label": "Paus efter rätt svar",
+          "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
         },
         {
-          "label": "Väntetid efter fel svar",
-          "description": "Värde i millisekunder. Hur länge vi väntar före vi går vidare automatiskt."
+          "label": "Paus efter fel svar",
+          "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
         },
         {
           "label": "Ljudeffekter"
         },
         {
-          "label": "Möjlighet att försöka igen"
+          "label": "\"Försök igen\"-knapp"
         },
         {
-          "label": "Möjlighet att visa rätt svar"
+          "label": "\"Visa rätt svar\"-knapp"
         },
         {
-          "label": "Godkänd procent",
-          "description": "Procent av total poäng som krävs för att få godkänt och kunna fortsätta."
+          "label": "Krav för godkänt",
+          "description": "Procent av total poäng som krävs för att få godkänt på testet."
         }
       ]
     },
@@ -88,45 +88,45 @@
       "label": "Ändra texter",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "Etikett för \"Nästa\"-knappen",
+          "default": "Nästa fråga"
         },
         {
-          "label": "Beskrivning av \"Visa rätt svar\" knappen",
+          "label": "Etikett för \"Visa rätt svar\"-knappen",
           "default": "Visa rätt svar"
         },
         {
-          "label": "Beskrivning av \"Försök igen\" knappen",
+          "label": "Etikett för \"Försök igen\"-knappen",
           "default": "Försök igen"
         },
         {
-          "label": "Rubrik för visa rätt svar",
+          "label": "Titel för sidan Visa rätt svar",
           "default": "Visa rätt svar"
         },
         {
-          "label": "Readspeaker text för rätt svar",
+          "label": "Skärmläsartext för rätt svar",
           "default": "Rätt svar!"
         },
         {
-          "label": "Readspeaker text for fel svar",
+          "label": "Skärmläsartext för fel svar",
           "default": "Fel svar!"
         },
         {
-          "label": "Beskrivning av \"stäng av ljudet\" knappen",
+          "label": "Beskrivning av \"stäng av ljudet\"-knappen",
           "default": "Stäng av ljudet"
         },
         {
-          "label": "Beskrivning av \"Stäng\" knappen",
+          "label": "Beskrivning av \"Stäng\"-knappen",
           "default": "Stäng"
         },
         {
           "label": "Sidnummer text",
-          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "description": "Visar sidnummer för aktuell sida och totala antalet sidor. Variabler är :num och :total",
           "default": "Sida :num av :total"
         },
         {
-          "label": "Texten som läses upp när poängen presenteras för de som använder en readspeaker",
-          "default": "Du fick :num rätt av :total totalt"
+          "label": "Texten som läses upp när poängen presenteras för användare med skärmläsare",
+          "default": "Du fick :num av :total poäng"
         }
       ]
     }
