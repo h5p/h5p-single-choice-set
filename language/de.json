@@ -2,7 +2,15 @@
   "semantics": [
     {
       "label": "Liste der Fragen",
-      "entity": "frage",
+      "entity": "Frage",
+      "widgets": [
+        {
+          "label": "Eingabemaske"
+        },
+        {
+          "label": "Als Text eingeben"
+        }
+      ],
       "field": {
         "label": "Frage & Alternativen",
         "fields": [
@@ -11,7 +19,7 @@
           },
           {
             "label": "Alternativen - die erste Alternative ist die Richtige.",
-            "entity": "antwort",
+            "entity": "Antwort",
             "field": {
               "label": "Alternative"
             }
@@ -20,15 +28,46 @@
       }
     },
     {
+      "label": "Gesamtrückmeldung",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Voreinstellung"
+            }
+          ],
+          "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
+          "description": "Klicke auf den \"Bereich hinzufügen\"-Button, um so viele Bereiche hinzuzufügen, wie du brauchst. Beispiel: 0-20% Schlechte Punktzahl, 21-91% Durchschnittliche Punktzahl, 91-100% Großartige Punktzahl!",
+          "entity": "Bereich",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktebereich"
+              },
+              {},
+              {
+                "label": "Rückmeldung für jeweiligen Punktebereich",
+                "placeholder": "Trage die Rückmeldung ein"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "label": "Verhaltenseinstellungen",
       "fields": [
         {
-          "label": "Timeout bei korrekten Antworten",
-          "description": "Wert in Millisekunden"
+          "label": "Automatisch weitergehen",
+          "description": "Automatisch zur nächsten Frage springen, wenn eine Antwort gewählt wurde"
         },
         {
-          "label": "Timeout bei falschen Antworten",
-          "description": "Wert in Millisekunden"
+          "label": "Wartezeit bei richtigen Antworten",
+          "description": "Länge in Millisekunden"
+        },
+        {
+          "label": "Wartezeit bei falschen Antworten",
+          "description": "Länge in Millisekunden"
         },
         {
           "label": "Soundeffekte einschalten"
@@ -37,11 +76,11 @@
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {
-          "label": "\"Lösung zeigen\"-Button anzeigen"
+          "label": "\"Lösung anzeigen\" ermöglichen"
         },
         {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "label": "Prozentsatz zum Bestehen",
+          "description": "Prozentsatz der Gesamtpunktzahl, der nötig ist, um das Quiz zu bestehen"
         }
       ]
     },
@@ -49,42 +88,45 @@
       "label": "Sprachanpassungen für Single-Choice-Set",
       "fields": [
         {
-          "label": "Titel für das Ergebnisschaubild",
-          "default": "Du hast :numcorrect von :maxscore richtig beantwortet",
-          "description": ":numcorrect wird durch die Anzahl der richtigen Antworten ersetzt und :maxscore durch die Anzahl der Fragen"
+          "label": "Beschriftung des \"Weiter\"-Buttons",
+          "default": "Weiter"
         },
         {
-          "label": "Beschriftung für den \"Lösung zeigen\"-Button",
-          "default": "Lösung zeigen"
+          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
+          "default": "Lösung anzeigen"
         },
         {
-          "label": "Beschriftung für den \"Wiederholen\"-Button",
+          "label": "Beschriftung des \"Wiederholen\"-Buttons",
           "default": "Wiederholen"
         },
         {
-          "label": "Titel für die Lösungsansicht",
+          "label": "Titel der Lösungsansicht",
           "default": "Lösung"
         },
         {
-          "label": "\"Readspeaker\"-Text für eine richtige Antwort",
-          "default": "Korrekt!"
+          "label": "Text, den ein Vorlesewerkzeug bei einer richtigen Antwort vorliest (Barrierefreiheit)",
+          "default": "Richtig!"
         },
         {
-          "label": "\"Readspeaker\"-Text für eine falsche Antwort",
+          "label": "Text, den ein Vorlesewerkzeug bei einer falschen Antwort vorliest (Barrierefreiheit)",
           "default": "Falsch!"
         },
         {
-          "label": "Beschriftung für den \"Stumm\"-Button, um den Ton auszustellen",
+          "label": "Beschriftung des \"Stumm\"-Buttons, um den Ton auszustellen",
           "default": "Stumm schalten"
         },
         {
-          "label": "Beschriftung für den \"Schließen\"-Knopf",
+          "label": "Beschriftung des \"Schließen\"-Buttons",
           "default": "Schließen"
         },
         {
-          "label": "Text für die Nummer des Schaubilds",
-          "description": "Gibt das aktuelle Schaubild und die Gesamtzahl der Schaubilder an, Variablen sind :num und :total",
-          "default": "Schaubild :num von :total"
+          "label": "Text für die Seitennummer",
+          "description": "Gibt die aktuelle Seitenzahl aus und wieviele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
+          "default": "Seite :num von :total"
+        },
+        {
+          "label": "Text der Punkteleiste für Vorlesewerkzeuge (Barrierefreiheit)",
+          "default": "Du hast :num von :total Punkten erreicht."
         }
       ]
     }

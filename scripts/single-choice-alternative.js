@@ -26,7 +26,8 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
 
     this.$alternative = $('<li>', {
       'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
-      'role': 'radio',
+      'role': 'button',
+      'aria-label': this.options.text,
       'tabindex': -1,
       'on': {
         'keydown': function (event) {
@@ -35,6 +36,18 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
             case 32: // Space
               // Answer question
               triggerAlternativeSelected(event);
+              break;
+
+            case 35: // End button
+              // Go to previous Option
+              self.trigger('lastOption', event);
+              event.preventDefault();
+              break;
+
+            case 36: // Home button
+              // Go to previous Option
+              self.trigger('firstOption', event);
+              event.preventDefault();
               break;
 
             case 37: // Left Arrow

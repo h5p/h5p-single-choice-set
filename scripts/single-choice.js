@@ -59,7 +59,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
     var $alternatives = $('<ul>', {
       'class': 'h5p-sc-alternatives',
-      'role': 'radiogroup',
+      'role': 'application',
       'aria-labelledby': questionId
     });
 
@@ -121,14 +121,12 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
      * @private
      */
     var handlePreviousOption = function () {
-      if (!this.answered) {
-        if (focusedOption === 0) {
-          // wrap around to last
-          this.focusOnAlternative(self.alternatives.length - 1);
-        }
-        else {
-          this.focusOnAlternative(focusedOption - 1);
-        }
+      if (focusedOption === 0) {
+        // wrap around to last
+        this.focusOnAlternative(self.alternatives.length - 1);
+      }
+      else {
+        this.focusOnAlternative(focusedOption - 1);
       }
     };
 
@@ -137,15 +135,29 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
      * @private
      */
     var handleNextOption = function () {
-      if (!this.answered) {
-        if ((focusedOption === this.alternatives.length - 1)) {
-          // wrap around to first
-          this.focusOnAlternative(0);
-        }
-        else {
-          this.focusOnAlternative(focusedOption + 1);
-        }
+      if ((focusedOption === this.alternatives.length - 1)) {
+        // wrap around to first
+        this.focusOnAlternative(0);
       }
+      else {
+        this.focusOnAlternative(focusedOption + 1);
+      }
+    };
+
+    /**
+     * Handles moving the focus to the first option
+     * @private
+     */
+    var handleFirstOption = function () {
+      this.focusOnAlternative(0);
+    };
+
+    /**
+     * Handles moving the focus to the last option
+     * @private
+     */
+    var handleLastOption = function () {
+      this.focusOnAlternative(self.alternatives.length - 1);
     };
 
     for (var i = 0; i < this.alternatives.length; i++) {
@@ -160,6 +172,8 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
       alternative.on('alternative-selected', handleAlternativeSelected, this);
       alternative.on('previousOption', handlePreviousOption, this);
       alternative.on('nextOption', handleNextOption, this);
+      alternative.on('firstOption', handleFirstOption, this);
+      alternative.on('lastOption', handleLastOption, this);
 
     }
 
@@ -174,7 +188,9 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    * @param {Number} index The index of the alternative to focus on
    */
   SingleChoice.prototype.focusOnAlternative = function (index) {
-    this.alternatives[index].focus();
+    if (!this.answered) {
+      this.alternatives[index].focus();
+    }
   };
 
   /**

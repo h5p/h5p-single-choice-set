@@ -1,34 +1,34 @@
 {
   "semantics": [
     {
-      "label": "Spørsmålsliste",
-      "entity": "spørsmål",
+      "label": "Set pitanja",
+      "entity": "Pitanje",
       "widgets": [
         {
-          "label": "Standard"
+          "label": "Default"
         },
         {
-          "label": "Tekstlig"
+          "label": "Textual"
         }
       ],
       "field": {
-        "label": "Spørsmål & alternativer",
+        "label": "Pitanja & Mogući odgovori",
         "fields": [
           {
-            "label": "Spørsmål"
+            "label": "Pitanje"
           },
           {
-            "label": "Alternativer. Det første alternativet er rett.",
-            "entity": "svar",
+            "label": "Odgovor - prvi ponuđeni odgovor je tačan.",
+            "entity": "odgovor",
             "field": {
-              "label": "Svar"
+              "label": "Mogući odgovor"
             }
           }
         ]
       }
     },
     {
-      "label": "Bakgrunnsopasitet på flyttbare elementer",
+      "label": "Pozadinska zamućenost za elemente za uzimanje",
       "fields": [
         {
           "widgets": [
@@ -55,74 +55,74 @@
       ]
     },
     {
-      "label": "Innstillinger for oppgave-oppførsel",
+      "label": "Interaktionseinstellungen",
       "fields": [
         {
           "label": "Auto continue",
           "description": "Automatically go to next question when alternative is selected"
         },
         {
-          "label": "Pause ved korrekt svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Vrijeme za tačan odgovor",
+          "description": "Vrijednost u milisekundama"
         },
         {
-          "label": "Pause ved feil svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Vrijeme za pogrešan odgovor",
+          "description": "Vrijednost u milisekundama"
         },
         {
-          "label": "Lydeffekter"
+          "label": "Uključi zvučni signal"
         },
         {
-          "label": "\"Prøv igjen\" knapp"
+          "label": "Prikaži dugme \"Ponovi\""
         },
         {
-          "label": "\"Vis svar\" knapp"
+          "label": "Prikaži dugme \"Prikaži rješenje\""
         },
         {
-          "label": "Krav for å bestå",
-          "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
+          "label": "Minimalno procenata za prolaz",
+          "description": "Minimalno osvojenih procenata da bi se kviz smatrao uspješno prođenim."
         }
       ]
     },
     {
-      "label": "Ledetekster",
+      "label": "Podešavanja za Set pitanja",
       "fields": [
         {
           "label": "Label for the \"Next\" button",
           "default": "Next question"
         },
         {
-          "label": "Etikett på \"Vis svar\" knappen",
-          "default": "Fasit"
+          "label": "Oznaka za dugme \"Prikaži rješenje\" ",
+          "default": "Prikaži rješenje"
         },
         {
-          "label": "Etikett på \"Prøv igjen\" knappen",
-          "default": "Prøv igjen"
+          "label": "Oznaka za dugme \"Ponovi\" ",
+          "default": "Ponovi"
         },
         {
-          "label": "Tittelen på svarvisnings-siden",
-          "default": "Svar"
+          "label": "Naslov kod prikaza rješenja",
+          "default": "Rješenje"
         },
         {
-          "label": "Readspeaker tekst for korrekt svar",
-          "default": "Riktig"
+          "label": "\"Readspeaker\" tekst za tačan odgovor",
+          "default": "Tačno!!"
         },
         {
-          "label": "Readspeaker tekst for feil svar",
-          "default": "Feil"
+          "label": "\"Readspeaker\" tekst za netačan odgovor",
+          "default": "Netačno!!"
         },
         {
-          "label": "Merkelapp for \"mute\"-knappen",
-          "default": "Skru av tilbakemeldingslyd"
+          "label": "Oznaka za dugme \"Isključi zvuk\" ",
+          "default": "Isključi zvuk"
         },
         {
-          "label": "Merkelapp for \"Lukk\"-knappen",
-          "default": "Lukk"
+          "label": "Oznaka za dugme \"Zatvori\" ",
+          "default": "Zatvori"
         },
         {
-          "label": "Side nummer tekst",
+          "label": "Tekst za broj slajda",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "Side :num av :total"
+          "default": "Slajd :num od :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

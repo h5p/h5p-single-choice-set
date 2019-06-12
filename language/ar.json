@@ -1,126 +1,132 @@
 {
   "semantics": [
     {
-      "englishLabel": "List of questions",
       "label": "قائمة الأسئلة",
-      "englishEntity": "question",
       "entity": "السؤال",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
-        "englishLabel": "Question & alternatives",
-        "label": "أسئلة واجوبة بديلة",
+        "label": "السؤال والبدائل",
         "fields": [
           {
-            "englishLabel": "Question",
             "label": "السؤال"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one.",
-            "label": "اجوبة بديلة - أول جواب هو الصحيح",
-            "englishEntity": "answer",
-            "entity": "جواب",
+            "label": "البدائل - البديل الأول هو البديل الصحيح.",
+            "entity": "answer",
             "field": {
-              "englishLabel": "Alternative",
-              "label": "اجوبة بديلة"
+              "label": "البديل"
             }
           }
         ]
       }
     },
     {
-      "englishLabel": "Behavioural settings",
-      "label": "إعدادات سلوكية",
+      "label": "ردود الفعل الشاملة",
       "fields": [
         {
-          "englishLabel": "Timeout on correct answers",
-          "label": "مهلة على الإجابات الصحيحة",
-          "englishDescription": "Value in milliseconds",
-          "description": "القيمة بالمللي ثانية"
-        },
-        {
-          "englishLabel": "Timeout on wrong answers",
-          "label": "المهلة على الإجابات الخاطئة",
-          "englishDescription": "Value in milliseconds",
-          "description": "القيمة بالمللي ثانية"
-        },
-        {
-          "englishLabel": "Enable sound effects",
-          "label": "تفعيل المؤثرات الصوتية"
-        },
-        {
-          "englishLabel": "Enable retry button",
-          "label": "تفعيل زر إعادة المحاولة"
-        },
-        {
-          "englishLabel": "Enable show solution button",
-          "label": "تفعيل إظهار زر الحل"
-        },
-        {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "widgets": [
+            {
+              "label": "الافتراضي"
+            }
+          ],
+          "label": "تحديد الملاحظات المخصصة لأي مجال نتيجة",
+          "description": "انقر فوق الزر 'إضافة نطاق ' لإضافة أكبر عدد ممكن من النطاقات. مثال: 0-20٪ نتيجة سيئة ، 21-91٪ نتيجة متوسطة ، 91-100٪ نتيجة رائعة!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "مجال النتيجة"
+              },
+              {},
+              {
+                "label": "الملاحظات لمجال نتيجة محدد",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "englishLabel": "Localize single choice set",
-      "label": "توطين مجموعة الخيار واحد",
+      "label": "الاعدادات السلوكية",
       "fields": [
         {
-          "englishLabel": "Title for result slide",
-          "label": "عنوان لشريحة النتائج",
-          "englishDefault": "You got :numcorrect of :maxscore correct",
-          "default": "كنت حصلت :numcorrect أو :maxscore صحيحة",
-          "englishDescription": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions",
-          "description": "يتم استبدال الرقم الصحيح يتم استبدال عدد من الإجابات الصحيحة ودرجة تقييم كحد أقصى من قبل عدد من الأسئلة"
+          "label": "المتابعة الاتوماتيكية",
+          "description": "انتقل تلقائيا إلى السؤال التالي عند اختيار البديل"
         },
         {
-          "englishLabel": "Label for the \"Show solution\" button",
-          "label": "تسمية لزر \"مشاهدة حل \"",
-          "englishDefault": "Show solution",
-          "default": "مشاهدة الحل"
+          "label": "مهلة الاجابات الصحيحة",
+          "description": "القيمة بالميلي ثانية"
         },
         {
-          "englishLabel": "Label for the \"Retry\" button",
-          "label": "تسمية لزر \"إعادة المحاولة \"",
-          "englishDefault": "Retry",
-          "default": "إعادة المحاولة"
+          "label": "مهلة الاجابات الخاطئة",
+          "description": "القيمة بالميلي ثانية"
         },
         {
-          "englishLabel": "Title for the show solution view",
-          "label": "عنوان مشاهدة عرض الحل",
-          "englishDefault": "Solution",
-          "default": "حل"
+          "label": "تمكين التأثيرات الصوتية"
         },
         {
-          "englishLabel": "Readspeaker text for correct answer",
-          "label": "النص Readspeaker عن الإجابة الصحيحة",
-          "englishDefault": "Correct!",
-          "default": "صحيح!"
+          "label": "تمكين زر \"اعادة المحاولة \""
         },
         {
-          "englishLabel": "Readspeaker text for incorrect answer",
-          "label": "النص Readspeaker للإجابة غير صحيحة",
-          "englishDefault": "Incorrect!",
-          "default": "غير صحيح!"
+          "label": "تمكين زر \" اظهر الحل \""
         },
         {
-          "englishLabel": "Label for the \"mute\" button, to disable feedback sound",
-          "label": "تسمية لزر كتم الصوت، لتعطيل الصوت ردود الفعل",
-          "englishDefault": "Mute feedback sound",
-          "default": "صوت ردود الفعل البكم"
+          "label": "نسبة النجاح",
+          "description": "النسبة المئوية من الدرجة الإجمالية المطلوبة لاجتياز الاختبار."
+        }
+      ]
+    },
+    {
+      "label": "تمركز مجموهة الاختيار الواحد",
+      "fields": [
+        {
+          "label": "لافتة زر \" التالي \"",
+          "default": "Next question"
         },
         {
-          "englishLabel": "Label for the \"Close\" button",
-          "label": "تسمية الزر إغلاق",
-          "englishDefault": "Close",
-          "default": "أغلق"
+          "label": "لافتة زر \" اظهر الحل \"",
+          "default": "Show solution"
         },
         {
-          "englishLabel": "Slide number text",
-          "label": "النص رقم الشريحة",
-          "englishDescription": "Announces current slide and total number of slides, variables are :num and :total",
-          "description": "تعلن الشريحة الحالية وعدد من الشرائح، والمتغيرات :num و:total",
-          "englishDefault": "Slide :num of :total",
-          "default": "الشريحة :num أو :total"
+          "label": "لافتة زر \" اعادة المحاولة\"",
+          "default": "Retry"
+        },
+        {
+          "label": "عنوان عرض مشاهدة الحل",
+          "default": "Solution list"
+        },
+        {
+          "label": "نص الاجابات الصحيحة لتقنية تحويل النص الى كلام",
+          "default": "Correct!"
+        },
+        {
+          "label": "نص الاجابات الخاطئة لتقنية تحويل النص الى كلام",
+          "default": "Incorrect!"
+        },
+        {
+          "label": "لافتة الزر \" كتم \" ، لتعطيل صوت التعليقات",
+          "default": "Mute feedback sound"
+        },
+        {
+          "label": "لافتة زر  \" اغلاق \"",
+          "default": "Close"
+        },
+        {
+          "label": "نص رقم الشريحة",
+          "description": "تخبر عن الشريحة الحالية من العدد الإجمالي للشرائح ، والمتغيرات هي :num و :total",
+          "default": "Slide :num of :total"
+        },
+        {
+          "label": "تمثيل نصي لشريط النتيجة لأولئك الذين يستخدمون تقنية تحويل النص الى كلام ",
+          "default": "You got :num out of :total points"
         }
       ]
     }

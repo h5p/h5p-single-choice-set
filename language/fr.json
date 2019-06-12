@@ -1,25 +1,26 @@
 {
   "semantics": [
     {
-      "englishLabel": "List of questions",
       "label": "Liste des questions",
-      "englishEntity": "question",
       "entity": "question",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
       "field": {
-        "englishLabel": "Question & alternatives",
-        "label": "Question & réponses possibles",
+        "label": "Question et réponses possibles",
         "fields": [
           {
-            "englishLabel": "Question",
             "label": "Question"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one.",
             "label": "Réponses possibles - la première de la liste est celle qui est juste.",
-            "englishEntity": "answer",
             "entity": "réponse",
             "field": {
-              "englishLabel": "Alternative",
               "label": "Réponse possible"
             }
           }
@@ -27,100 +28,105 @@
       }
     },
     {
-      "englishLabel": "Behavioural settings",
-      "label": "Options générales",
+      "label": "Opacité des étiquettes",
       "fields": [
         {
-          "englishLabel": "Timeout on correct answers",
-          "label": "Temps de pause en cas de réponse correcte",
-          "englishDescription": "Value in milliseconds",
-          "description": "En millisecondes"
-        },
-        {
-          "englishLabel": "Timeout on wrong answers",
-          "label": "Temps de pause en cas de réponse incorrecte",
-          "englishDescription": "Value in milliseconds",
-          "description": "En millisecondes"
-        },
-        {
-          "englishLabel": "Enable sound effects",
-          "label": "Activer les effets sonores"
-        },
-        {
-          "englishLabel": "Enable retry button",
-          "label": "Activer le bouton \"Recommencer\""
-        },
-        {
-          "englishLabel": "Enable show solution button",
-          "label": "Activer le bouton \"Voir la correction\""
-        },
-        {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "label": "Définissez le feedback pour chaque intervalle de score",
+          "description": "Cliquez le bouton \"Ajouter Intervalle\"  pour ajouter autant d'intervalles que vous le souhaitez. Exemple : 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent!",
+          "entity": "intervalle",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervalle de score"
+              },
+              {},
+              {
+                "label": "Feedback pour l'intervalle de score défini",
+                "placeholder": "Remplir le feedback"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "englishLabel": "Localize single choice set",
+      "label": "Options générales",
+      "fields": [
+        {
+          "label": "Continuer automatiquement",
+          "description": "Aller automatiquement vers la question suivante quand cette option est séléctionnée"
+        },
+        {
+          "label": "Temps de pause en cas de réponse correcte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Temps de pause en cas de réponse incorrecte",
+          "description": "En millisecondes"
+        },
+        {
+          "label": "Activer les effets sonores"
+        },
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Voir la correction\""
+        },
+        {
+          "label": "Pourcentage de réussite",
+          "description": "Pourcentage exigé pour considérer que le quiz est réussi."
+        }
+      ]
+    },
+    {
       "label": "Interface de la série de questions à choix unique",
       "fields": [
         {
-          "englishLabel": "Title for result slide",
-          "label": "Titre de la page des résultats",
-          "englishDefault": "You got :numcorrect of :maxscore correct",
-          "default": "Vous avez :numcorrect réponse(s) juste(s) sur :maxscore",
-          "englishDescription": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions",
-          "description": ":numcorrect est remplacé par le nombre de réponses justes et :maxscore par le nombre de questions"
+          "label": "Texte pour le bouton \"Suivant\"",
+          "default": "Question suivante"
         },
         {
-          "englishLabel": "Label for the \"Show solution\" button",
-          "label": "Texte pour le bouton \"Voir la correction\"",
-          "englishDefault": "Show solution",
-          "default": "Voir la correction"
+          "label": "Texte pour le bouton \"Voir la solution\"",
+          "default": "Voir la solution"
         },
         {
-          "englishLabel": "Label for the \"Retry\" button",
-          "label": "Texte pour le bouton \"Recommencer\"",
-          "englishDefault": "Retry",
-          "default": "Recommencer"
-        },
-        {
-          "englishLabel": "Title for the show solution view",
           "label": "Texte pour le mode \"Correction\"",
-          "englishDefault": "Solution",
           "default": "Correction"
         },
         {
-          "englishLabel": "Readspeaker text for correct answer",
-          "label": "Texte Readspeaker pour la réponse correcte",
-          "englishDefault": "Correct!",
-          "default": "Correct!"
+          "label": "Texte pour le bouton \"Recommencer\"",
+          "default": "Recommencer"
         },
         {
-          "englishLabel": "Readspeaker text for incorrect answer",
-          "label": "Texte Readspeaker pour réponse incorrecte",
-          "englishDefault": "Incorrect!",
-          "default": "Incorrect!"
+          "label": "Texte exprimé par la synthèse vocale en cas de réponse correcte",
+          "default": "Correct !"
         },
         {
-          "englishLabel": "Label for the \"mute\" button, to disable feedback sound",
-          "label": "Étiquette pour le bouton \"mute\", pour désactiver la rétroaction sonore",
-          "englishDefault": "Mute feedback sound",
-          "default": "Son de feedback Mute"
+          "label": "Texte exprimé par la synthèse vocale en cas de réponse incorrecte",
+          "default": "Incorrect !"
         },
         {
-          "englishLabel": "Label for the \"Close\" button",
+          "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",
+          "default": "Couper les retours sons"
+        },
+        {
           "label": "Étiquette pour le bouton \"Fermer\"",
-          "englishDefault": "Close",
           "default": "Fermer"
         },
         {
-          "englishLabel": "Slide number text",
           "label": "Texte du numéro de diapositive",
-          "englishDescription": "Announces current slide and total number of slides, variables are :num and :total",
-          "description": "Annonce la diapositive en cours et le nombre total de diapositives, les variables sont :sum et :total",
-          "englishDefault": "Slide :num of :total",
+          "description": "Annonce la diapositive actuelle et le nombre total de diapositives, les variables sont :num et :total",
           "default": "Diapositive :num sur :total"
+        },
+        {
+          "label": "Représentation textuelle du panneau du score pour les utilisateurs de la synthèse vocale",
+          "default": "Vous avez :num points sur un total de :total"
         }
       ]
     }

@@ -1,39 +1,39 @@
 {
   "semantics": [
     {
-      "label": "Spørsmålsliste",
-      "entity": "spørsmål",
+      "label": "List of questions",
+      "entity": "question",
       "widgets": [
         {
-          "label": "Standard"
+          "label": "Default"
         },
         {
-          "label": "Tekstlig"
+          "label": "Textual"
         }
       ],
       "field": {
-        "label": "Spørsmål & alternativer",
+        "label": "Question & alternatives",
         "fields": [
           {
-            "label": "Spørsmål"
+            "label": "Pregunta"
           },
           {
-            "label": "Alternativer. Det første alternativet er rett.",
-            "entity": "svar",
+            "label": "Alternatives - first alternative is the correct one.",
+            "entity": "answer",
             "field": {
-              "label": "Svar"
+              "label": "Alternative"
             }
           }
         ]
       }
     },
     {
-      "label": "Bakgrunnsopasitet på flyttbare elementer",
+      "label": "Overall Feedback",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Standard"
+              "label": "Per defecte"
             }
           ],
           "label": "Define custom feedback for any score range",
@@ -55,74 +55,74 @@
       ]
     },
     {
-      "label": "Innstillinger for oppgave-oppførsel",
+      "label": "Opcions de comportament",
       "fields": [
         {
           "label": "Auto continue",
           "description": "Automatically go to next question when alternative is selected"
         },
         {
-          "label": "Pause ved korrekt svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
         },
         {
-          "label": "Pause ved feil svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Timeout on wrong answers",
+          "description": "Value in milliseconds"
         },
         {
-          "label": "Lydeffekter"
+          "label": "Enable sound effects"
         },
         {
-          "label": "\"Prøv igjen\" knapp"
+          "label": "Enable retry button"
         },
         {
-          "label": "\"Vis svar\" knapp"
+          "label": "Enable show solution button"
         },
         {
-          "label": "Krav for å bestå",
-          "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
+          "label": "Percentatge per passar",
+          "description": "Percentage of Total score required for passing the quiz."
         }
       ]
     },
     {
-      "label": "Ledetekster",
+      "label": "Localize single choice set",
       "fields": [
         {
           "label": "Label for the \"Next\" button",
           "default": "Next question"
         },
         {
-          "label": "Etikett på \"Vis svar\" knappen",
-          "default": "Fasit"
+          "label": "Label for the \"Show solution\" button",
+          "default": "Mostrar solució"
         },
         {
-          "label": "Etikett på \"Prøv igjen\" knappen",
-          "default": "Prøv igjen"
+          "label": "Label for the \"Retry\" button",
+          "default": "Tornar-ho a provar"
         },
         {
-          "label": "Tittelen på svarvisnings-siden",
-          "default": "Svar"
+          "label": "Title for the show solution view",
+          "default": "Solution"
         },
         {
-          "label": "Readspeaker tekst for korrekt svar",
-          "default": "Riktig"
+          "label": "Readspeaker text for correct answer",
+          "default": "Correct!"
         },
         {
-          "label": "Readspeaker tekst for feil svar",
-          "default": "Feil"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect!"
         },
         {
-          "label": "Merkelapp for \"mute\"-knappen",
-          "default": "Skru av tilbakemeldingslyd"
+          "label": "Label for the \"mute\" button, to disable feedback sound",
+          "default": "Mute feedback sound"
         },
         {
-          "label": "Merkelapp for \"Lukk\"-knappen",
-          "default": "Lukk"
+          "label": "Label for the \"Close\" button",
+          "default": "Close"
         },
         {
-          "label": "Side nummer tekst",
+          "label": "Slide number text",
           "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "Side :num av :total"
+          "default": "Slide :num of :total"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

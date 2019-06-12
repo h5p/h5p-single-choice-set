@@ -1,25 +1,26 @@
 {
   "semantics": [
     {
-      "englishLabel": "List of questions",
-      "label": "Elenco domande",
-      "englishEntity": "question",
+      "label": "Elenco delle domande",
       "entity": "domanda",
+      "widgets": [
+        {
+          "label": "Predefinito"
+        },
+        {
+          "label": "Testuale"
+        }
+      ],
       "field": {
-        "englishLabel": "Question & alternatives",
-        "label": "Domande & alternative",
+        "label": "Domande e alternative",
         "fields": [
           {
-            "englishLabel": "Question",
             "label": "Domanda"
           },
           {
-            "englishLabel": "Alternatives - first alternative is the correct one.",
             "label": "Alternative - La prima alternativa è quella giusta.",
-            "englishEntity": "answer",
             "entity": "risposta",
             "field": {
-              "englishLabel": "Alternative",
               "label": "Alternativa"
             }
           }
@@ -27,100 +28,105 @@
       }
     },
     {
-      "englishLabel": "Behavioural settings",
-      "label": "Impostazioni esecuzione",
+      "label": "Feedback generale",
       "fields": [
         {
-          "englishLabel": "Timeout on correct answers",
-          "label": "Timeout sulle risposte corrette",
-          "englishDescription": "Value in milliseconds",
-          "description": "Valore in millisecondi"
-        },
-        {
-          "englishLabel": "Timeout on wrong answers",
-          "label": "Timeout sulle risposte errarte",
-          "englishDescription": "Value in milliseconds",
-          "description": "Valore in millisecondi"
-        },
-        {
-          "englishLabel": "Enable sound effects",
-          "label": "Abilita effetti sonori"
-        },
-        {
-          "englishLabel": "Enable retry button",
-          "label": "Abilita pulsante Riprova"
-        },
-        {
-          "englishLabel": "Enable show solution button",
-          "label": "Abilita pulsante Mostra soluzione"
-        },
-        {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "widgets": [
+            {
+              "label": "Predefinito"
+            }
+          ],
+          "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
+          "description": "Clicca sul pulsante \"Aggiungi punteggio\" per aggiungere quanti intervalli ti servono. Esempio: 0-20% Cattivo punteggio, 21-91% Punteggio medio, 91-100% Fantastico punteggio!",
+          "entity": "intervallo",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervallo di punteggio"
+              },
+              {},
+              {
+                "label": "Feedback per un intervallo di punteggio definito",
+                "placeholder": "Compila il feedback"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "englishLabel": "Localize single choice set",
+      "label": "Impostazioni di esecuzione",
+      "fields": [
+        {
+          "label": "Prosecuzione automatica",
+          "description": "Vai automaticamente alla domanda seguente quando è selezionata l'alternativa"
+        },
+        {
+          "label": "Timeout sulle risposte corrette",
+          "description": "Valore in millisecondi"
+        },
+        {
+          "label": "Timeout sulle risposte errate",
+          "description": "Valore in millisecondi"
+        },
+        {
+          "label": "Attiva effetti sonori"
+        },
+        {
+          "label": "Attiva il pulsante Riprova"
+        },
+        {
+          "label": "Attiva il pulsante Mostra soluzione"
+        },
+        {
+          "label": "Percentuale di superamento della prova",
+          "description": "Percentuale del punteggio totale richiesto per passare il quiz."
+        }
+      ]
+    },
+    {
       "label": "Localizza set scelta singola",
       "fields": [
         {
-          "englishLabel": "Title for result slide",
-          "label": "Titolo risultato diapositiva",
-          "englishDefault": "You got :numcorrect of :maxscore correct",
-          "default": "Hai :numcorrect di :maxscore corretta",
-          "englishDescription": ":numcorrect is replaced by the number of correct answers and :maxscore is replaced by number of questions",
-          "description": ":numcorrect viene sostituito dal numero di risposte corrette e :maxscore è sostituito dal numero di domande."
+          "label": "Etichetta per il pulsante \"Prossima\"",
+          "default": "Prossima domanda"
         },
         {
-          "englishLabel": "Label for the \"Show solution\" button",
-          "label": "Etichetta pulsante \"Mostra soluzione\"",
-          "englishDefault": "Show solution",
+          "label": "Etichetta per il pulsante \"Mostra soluzione\"",
           "default": "Mostra soluzione"
         },
         {
-          "englishLabel": "Label for the \"Retry\" button",
-          "label": "Etichetta pulsante \"Riprova\"",
-          "englishDefault": "Retry",
+          "label": "Etichetta per il pulsante \"Riprova\"",
           "default": "Riprova"
         },
         {
-          "englishLabel": "Title for the show solution view",
-          "label": "Titolo per visualizzare Mostra soluzione",
-          "englishDefault": "Solution",
-          "default": "Soluzione"
+          "label": "Titolo per la visualizzazione delle soluzioni",
+          "default": "Elenco delle soluzioni"
         },
         {
-          "englishLabel": "Readspeaker text for correct answer",
-          "label": "Testo ReadSpeaker per la risposta corretta",
-          "englishDefault": "Correct!",
-          "default": "Corretta"
+          "label": "Testo del lettore vocale per risposta corretta",
+          "default": "Risposta giusta!"
         },
         {
-          "englishLabel": "Readspeaker text for incorrect answer",
-          "label": "Testo ReadSpeaker per risposta errata",
-          "englishDefault": "Incorrect!",
-          "default": "Scorretto!"
+          "label": "Testo del lettore vocale per risposta errata",
+          "default": "Risposta sbagliata"
         },
         {
-          "englishLabel": "Label for the \"mute\" button, to disable feedback sound",
-          "label": "Etichetta per il pulsante \"mute \", disabilitare il suono di retroazione",
-          "englishDefault": "Mute feedback sound",
-          "default": "Suono di feedback Muto"
+          "label": "Etichetta per il pulsante \"Silenzia\", per disattivare il suono di feedback",
+          "default": "Silenzia il suono di feedback"
         },
         {
-          "englishLabel": "Label for the \"Close\" button",
-          "label": "Etichetta pulsante \"Vicino\"",
-          "englishDefault": "Close",
-          "default": "Vicino"
+          "label": "Etichetta pulsante \"Chiudi\"",
+          "default": "Chiudi"
         },
         {
-          "englishLabel": "Slide number text",
-          "label": "Testo Numero diapositiva",
-          "englishDescription": "Announces current slide and total number of slides, variables are :num and :total",
-          "description": "Annuncia diapositiva corrente e il numero totale di diapositive, le variabili sono :num e :total",
-          "englishDefault": "Slide :num of :total",
+          "label": "Testo del numero della diapositiva",
+          "description": "Mostra il numero della slide corrente in relazione al numero delle slide totali (es. 2/12). Le variabili sono :num e :total",
           "default": ":num diapositiva del :total"
+        },
+        {
+          "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
+          "default": "Il tuo punteggio è :num su :total"
         }
       ]
     }
