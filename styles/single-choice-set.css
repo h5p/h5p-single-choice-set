@@ -6,7 +6,8 @@
   padding: 0;
 }
 .h5p-sc-set-wrapper.initialized {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   -ms-scroll-limit: 0 0 0 0; /* IE11 bugfix for where this element can be out of line, when focusing on elements. */
   height: 100%;
 }
