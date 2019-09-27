@@ -67,7 +67,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
       muteButtonLabel: "Mute feedback sound",
-      scoreBarLabel: 'You got :num out of :total points'
+      scoreBarLabel: 'You got :num out of :total points',
+      solutionListQuestionNumber: 'Question :num'
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {

@@ -10,6 +10,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     var self = this;
     self.id = id;
     this.choices = choices;
+    self.l10n = l10n;
 
     this.$solutionView = $('<div>', {
       'class': 'h5p-sc-solution-view'
@@ -84,11 +85,11 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
       'tabindex': -1,
     });
 
-    this.choices.forEach(function (choice) {
+    this.choices.forEach(function (choice, index) {
       if (choice.question && choice.answers && choice.answers.length !== 0) {
         var $question = self.addAriaPunctuation($('<dt>', {
           'class': 'h5p-sc-solution-question',
-          html: choice.question
+          html: '<span class="h5p-hidden-read">' + self.l10n.solutionListQuestionNumber.replace(':num', index + 1) + '</span>' + choice.question
         }));
 
         self.$choices.append($question);
