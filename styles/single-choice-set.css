@@ -6,7 +6,8 @@
   padding: 0;
 }
 .h5p-sc-set-wrapper.initialized {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   -ms-scroll-limit: 0 0 0 0; /* IE11 bugfix for where this element can be out of line, when focusing on elements. */
   height: 100%;
 }
@@ -105,9 +106,8 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
 }
 
-ul.h5p-sc-alternatives li.h5p-sc-alternative:hover,
-ul.h5p-sc-alternatives li.h5p-sc-alternative:focus {
-  background: #edd6e9;
+ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
+  background: #ececec;
 }
 
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
