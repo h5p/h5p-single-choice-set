@@ -127,6 +127,11 @@
         {
           "label": "Tekstimuotoinen esitys yhteenvedon pisteistä niille jotka käyttävät ruudunlukijasovellusta",
           "default": "Sait :num pistettä :total pisteestä"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

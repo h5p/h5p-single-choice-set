@@ -127,6 +127,11 @@
         {
           "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
           "default": "Il tuo punteggio è :num su :total"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

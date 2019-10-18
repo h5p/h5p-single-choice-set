@@ -127,6 +127,11 @@
         {
           "label": "Représentation textuelle du panneau du score pour les utilisateurs de la synthèse vocale",
           "default": "Vous avez :num points sur un total de :total"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

@@ -127,6 +127,11 @@
         {
           "label": "Κειμενική απόδοση της μπάρας βαθμολογίας για όσους χρησιμοποιούν ακουστική υποβοήθηση",
           "default": "Έχεις :num από :total βαθμούς"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }
