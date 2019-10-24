@@ -127,6 +127,11 @@
         {
           "label": "Текстовое представление шкалы очков для тех, кто использует озвучку текста",
           "default": "Вы получили :num out из :total баллов"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

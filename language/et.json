@@ -127,6 +127,11 @@
         {
           "label": "Punktisumma riba tekstiline esitamine tekstilugeri kasutajaile",
           "default": "Sa said :num punkti :total punktist"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

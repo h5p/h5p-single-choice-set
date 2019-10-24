@@ -127,6 +127,11 @@
         {
           "label": "Texten som läses upp när poängen presenteras för användare med skärmläsare",
           "default": "Du fick :num av :total poäng"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }
