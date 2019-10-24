@@ -32,7 +32,8 @@
             "p",
             "br",
             "strong",
-            "em"
+            "em",
+            "code"
           ],
           "label": "Question",
           "importance": "high"
@@ -54,7 +55,8 @@
               "p",
               "br",
               "strong",
-              "em"
+              "em",
+              "code"
             ],
             "label": "Alternative",
             "importance": "medium"
