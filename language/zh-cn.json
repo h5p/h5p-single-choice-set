@@ -127,6 +127,11 @@
         {
           "label": "得分情况的文本描述",
           "default": "总分 :total 分，您的得分为:num 分。"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }

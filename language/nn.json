@@ -127,6 +127,11 @@
         {
           "label": "Textual representation of the score bar for those using a readspeaker",
           "default": "Du fikk :num av :total points"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Question :num"
         }
       ]
     }
