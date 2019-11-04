@@ -129,9 +129,9 @@
           "default": "Έχεις :num από :total βαθμούς"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Ετικέτα αριθμού ερώτησης στη λίστα απαντήσεων",
+          "description": "Αποτυπώνει τον αριθμό (δείκτη) της τρέχουσας ερώτησης στη λίστα απαντήσεων, η μεταβλητή είναι :num",
+          "default": "Ερώτηση :num"
         }
       ]
     }
