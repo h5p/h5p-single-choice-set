@@ -129,9 +129,9 @@
           "default": "Du hast :num von :total Punkten erreicht."
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Beschriftung für die Fragennummer in der Liste der Lösungen",
+          "description": "Liest die aktuelle nummer der Frage in der Liste der Lösungen, :num ist die Variable",
+          "default": "Frage :num"
         }
       ]
     }
