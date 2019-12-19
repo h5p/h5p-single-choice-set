@@ -18,7 +18,7 @@
             "label": "Domanda"
           },
           {
-            "label": "Alternative - La prima alternativa è quella giusta.",
+            "label": "Alternative - La prima alternativa è quella giusta",
             "entity": "risposta",
             "field": {
               "label": "Alternativa"
@@ -37,7 +37,7 @@
             }
           ],
           "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
-          "description": "Clicca sul pulsante \"Aggiungi punteggio\" per aggiungere quanti intervalli ti servono. Esempio: 0-20% Cattivo punteggio, 21-91% Punteggio medio, 91-100% Fantastico punteggio!",
+          "description": "Clicca sul pulsante \"Aggiungi intervallo\" per aggiungere gli intervalli che ti servono. Per esempio: 0-20%, Punteggio scarso; 21-90%, Punteggio medio; 91-100% Punteggio ottimo!",
           "entity": "intervallo",
           "field": {
             "fields": [
@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Prosecuzione automatica",
-          "description": "Vai automaticamente alla domanda seguente quando è selezionata l'alternativa"
+          "description": "Vai automaticamente alla domanda che segue quando è selezionata l'alternativa"
         },
         {
           "label": "Timeout sulle risposte corrette",
@@ -80,7 +80,7 @@
         },
         {
           "label": "Percentuale di superamento della prova",
-          "description": "Percentuale del punteggio totale richiesto per passare il quiz."
+          "description": "Percentuale del punteggio totale richiesta per superare la prova"
         }
       ]
     },
@@ -100,19 +100,19 @@
           "default": "Riprova"
         },
         {
-          "label": "Titolo per la visualizzazione delle soluzioni",
+          "label": "Titolo della schermata di visualizzazione soluzioni",
           "default": "Elenco delle soluzioni"
         },
         {
           "label": "Testo del lettore vocale per risposta corretta",
-          "default": "Risposta giusta!"
+          "default": "Giusto!"
         },
         {
-          "label": "Testo del lettore vocale per risposta errata",
-          "default": "Risposta sbagliata"
+          "label": "Testo del lettore vocale per risposta sbagliata",
+          "default": "Sbagliato!"
         },
         {
-          "label": "Etichetta per il pulsante \"Silenzia\", per disattivare il suono di feedback",
+          "label": "Etichetta del pulsante \"Silenzia\", per disattivare il suono di feedback",
           "default": "Silenzia il suono di feedback"
         },
         {
@@ -120,18 +120,18 @@
           "default": "Chiudi"
         },
         {
-          "label": "Testo del numero della diapositiva",
+          "label": "Testo del numero della slide",
           "description": "Mostra il numero della slide corrente in relazione al numero delle slide totali (es. 2/12). Le variabili sono :num e :total",
-          "default": ":num diapositiva del :total"
+          "default": ":num slide di :total"
         },
         {
           "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
           "default": "Il tuo punteggio è :num su :total"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Etichetta per il numero della domanda nell'elenco delle soluzioni",
+          "description": "Dichiara il numero della domanda attuale nell'elenco delle soluzioni. Le variabili sono: num",
+          "default": "Domanda :num"
         }
       ]
     }
