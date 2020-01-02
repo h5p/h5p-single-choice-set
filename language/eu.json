@@ -129,9 +129,9 @@
           "default": ":total puntutik :num lortu dituzu"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Galdera zenbakiaren testua erantzunen zerrendan",
+          "description": "Oraingo galderaren erantzunen zerrendako indizea erakusten du, aldagaiak :num dira",
+          "default": ":num. galdera"
         }
       ]
     }
