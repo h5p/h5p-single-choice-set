@@ -129,9 +129,9 @@
           "default": "Du fick :num av :total poäng"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Etikett för frågans nummer i lösningslistan",
+          "description": "Visar aktuell index över fråga i lösningsligtan, variabler är :num",
+          "default": "Fråga :num"
         }
       ]
     }
