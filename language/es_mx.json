@@ -122,7 +122,7 @@
         {
           "label": "Texto de imágen número",
           "description": "Anuncia la imagen actual y el número total de imágenes, las variables son :num y :total",
-          "default": "Slide :num of :total"
+          "default": "Imagen :num of :total"
         },
         {
           "label": "Representación textual de la barra de puntaje para aquellos que usan un Lector de voz",
@@ -130,7 +130,7 @@
         },
         {
           "label": "Etiqueta para el número de pregunta en la lista de solución",
-          "description": "Anuncia el índice de pregunta actual enm lista de solución, las variables con :num",
+          "description": "Anuncia el índice de pregunta actual en lista de solución, las variables con :num",
           "default": "Pregunta :num"
         }
       ]
