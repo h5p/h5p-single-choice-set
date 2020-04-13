@@ -1,34 +1,34 @@
 {
   "semantics": [
     {
-      "label": "List of questions",
-      "entity": "question",
+      "label": "Lista de preguntas",
+      "entity": "pregunta",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Predeterminado"
         },
         {
           "label": "Textual"
         }
       ],
       "field": {
-        "label": "Question & alternatives",
+        "label": "Pregunta y alternativas",
         "fields": [
           {
-            "label": "Question"
+            "label": "Pregunta"
           },
           {
-            "label": "Alternatives - first alternative is the correct one.",
-            "entity": "answer",
+            "label": "Alternativas - la primera alternativa es la correcta.",
+            "entity": "respuesta",
             "field": {
-              "label": "Alternative"
+              "label": "Alternativa"
             }
           }
         ]
       }
     },
     {
-      "label": "Overall Feedback",
+      "label": "Realimentación Global",
       "fields": [
         {
           "widgets": [
@@ -36,18 +36,18 @@
               "label": "Predeterminado"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Definir realimentación personalizada para cualquier rango de puntaje",
+          "description": "Hacer click en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "entity": "rango",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Rango de puntaje"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Realimentación para rango deinido de puntaje",
+                "placeholder": "Escriba la realimentación"
               }
             ]
           }
@@ -58,80 +58,80 @@
       "label": "Ajustes de comportamiento",
       "fields": [
         {
-          "label": "Auto continue",
-          "description": "Automatically go to next question when alternative is selected"
+          "label": "Auto continuar",
+          "description": "Automáticamente ir a la pregunta siguiente cuando una alternativa es seleccionada"
         },
         {
-          "label": "Timeout on correct answers",
-          "description": "Value in milliseconds"
+          "label": "Timeout en respuestas correctas",
+          "description": "Valor en microsegundos"
         },
         {
-          "label": "Timeout on wrong answers",
-          "description": "Value in milliseconds"
+          "label": "Timeout en respuestas incorrectas",
+          "description": "Valor en microsegundos"
         },
         {
-          "label": "Enable sound effects"
+          "label": "Habilitar efectos sonoros"
         },
         {
-          "label": "Enable retry button"
+          "label": "Habilitar botón Reintentar"
         },
         {
-          "label": "Enable show solution button"
+          "label": "Habilitar botón Mostrar solución"
         },
         {
-          "label": "Pass percentage",
-          "description": "Percentage of Total score required for passing the quiz."
+          "label": "Porcentaje aprobatorio",
+          "description": "Percentaje del puntaje total requerido para pasar el examen."
         }
       ]
     },
     {
-      "label": "Localize single choice set",
+      "label": "Localizar conjunto de opción única",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "etiqueta para el botón \"Siguiente\" ",
+          "default": "Siguiente pregunta"
         },
         {
-          "label": "Label for the \"Show solution\" button",
+          "label": "Etiqueta para el botón \"Mostrar solución\" ",
           "default": "Mostrar solución"
         },
         {
-          "label": "Label for the \"Retry\" button",
+          "label": "Etiqueta para el botón \"Reintentar\" ",
           "default": "Reintentar"
         },
         {
-          "label": "Title for the show solution view",
-          "default": "Solution"
+          "label": "Título para la vista mostrar solución",
+          "default": "Solución"
         },
         {
-          "label": "Readspeaker text for correct answer",
-          "default": "Correct!"
+          "label": "Texto para Lector de voz para respuesta correcta",
+          "default": "¡Correcta!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect!"
+          "label": "Texto de Lector de voz para respuesta incorrecta",
+          "default": "¡Incorrecta!"
         },
         {
-          "label": "Label for the \"mute\" button, to disable feedback sound",
-          "default": "Mute feedback sound"
+          "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonito de realimentación",
+          "default": "Enmudecer sonido de realimentación"
         },
         {
-          "label": "Label for the \"Close\" button",
+          "label": "Etiqueta para el botón \"Cerrar\" ",
           "default": "Cerrar"
         },
         {
-          "label": "Slide number text",
-          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "label": "Texto de imágen número",
+          "description": "Anuncia la imagen actual y el número total de imágenes, las variables son :num y :total",
           "default": "Slide :num of :total"
         },
         {
-          "label": "Textual representation of the score bar for those using a readspeaker",
-          "default": "You got :num out of :total points"
+          "label": "Representación textual de la barra depuntaje para aquellos que usan un Lector de voz",
+          "default": "Usted tuvot :num de un total de :total puntos"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Etiqueta para el número de pregunta en la lista de solución",
+          "description": "Anuncia el índice de pregunta actual enm lista de solución, las variables con :num",
+          "default": "Pregunta :num"
         }
       ]
     }
