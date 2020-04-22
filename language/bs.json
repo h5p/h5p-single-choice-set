@@ -37,12 +37,12 @@
             }
           ],
           "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "description": "Kliknite na dugme \"Dodaj raspon\" da dodate raspona koliko je potrebno . Primjer: 0-20% Loše, 21-91% Prosječno, 91-100% Odlično!",
           "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Raspon rezultata"
               },
               {},
               {
@@ -55,11 +55,11 @@
       ]
     },
     {
-      "label": "Interaktionseinstellungen",
+      "label": "Podešavanje interakcija",
       "fields": [
         {
-          "label": "Auto continue",
-          "description": "Automatically go to next question when alternative is selected"
+          "label": "Automatski nastavak",
+          "description": "Automatski ide na sljedeće pitanje kada je alternativa odabrana."
         },
         {
           "label": "Vrijeme za tačan odgovor",
@@ -88,8 +88,8 @@
       "label": "Podešavanja za Set pitanja",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "Oznaka za dugme \"Sljedeći\" ",
+          "default": "Sljedeće pitanje"
         },
         {
           "label": "Oznaka za dugme \"Prikaži rješenje\" ",
@@ -126,12 +126,12 @@
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",
-          "default": "You got :num out of :total points"
+          "default": "Osvojili ste :num od :total poena"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Oznaka za broj pitanja na listi rješenja.",
+          "description": "Označava indeks trenutnog pitanja na listi rješenja gdje su varijable :num",
+          "default": "Pitanje :num"
         }
       ]
     }
