@@ -129,9 +129,9 @@
           "default": "Du fikk :num av :total poeng"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Tekst for spørsmålsindeks i svarvisningslisten",
+          "description": "Annonserer spørsmålsindeksen i svarvisningslisten. Variabler som kan brukes er: :num",
+          "default": "Spørsmål :num"
         }
       ]
     }
