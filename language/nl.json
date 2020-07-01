@@ -5,10 +5,10 @@
       "entity": "vraag",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Standaard"
         },
         {
-          "label": "Textual"
+          "label": "Tekstueel"
         }
       ],
       "field": {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "label": "Algehele feedback",
+      "label": "Algemene feedback",
       "fields": [
         {
           "widgets": [
@@ -36,7 +36,7 @@
               "label": "Standaard"
             }
           ],
-          "label": "Definieer aangepaste feedback voor elke scorereeks",
+          "label": "Definieer aangepaste feedback voor elk scorebereik",
           "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
           "entity": "reeks",
           "field": {
@@ -96,7 +96,7 @@
           "default": "Toon oplossing"
         },
         {
-          "label": "Tekst voorde de \"Opnieuw\" -knop",
+          "label": "Tekst voor de \"Opnieuw\" -knop",
           "default": "Opnieuw proberen"
         },
         {
@@ -129,9 +129,9 @@
           "default": "Je hebt :num van de :total punten"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Label voor het vraagnummer in het antwoordoverzicht",
+          "description": "Geeft het huidige vraagnummer in het antwoordoverzicht, variabele is :num",
+          "default": "Vraag :num"
         }
       ]
     }
