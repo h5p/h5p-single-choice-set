@@ -790,7 +790,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.solutionView.hide();
 
     // Reset the user's answers
-    var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
+    var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer', 'h5p-sc-is-correct', 'h5p-sc-is-wrong'];
     for (var i = 0; i < classes.length; i++) {
       this.$choices.find('.' + classes[i]).removeClass(classes[i]);
     }

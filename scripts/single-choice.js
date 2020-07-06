@@ -211,7 +211,10 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
   SingleChoice.prototype.showResult = function (correct, answerIndex) {
     var self = this;
 
-    var $correctAlternative = self.$choice.find('.h5p-sc-is-correct');
+    const $correctAlternative = self.alternatives.filter(function (alternative) {
+      return alternative.options.correct;
+    })[0].$alternative;
+    $correctAlternative.addClass('h5p-sc-is-correct');
 
     H5P.Transition.onTransitionEnd($correctAlternative, function () {
       self.trigger('finished', {
@@ -222,7 +225,15 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     }, 600);
 
     // Reveal corrects and wrong
-    self.$choice.find('.h5p-sc-is-wrong').addClass('h5p-sc-reveal-wrong');
+    const wrongAlternatives = self.alternatives
+      .filter(function (alternative) {
+        return !alternative.options.correct;
+      })
+      .forEach(function (alternative) {
+        alternative.$alternative.addClass('h5p-sc-reveal-wrong');
+        alternative.$alternative.addClass('h5p-sc-is-wrong');
+      });
+
     $correctAlternative.addClass('h5p-sc-reveal-correct');
   };
 
