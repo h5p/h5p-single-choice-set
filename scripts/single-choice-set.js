@@ -188,6 +188,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.toggleNextButton(true);
 
+    // Keep track of num correct/wrong answers
+    this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
+
     self.triggerXAPI('interacted');
 
     // correct answer
@@ -273,9 +276,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * Go to next slide
    */
   SingleChoiceSet.prototype.next = function () {
-    // Keep track of num correct/wrong answers
-    this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
-
     this.move(this.currentIndex + 1);
   };
 
