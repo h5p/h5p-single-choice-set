@@ -129,8 +129,8 @@
           "default": "Du hast :num von :total Punkten erreicht."
         },
         {
-          "label": "Beschriftung für die Fragennummer in der Liste der Lösungen",
-          "description": "Liest die aktuelle nummer der Frage in der Liste der Lösungen, :num ist die Variable",
+          "label": "Beschriftung der Fragennummer in der Liste der Lösungen",
+          "description": "Liest die aktuelle Nummer der Frage in der Liste der Lösungen; :num kann als Platzhalter verwendet werden",
           "default": "Frage :num"
         }
       ]
