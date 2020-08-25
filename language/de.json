@@ -132,6 +132,14 @@
           "label": "Beschriftung der Fragennummer in der Liste der Lösungen",
           "description": "Liest die aktuelle Nummer der Frage in der Liste der Lösungen; :num kann als Platzhalter verwendet werden",
           "default": "Frage :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show Solution"
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry"
         }
       ]
     }

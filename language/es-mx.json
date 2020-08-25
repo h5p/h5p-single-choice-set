@@ -132,6 +132,14 @@
           "label": "Etiqueta para el número de pregunta en la lista de solución",
           "description": "Anuncia el índice de pregunta actual en lista de solución, las variables con :num",
           "default": "Pregunta :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show Solution"
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry"
         }
       ]
     }

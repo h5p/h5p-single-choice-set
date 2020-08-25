@@ -132,6 +132,14 @@
           "label": "Oznaka za broj pitanja na listi rješenja.",
           "description": "Označava indeks trenutnog pitanja na listi rješenja gdje su varijable :num",
           "default": "Pitanje :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show Solution"
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry"
         }
       ]
     }

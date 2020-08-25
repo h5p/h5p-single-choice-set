@@ -132,6 +132,14 @@
           "label": "Ετικέτα αριθμού ερώτησης στη λίστα απαντήσεων",
           "description": "Αποτυπώνει τον αριθμό (δείκτη) της τρέχουσας ερώτησης στη λίστα απαντήσεων, η μεταβλητή είναι :num",
           "default": "Ερώτηση :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show Solution"
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry"
         }
       ]
     }
