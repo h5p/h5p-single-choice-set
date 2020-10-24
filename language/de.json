@@ -121,7 +121,7 @@
         },
         {
           "label": "Text für die Seitennummer",
-          "description": "Gibt die aktuelle Seitenzahl aus und wieviele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
+          "description": "Gibt die aktuelle Seitenzahl aus und wie viele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
           "default": "Seite :num von :total"
         },
         {
@@ -130,16 +130,16 @@
         },
         {
           "label": "Beschriftung der Fragennummer in der Liste der Lösungen",
-          "description": "Liest die aktuelle Nummer der Frage in der Liste der Lösungen; :num kann als Platzhalter verwendet werden",
+          "description": "Liest die aktuelle Nummer der Frage in der Liste der Lösungen. :num kann als Platzhalter verwendet werden",
           "default": "Frage :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Beschreibung des \"Lösung anzeigen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+          "default": "Die Lösung anzeigen. Die richtigen Lösungen werden in der Aufgabe angezeigt."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Beschreibung des \"Wiederholen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+          "default": "Die Aufgabe wiederholen. Alle Versuche werden zurückgesetzt und die Aufgabe wird erneut gestartet."
         }
       ]
     }
