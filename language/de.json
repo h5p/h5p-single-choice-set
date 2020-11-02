@@ -121,7 +121,7 @@
         },
         {
           "label": "Text für die Seitennummer",
-          "description": "Gibt die aktuelle Seitenzahl aus und wieviele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
+          "description": "Gibt die aktuelle Seitenzahl aus und wie viele Seiten es insgesamt gibt. Verwendbare Platzhalter sind :num und :total.",
           "default": "Seite :num von :total"
         },
         {
@@ -129,9 +129,17 @@
           "default": "Du hast :num von :total Punkten erreicht."
         },
         {
-          "label": "Beschriftung für die Fragennummer in der Liste der Lösungen",
-          "description": "Liest die aktuelle nummer der Frage in der Liste der Lösungen, :num ist die Variable",
+          "label": "Beschriftung der Fragennummer in der Liste der Lösungen",
+          "description": "Liest die aktuelle Nummer der Frage in der Liste der Lösungen. :num kann als Platzhalter verwendet werden",
           "default": "Frage :num"
+        },
+        {
+          "label": "Beschreibung des \"Lösung anzeigen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+          "default": "Die Lösung anzeigen. Die richtigen Lösungen werden in der Aufgabe angezeigt."
+        },
+        {
+          "label": "Beschreibung des \"Wiederholen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+          "default": "Die Aufgabe wiederholen. Alle Versuche werden zurückgesetzt und die Aufgabe wird erneut gestartet."
         }
       ]
     }
