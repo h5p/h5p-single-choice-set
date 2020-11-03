@@ -69,8 +69,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       muteButtonLabel: "Mute feedback sound",
       scoreBarLabel: 'You got :num out of :total points',
       solutionListQuestionNumber: 'Question :num',
-      a11yShowSolution: 'Show Solution',
-      a11yRetry: 'Retry',
+      a11yShowSolution: 'Show the solution. The task will be marked with its correct solution.',
+      a11yRetry: 'Retry the task. Reset all responses and start the task over again.',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
