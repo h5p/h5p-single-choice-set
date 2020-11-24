@@ -474,7 +474,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       this.addButton('try-again', this.l10n.retryButtonLabel, function () {
         self.resetTask();
       }, self.results.corrects !== self.options.choices.length, {
-        'aria-label': this.options.l10n.a11yRetry,
+        'aria-label': this.l10n.a11yRetry,
       });
     }
 
@@ -482,7 +482,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
         self.showSolutions();
       }, self.results.corrects !== self.options.choices.length, {
-        'aria-label': this.options.l10n.a11yShowSolution,
+        'aria-label': this.l10n.a11yShowSolution,
       });
     }
   };
