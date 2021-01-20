@@ -80,7 +80,7 @@
         },
         {
           "label": "Minimalno procenata za prolaz",
-          "description": "Minimalno osvojenih procenata da bi se kviz smatrao uspješno prođenim."
+          "description": "Minimalno odvojeniih procenata da bi se kviz smatrao uspješno završenim."
         }
       ]
     },
@@ -135,11 +135,11 @@
         },
         {
           "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "default": "Prikaži mi rješenje, Zadatak će biti obilježen sa svojimtačnim rješenjem."
         },
         {
           "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "default": "Ponovo zadatak. Resetiraj sve odgovore i počni zadatak ispočetka."
         }
       ]
     }
