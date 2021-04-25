@@ -134,12 +134,12 @@
           "default": "Fråga :num"
         },
         {
-          "label": "Beskrivning av knappen \"Visa lösning\" för tillgänglighetshjälpmedel",
-          "default": "Visa lösningen. Uppgiften kommer att markeras med dess korrekta lösning."
+          "label": "Beskrivning för tillgänglighetshjälpmedel för knappen \"Visa lösning\"",
+          "default": "Visa lösningen. Uppgiften kommer att markeras med dess rätta lösning."
         },
         {
-          "label": "Beskrivning av knappen \"Försök igen\" för tillgänglighetshjälpmedel",
-          "default": "Försök igen med uppgiften. Nollställer alla svar och startar om uppgiften igen."
+          "label": "Beskrivning för tillgänglighetshjälpmedel för knappen \"Försök igen\"",
+          "default": "Gör nytt försök på uppgiften. Nollställer alla svar och startar om uppgiften."
         }
       ]
     }
