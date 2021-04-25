@@ -134,11 +134,11 @@
           "default": "Otázka :num"
         },
         {
-          "label": "Popisek podpůrné technologie pro tlačítko \"Zobrazit řešení\"",
+          "label": "Popisek podpůrné technologie pro tlačítko „Zobrazit řešení“",
           "default": "Zobrazit řešení. Úkol bude zobrazen se správným řešením."
         },
         {
-          "label": "Popisek podpůrné technologie pro tlačítko \"Opakovat\"",
+          "label": "Popisek podpůrné technologie pro tlačítko „Opakovat“",
           "default": "Zopakovat úkol. Resetovat všechny odpovědi a spustit úlohu znovu."
         }
       ]
