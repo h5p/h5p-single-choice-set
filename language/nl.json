@@ -134,12 +134,12 @@
           "default": "Vraag :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Ondersteunende technologie beschrijving voor \"Toon oplossing\" knop",
+          "default": "Toon de oplossing. De taak zal worden gemarkeerd met de juiste oplossing."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\" knop",
+          "default": "De taak opnieuw proberen. Alle antwoorden resetten en de taak opnieuw starten."
         }
       ]
     }
