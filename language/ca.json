@@ -130,7 +130,7 @@
         },
         {
           "label": "Etiqueta del número de pregunta a la llista de solucions",
-          "description": "Anuncia l’índex de preguntes actual a la llista de solucions; les variables són :num.",
+          "description": "Anuncia l’índex de preguntes actual a la llista de solucions; les variables són :num",
           "default": "Pregunta :num"
         },
         {
