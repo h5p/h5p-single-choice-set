@@ -747,6 +747,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var result = XApiEventBuilder.createResult()
       .score(self.getScore(), self.getMaxScore())
       .duration(self.getTotalPassedTime())
+      .completion(self.options.choices.length === self.currentIndex)
+      .success((100 * self.getScore() / self.options.choices.length) >= self.options.behaviour.passPercentage)
       .build();
 
     // creates the definition object
