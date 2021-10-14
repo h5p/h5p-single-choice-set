@@ -36,8 +36,8 @@
               "label": "Lehenetsia"
             }
           ],
-          "label": "Definitu feedback pertsonalizatua edozein puntuazio tarterako",
-          "description": "Klikatu \"Gehitu tartea\" botoia gehitzeko behar haina tarte. Adibidez: 0-%20 Puntuazio txarra, %21-%90 Tarteko puntuazioa, %91-%100 Puntuazio bikaina!",
+          "label": "Zehaztu ezazu edozein puntuazio-tarterako feedback pertsonalizatua",
+          "description": "Egin klik \"Gehitu tartea\" botoian behar dituzun tarte guztiak gehitzeko. Adibidez: 0-20% Puntuazio eskasa, 21-91% Batez besteko puntuazioa, 91-100% Puntuazio bikaina!",
           "entity": "tartea",
           "field": {
             "fields": [
@@ -46,8 +46,8 @@
               },
               {},
               {
-                "label": "Definitutako puntuazio tarterako feedbacka",
-                "placeholder": "Bete feedbacka"
+                "label": "Zehaztutako tartearentzako feedbacka",
+                "placeholder": "Idatzi ezazu feedbacka"
               }
             ]
           }
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "label": "Portaera-ezarpenak",
+      "label": "Portaeraren ezarpenak",
       "fields": [
         {
           "label": "Jarraitu automatikoki",
@@ -73,7 +73,7 @@
           "label": "Gaitu soinu efektuak"
         },
         {
-          "label": "Gaitu berriz saiatzeko botoia"
+          "label": "Gaitu \"Berriz saiatu\" botoia"
         },
         {
           "label": "Gaitu erantzuna erakusteko botoia"
@@ -126,7 +126,7 @@
         },
         {
           "label": "Puntuazio barraren testu adierazpena irakurgailua erabiltzen dutenentzat",
-          "default": ":total puntutik :num lortu dituzu"
+          "default": ":total puntutik :num puntu lortu duzu"
         },
         {
           "label": "Galdera zenbakiaren testua erantzunen zerrendan",
