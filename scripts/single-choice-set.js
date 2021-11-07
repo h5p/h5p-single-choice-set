@@ -36,7 +36,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (contentData && contentData.previousState !== undefined) {
       this.currentIndex = contentData.previousState.progress;
       this.results = contentData.previousState.answers;
-      this.userResponses = contentData.previousState.userResponse;
+      this.userResponses = contentData.previousState.userResponses !== undefined
+        ? contentData.previousState.userResponses
+        : [];
     }
     this.currentIndex = this.currentIndex || 0;
     this.results = this.results || {
@@ -833,7 +835,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     return {
       progress: this.currentIndex,
       answers: this.results,
-      userResponse: this.userResponses
+      userResponses: this.userResponses
     };
   };
 
