@@ -14,6 +14,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // Extend defaults with provided options
     this.contentId = contentId;
     this.contentData = contentData;
+    /**
+     * The users input on the questions. Uses the same index as this.options.choices
+     * @type {number[]}
+     */
+    this.userResponses = [];
     Question.call(this, 'single-choice-set');
     this.options = $.extend(true, {}, {
       choices: [],
@@ -31,6 +36,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (contentData && contentData.previousState !== undefined) {
       this.currentIndex = contentData.previousState.progress;
       this.results = contentData.previousState.answers;
+      this.userResponses = contentData.previousState.userResponses !== undefined
+        ? contentData.previousState.userResponses
+        : [];
     }
     this.currentIndex = this.currentIndex || 0;
     this.results = this.results || {
@@ -48,12 +56,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      */
     this.stopWatches = [];
     this.startStopWatch(this.currentIndex);
-
-    /**
-     * The users input on the questions. Uses the same index as this.options.choices
-     * @type {number[]}
-     */
-    this.userResponses = [];
 
     this.muted = (this.options.behaviour.soundEffectsEnabled === false);
 
@@ -832,7 +834,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.getCurrentState = function () {
     return {
       progress: this.currentIndex,
-      answers: this.results
+      answers: this.results,
+      userResponses: this.userResponses
     };
   };
 
