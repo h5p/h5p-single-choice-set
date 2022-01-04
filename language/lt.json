@@ -37,7 +37,7 @@
             }
           ],
           "label": "Apibrėžti pasirinktinį atsiliepimą bet kokiam balų intervalui",
-          "description": "Spustelėkite mygtuką "Pridėti intervalus", kad pridėtumėte tiek intervalų, kiek reikia. Pavyzdys: 0-20% blogas rezultatas, 21-91% vidutinis rezultatas, 91-100% puikus rezultatas!",
+          "description": "Spustelėkite mygtuką \"Pridėti intervalus\", kad pridėtumėte tiek intervalų, kiek reikia. Pavyzdys: 0-20% blogas rezultatas, 21-91% vidutinis rezultatas, 91-100% puikus rezultatas!",
           "entity": "intervalas",
           "field": {
             "fields": [
@@ -121,7 +121,7 @@
         {
           "label": "Skaidrės numerio tekstas",
           "description": "Skelbia dabartinę skaidrę ir bendrą skaidrių skaičių, kintamieji yra :num ir :total",
-          "default": "Skaidrės :num of :total"
+          "default": "Skaidrės :num iš :total"
         },
         {
           "label": "Tekstinis rezultatų juostos atvaizdavimas tiems, kurie naudojasi skaitytuvu",
