@@ -6,7 +6,7 @@
   "author": "Joubel",
   "majorVersion": 1,
   "minorVersion": 11,
-  "patchVersion": 15,
+  "patchVersion": 16,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -71,7 +71,7 @@
     {
       "machineName": "H5P.Question",
       "majorVersion": 1,
-      "minorVersion": 4
+      "minorVersion": 5
     }
   ],
   "editorDependencies": [
