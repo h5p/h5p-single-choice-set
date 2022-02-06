@@ -65,6 +65,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
+      resetButtonLabel: 'Reset',
       closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
@@ -73,6 +74,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       solutionListQuestionNumber: 'Question :num',
       a11yShowSolution: 'Show the solution. The task will be marked with its correct solution.',
       a11yRetry: 'Retry the task. Reset all responses and start the task over again.',
+      a11yReset: 'Reset the task. Reset all responses after correct answers.',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
@@ -383,10 +385,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (score === self.options.choices.length) {
       self.hideButton('try-again');
       self.hideButton('show-solution');
+      self.showButton('reset-task');
     }
     else {
       self.showButton('try-again');
       self.showButton('show-solution');
+      self.hideButton('reset-task');
     }
     self.handleQueuedButtonChanges();
     self.scoreTimeout = undefined;
@@ -477,6 +481,14 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.resetTask();
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yRetry,
+      });
+    }
+
+    if (this.options.behaviour.enableReset) {
+      this.addButton('reset-task', this.l10n.resetButtonLabel, function () {
+        self.resetTask();
+      }, self.results.corrects === self.options.choices.length, {
+        'aria-label': this.l10n.a11yReset,
       });
     }
 

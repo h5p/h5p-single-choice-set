@@ -185,6 +185,14 @@
         "default": true
       },
       {
+        "name": "enableReset",
+        "type": "boolean",
+        "label": "Enable reset button",
+        "description": "Reset all responses after correct answers.",
+        "importance": "low",
+        "default": true
+      },
+      {
         "name": "enableSolutionsButton",
         "type": "boolean",
         "label": "Enable show solution button",
@@ -230,6 +238,13 @@
         "label": "Label for the \"Retry\" button",
         "importance": "low",
         "default": "Retry"
+      },
+      {
+        "name": "resetButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Reset\" button",
+        "importance": "low",
+        "default": "Reset"
       },
       {
         "name": "solutionViewTitle",
@@ -301,6 +316,13 @@
         "type": "text",
         "label": "Assistive technology description for \"Retry\" button",
         "default": "Retry the task. Reset all responses and start the task over again.",
+        "importance": "low"
+      },
+      {
+        "name": "a11yReset",
+        "type": "text",
+        "label": "Assistive technology description for \"Reset\" button",
+        "default": "Reset all responses after correct answers.",
         "importance": "low"
       }
     ]
