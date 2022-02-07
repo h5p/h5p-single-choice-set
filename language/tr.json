@@ -140,6 +140,10 @@
         {
           "label": "\"Yeniden Dene\" düğmesi için yardımcı teknoloji açıklaması",
           "default": "Görevi yeniden deneyin. Tüm yanıtları sıfırlayın ve görevi yeniden başlatın."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

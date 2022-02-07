@@ -140,6 +140,10 @@
         {
           "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\" knop",
           "default": "De taak opnieuw proberen. Alle antwoorden resetten en de taak opnieuw starten."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

@@ -140,6 +140,10 @@
         {
           "label": "Popisek podpůrné technologie pro tlačítko „Opakovat“",
           "default": "Zopakovat úkol. Resetovat všechny odpovědi a spustit úlohu znovu."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

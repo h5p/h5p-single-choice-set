@@ -140,6 +140,10 @@
         {
           "label": "توصیف تکنولوژی کمکی برای دکمه تلاش مجدد",
           "default": "تلاش مجدد. بازنشانی همه پاسخ‌ها و شروع دوباره تکلیف."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

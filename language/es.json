@@ -140,6 +140,10 @@
         {
           "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
           "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

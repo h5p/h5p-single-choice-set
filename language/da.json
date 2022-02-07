@@ -76,6 +76,9 @@
           "label": "Enable retry button"
         },
         {
+          "label": "Enable reset button"
+        },
+        {
           "label": "Enable show solution button"
         },
         {
@@ -98,6 +101,10 @@
         {
           "label": "Label for the \"Retry\" button",
           "default": "Retry"
+        },
+        {
+          "label": "Label for the \"Reset\" button",
+          "default": "Reset"
         },
         {
           "label": "Title for the show solution view",
@@ -140,6 +147,10 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

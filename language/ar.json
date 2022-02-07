@@ -100,6 +100,10 @@
           "default": "Retry"
         },
         {
+          "label": "Label for the \"Reset\" button",
+          "default": "Reset"
+        },
+        {
           "label": "عنوان عرض مشاهدة الحل",
           "default": "Solution list"
         },
@@ -140,6 +144,10 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

@@ -140,6 +140,10 @@
         {
           "label": "Descrición para as tecnoloxías de asistencia do botón \"Reintentar\"",
           "default": "Reintenta a tarefa. Borras todas as respostas e empeza a tarefa de novo."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

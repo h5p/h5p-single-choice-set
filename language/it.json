@@ -140,6 +140,10 @@
         {
           "label": "Descrizione delle tecnologie assistive per il pulsante \"Riprova\"",
           "default": "Riprova"
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

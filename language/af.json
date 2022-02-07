@@ -76,6 +76,9 @@
           "label": "Aktiveer Probeer weer knoppie"
         },
         {
+          "label": "Enable reset button"
+        },
+        {
           "label": "Aktiveer Wys antwoord knoppie"
         },
         {
@@ -98,6 +101,10 @@
         {
           "label": "Etiket vir die \"Probeer weer\" knoppie",
           "default": "Probeer weer"
+        },
+        {
+          "label": "Label for the \"Reset\" button",
+          "default": "Reset"
         },
         {
           "label": "Titel vir die wys oplossing aansig",
@@ -140,6 +147,10 @@
         {
           "label": "Hulptegnologieë beskrywing vir \"Probeer weer\" knoppie",
           "default": "Probeer die taak weer. Herstel alle antwoorde en begin die taak van nuuts af."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

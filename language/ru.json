@@ -76,6 +76,9 @@
           "label": "Включить кнопку повтора"
         },
         {
+          "label": "включить кнопку сброса"
+        },
+        {
           "label": "Включить кнопку показа решения"
         },
         {
@@ -140,6 +143,10 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Описание вспомогательной технологии для кнопки \"Сброс»\"",
+          "default": "Сброс решений. Сбрасывает всю историю ответов и дает возможность пройти тест заново."
         }
       ]
     }

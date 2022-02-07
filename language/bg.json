@@ -76,6 +76,9 @@
           "label": "Разреши бутон Опитай пак"
         },
         {
+          "label": "Enable reset button"
+        },
+        {
           "label": "Разреши бутон Покажи решение"
         },
         {
@@ -98,6 +101,10 @@
         {
           "label": "Етикет за бутон \"Опитай пак\" ",
           "default": "Опитай пак"
+        },
+        {
+          "label": "Label for the \"Reset\" button",
+          "default": "Reset"
         },
         {
           "label": "Заглавие за показване на решението",
@@ -140,6 +147,10 @@
         {
           "label": "Описание за помощни технологии бутон \"Опитай пак\" ",
           "default": "Опитай задачата отново. Нулиране на всички отговори и започване на задачата отначало."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }

@@ -140,6 +140,10 @@
         {
           "label": "Beskrivning för tillgänglighetshjälpmedel för knappen \"Försök igen\"",
           "default": "Gör nytt försök på uppgiften. Nollställer alla svar och startar om uppgiften."
+        },
+        {
+          "label": "Assistive technology description for \"Reset\" button",
+          "default": "Reset the task. Reset all responses and start the task over again after correct answers."
         }
       ]
     }
