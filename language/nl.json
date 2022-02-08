@@ -1,7 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Vragenoverzicht",
+      "label": "Lijst met vragen",
       "entity": "vraag",
       "widgets": [
         {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "label": "Algemene feedback",
+      "label": "Algehele feedback",
       "fields": [
         {
           "widgets": [
@@ -37,7 +37,7 @@
             }
           ],
           "label": "Definieer aangepaste feedback voor elk scorebereik",
-          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "description": "Druk op de \"Voeg scorereeks\"-knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
           "entity": "reeks",
           "field": {
             "fields": [
@@ -47,7 +47,7 @@
               {},
               {
                 "label": "Feedback voor de gedefinieerde scorereeks",
-                "placeholder": "Vul de aangepaste feedback in"
+                "placeholder": "Vul de feedback in"
               }
             ]
           }
@@ -70,13 +70,13 @@
           "description": "Waarde in milliseconden"
         },
         {
-          "label": "Activeer geluidseffecten"
+          "label": "Schakel geluidseffecten in"
         },
         {
-          "label": "Activeer opnieuw knop"
+          "label": "Schakel \"Opnieuw\"-knop in"
         },
         {
-          "label": "Activeer toon oplossing knop"
+          "label": "Schakel \"Toon oplossing\"-knop in"
         },
         {
           "label": "Slagingspercentage",
@@ -88,35 +88,35 @@
       "label": "Lokaliseer enkele keuze set",
       "fields": [
         {
-          "label": "Tekst voor de \"Volgende vraag\" -knop",
+          "label": "Tekst voor \"Volgende\"-knop",
           "default": "Volgende vraag"
         },
         {
-          "label": "Tekst voor de \"Toon oplossing\" -knop",
+          "label": "Tekst voor \"Toon oplossing\"-knop",
           "default": "Toon oplossing"
         },
         {
-          "label": "Tekst voor de \"Opnieuw\" -knop",
-          "default": "Opnieuw proberen"
+          "label": "Tekst voor \"Opnieuw\"-knop",
+          "default": "Opnieuw"
         },
         {
           "label": "Titel voor het tonen van de oplossing",
-          "default": "Oplossing"
+          "default": "Antwoordoverzicht"
         },
         {
-          "label": "Readspeaker tekst voor het juiste antwoord",
+          "label": "Schermlezer tekst voor het juiste antwoord",
           "default": "Juist!"
         },
         {
-          "label": "Readspeaker tekst voor het onjuiste antwoord",
+          "label": "Schermlezer tekst voor het onjuiste antwoord",
           "default": "Onjuist!"
         },
         {
-          "label": "Tekst voor de \"demp\" -knop, om het feedbackgeluid uit te schakelen",
+          "label": "Tekst voor \"Demp\"-knop, om het feedbackgeluid uit te schakelen",
           "default": "Demp het feedbackgeluid"
         },
         {
-          "label": "Tekst voor de \"Afsluiten\" -knop",
+          "label": "Tekst voor \"Afsluiten\"-knop",
           "default": "Afsluiten"
         },
         {
@@ -125,7 +125,7 @@
           "default": "Dia :num van :total"
         },
         {
-          "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de readspeaker",
+          "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de schermlezer",
           "default": "Je hebt :num van de :total punten"
         },
         {
@@ -134,12 +134,12 @@
           "default": "Vraag :num"
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Toon oplossing\" knop",
+          "label": "Ondersteunende technologie beschrijving voor \"Toon oplossing\"-knop",
           "default": "Toon de oplossing. De taak zal worden gemarkeerd met de juiste oplossing."
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\" knop",
-          "default": "De taak opnieuw proberen. Alle antwoorden resetten en de taak opnieuw starten."
+          "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\"-knop",
+          "default": "Probeer de taak opnieuw. Reset alle antwoorden en start de taak opnieuw."
         }
       ]
     }
