@@ -73,10 +73,10 @@
           "label": "Gaitu soinu efektuak"
         },
         {
-          "label": "Gaitu \"Berriz saiatu\" botoia"
+          "label": "Gaitu \"Saiatu berriro\" botoia"
         },
         {
-          "label": "Gaitu erantzuna erakusteko botoia"
+          "label": "Gaitu erakutsi emaitza botoia"
         },
         {
           "label": "Gainditzeko ehunekoa",
@@ -92,12 +92,12 @@
           "default": "Hurrengo galdera"
         },
         {
-          "label": "\"Show solution\" botoiarentzako etiketa",
-          "default": "Erakutsi erantzuna"
+          "label": "\"Erakutsi emaitza\" botoiarentzako etiketa",
+          "default": "Erakutsi emaitza"
         },
         {
-          "label": "\"Retry\" botoiarentzako etiketa",
-          "default": "Berriz saiatu"
+          "label": "\"Saiatu berriro\" botoiarentzako etiketa",
+          "default": "Saiatu berriro"
         },
         {
           "label": "Erantzuna erakusteko ikuspegiaren izenburua",
@@ -134,11 +134,11 @@
           "default": ":num. galdera"
         },
         {
-          "label": "\"Erakutsi erantzun zuzena\" botoiaren laguntza-teknologientzako etiketa",
+          "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa",
           "default": "Erakutsi erantzun zuzena. Zereginaren erantzun zuzena markatuko da."
         },
         {
-          "label": "\"Berriz saiatu\" botoiaren laguntza-teknologientzako etiketa",
+          "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako etiketa",
           "default": "Zeregina berriz egiten saiatu. Berrabiarazi erantzun guztiak eta hasi zeregina berriz."
         },
         {
