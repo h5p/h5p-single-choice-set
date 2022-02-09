@@ -1,28 +1,20 @@
 {
   "semantics": [
     {
-      "label": "",
       "entity": "",
       "widgets": [
-        {
-          "label": ""
-        },
+        {},
         {
           "label": ""
         }
       ],
       "field": {
-        "label": "",
         "fields": [
           {
             "label": ""
           },
           {
-            "label": "",
-            "entity": "",
-            "field": {
-              "label": ""
-            }
+            "entity": ""
           }
         ]
       }
@@ -31,23 +23,14 @@
       "label": "",
       "fields": [
         {
-          "widgets": [
-            {
-              "label": ""
-            }
-          ],
           "label": "",
-          "description": "",
           "entity": "",
           "field": {
             "fields": [
-              {
-                "label": ""
-              },
+              {},
               {},
               {
-                "label": "",
-                "placeholder": ""
+                "label": ""
               }
             ]
           }
@@ -58,29 +41,21 @@
       "label": "",
       "fields": [
         {
-          "label": "",
           "description": ""
         },
         {
-          "label": "",
           "description": ""
         },
         {
-          "label": "",
           "description": ""
         },
+        {},
         {
           "label": ""
         },
+        {},
         {
           "label": ""
-        },
-        {
-          "label": ""
-        },
-        {
-          "label": "",
-          "description": ""
         }
       ]
     },
@@ -88,57 +63,43 @@
       "label": "",
       "fields": [
         {
-          "label": "",
           "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "default": ""
+        },
+        {
+          "description": ""
+        },
+        {
+          "label": ""
         },
         {
           "label": "",
           "default": ""
         },
         {
-          "label": "",
           "default": ""
         },
         {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "description": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "description": "",
-          "default": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "label": "",
           "default": ""
         }
       ]
