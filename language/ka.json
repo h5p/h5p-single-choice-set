@@ -1,7 +1,6 @@
 {
   "semantics": [
     {
-      "entity": "",
       "widgets": [
         {},
         {
@@ -10,9 +9,7 @@
       ],
       "field": {
         "fields": [
-          {
-            "label": ""
-          },
+          {},
           {
             "entity": ""
           }
@@ -20,11 +17,9 @@
       }
     },
     {
-      "label": "",
       "fields": [
         {
           "label": "",
-          "entity": "",
           "field": {
             "fields": [
               {},
@@ -38,21 +33,16 @@
       ]
     },
     {
-      "label": "",
       "fields": [
-        {
-          "description": ""
-        },
-        {
-          "description": ""
-        },
         {
           "description": ""
         },
         {},
         {
-          "label": ""
+          "description": ""
         },
+        {},
+        {},
         {},
         {
           "label": ""
@@ -60,44 +50,29 @@
       ]
     },
     {
-      "label": "",
       "fields": [
         {
           "default": ""
         },
+        {},
         {
           "default": ""
         },
+        {},
         {
           "default": ""
         },
+        {},
         {
           "default": ""
         },
-        {
-          "default": ""
-        },
-        {
-          "default": ""
-        },
-        {
-          "default": ""
-        },
-        {
-          "default": ""
-        },
+        {},
         {
           "description": ""
         },
+        {},
         {
           "label": ""
-        },
-        {
-          "label": "",
-          "default": ""
-        },
-        {
-          "default": ""
         },
         {
           "default": ""
