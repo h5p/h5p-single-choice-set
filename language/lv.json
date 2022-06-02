@@ -125,8 +125,8 @@
           "default": "Slaids :num no :total"
         },
         {
-          "label": "Rezultāta skalas teksta atspoguļojums tiem, kuri lieto asistīvās tehnoloģijas",
-          "default": "Jūs saņēmāt :num no :total punktiem"
+          "label": "Punktu skalas tekstuālais atspoguļojums tiem, kuri izmanto asistējošās tehnoloģijas",
+          "default": "Tu saņēmi :num no :total punktiem"
         },
         {
           "label": "Jautājuma numura birka jautājumu sarakstā",
@@ -134,12 +134,12 @@
           "default": "Jautājums :num"
         },
         {
-          "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām",
+          "label": "Pogas \"Rādīt risinājumu\" apraksts priekš asistējošām tehnoloģijām",
           "default": "Rādīt risinājumu. Uzdevums tiks atzīmēts ar tā pareizo risinājumu."
         },
         {
-          "label": "Asistīvo tehnoloģiju apraksts pogai \"Mēģināt vēlreiz\"",
-          "default": "Mēģināt vēlreiz. Dzēst visas atbildes un sākt uzdevumu no sākuma."
+          "label": "Pogas \"Mēģināt vēlreiz\" apraksts priekš asistējošām tehnoloģijām",
+          "default": "Mēģināt uzdevumu vēlreiz. Atiestatīt visas sniegtās atbildes un sākt uzdevumu vēlreiz."
         }
       ]
     }
