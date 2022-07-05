@@ -31,7 +31,7 @@
 }
 
 .h5p-single-choice-set .h5p-joubelui-progressbar-background {
-  box-shadow: 0 0 0.25em 0 #fff;
+  box-shadow: 0.5em 0 0 0 #fff;
   background-color: #0097fd;
 }
 
