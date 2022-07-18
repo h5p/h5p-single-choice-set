@@ -55,7 +55,7 @@
       ]
     },
     {
-      "label": "Options générales",
+      "label": "Behavioural settings",
       "fields": [
         {
           "label": "Continuer automatiquement",
