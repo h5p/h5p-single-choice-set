@@ -44,13 +44,10 @@
               {
                 "label": "Balų intervalas"
               },
+              {},
               {
                 "label": "Atsiliepimai apie nustatytą balų intervalą",
                 "placeholder": "Užpildykite atsiliepimus"
-              },
-              {
-                "label": "Atsiliepimai apibrėžtam balų diapazonui",
-                "placeholder": "Užpildyti atsiliepimą"
               }
             ]
           }
