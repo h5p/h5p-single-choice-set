@@ -550,7 +550,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           }
         },
         'click': toggleMute,
-        appendTo: self.$container
+        prependTo: self.$container
       });
     }
 

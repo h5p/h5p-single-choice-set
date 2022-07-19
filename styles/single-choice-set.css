@@ -260,6 +260,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   cursor: pointer;
   top: 1.25em;
   right: 0.75em;
+  z-index: 1;
 }
 
 .h5p-sc-sound-control:hover {
