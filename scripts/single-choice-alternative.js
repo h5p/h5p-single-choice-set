@@ -37,13 +37,13 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
               triggerAlternativeSelected(event);
               break;
 
-            case 35: // End button
+            case 35: // End radio button
               // Go to previous Option
               self.trigger('lastOption', event);
               event.preventDefault();
               break;
 
-            case 36: // Home button
+            case 36: // Home radio button
               // Go to previous Option
               self.trigger('firstOption', event);
               event.preventDefault();
