@@ -1,53 +1,53 @@
 {
   "semantics": [
     {
-      "label": "List of questions",
-      "entity": "question",
+      "label": "Llista de preguntes",
+      "entity": "pregunta",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Opció predeterminada"
         },
         {
           "label": "Textual"
         }
       ],
       "field": {
-        "label": "Question & alternatives",
+        "label": "Pregunta i opcions",
         "fields": [
           {
             "label": "Pregunta"
           },
           {
-            "label": "Alternatives - first alternative is the correct one.",
-            "entity": "answer",
+            "label": "Opcions: la primera opció és la correcta.",
+            "entity": "resposta",
             "field": {
-              "label": "Alternative"
+              "label": "Alternativa"
             }
           }
         ]
       }
     },
     {
-      "label": "Overall Feedback",
+      "label": "Suggeriment general",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Per defecte"
+              "label": "Opció predeterminada"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Defineix una valoració per cada rang de puntuació",
+          "description": "Feu clic al botó \"Afegeix un rang\" per afegir tants rangs com necessiteu. Exemple: 0-20 % per a puntuació baixa, 21-91 % per a puntuació mitjana, 91-100 % per a puntuació excel·lent",
+          "entity": "rang",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Rang de puntuació"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Retroacció per al rang de puntuació definit",
+                "placeholder": "Introduïu el suggeriment"
               }
             ]
           }
@@ -58,80 +58,88 @@
       "label": "Opcions de comportament",
       "fields": [
         {
-          "label": "Auto continue",
-          "description": "Automatically go to next question when alternative is selected"
+          "label": "Continua automàticament",
+          "description": "Passeu automàticament a la pregunta següent quan l’opció \"Alternativa\" estigui seleccionada."
         },
         {
-          "label": "Timeout on correct answers",
-          "description": "Value in milliseconds"
+          "label": "Temps d’espera en respostes correctes",
+          "description": "Valor en mil·lisegons"
         },
         {
-          "label": "Timeout on wrong answers",
-          "description": "Value in milliseconds"
+          "label": "Temps d’espera en respostes errònies",
+          "description": "Valor en mil·lisegons"
         },
         {
-          "label": "Enable sound effects"
+          "label": "Activa els efectes de so"
         },
         {
-          "label": "Enable retry button"
+          "label": "Activa el botó \"Torna-ho a provar\""
         },
         {
-          "label": "Enable show solution button"
+          "label": "Activa el botó per mostrar la solució"
         },
         {
-          "label": "Percentatge per passar",
-          "description": "Percentage of Total score required for passing the quiz."
+          "label": "Percentatge per aprovar el qüestionari",
+          "description": "Percentatge de la puntuació total requerida per aprovar el qüestionari."
         }
       ]
     },
     {
-      "label": "Localize single choice set",
+      "label": "Localitza el conjunt de selecció única",
       "fields": [
         {
-          "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "label": "Etiqueta del botó \"Següent\"",
+          "default": "Pregunta següent"
         },
         {
-          "label": "Label for the \"Show solution\" button",
-          "default": "Mostrar solució"
+          "label": "Etiqueta per al botó \"Mostra la solució\"",
+          "default": "Mostra la solució"
         },
         {
-          "label": "Label for the \"Retry\" button",
-          "default": "Tornar-ho a provar"
+          "label": "Etiqueta del botó \"Torna-ho a provar\"",
+          "default": "Torna-ho a provar"
         },
         {
-          "label": "Title for the show solution view",
-          "default": "Solution"
+          "label": "Títol per a la vista de mostra de solució",
+          "default": "Solució"
         },
         {
-          "label": "Readspeaker text for correct answer",
-          "default": "Correct!"
+          "label": "Text de l’altaveu de lectura per a una resposta correcta",
+          "default": "Correcte!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect!"
+          "label": "Text de l’altaveu de lectura per a una resposta incorrecta",
+          "default": "Incorrecte!"
         },
         {
-          "label": "Label for the \"mute\" button, to disable feedback sound",
-          "default": "Mute feedback sound"
+          "label": "Etiqueta per al botó \"Silencia\", per desactivar el so dels suggeriments",
+          "default": "Silencia el so dels suggeriments"
         },
         {
-          "label": "Label for the \"Close\" button",
-          "default": "Close"
+          "label": "Etiqueta del botó \"Tanca\"",
+          "default": "Tanca"
         },
         {
-          "label": "Slide number text",
-          "description": "Announces current slide and total number of slides, variables are :num and :total",
-          "default": "Slide :num of :total"
+          "label": "Text del número de diapositiva",
+          "description": "Anuncia la diapositiva actual i el nombre total de diapositives, les variables són :num i :total",
+          "default": "Diapositiva :num de :total"
         },
         {
-          "label": "Textual representation of the score bar for those using a readspeaker",
-          "default": "You got :num out of :total points"
+          "label": "Representació textual de la barra de puntuació pera als que utilitzen un altaveu de lectura",
+          "default": "Heu fet :num de :total punts"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Etiqueta del número de pregunta a la llista de solucions",
+          "description": "Anuncia l’índex de preguntes actual a la llista de solucions; les variables són :num",
+          "default": "Pregunta :num"
+        },
+        {
+          "label": "Descripció de la tecnologia d’assistència per al botó \"Mostra la solució\"",
+          "default": "Mostra la solució. La tasca es marcarà amb la seva solució correcta."
+        },
+        {
+          "label": "Descripció de la tecnologia d’assistència per al botó \"Torna-ho a provar\"",
+          "default": "Intenta de nou la tasca. Reajusta totes les respostes i comença la tasca de nou."
         }
       ]
     }

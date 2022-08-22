@@ -12,7 +12,7 @@
         }
       ],
       "field": {
-        "label": "Pitanja & Mogući odgovori",
+        "label": "Pitanja &amp; Mogući odgovori",
         "fields": [
           {
             "label": "Pitanje"
@@ -80,7 +80,7 @@
         },
         {
           "label": "Minimalno procenata za prolaz",
-          "description": "Minimalno osvojenih procenata da bi se kviz smatrao uspješno prođenim."
+          "description": "Minimalno odvojeniih procenata da bi se kviz smatrao uspješno završenim."
         }
       ]
     },
@@ -132,6 +132,14 @@
           "label": "Oznaka za broj pitanja na listi rješenja.",
           "description": "Označava indeks trenutnog pitanja na listi rješenja gdje su varijable :num",
           "default": "Pitanje :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Prikaži mi rješenje, Zadatak će biti obilježen sa svojimtačnim rješenjem."
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Ponovo zadatak. Resetiraj sve odgovore i počni zadatak ispočetka."
         }
       ]
     }

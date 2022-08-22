@@ -28,7 +28,7 @@
       }
     },
     {
-      "label": "Feedback",
+      "label": "Övergripande feedback",
       "fields": [
         {
           "widgets": [
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "label": "Allmänna inställningar",
+      "label": "Beteende-inställningar",
       "fields": [
         {
           "label": "Fortsätt automatiskt",
@@ -70,13 +70,13 @@
           "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
         },
         {
-          "label": "Ljudeffekter"
+          "label": "Aktivera ljudeffekter"
         },
         {
-          "label": "\"Försök igen\"-knapp"
+          "label": "Aktivera knappen \"Försök igen\""
         },
         {
-          "label": "\"Visa rätt svar\"-knapp"
+          "label": "Aktivera knappen \"Visa lösning\""
         },
         {
           "label": "Krav för godkänt",
@@ -88,35 +88,35 @@
       "label": "Ändra texter",
       "fields": [
         {
-          "label": "Etikett för \"Nästa\"-knappen",
+          "label": "Etikett för knappen \"Nästa\"",
           "default": "Nästa fråga"
         },
         {
-          "label": "Etikett för \"Visa rätt svar\"-knappen",
-          "default": "Visa rätt svar"
+          "label": "Etikett för knappen \"Visa lösning\"",
+          "default": "Visa lösning"
         },
         {
-          "label": "Etikett för \"Försök igen\"-knappen",
+          "label": "Etikett för knappen \"Försök igen\"",
           "default": "Försök igen"
         },
         {
-          "label": "Titel för sidan Visa rätt svar",
-          "default": "Visa rätt svar"
+          "label": "Titel för sidan Visa lösning",
+          "default": "Lösning"
         },
         {
-          "label": "Skärmläsartext för rätt svar",
+          "label": "Skärmläsartext för korrekt svar",
           "default": "Rätt svar!"
         },
         {
           "label": "Skärmläsartext för fel svar",
-          "default": "Fel svar!"
+          "default": "Fel"
         },
         {
-          "label": "Beskrivning av \"stäng av ljudet\"-knappen",
-          "default": "Stäng av ljudet"
+          "label": "Beskrivning av knappen \"stäng av ljudet\"",
+          "default": "Stäng av ljudet för feedback"
         },
         {
-          "label": "Beskrivning av \"Stäng\"-knappen",
+          "label": "Beskrivning av knappen \"Stäng\"",
           "default": "Stäng"
         },
         {
@@ -130,8 +130,16 @@
         },
         {
           "label": "Etikett för frågans nummer i lösningslistan",
-          "description": "Visar aktuell index över fråga i lösningsligtan, variabler är :num",
+          "description": "Visar aktuell index över fråga i lösningslistan, variabler är :num",
           "default": "Fråga :num"
+        },
+        {
+          "label": "Beskrivning för tillgänglighetshjälpmedel för knappen \"Visa lösning\"",
+          "default": "Visa lösningen. Uppgiften kommer att markeras med dess rätta lösning."
+        },
+        {
+          "label": "Beskrivning för tillgänglighetshjälpmedel för knappen \"Försök igen\"",
+          "default": "Gör nytt försök på uppgiften. Nollställer alla svar och startar om uppgiften."
         }
       ]
     }

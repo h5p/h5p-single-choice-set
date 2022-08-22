@@ -12,7 +12,7 @@
         }
       ],
       "field": {
-        "label": "Otázka & alternativy",
+        "label": "Otázka &amp; alternativy",
         "fields": [
           {
             "label": "Otázka"
@@ -37,7 +37,7 @@
             }
           ],
           "label": "Definujte vlastní zpětnou vazbu pro libovolný rozsah skóre",
-          "description": "Klepnutím na tlačítko \"Add range\" přidáte libovolný počet rozsahů. Příklad: 0-20% špatné skóre, 21-91% průměrné skóre, 91-100% výborné skóre!",
+          "description": "Klepnutím na tlačítko \"Přidat rozsah\" přidáte libovolný počet rozsahů. Příklad: 0-20% špatné skóre, 21-91% průměrné skóre, 91-100% výborné skóre!",
           "entity": "rozsah",
           "field": {
             "fields": [
@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Automaticky pokračovat",
-          "description": "Když je vybrána alternativa, automaticky přejde na další otázku "
+          "description": "Když je vybrána alternativa, automaticky přejde na další otázku"
         },
         {
           "label": "Časový limit pro správné odpovědi",
@@ -85,18 +85,18 @@
       ]
     },
     {
-      "label": "Lokalizujte otázku s jedním výběrem",
+      "label": "Lokalizovat otázku s jedním výběrem",
       "fields": [
         {
-          "label": "Popisek tlačítka \"Next\" ",
+          "label": "Popisek tlačítka \"Další\"",
           "default": "Další otázka"
         },
         {
-          "label": "Popisek tlačítka \"Show solution\" ",
+          "label": "Popisek tlačítka \"Zobrazit řešení\"",
           "default": "Zobrazit řešení"
         },
         {
-          "label": "Popisek tlačítka \"Retry\" ",
+          "label": "Popisek tlačítka \"Opakovat\"",
           "default": "Opakovat"
         },
         {
@@ -112,11 +112,11 @@
           "default": "Chyba!"
         },
         {
-          "label": "Popisek tlačítka \"mute\"  vypnutí zvuku zpětné vazby",
+          "label": "Popisek tlačítka \"ztlumit\" pro vypnutí zvuku zpětné vazby",
           "default": "Ztlumit zvuk zpětné vazby"
         },
         {
-          "label": "Popisek tlačítka \"Close\" ",
+          "label": "Popisek tlačítka \"Zavřít\"",
           "default": "Zavřít"
         },
         {
@@ -132,6 +132,14 @@
           "label": "Popisek čísla otázky v seznamu řešení",
           "description": "Oznamuje aktuální index otázek v seznamu řešení, proměnné jsou :num",
           "default": "Otázka :num"
+        },
+        {
+          "label": "Popisek podpůrné technologie pro tlačítko „Zobrazit řešení“",
+          "default": "Zobrazit řešení. Úkol bude zobrazen se správným řešením."
+        },
+        {
+          "label": "Popisek podpůrné technologie pro tlačítko „Opakovat“",
+          "default": "Zopakovat úkol. Resetovat všechny odpovědi a spustit úlohu znovu."
         }
       ]
     }

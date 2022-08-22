@@ -5,7 +5,7 @@
       "entity": "pregunta",
       "widgets": [
         {
-          "label": "Predeterminado"
+          "label": "Por defecto"
         },
         {
           "label": "Textual"
@@ -28,26 +28,26 @@
       }
     },
     {
-      "label": "Realimentación Global",
+      "label": "Retroalimentación Global",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Predeterminado"
+              "label": "Por defecto"
             }
           ],
-          "label": "Definir realimentación personalizada para cualquier rango de puntaje",
-          "description": "Hacer click en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "label": "Definir comentarios personalizados para cualquier rango de puntuación",
+          "description": "Haz clic en el botón \"Añadir rango\" para añadir los rangos que necesites. Ejemplo: 0-20% Mala puntuación, 21-91% Puntuación Media, 91-100% ¡Puntuación Estupenda!",
           "entity": "rango",
           "field": {
             "fields": [
               {
-                "label": "Rango de puntaje"
+                "label": "Rango de Puntuación"
               },
               {},
               {
-                "label": "Realimentación para rango deinido de puntaje",
-                "placeholder": "Escriba la realimentación"
+                "label": "Realimentación para el rango de puntuación definido",
+                "placeholder": "Escribe tu retroalimentación"
               }
             ]
           }
@@ -55,32 +55,32 @@
       ]
     },
     {
-      "label": "Ajustes de comportamiento",
+      "label": "Configuración del comportamiento",
       "fields": [
         {
-          "label": "Auto continuar",
-          "description": "Automáticamente ir a la pregunta siguiente cuando una alternativa es seleccionada"
+          "label": "Continuar automáticamente",
+          "description": "Ir a la pregunta siguiente automáticamente cuando se selecciona una alternativa"
         },
         {
-          "label": "Timeout en respuestas correctas",
-          "description": "Valor en microsegundos"
+          "label": "Tiempo de espera en respuestas correctas",
+          "description": "Valor en milisegundos"
         },
         {
-          "label": "Timeout en respuestas incorrectas",
-          "description": "Valor en microsegundos"
+          "label": "Tiempo agotado en respuestas incorrectas",
+          "description": "Valor en milisegundos"
         },
         {
           "label": "Habilitar efectos sonoros"
         },
         {
-          "label": "Habilitar botón Reintentar"
+          "label": "Habilitar botón \"Intentar de nuevo\""
         },
         {
           "label": "Habilitar botón Mostrar solución"
         },
         {
-          "label": "Porcentaje aprobatorio",
-          "description": "Porcentaje del puntaje total requerido para pasar el examen."
+          "label": "Porcentaje para aprobar",
+          "description": "Porcentaje de la puntuación total requerido para pasar el examen."
         }
       ]
     },
@@ -88,50 +88,58 @@
       "label": "Localizar conjunto de opción única",
       "fields": [
         {
-          "label": "Etiqueta para el botón \"Siguiente\" ",
+          "label": "Etiqueta para el botón \"Siguiente\"",
           "default": "Siguiente pregunta"
         },
         {
-          "label": "Etiqueta para el botón \"Mostrar solución\" ",
+          "label": "Etiqueta para el botón \"Mostrar solución\"",
           "default": "Mostrar solución"
         },
         {
-          "label": "Etiqueta para el botón \"Reintentar\" ",
-          "default": "Reintentar"
+          "label": "Etiqueta para el botón \"Intentar de nuevo\"",
+          "default": "Intentar de nuevo"
         },
         {
           "label": "Título para la vista mostrar solución",
-          "default": "Solución"
+          "default": "Lista de soluciones"
         },
         {
-          "label": "Texto para Lector de voz para respuesta correcta",
-          "default": "¡Correcta!"
+          "label": "Texto para lectores de pantalla para respuesta correcta",
+          "default": "¡Correcto!"
         },
         {
-          "label": "Texto de Lector de voz para respuesta incorrecta",
-          "default": "¡Incorrecta!"
+          "label": "Texto para lectores de pantalla para respuesta incorrecta",
+          "default": "¡Incorrecto!"
         },
         {
-          "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonito de realimentación",
-          "default": "Enmudecer sonido de realimentación"
+          "label": "Etiqueta para el botón \"silenciar\", para deshabilitar el sonido de retroalimentación",
+          "default": "Silenciar sonido de retroalimentación"
         },
         {
-          "label": "Etiqueta para el botón \"Cerrar\" ",
+          "label": "Etiqueta para el botón \"Cerrar\"",
           "default": "Cerrar"
         },
         {
-          "label": "Texto de imágen número",
-          "description": "Anuncia la imagen actual y el número total de imágenes, las variables son :num y :total",
-          "default": "Slide :num of :total"
+          "label": "Texto del número de diapositiva",
+          "description": "Anuncia la diapositiva actual y el número total de diapositivas, las variables son :num y :total",
+          "default": "Diapositiva :num de :total"
         },
         {
-          "label": "Representación textual de la barra de puntaje para aquellos que usan un Lector de voz",
-          "default": "Usted tuvo :num de un total de :total puntos"
+          "label": "Representación textual de la barra de puntuación cuando se usa un lector de pantalla",
+          "default": "Has conseguido :num de un total de :total puntos"
         },
         {
-          "label": "Etiqueta para el número de pregunta en la lista de solución",
-          "description": "Anuncia el índice de pregunta actual en lista de solución, las variables son :num",
+          "label": "Etiqueta para el número de pregunta en la lista de soluciones",
+          "description": "Anuncia el índice de preguntas actual en la lista de soluciones, las variables son :num",
           "default": "Pregunta :num"
+        },
+        {
+          "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\"",
+          "default": "Mostrar la solución. La tarea se calificará con su solución correcta."
+        },
+        {
+          "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
+          "default": "Vuelve a intentar la tarea. Borra todas tus respuestas y empieza de nuevo."
         }
       ]
     }

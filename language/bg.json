@@ -129,9 +129,17 @@
           "default": "Вие имате :num от общо :total точки"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Етикет за номера на въпроса в списъка с решения",
+          "description": "Обявява текущия индекс на въпроса в списъка с решения, променливи са :num",
+          "default": "Въпрос :num"
+        },
+        {
+          "label": "Описание за помощни технологии бутон \"Покажи решението\" ",
+          "default": "Показване на решението. Задачата ще бъде показа с правилното ѝ  решение."
+        },
+        {
+          "label": "Описание за помощни технологии бутон \"Опитай пак\" ",
+          "default": "Опитай задачата отново. Нулиране на всички отговори и започване на задачата отначало."
         }
       ]
     }

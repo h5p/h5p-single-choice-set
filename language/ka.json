@@ -55,15 +55,14 @@
       ]
     },
     {
-      "label": "Indstillinger for opgave-opførsel",
       "fields": [
         {
           "label": "Auto continue",
           "description": "Automatically go to next question when alternative is selected"
         },
         {
-          "label": "Timeout on correct answers",
-          "description": "Value in milliseconds"
+          "description": "Value in milliseconds",
+          "label": "Timeout on correct answers"
         },
         {
           "label": "Timeout on wrong answers",
@@ -82,7 +81,8 @@
           "label": "Pass percentage",
           "description": "Percentage of Total score required for passing the quiz."
         }
-      ]
+      ],
+      "label": "Behavioural settings"
     },
     {
       "label": "Localize single choice set",
@@ -101,7 +101,7 @@
         },
         {
           "label": "Title for the show solution view",
-          "default": "Solution"
+          "default": "Solution list"
         },
         {
           "label": "Readspeaker text for correct answer",
@@ -117,7 +117,7 @@
         },
         {
           "label": "Label for the \"Close\" button",
-          "default": "Luk"
+          "default": "Close"
         },
         {
           "label": "Slide number text",
