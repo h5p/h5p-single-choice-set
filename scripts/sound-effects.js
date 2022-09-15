@@ -1,14 +1,16 @@
 H5P.SingleChoiceSet = H5P.SingleChoiceSet || {};
 
 H5P.SingleChoiceSet.SoundEffects = (function () {
-  var isDefined = false;
+  let isDefined = false;
 
-  var SoundEffects = {
+  const SoundEffects = {
     types: [
       'positive-short',
       'negative-short'
     ]
   };
+
+  const players = [];
 
   /**
    * Setup defined sounds
@@ -17,16 +19,17 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
    * @return {boolean} True if setup was successfull, otherwise false
    */
   SoundEffects.setup = function (libraryPath) {
-    if (isDefined || !H5P.SoundJS.initializeDefaultPlugins()) {
+    if (isDefined) {
       return false;
     }
-
-    H5P.SoundJS.alternateExtensions = ['mp3'];
-    for (var i = 0; i < SoundEffects.types.length; i++) {
-      var type = SoundEffects.types[i];
-      H5P.SoundJS.registerSound(libraryPath + 'sounds/' + type + '.ogg', type);
-    }
     isDefined = true;
+
+    SoundEffects.types.forEach(function (type) {
+      const player = new Audio();
+      const extension = player.canPlayType('audio/ogg') ? 'ogg' : 'mp3';
+      player.src = libraryPath + 'sounds/' + type + '.' + extension;
+      players[type] = player;
+    });
 
     return true;
   };
@@ -38,7 +41,13 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
    * @param  {number} delay Delay in milliseconds
    */
   SoundEffects.play = function (type, delay) {
-    H5P.SoundJS.play(type, H5P.SoundJS.INTERRUPT_NONE, (delay || 0));
+    if (!players.includes(type)) {
+      return;
+    }
+    
+    setTimeout(function () {
+      players[type].play();
+    }, delay || 0);
   };
 
   return SoundEffects;
