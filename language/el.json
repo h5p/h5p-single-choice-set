@@ -108,8 +108,8 @@
           "default": "Σωστό!"
         },
         {
-          "label": "Κείμενο ακουστικής υποβοήθησης για λάθος απάντηση",
-          "default": "Λάθος!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Ετικέτα κουμπιού \"Σίγαση\", για απενεργοποίηση του ήχου ανατροφοδότησης",

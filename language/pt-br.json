@@ -108,8 +108,8 @@
           "default": "Correto!"
         },
         {
-          "label": "Texto de resposta incorreta para leitores de tela",
-          "default": "Incorreto!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Rótulo para o botão \"Mudo\" , para desativar som do feedback",

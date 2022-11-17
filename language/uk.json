@@ -108,8 +108,8 @@
           "default": "Правильно!"
         },
         {
-          "label": "Текст озвучки для неправильної відповіді",
-          "default": "Неправильно!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Надпис для кнопки \"відключити звук\", щоб відключити звук зворотнього зв'язку",

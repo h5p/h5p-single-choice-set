@@ -250,7 +250,7 @@
         "type": "text",
         "label": "Readspeaker text for incorrect answer",
         "importance": "low",
-        "default": "Incorrect!"
+        "default": "Incorrect! Correct answer was: :text"
       },
       {
         "name": "muteButtonLabel",

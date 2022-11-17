@@ -108,8 +108,8 @@
           "default": "Correct!"
         },
         {
-          "label": "نص الاجابات الخاطئة لتقنية تحويل النص الى كلام",
-          "default": "Incorrect!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "لافتة الزر \" كتم \" ، لتعطيل صوت التعليقات",
