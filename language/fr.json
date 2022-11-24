@@ -108,8 +108,8 @@
           "default": "Correct !"
         },
         {
-          "label": "Texte exprimé par la synthèse vocale en cas de réponse incorrecte",
-          "default": "Incorrect !"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",

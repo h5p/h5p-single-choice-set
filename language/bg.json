@@ -108,8 +108,8 @@
           "default": "Вярно!"
         },
         {
-          "label": "Readspeaker текст за грешен отговор ",
-          "default": "Грешно!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Етикет за бутон \"Заглуши звука\" ",

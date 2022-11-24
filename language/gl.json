@@ -108,8 +108,8 @@
           "default": "Correcto!"
         },
         {
-          "label": "Texto para resposta incorrecta para o lector de pantalla",
-          "default": "Incorrecto!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Etiqueta para o botón \"Silenciar\", que desactiva o son de retroalimentación",

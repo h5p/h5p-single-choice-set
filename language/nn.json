@@ -108,8 +108,8 @@
           "default": "Riktig"
         },
         {
-          "label": "Readspeaker tekst for feil svar",
-          "default": "Feil"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Merkelapp for \"mute\"-knappen",

@@ -28,8 +28,16 @@
       }
     },
     {
+      "label": "Feedback global",
       "fields": [
         {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Defina o feedback personalizado para qualquer faixa de pontuação",
+          "description": "Clique em \"Adicionar faixa\" e adicione quantas faixas forem necessárias. Exemplo: 0-20% Insuficiente, 21-91% Suficiente, 91-100% Excelente!",
           "entity": "faixa",
           "field": {
             "fields": [
@@ -38,21 +46,13 @@
               },
               {},
               {
-                "placeholder": "Preencha o feedback",
-                "label": "Feedback para uma determinada faixa de pontuação"
+                "label": "Feedback para uma determinada faixa de pontuação",
+                "placeholder": "Preencha o feedback"
               }
             ]
-          },
-          "widgets": [
-            {
-              "label": "Padrão"
-            }
-          ],
-          "label": "Defina o feedback personalizado para qualquer faixa de pontuação",
-          "description": "Clique em \"Adicionar faixa\" e adicione quantas faixas forem necessárias. Exemplo: 0-20% Insuficiente, 21-91% Suficiente, 91-100% Excelente!"
+          }
         }
-      ],
-      "label": "Feedback global"
+      ]
     },
     {
       "label": "Behavioural settings",
@@ -66,8 +66,8 @@
           "description": "Valor em milisegundos"
         },
         {
-          "description": "Valor em milisegundos",
-          "label": "Tempo limite em respostas incorretas"
+          "label": "Tempo limite em respostas incorretas",
+          "description": "Valor em milisegundos"
         },
         {
           "label": "Ativar efeitos sonoros"
@@ -100,20 +100,20 @@
           "default": "Tentar novamente"
         },
         {
-          "default": "Lista das soluções",
-          "label": "Título para a visualização da solução"
+          "label": "Título para a visualização da solução",
+          "default": "Lista das soluções"
         },
         {
           "label": "Texto de resposta correta para leitores de ecrã",
           "default": "Correto!"
         },
         {
-          "label": "Texto de resposta incorreta para leitores de ecrã",
-          "default": "Incorreto!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
-          "default": "Feedback sem som",
-          "label": "Rótulo para o botão \"Sem som\", para desativar som do feedback"
+          "label": "Rótulo para o botão \"Sem som\", para desativar som do feedback",
+          "default": "Feedback sem som"
         },
         {
           "label": "Rótulo para o botão \"Fechar\"",
@@ -121,8 +121,8 @@
         },
         {
           "label": "Texto do número do slide",
-          "default": "Slide :num de :total",
-          "description": "Anuncia o número atual do slide e o número total de slides, variáveis são :num e :total"
+          "description": "Anuncia o número atual do slide e o número total de slides, variáveis são :num e :total",
+          "default": "Slide :num de :total"
         },
         {
           "label": "Representação textual da barra de pontuação para aqueles que usam leitores de ecrã",
@@ -130,8 +130,8 @@
         },
         {
           "label": "Rótulo para o número da pergunta na lista das soluções",
-          "default": "Pergunta :num",
-          "description": "Anuncia o índice da pergunta atual na lista das soluções, as variáveis são: num"
+          "description": "Anuncia o índice da pergunta atual na lista das soluções, as variáveis são: num",
+          "default": "Pergunta :num"
         },
         {
           "label": "Descrição da tecnologia assistiva para o botão \"Mostrar solução\"",

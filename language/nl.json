@@ -108,8 +108,8 @@
           "default": "Juist!"
         },
         {
-          "label": "Schermlezer tekst voor het onjuiste antwoord",
-          "default": "Onjuist!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Tekst voor \"Demp\"-knop, om het feedbackgeluid uit te schakelen",
