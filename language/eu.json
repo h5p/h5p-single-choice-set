@@ -108,8 +108,8 @@
           "default": "Zuzena!"
         },
         {
-          "label": "Erantzun okerretarako irakurgailuaren testua",
-          "default": "Erantzun okerra!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "\"mute\" botoiaren etiketa, feedback-etako soinua desgaitzeko",

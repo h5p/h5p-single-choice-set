@@ -108,8 +108,8 @@
           "default": "¡Correcta!"
         },
         {
-          "label": "Texto de Lector en voz alta para respuesta incorrecta",
-          "default": "¡Incorrecta!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonido de retroalimentación",

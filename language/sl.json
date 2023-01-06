@@ -108,8 +108,8 @@
           "default": "Pravilno!"
         },
         {
-          "label": "Besedilo za napačen odgovor za bralnik zaslona",
-          "default": "Nepravilno!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Besedilo za gumb \"Utišaj\", ki onemogoči zvočne efekte povratnih informacij",

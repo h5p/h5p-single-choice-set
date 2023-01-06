@@ -108,8 +108,8 @@
           "default": "Õige!"
         },
         {
-          "label": "Vale vastuse tekstilugeri tekst",
-          "default": "Vale!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "\"Vaigista\" nupu silt, keelamaks tagasiside heli",
