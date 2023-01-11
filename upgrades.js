@@ -54,6 +54,18 @@ H5PUpgrades['H5P.SingleChoiceSet'] = (function () {
         extras = extras || {};
         extras.metadata = extras.metadata || {};
         extras.metadata.title = (title) ? title.replace(/<[^>]*>?/g, '') : ((extras.metadata.title) ? extras.metadata.title : 'Single Choice Set');
+        
+        // Update field names and remove existing ones
+        if (parameters && parameters.l10n) {
+          if (parameters.l10n.incorrectText) {
+            parameters.l10n.incorrectA11yText = parameters.l10n.incorrectText;
+            delete parameters.l10n.incorrectText;
+          }
+          if (parameters.l10n.correctText) {
+            parameters.l10n.correctA11yText = parameters.l10n.correctText;
+            delete parameters.l10n.correctText;
+          }
+        }
 
         finished(null, parameters, extras);
       }
