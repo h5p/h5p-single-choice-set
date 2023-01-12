@@ -239,14 +239,14 @@
         "default": "Solution list"
       },
       {
-        "name": "correctA11yText",
+        "name": "correctText",
         "type": "text",
         "label": "Readspeaker text for correct answer",
         "importance": "low",
         "default": "Correct!"
       },
       {
-        "name": "incorrectA11yText",
+        "name": "incorrectText",
         "type": "text",
         "label": "Readspeaker text for incorrect answer",
         "importance": "low",

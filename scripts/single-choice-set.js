@@ -60,8 +60,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.muted = (this.options.behaviour.soundEffectsEnabled === false);
 
     this.l10n = H5P.jQuery.extend({
-      correctA11yText: 'Correct!',
-      incorrectA11yText: 'Incorrect! Correct answer was: :text',
+      correctText: 'Correct!',
+      incorrectText: 'Incorrect! Correct answer was: :text',
       nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
@@ -201,7 +201,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[event.data.index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
 
     // Announce by ARIA if answer is correct or incorrect
-    var text = this.lastAnswerIsCorrect ? self.l10n.correctA11yText : (self.l10n.incorrectA11yText.replace(':text', correctAnswer));
+    var text = this.lastAnswerIsCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
     self.read(text);
 
     if (!this.muted) {
