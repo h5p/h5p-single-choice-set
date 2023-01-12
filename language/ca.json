@@ -108,8 +108,8 @@
           "default": "Correcte!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Text de l’altaveu de lectura per a una resposta incorrecta",
+          "default": "Incorrecte!"
         },
         {
           "label": "Etiqueta per al botó \"Silencia\", per desactivar el so dels suggeriments",

@@ -108,8 +108,8 @@
           "default": "Pareizi!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Nepareizās atbildes atskaņošanas teksts",
+          "default": "Nepareizi!"
         },
         {
           "label": "Pogas \"Kluss\" birka, lai atspējotu atgriezeniskās saites skaņu",

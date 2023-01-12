@@ -108,8 +108,8 @@
           "default": "Тачно!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Текст из звучника за погрешан одговор",
+          "default": "Погрешан!"
         },
         {
           "label": "Ознака за \"Искључи звук\" дугме",

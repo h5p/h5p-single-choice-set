@@ -108,8 +108,8 @@
           "default": "Richtig!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Text, den ein Vorlesewerkzeug bei einer falschen Antwort vorliest (Barrierefreiheit)",
+          "default": "Falsch!"
         },
         {
           "label": "Beschriftung des \"Stumm\"-Buttons, um den Ton auszustellen",

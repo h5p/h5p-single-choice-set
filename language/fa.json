@@ -108,8 +108,8 @@
           "default": "صحیح!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "متن مبدل متن به گفتار برای پاسخ غلط",
+          "default": "غلط!"
         },
         {
           "label": "برچسب دکمه «بی‌صدا»، برای غیرفعال کردن صدای بازخورد",

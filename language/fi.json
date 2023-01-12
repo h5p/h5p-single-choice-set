@@ -108,8 +108,8 @@
           "default": "Oikein!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Ruudunlukijan palaute väärästä vastauksesta",
+          "default": "Väärin!"
         },
         {
           "label": "Painikkeen \"Mykistä äänipalaute\" nimi",

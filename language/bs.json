@@ -108,8 +108,8 @@
           "default": "Tačno!!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "\"Readspeaker\" tekst za netačan odgovor",
+          "default": "Netačno!!"
         },
         {
           "label": "Oznaka za dugme \"Isključi zvuk\" ",

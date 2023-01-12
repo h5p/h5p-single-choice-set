@@ -108,8 +108,8 @@
           "default": "正确！"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "答错时的显示文本",
+          "default": "错误！"
         },
         {
           "label": "\"静音\"按钮的标签，以关闭反馈声音",

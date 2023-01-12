@@ -108,8 +108,8 @@
           "default": "Giusto!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Testo del lettore vocale per risposta sbagliata",
+          "default": "Sbagliato!"
         },
         {
           "label": "Etichetta del pulsante \"Silenzia\", per disattivare il suono di feedback",

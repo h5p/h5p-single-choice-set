@@ -108,8 +108,8 @@
           "default": "Teisingai!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Neteisingo atsakymo tekstas",
+          "default": "Neteisingai!"
         },
         {
           "label": "Mygtuko \"išjungti garsą\", skirto išjungti atsiliepimo garsą, etiketė",

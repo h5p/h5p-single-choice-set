@@ -109,7 +109,7 @@
         },
         {
           "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "default": "មិនត្រឹមត្រូវ!"
         },
         {
           "label": "Label for the \"mute\" button, to disable feedback sound",

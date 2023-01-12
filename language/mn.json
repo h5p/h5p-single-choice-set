@@ -108,8 +108,8 @@
           "default": "Зөв!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Буруу хариултад харгалзах текст уншигч",
+          "default": "Буруу!"
         },
         {
           "label": "\"дууг хаах\" товчинд харгалзах нэр, дууг хаах бол дарна уу",
