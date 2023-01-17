@@ -112,6 +112,14 @@
           "default": "Буруу!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "\"дууг хаах\" товчинд харгалзах нэр, дууг хаах бол дарна уу",
           "default": "Зөвлөмжийн дууг хаах"
         },

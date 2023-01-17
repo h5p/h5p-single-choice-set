@@ -112,6 +112,14 @@
           "default": "Chyba!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Popisek tlačítka \"ztlumit\" pro vypnutí zvuku zpětné vazby",
           "default": "Ztlumit zvuk zpětné vazby"
         },

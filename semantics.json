@@ -253,6 +253,20 @@
         "default": "Incorrect!"
       },
       {
+        "name": "shouldSelect",
+        "type": "text",
+        "label": "Option should have been selected",
+        "importance": "low",
+        "default": "Should have been selected"
+      },
+      {
+        "name": "shouldNotSelect",
+        "type": "text",
+        "label": "Option should not have been selected",
+        "importance": "low",
+        "default": "Should not have been selected"
+      },
+      {
         "name": "muteButtonLabel",
         "type": "text",
         "label": "Label for the \"mute\" button, to disable feedback sound",

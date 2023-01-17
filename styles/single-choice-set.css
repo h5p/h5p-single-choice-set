@@ -222,6 +222,10 @@ li.h5p-sc-alternative .h5p-sc-status {
   color: #b71c1c;
 }
 
+.h5p-sc-alternative .h5p-sc-a11y{
+  display: none;
+}
+
 .h5p-sc-selected li.h5p-sc-alternative {
   cursor: auto;
   -webkit-box-shadow: none;

@@ -112,6 +112,14 @@
           "default": "错误！"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "\"静音\"按钮的标签，以关闭反馈声音",
           "default": "关闭反馈声音"
         },

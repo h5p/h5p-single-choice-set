@@ -112,6 +112,14 @@
           "default": "Incorrecte!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Etiqueta per al botó \"Silencia\", per desactivar el so dels suggeriments",
           "default": "Silencia el so dels suggeriments"
         },

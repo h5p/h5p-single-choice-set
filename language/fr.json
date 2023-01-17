@@ -112,6 +112,14 @@
           "default": "Incorrect !"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",
           "default": "Couper les retours sons"
         },

@@ -112,6 +112,14 @@
           "default": "Verkeerd!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Etiket vir die \"demp\" knoppie, om terugvoer klank te deaktiveer",
           "default": "Demp terugvoerklank"
         },

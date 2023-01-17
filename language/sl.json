@@ -112,6 +112,14 @@
           "default": "Nepravilno!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Besedilo za gumb \"Utišaj\", ki onemogoči zvočne efekte povratnih informacij",
           "default": "Utišaj"
         },

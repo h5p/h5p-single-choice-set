@@ -112,6 +112,14 @@
           "default": "មិនត្រឹមត្រូវ!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Label for the \"mute\" button, to disable feedback sound",
           "default": "បិទសម្លេង"
         },

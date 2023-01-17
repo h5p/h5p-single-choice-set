@@ -83,6 +83,10 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
     this.$alternative.append($('<div>', {
       'class': 'h5p-sc-status'
     }));
+    this.$alternative.append($('<div>', {
+      'class': 'h5p-sc-a11y',
+      'aria-hidden': 'false'
+    }));
   }
 
   Alternative.prototype = Object.create(EventDispatcher.prototype);

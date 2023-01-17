@@ -112,6 +112,14 @@
           "default": "Falsch!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Beschriftung des \"Stumm\"-Buttons, um den Ton auszustellen",
           "default": "Stumm schalten"
         },

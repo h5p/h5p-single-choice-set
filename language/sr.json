@@ -112,6 +112,14 @@
           "default": "Погрешан!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Ознака за \"Искључи звук\" дугме",
           "default": "Искључи звук"
         },

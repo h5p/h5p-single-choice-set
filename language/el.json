@@ -112,6 +112,14 @@
           "default": "Λάθος!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Ετικέτα κουμπιού \"Σίγαση\", για απενεργοποίηση του ήχου ανατροφοδότησης",
           "default": "Σίγαση ήχου ανατροφοδότησης"
         },

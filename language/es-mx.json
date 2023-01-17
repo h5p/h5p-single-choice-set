@@ -112,6 +112,14 @@
           "default": "¡Incorrecta!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonido de retroalimentación",
           "default": "Enmudecer sonido de retroalimentación"
         },

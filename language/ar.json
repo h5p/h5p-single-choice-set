@@ -112,6 +112,14 @@
           "default": "Incorrect!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "لافتة الزر \" كتم \" ، لتعطيل صوت التعليقات",
           "default": "Mute feedback sound"
         },

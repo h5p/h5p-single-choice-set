@@ -112,6 +112,14 @@
           "default": "Neteisingai!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Mygtuko \"išjungti garsą\", skirto išjungti atsiliepimo garsą, etiketė",
           "default": "Išjungti atsiliepimo garsą"
         },

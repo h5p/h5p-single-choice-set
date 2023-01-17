@@ -112,6 +112,14 @@
           "default": "¡Incorrecto!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Etiqueta para el botón \"silenciar\", para deshabilitar el sonido de retroalimentación",
           "default": "Silenciar sonido de retroalimentación"
         },
