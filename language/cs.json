@@ -108,8 +108,8 @@
           "default": "Správně!"
         },
         {
-          "label": "Text čtecího zařízení pro chybnou odpověď",
-          "default": "Chyba!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Popisek tlačítka \"ztlumit\" pro vypnutí zvuku zpětné vazby",

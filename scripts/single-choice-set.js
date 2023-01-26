@@ -198,7 +198,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.triggerXAPI('interacted');
 
     // correct answer
-    var correctAnswer = self.$choices.find('.h5p-sc-is-correct').text();
+    var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[event.data.index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
 
     // Announce by ARIA if answer is correct or incorrect
     var text = this.lastAnswerIsCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));

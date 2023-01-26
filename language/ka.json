@@ -55,14 +55,15 @@
       ]
     },
     {
+      "label": "Behavioural settings",
       "fields": [
         {
           "label": "Auto continue",
           "description": "Automatically go to next question when alternative is selected"
         },
         {
-          "description": "Value in milliseconds",
-          "label": "Timeout on correct answers"
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
         },
         {
           "label": "Timeout on wrong answers",
@@ -81,8 +82,7 @@
           "label": "Pass percentage",
           "description": "Percentage of Total score required for passing the quiz."
         }
-      ],
-      "label": "Behavioural settings"
+      ]
     },
     {
       "label": "Localize single choice set",
@@ -109,7 +109,7 @@
         },
         {
           "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect!"
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Label for the \"mute\" button, to disable feedback sound",

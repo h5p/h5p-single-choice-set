@@ -108,8 +108,8 @@
           "default": "정답!"
         },
         {
-          "label": "오답에 대한 읽어주기 스피커 텍스트",
-          "default": "오답!"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "피드백 음향을 비활성화하기 위한 \"음소거\" 버튼 라벨",

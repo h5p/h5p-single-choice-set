@@ -108,8 +108,8 @@
           "default": "正解 !"
         },
         {
-          "label": "不正解ためのリードスピーカー用テキスト",
-          "default": "不正解 !"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect! Correct answer was: :text"
         },
         {
           "label": "Label for the \"mute\" button, to disable feedback sound",
