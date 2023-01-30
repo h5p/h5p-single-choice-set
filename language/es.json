@@ -36,7 +36,7 @@
               "label": "Por defecto"
             }
           ],
-          "label": "Definir comentarios personalizados para cualquier rango de puntuación",
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
           "description": "Haz clic en el botón \"Añadir rango\" para añadir los rangos que necesites. Ejemplo: 0-20% Mala puntuación, 21-91% Puntuación Media, 91-100% ¡Puntuación Estupenda!",
           "entity": "rango",
           "field": {
@@ -46,7 +46,7 @@
               },
               {},
               {
-                "label": "Realimentación para el rango de puntuación definido",
+                "label": "Retroalimentación para rango de puntaje definido",
                 "placeholder": "Escribe tu retroalimentación"
               }
             ]
@@ -79,7 +79,7 @@
           "label": "Habilitar botón Mostrar solución"
         },
         {
-          "label": "Porcentaje para aprobar",
+          "label": "Porcentaje aprobatorio",
           "description": "Porcentaje de la puntuación total requerido para pasar el examen."
         }
       ]
@@ -101,7 +101,7 @@
         },
         {
           "label": "Título para la vista mostrar solución",
-          "default": "Lista de soluciones"
+          "default": "Lista Solución"
         },
         {
           "label": "Texto para lectores de pantalla para respuesta correcta",
