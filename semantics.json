@@ -250,7 +250,21 @@
         "type": "text",
         "label": "Readspeaker text for incorrect answer",
         "importance": "low",
-        "default": "Incorrect! Correct answer was: :text"
+        "default": "Incorrect!"
+      },
+      {
+        "name": "shouldSelect",
+        "type": "text",
+        "label": "Option should have been selected",
+        "importance": "low",
+        "default": "Should have been selected"
+      },
+      {
+        "name": "shouldNotSelect",
+        "type": "text",
+        "label": "Option should not have been selected",
+        "importance": "low",
+        "default": "Should not have been selected"
       },
       {
         "name": "muteButtonLabel",

@@ -108,8 +108,16 @@
           "default": "¡Correcta!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Texto de Lector en voz alta para respuesta incorrecta",
+          "default": "¡Incorrecta!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonido de retroalimentación",

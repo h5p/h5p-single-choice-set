@@ -108,8 +108,16 @@
           "default": "Reg!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Spreekleserteks vir verkeerde antwoord",
+          "default": "Verkeerd!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Etiket vir die \"demp\" knoppie, om terugvoer klank te deaktiveer",

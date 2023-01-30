@@ -108,8 +108,16 @@
           "default": "Correct !"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Texte exprimé par la synthèse vocale en cas de réponse incorrecte",
+          "default": "Incorrect !"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",

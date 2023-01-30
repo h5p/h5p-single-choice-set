@@ -5,13 +5,14 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
   /**
    * Constructor function.
    */
-  function SingleChoice(options, index, id) {
+  function SingleChoice(options, index, id, isAutoConfinue) {
     EventDispatcher.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
       question: '',
       answers: []
     }, options);
+    this.isAutoConfinue = isAutoConfinue;
     // Keep provided id.
     this.index = index;
     this.id = id;
@@ -87,7 +88,8 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
       self.trigger('alternative-selected', {
         correct: correct,
         index: self.index,
-        answerIndex: answerIndex
+        answerIndex: answerIndex,
+        currentIndex: $element.index()
       });
 
       H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), function () {
@@ -188,7 +190,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
    * @param {Number} index The index of the alternative to focus on
    */
   SingleChoice.prototype.focusOnAlternative = function (index) {
-    if (!this.answered) {
+    if (!this.answered || !this.isAutoConfinue) {
       this.alternatives[index].focus();
     }
   };

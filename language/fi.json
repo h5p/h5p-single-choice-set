@@ -108,8 +108,16 @@
           "default": "Oikein!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Ruudunlukijan palaute väärästä vastauksesta",
+          "default": "Väärin!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Painikkeen \"Mykistä äänipalaute\" nimi",
