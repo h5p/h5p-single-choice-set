@@ -205,9 +205,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(event.data.currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
     // Announce by ARIA label
-    if (self.options.behaviour.autoContinue) {
-      self.read(selectedOptionText);
-    }
+    self.read(selectedOptionText);
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
