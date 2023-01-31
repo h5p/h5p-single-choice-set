@@ -228,6 +228,22 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     $correctAlternative.addClass('h5p-sc-reveal-correct');
   };
 
+  /**
+   * Reset a11y text for selected options
+   */
+  SingleChoice.prototype.resetA11yText = function () {
+    var self = this;
+    self.$choice.find('.h5p-sc-a11y').text('');
+  };
+
+  /**
+   * Make a11y text readable for screen reader
+   */
+  SingleChoice.prototype.setA11yTextReadable = function () {
+    var self = this;
+    self.$choice.find('.h5p-sc-a11y').attr('aria-hidden', false);
+  };
+
   return SingleChoice;
 
 })(H5P.jQuery, H5P.EventDispatcher, H5P.SingleChoiceSet.Alternative);

@@ -205,7 +205,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(event.data.currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
     // Announce by ARIA label
-    if (event.data.currentIndex === 0 || self.options.behaviour.autoContinue) {
+    if (self.options.behaviour.autoContinue) {
       self.read(selectedOptionText);
     }
 
@@ -235,18 +235,19 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.trigger(xapiEvent);
 
-    self.continue();
+    self.continue(index);
   };
 
   /**
    * Setup auto continue
    */
-  SingleChoiceSet.prototype.continue = function () {
+  SingleChoiceSet.prototype.continue = function (index) {
     var self = this;
 
+    self.choices[index].setA11yTextReadable();
     if (!self.options.behaviour.autoContinue) {
       // Set focus to next button
-      self.$choices.find('.h5p-sc-alternative').eq(0).focus();
+      self.$nextButton.focus();
       return;
     }
 
@@ -814,6 +815,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     this.choices.forEach(function (choice) {
       choice.setAnswered(false);
+      choice.resetA11yText();
     });
 
     this.stopWatches.forEach(function (stopWatch) {
