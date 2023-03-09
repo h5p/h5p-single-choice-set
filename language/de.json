@@ -18,7 +18,7 @@
             "label": "Frage"
           },
           {
-            "label": "Alternativen - die erste Alternative ist die Richtige.",
+            "label": "Alternativen - die erste Alternative ist die richtige.",
             "entity": "Antwort",
             "field": {
               "label": "Alternative"
@@ -80,7 +80,7 @@
         },
         {
           "label": "Prozentsatz zum Bestehen",
-          "description": "Prozentsatz der Gesamtpunktzahl, der nötig ist, um das Quiz zu bestehen"
+          "description": "Prozentsatz der Gesamtpunktzahl, der nötig ist, um das Quiz zu bestehen."
         }
       ]
     },
@@ -104,12 +104,12 @@
           "default": "Lösung"
         },
         {
-          "label": "Text, den ein Vorlesewerkzeug bei einer richtigen Antwort vorliest (Barrierefreiheit)",
+          "label": "Text für Vorlesewerkzeug bei richtiger Antwort",
           "default": "Richtig!"
         },
         {
-          "label": "Text, den ein Vorlesewerkzeug bei einer falschen Antwort vorliest (Barrierefreiheit)",
-          "default": "Falsch!"
+          "label": "Text für Vorlesewerkzeug bei falscher Antwort",
+          "default": "Falsch! Richtige Antwort war: :text"
         },
         {
           "label": "Option should have been selected",
