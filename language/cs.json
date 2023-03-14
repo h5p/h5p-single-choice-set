@@ -108,8 +108,16 @@
           "default": "Správně!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Text čtecího zařízení pro chybnou odpověď",
+          "default": "Chyba!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Popisek tlačítka \"ztlumit\" pro vypnutí zvuku zpětné vazby",

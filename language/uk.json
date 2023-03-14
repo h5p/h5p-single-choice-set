@@ -108,8 +108,16 @@
           "default": "Правильно!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Текст озвучки для неправильної відповіді",
+          "default": "Неправильно!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Надпис для кнопки \"відключити звук\", щоб відключити звук зворотнього зв'язку",
@@ -129,17 +137,17 @@
           "default": "Ви отримали :num out із :total балів"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
+          "label": "Позначка для номера питання в списку рішень",
+          "description": "Оголошує індекс поточного запитання в списку рішень, змінними є :num",
           "default": "Question :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Опис допоміжної технології для кнопки «Показати рішення».",
+          "default": "Показати рішення. Завдання буде позначено як правильне рішення."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Опис допоміжної технології для кнопки «Повторити».",
+          "default": "Повторіть завдання. Скиньте всі відповіді та почніть завдання знову."
         }
       ]
     }

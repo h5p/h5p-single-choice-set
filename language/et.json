@@ -108,8 +108,16 @@
           "default": "Õige!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Vale vastuse tekstilugeri tekst",
+          "default": "Vale!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "\"Vaigista\" nupu silt, keelamaks tagasiside heli",

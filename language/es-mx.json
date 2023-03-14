@@ -108,8 +108,16 @@
           "default": "¡Correcta!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Texto para lectores de pantalla para respuesta incorrecta",
+          "default": "¡Incorrecto!"
+        },
+        {
+          "label": "Opción debería haber sido seleccionada",
+          "default": "Debería haber sido seleccionada"
+        },
+        {
+          "label": "Opción NO debería haber sido seleccionada",
+          "default": "NO debería haber sido seleccionada"
         },
         {
           "label": "Etiqueta para el botón \"enmudecer\", para deshabilitar sonido de retroalimentación",
@@ -134,12 +142,12 @@
           "default": "Pregunta :num"
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Mostrar Solución\"",
-          "default": "Mostrar la solución. El trabajo será calificado con su solución correcta."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\"",
+          "default": "Mostrar la solución. La tarea se calificará con su solución correcta."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
-          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
+          "default": "Vuelva a intentar la tarea. Borre todas sus respuestas y empiece de nuevo."
         }
       ]
     }

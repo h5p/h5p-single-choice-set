@@ -108,8 +108,16 @@
           "default": "Doğru!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Yanlış cevap için okuyucu metni",
+          "default": "Yanlış!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Geri bildirim sesini devre dışı bırakmak için \"sessiz\" düğmesinin etiketi",

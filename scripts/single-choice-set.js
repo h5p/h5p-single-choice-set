@@ -61,7 +61,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     this.l10n = H5P.jQuery.extend({
       correctText: 'Correct!',
-      incorrectText: 'Incorrect! Correct answer was: :text',
+      incorrectText: 'Incorrect!',
+      shouldSelect: "Should have been selected",
+      shouldNotSelect: "Should not have been selected",
       nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
@@ -113,7 +115,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i, this.contentId);
+      var choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
       choice.on('finished', this.handleQuestionFinished, this);
       choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
@@ -197,12 +199,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.triggerXAPI('interacted');
 
-    // correct answer
-    var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[event.data.index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
-
-    // Announce by ARIA if answer is correct or incorrect
-    var text = this.lastAnswerIsCorrect ? self.l10n.correctText : (self.l10n.incorrectText.replace(':text', correctAnswer));
-    self.read(text);
+    // Read and set a11y friendly texts 
+    self.readA11yFriendlyText(event.data.index, event.data.currentIndex)
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
@@ -230,15 +228,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.trigger(xapiEvent);
 
-    self.continue();
+    self.continue(index);
   };
 
   /**
    * Setup auto continue
    */
-  SingleChoiceSet.prototype.continue = function () {
+  SingleChoiceSet.prototype.continue = function (index) {
     var self = this;
 
+    self.choices[index].setA11yTextReadable();
     if (!self.options.behaviour.autoContinue) {
       // Set focus to next button
       self.$nextButton.focus();
@@ -809,6 +808,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     this.choices.forEach(function (choice) {
       choice.setAnswered(false);
+      choice.resetA11yText();
     });
 
     this.stopWatches.forEach(function (stopWatch) {
@@ -837,6 +837,30 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       answers: this.results,
       userResponses: this.userResponses
     };
+  };
+
+  /**
+   * Generate A11y friendly text
+   * 
+   * @param  {number} index
+   * @param  {number} currentIndex 
+   */
+  SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
+    var self = this;
+    var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+    let selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText;
+    // Announce by ARIA label
+    if (!self.options.behaviour.autoContinue) {
+      // Set text for a11y
+      selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText + self.l10n.shouldSelect : self.l10n.incorrectText + self.l10n.shouldNotSelect;
+      self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.shouldSelect);
+      self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
+      self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
+
+      // Utilize same variable for the read text
+      selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
+    }
+    self.read(selectedOptionText);
   };
 
   /**

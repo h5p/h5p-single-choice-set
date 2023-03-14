@@ -108,8 +108,16 @@
           "default": "Rätt svar!"
         },
         {
-          "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect! Correct answer was: :text"
+          "label": "Skärmläsartext för fel svar",
+          "default": "Fel"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
         },
         {
           "label": "Beskrivning av knappen \"stäng av ljudet\"",
