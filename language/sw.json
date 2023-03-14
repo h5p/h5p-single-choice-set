@@ -112,6 +112,14 @@
           "default": "Siyo sahihi!"
         },
         {
+          "label": "Option should have been selected",
+          "default": "Should have been selected"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Should not have been selected"
+        },
+        {
           "label": "Lebo ya kitufe cha \"nyamazisha\", ili kuzima sauti ya maoni",
           "default": "Nyamazisha sauti ya maoni"
         },
@@ -122,16 +130,16 @@
         {
           "label": "Maandishi ya nambari ya slaidi",
           "description": "Inatangaza slaidi ya sasa na jumla ya idadi ya slaidi, vigezo ni :numna:total",
-          "default": "Slaidi :numkati ya:total"
+          "default": "Slaidi :numkati ya :total"
         },
         {
           "label": "Uwakilishi wa maandishi wa upau wa alama kwa wale wanaotumia kisoma maandishi",
-          "default": "Umepata :num kati ya alama:total"
+          "default": "Umepata :num kati ya alama :total"
         },
         {
           "label": "Lebo ya nambari ya swali katika orodha ya masuluhisho",
           "description": "Inatangaza faharasa ya sasa ya swali katika orodha ya masuluhisho:num vigezo ni",
-          "default": "Swali:num"
+          "default": "Swali :num"
         },
         {
           "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Onyesha Suluhisho\"",
@@ -139,16 +147,7 @@
         },
         {
           "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Jaribu tena\"",
-          "default": "Jaribu tena kazi hiyo. Weka upya majibu yote na uanze kazi tena.",
-          "description": "Announces current question index in solution list, variables are :num"
-        },
-        {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
-        },
-        {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "default": "Jaribu tena kazi hiyo. Weka upya majibu yote na uanze kazi tena."
         }
       ]
     }
