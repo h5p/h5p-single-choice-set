@@ -809,6 +809,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.choices.forEach(function (choice) {
       choice.setAnswered(false);
       choice.resetA11yText();
+      choice.resetAriaAttributes();
     });
 
     this.stopWatches.forEach(function (stopWatch) {

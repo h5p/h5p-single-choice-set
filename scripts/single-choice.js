@@ -221,6 +221,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
         index: self.index,
         answerIndex: answerIndex
       });
+      self.setAriaAttributes();
     }, 600);
 
     // Reveal corrects and wrong
@@ -242,6 +243,31 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
   SingleChoice.prototype.setA11yTextReadable = function () {
     var self = this;
     self.$choice.find('.h5p-sc-a11y').attr('aria-hidden', false);
+  };
+
+  /**
+   * Set aria attributes for choice
+   */
+  SingleChoice.prototype.setAriaAttributes = function () {
+    var self = this;
+    // A11y mode is enabled
+    if (!self.isAutoConfinue) {
+      self.$choice.find('.h5p-sc-alternative.h5p-sc-selected').attr('aria-checked', true);
+      self.$choice.find('.h5p-sc-alternative').attr('aria-disabled', true);
+    }
+  }
+
+  /**
+   * Reset aria attributes
+   */
+  SingleChoice.prototype.resetAriaAttributes = function () {
+    var self = this;
+    // A11y mode is enabled
+    if (!self.isAutoConfinue) {
+      const alternative = self.$choice.find('.h5p-sc-alternative');
+      alternative.removeAttr('aria-disabled');
+      alternative.removeAttr('aria-checked');
+    }
   };
 
   return SingleChoice;
