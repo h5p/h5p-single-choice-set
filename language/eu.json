@@ -112,12 +112,12 @@
           "default": "Erantzun okerra!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Aukera hautatu behar zen",
+          "default": "Hautatu beharko zen"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Aukera ez zen hautatu behar",
+          "default": "Ez zen hautatua izan behar"
         },
         {
           "label": "\"mute\" botoiaren etiketa, feedback-etako soinua desgaitzeko",
