@@ -58,7 +58,7 @@
       "label": "Innstillinger for oppgaveoppførsel",
       "fields": [
         {
-          "label": "Auto continue",
+          "label": "Fortsett automatisk",
           "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {

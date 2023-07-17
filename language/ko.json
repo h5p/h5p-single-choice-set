@@ -58,7 +58,7 @@
       "label": "동작 설정",
       "fields": [
         {
-          "label": "Auto continue",
+          "label": "자동으로 시작하기",
           "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
