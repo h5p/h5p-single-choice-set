@@ -58,8 +58,8 @@
       "label": "Innstillinger for oppgaveoppførsel",
       "fields": [
         {
-          "label": "Fortsett automatisk",
-          "description": "Hopp automatisk til neste spørsmål når et alternativ er valgt"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Pause ved korrekt svar",

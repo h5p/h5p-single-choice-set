@@ -58,8 +58,8 @@
       "label": "Настройки за поведение",
       "fields": [
         {
-          "label": "Автоматично продължаване",
-          "description": "Преминава автоматично към следващ въпрос, когато е изран отговор"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Прекъсване при верен отговор",

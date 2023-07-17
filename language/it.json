@@ -58,8 +58,8 @@
       "label": "Impostazioni di esecuzione",
       "fields": [
         {
-          "label": "Prosecuzione automatica",
-          "description": "Vai automaticamente alla domanda che segue quando è selezionata l'alternativa"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Timeout sulle risposte corrette",

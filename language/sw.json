@@ -58,8 +58,8 @@
       "label": "Mipangilio ya tabia",
       "fields": [
         {
-          "label": "Kuendelea kiotomatiki",
-          "description": "Nenda kiotomatiki kwa swali linalofuata wakati mbadala imechaguliwa"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Muda umeisha wa kusubiri majibu sahihi",

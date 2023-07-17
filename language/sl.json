@@ -58,8 +58,8 @@
       "label": "Nastavitve interakcije",
       "fields": [
         {
-          "label": "Samodejno prestavi na naslednje vprašanje",
-          "description": "Ob izbiri odgovora na vprašanje se udeleženec samodejno prestavi na naslednjega. V nasprotnem primeru mora izbrati možnost naprej."
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Premor za pravilnim odgovorom",

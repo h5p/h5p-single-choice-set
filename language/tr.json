@@ -58,8 +58,8 @@
       "label": "Etkinlik Ayarları",
       "fields": [
         {
-          "label": "Otomatik devam et",
-          "description": "Alternatif seçildiğinde otomatik olarak bir sonraki soruya geç"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Doğru cevaplarda zaman aşımı",

@@ -58,8 +58,8 @@
       "label": "Nastavení chování",
       "fields": [
         {
-          "label": "Automaticky pokračovat",
-          "description": "Když je vybrána alternativa, automaticky přejde na další otázku"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Časový limit pro správné odpovědi",

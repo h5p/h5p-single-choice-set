@@ -58,8 +58,8 @@
       "label": "Поставке понашања",
       "fields": [
         {
-          "label": "Аутоматски настави",
-          "description": "Аутоматски идите на следеће питање када је изабрана алтернатива"
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Временско ограничење тачних одговора",
