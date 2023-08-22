@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Gaan outomaties voort",
-          "description": "Gaan outomaties na die volgende vraag wanneer 'n alternatief gekies word"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Uitteltyd vir regte antwoord",

@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Automaatne jätkamine",
-          "description": "Automaatselt liigu järgmisele küsimusele, kui alternatiiv on valitud"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Õige vastuse timeout",

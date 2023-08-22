@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Continuar automaticamente",
-          "description": "Vai automaticamente para a próxima pergunta quando uma alternativa é selecionada"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Tempo limite em respostas corretas",

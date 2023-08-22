@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "ادامه خودکار",
-          "description": "به طور خودکار وقتی بدیل انتخاب شد به سؤال بعد برو"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "وقفه پس از پاسخ صحیح",

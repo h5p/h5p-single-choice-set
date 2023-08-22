@@ -133,7 +133,7 @@
         "name": "autoContinue",
         "type": "boolean",
         "label": "Auto continue",
-        "description": "Automatically go to next question when alternative is selected",
+        "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader.",
         "default": true
       },
       {

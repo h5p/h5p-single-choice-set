@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "自动继续",
-          "description": "选择选项之后自动转到下一个问题"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "正确答案超时",
