@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Автопродолжение",
-          "description": "Автоматически переходить к следующему вопросу при выборе варианта ответа"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Тайм-аут на правильные ответы",

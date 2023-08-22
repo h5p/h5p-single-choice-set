@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Fortsätt automatiskt",
-          "description": "Gå till nästa fråga automatiskt när ett svarsalternativ är valt"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Paus efter rätt svar",
