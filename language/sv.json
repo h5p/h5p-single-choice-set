@@ -112,12 +112,12 @@
           "default": "Fel"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Alternativ skulle ha valts",
+          "default": "Skulle ha valts"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Alternativ skulle inte ha valts",
+          "default": "Skulle inte ha valts"
         },
         {
           "label": "Beskrivning av knappen \"stäng av ljudet\"",
