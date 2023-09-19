@@ -833,13 +833,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @returns {object}
    */
   SingleChoiceSet.prototype.getCurrentState = function () {
-    if (this.userResponses.length > 0) {
-      return {
+    return this.userResponses.length > 0
+      ? {
         progress: this.currentIndex,
         answers: this.results,
         userResponses: this.userResponses
-      };
-    } else return;
+      }
+      : undefined;
   };
 
   /**
