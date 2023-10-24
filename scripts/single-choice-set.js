@@ -630,7 +630,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       $previousSlide.removeClass('h5p-sc-current-slide');
 
       // on slides with answers focus on first alternative
-      if (!isResultSlide && moveFocus) {
+      // if content is root and not on result slide - always move focus
+      if (!isResultSlide && (moveFocus || self.isRoot())) {
+        console.log('yes')
         $currentChoice.focusOnAlternative(0);
       }
       // on last slide, focus on try again button
