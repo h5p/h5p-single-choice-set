@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Continuer automatiquement",
-          "description": "Aller automatiquement vers la question suivante quand cette option est séléctionnée"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Temps de pause en cas de réponse correcte",

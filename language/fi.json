@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Jatka automaattisestiAuto continue",
-          "description": "Jatka automaattisesti seuraavaan kysymykseen kun henkilö on tehnyt valinnan."
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Tauko oikean vastauksen jälkeen",

@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Fortsätt automatiskt",
-          "description": "Gå till nästa fråga automatiskt när ett svarsalternativ är valt"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Paus efter rätt svar",
@@ -112,12 +112,12 @@
           "default": "Fel"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Alternativ skulle ha valts",
+          "default": "Skulle ha valts"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Alternativ skulle inte ha valts",
+          "default": "Skulle inte ha valts"
         },
         {
           "label": "Beskrivning av knappen \"stäng av ljudet\"",

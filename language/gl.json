@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Continuar automaticamente",
-          "description": "Ir á seguinte pregunta automaticamente cando se selecciona unha alternativa"
+          "description": "Ir automaticamente á seguinte pregunta cando se selecciona a alternativa. Isto debe desactivarse para que o contido sexa totalmente accesible cando se utiliza un lector de pantalla."
         },
         {
           "label": "Tempo límite para respostas correctas",

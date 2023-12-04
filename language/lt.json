@@ -12,7 +12,7 @@
         }
       ],
       "field": {
-        "label": "Klausimas &amp; alternatyvos",
+        "label": "Klausimas ir alternatyvos",
         "fields": [
           {
             "label": "Klausimas"
@@ -38,7 +38,7 @@
           ],
           "label": "Nustatyti tinkintus atsiliepimus bet kokiam balų intervalui",
           "description": "Spustelėkite mygtuką \"Pridėti intervalus\", kad pridėtumėte tiek intervalų, kiek reikia. Pavyzdys: 0-20% blogas rezultatas, 21-91% vidutinis rezultatas, 91-100% puikus rezultatas!",
-          "entity": "intervalas",
+          "entity": "diapazonas",
           "field": {
             "fields": [
               {
@@ -46,7 +46,7 @@
               },
               {},
               {
-                "label": "Atsiliepimas nustatytam balų intervalui",
+                "label": "Atsiliepimai apibrėžtam balų diapazonui",
                 "placeholder": "Užpildykite atsiliepimą"
               }
             ]
@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Tęsti automatiškai",
-          "description": "Automatiškai pereiti prie kito klausimo, kai atsakymas pasirinktas"
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
         },
         {
           "label": "Skirtas laikas teisingam atsakymui",
@@ -112,12 +112,12 @@
           "default": "Neteisingai!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Nuostata turėjo būti pasirinkta",
+          "default": "Turėjo būti pasirinkta"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Nuostata neturėjo būti pasirinkta",
+          "default": "Neturėjo būti pasirinkta"
         },
         {
           "label": "Mygtuko \"išjungti garsą\", skirto išjungti atsiliepimo garsą, pavadinimas",

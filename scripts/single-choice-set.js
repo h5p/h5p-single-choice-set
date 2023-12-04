@@ -125,7 +125,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     this.resultSlide = new ResultSlide(this.options.choices.length);
     this.resultSlide.appendTo(this.$choices);
-    this.resultSlide.on('retry', this.resetTask, this);
+    this.resultSlide.on('retry', function() {
+      self.resetTask(true);
+    }, this);
     this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
     this.on('resize', this.resize, this);
@@ -473,7 +475,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     if (this.options.behaviour.enableRetry) {
       this.addButton('try-again', this.l10n.retryButtonLabel, function () {
-        self.resetTask();
+        self.resetTask(true);
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yRetry,
       });
@@ -609,8 +611,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   /**
    * Move to slide n
    * @param  {number} index The slide number    to move to
+   * @param {boolean} moveFocus True to set focus on first alternative
    */
-  SingleChoiceSet.prototype.move = function (index) {
+  SingleChoiceSet.prototype.move = function (index, moveFocus = true) {
     var self = this;
     if (index === this.currentIndex || index > self.$slides.length-1) {
       return;
@@ -627,7 +630,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       $previousSlide.removeClass('h5p-sc-current-slide');
 
       // on slides with answers focus on first alternative
-      if (!isResultSlide) {
+      // if content is root and not on result slide - always move focus
+      if (!isResultSlide && (moveFocus || self.isRoot())) {
         $currentChoice.focusOnAlternative(0);
       }
       // on last slide, focus on try again button
@@ -789,8 +793,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   /**
    * Reset all answers. This is equal to refreshing the quiz
+   * @param {boolean} moveFocus True to move the focus
+   * This prevents loss of focus if reset from within content
    */
-  SingleChoiceSet.prototype.resetTask = function () {
+  SingleChoiceSet.prototype.resetTask = function (moveFocus = false) {
     var self = this;
 
     // Close solution view if visible:
@@ -818,7 +824,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       }
     });
 
-    this.move(0);
+    this.move(0, moveFocus);
+
+    // Reset userResponses as well
+    this.userResponses = [];
 
     // Wait for transition, then remove feedback.
     H5P.Transition.onTransitionEnd(this.$choices, function () {
@@ -833,11 +842,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
    * @returns {object}
    */
   SingleChoiceSet.prototype.getCurrentState = function () {
-    return {
-      progress: this.currentIndex,
-      answers: this.results,
-      userResponses: this.userResponses
-    };
+    return this.userResponses.length > 0
+      ? {
+        progress: this.currentIndex,
+        answers: this.results,
+        userResponses: this.userResponses
+      }
+      : undefined;
   };
 
   /**

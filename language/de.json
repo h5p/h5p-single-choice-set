@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Automatisch weitergehen",
-          "description": "Automatisch zur nächsten Frage springen, wenn eine Antwort gewählt wurde"
+          "description": "Gehe automatisch zur nächsten Frage, wenn eine Alternative gewählt wurde. Diese Option muss deaktiviert sein, um den Inhalt komplett barrierefrei für Vorlesewerkzeuge zu gestalten."
         },
         {
           "label": "Wartezeit bei richtigen Antworten",
@@ -109,15 +109,15 @@
         },
         {
           "label": "Text für Vorlesewerkzeug bei falscher Antwort",
-          "default": "Falsch! Richtige Antwort war: :text"
+          "default": "Falsch!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Die Option hätte gewählt werden müssen",
+          "default": "Hätte gewählt werden müssen"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Die Option hätte nicht gewählt werden sollen",
+          "default": "Hätte nicht gewählt werden sollen"
         },
         {
           "label": "Beschriftung des \"Stumm\"-Buttons, um den Ton auszustellen",
