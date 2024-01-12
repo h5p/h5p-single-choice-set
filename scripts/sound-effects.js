@@ -24,11 +24,12 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
     }
     isDefined = true;
 
-    SoundEffects.types.forEach(function (type) {
+    SoundEffects.types.forEach(async function (type) {
       const player = new Audio();
-      player.preload = 'auto';
       const extension = player.canPlayType('audio/ogg') ? 'ogg' : 'mp3';
-      player.src = libraryPath + 'sounds/' + type + '.' + extension;
+      const response = await fetch(libraryPath + 'sounds/' + type + '.' + extension);
+      const data = await response.blob();
+      player.src = URL.createObjectURL(data);
       players[type] = player;
     });
 
