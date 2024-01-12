@@ -19,7 +19,6 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
    * @return {boolean} True if setup was successfull, otherwise false
    */
   SoundEffects.setup = function (libraryPath) {
-    console.log('sound setup...');
     if (isDefined) {
       return false;
     }
@@ -30,10 +29,7 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
       const extension = player.canPlayType('audio/ogg') ? 'ogg' : 'mp3';
       player.src = libraryPath + 'sounds/' + type + '.' + extension;
       players[type] = player;
-      console.log(player, type);
     });
-    console.log(players);
-    console.log('sound setup done...');
 
     return true;
   };
