@@ -26,6 +26,7 @@ H5P.SingleChoiceSet.SoundEffects = (function () {
 
     SoundEffects.types.forEach(function (type) {
       const player = new Audio();
+      player.preload = 'auto';
       const extension = player.canPlayType('audio/ogg') ? 'ogg' : 'mp3';
       player.src = libraryPath + 'sounds/' + type + '.' + extension;
       players[type] = player;
