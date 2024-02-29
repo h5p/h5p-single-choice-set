@@ -18,7 +18,7 @@
             "label": "Galdera"
           },
           {
-            "label": "Aukerak – lehen aukera da egokia.",
+            "label": "Aukerak – lehen aukera da zuzena.",
             "entity": "erantzuna",
             "field": {
               "label": "Aukera"
@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Jarraitu automatikoki",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "Joan automatikoki hurrengo galderara alternatiba hautatzen denean. Hau desaktibatu egin behar da edukia guztiz eskuragarri izateko pantaila-irakurgailua erabiltzen duzunean."
         },
         {
           "label": "Erantzun zuzenen debora-muga",
