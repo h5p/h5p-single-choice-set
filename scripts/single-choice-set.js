@@ -19,7 +19,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * @type {number[]}
      */
     this.userResponses = [];
-    Question.call(this, 'single-choice-set');
+    Question.call(this, 'single-choice-set', true);
     this.options = $.extend(true, {}, {
       choices: [],
       overallFeedback: [],
@@ -454,11 +454,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // Register buttons with question.
     this.addButtons();
 
-    // Insert feedback and buttons section on the result slide
-    this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
-    this.insertSectionAtElement('scorebar', this.resultSlide.$feedbackContainer);
-    this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
-
     // Question is finished
     if (this.options.choices.length === this.currentIndex) {
       this.trigger('question-finished');
@@ -478,7 +473,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.resetTask(true);
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yRetry,
+      },
+      {
+        classes: 'h5p-theme-secondary-cta h5p-theme-retry',
       });
+
+      this.hideButton('try-again');
     }
 
     if (this.options.behaviour.enableSolutionsButton) {
@@ -486,7 +486,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.showSolutions();
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yShowSolution,
+      },
+      {
+        classes: 'h5p-theme-secondary-cta h5p-theme-show-results',
       });
+
+      this.hideButton('show-solution');
     }
   };
 
@@ -643,6 +648,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // if should show result slide
     if (isResultSlide) {
       self.setScore(self.results.corrects);
+      this.showButton('try-again');
+      this.showButton('show-solution');
     }
 
     self.$container.toggleClass('navigatable', !isResultSlide);
@@ -801,6 +808,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Close solution view if visible:
     this.solutionView.hide();
+
+    // Hide result slide buttons
+    this.hideButton('try-again');
+    this.hideButton('show-solution');
 
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
