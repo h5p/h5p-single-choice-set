@@ -522,8 +522,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       };
 
       self.$nextButton = UI.createButton({
-        'class': 'h5p-ssc-next-button',
+        'class': 'h5p-theme-nav-button h5p-theme-next',
         'aria-label': self.l10n.nextButtonLabel,
+         'text': "next",
         click: handleNextClick,
         keydown: function (event) {
           switch (event.which) {

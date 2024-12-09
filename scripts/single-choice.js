@@ -54,7 +54,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
     this.$choice.append($('<div>', {
       'id': questionId,
-      'class': 'h5p-sc-question',
+      'class': 'h5p-sc-question h5p-question-introduction',
       'html': this.options.question
     }));
 
