@@ -107,7 +107,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  padding: var(--h5p-theme-spacing-xs);
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   margin: var(--h5p-theme-spacing-xxs) 0;
   background: var(--h5p-theme-alternative-base);
   border-radius: var(--h5p-theme-border-radius-medium);
@@ -116,7 +116,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   -moz-box-shadow: none;
   box-shadow: none;
   text-align: left;
-  line-height: normal;
+  line-height: var(--h5p-theme-font-size-xxl-large);
   font-weight: 600;
   color: var(--h5p-theme-text-secondary);
 }
