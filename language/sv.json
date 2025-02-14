@@ -92,6 +92,10 @@
           "default": "Nästa fråga"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Etikett för knappen \"Visa lösning\"",
           "default": "Visa lösning"
         },

@@ -92,6 +92,10 @@
           "default": "Hurrengo galdera"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"Erakutsi emaitza\" botoiarentzako etiketa",
           "default": "Erakutsi emaitza"
         },

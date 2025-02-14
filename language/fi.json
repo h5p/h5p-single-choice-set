@@ -92,6 +92,10 @@
           "default": "Seuraava kysymys"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Painikkeen \"Katso vastaus\" nimi",
           "default": "Katso vastaus"
         },

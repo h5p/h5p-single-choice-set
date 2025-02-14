@@ -92,6 +92,10 @@
           "default": "Nākamais jautājums"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Pogas \"Rādīt risinājumu\" birka",
           "default": "Rādīt risinājumu"
         },

@@ -92,6 +92,10 @@
           "default": "Seguinte pregunta"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Etiqueta para o botón \"Amosar solución\"",
           "default": "Amosar solución"
         },

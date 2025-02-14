@@ -92,6 +92,10 @@
           "default": "Järgmine küsimus"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"Näita lahendust\" nupu silt",
           "default": "Näita lahendust"
         },

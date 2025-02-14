@@ -65,6 +65,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       shouldSelect: "Should have been selected",
       shouldNotSelect: "Should not have been selected",
       nextButtonLabel: 'Next question',
+      nextButton: 'Next',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
@@ -524,7 +525,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.$nextButton = UI.createButton({
         'class': 'h5p-theme-nav-button h5p-theme-next',
         'aria-label': self.l10n.nextButtonLabel,
-         'text': "next",
+        'text': self.l10n.nextButton,
         click: handleNextClick,
         keydown: function (event) {
           switch (event.which) {

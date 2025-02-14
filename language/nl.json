@@ -92,6 +92,10 @@
           "default": "Volgende vraag"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Tekst voor \"Toon oplossing\"-knop",
           "default": "Toon oplossing"
         },
