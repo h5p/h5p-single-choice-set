@@ -64,35 +64,6 @@
   display: block;
 }
 
-.h5p-ssc-next-button {
-  display: none;
-  position: absolute;
-  right: 0.5em;
-  bottom: 0;
-  width: 2.1875em;
-  padding: 0.5em 0;
-  transition: transform 0.2s;
-  font-family: H5PFontAwesome4;
-  text-align: center;
-}
-.h5p-ssc-next-button:before {
-  content: "\f054";
-  position: relative;
-  left: 2px;
-  padding: 0;
-}
-.h5p-ssc-next-button:active {
-  /* Overriding JoubelUI, which sets it to relative positioning */
-  position: absolute;
-}
-.navigatable .h5p-ssc-next-button {
-  display: inline-block;
-}
-.h5p-ssc-next-button[aria-disabled="true"] {
-  transform: scale(0.01);
-  visibility: hidden;
-}
-
 ul.h5p-sc-alternatives {
   margin: 0;
   padding: 0;
