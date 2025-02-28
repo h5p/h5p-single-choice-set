@@ -523,6 +523,23 @@ body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-jou
 /* Standalone specific styles */
 .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
   line-height: 1em;
+  position: absolute;
+  bottom: 0;
+  right: var(--h5p-theme-spacing-m);
+  margin-right: 0;
+  margin-bottom: 14px;
+}
+
+@media (orientation: portrait) {
+  .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
+    font-size: 0px;
+    height: 37px;
+  }
+  .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button:after {
+    font-size: var(--h5p-theme-font-size-m);
+    line-height: var(--h5p-theme-spacing-s);
+    margin: 0;
+  }
 }
 
 .h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-alternatives,
