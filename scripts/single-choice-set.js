@@ -416,6 +416,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     });
 
     self.solutionView.on('hide', function () {
+      self.showButton('show-solution');
       // re-add tabbable for buttons in result view
       buttons.forEach(function (button) {
         self.setTabbable(button, true);
@@ -425,6 +426,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.focusButton();
     });
 
+    this.hideButton('show-solution');
     self.solutionView.show();
     self.toggleAriaVisibility(false);
   };
@@ -558,7 +560,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           }
         },
         'click': toggleMute,
-        prependTo: self.$container
+        appendTo: self.$container.find('.h5p-question-introduction')
       });
     }
 
