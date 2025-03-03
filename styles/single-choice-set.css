@@ -29,7 +29,7 @@
 .h5p-single-choice-set .h5p-joubelui-progressbar {
   z-index: 1;
   width: 50%;
-  margin: 0 auto var(--h5p-theme-spacing-m) auto;
+  margin: var(--h5p-theme-spacing-xs) auto var(--h5p-theme-spacing-m) auto;
   background-color: var(--h5p-theme-contrast-cta-light);
   border: 1px solid var(--h5p-theme-contrast-cta-white);
   border-radius: 8px;
@@ -523,23 +523,16 @@ body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-jou
 /* Standalone specific styles */
 .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
   line-height: 1em;
-  position: absolute;
-  bottom: 0;
-  right: var(--h5p-theme-spacing-m);
-  margin-right: 0;
-  margin-bottom: 14px;
 }
 
-@media (orientation: portrait) {
-  .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button {
-    font-size: 0px;
-    height: 37px;
-  }
-  .h5p-standalone.h5p-single-choice-set .h5p-joubelui-button:after {
-    font-size: var(--h5p-theme-font-size-m);
-    line-height: var(--h5p-theme-spacing-s);
-    margin: 0;
-  }
+.h5p-standalone.h5p-single-choice-set .h5p-joubelui-progressbar {
+  position: relative;
+}
+
+.h5p-standalone.h5p-single-choice-set .h5p-question-set-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-alternatives,
