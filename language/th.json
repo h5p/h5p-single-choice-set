@@ -92,6 +92,10 @@
           "default": "คำถามถัดไป"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "ป้ายกำกับสำหรับปุ่ม \"แสดงคำตอบ\"",
           "default": "แสดงคำตอบ"
         },

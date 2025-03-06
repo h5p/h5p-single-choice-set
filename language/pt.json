@@ -92,6 +92,10 @@
           "default": "Pergunta seguinte"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Rótulo para o botão \"Mostrar solução\"",
           "default": "Mostrar solução"
         },

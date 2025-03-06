@@ -92,6 +92,10 @@
           "default": "Naslednje vprašanje"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Besedilo za gumb \"Prikaži rešitev\"",
           "default": "Prikaži rešitev"
         },

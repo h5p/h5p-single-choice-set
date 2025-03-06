@@ -92,6 +92,10 @@
           "default": "سؤال بعدی"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "برچسب دکمه نمایش پاسخ صحیح",
           "default": "نمایش پاسخ صحیح"
         },

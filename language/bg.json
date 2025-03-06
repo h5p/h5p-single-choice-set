@@ -92,6 +92,10 @@
           "default": "Следващ въпрос"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Етикет за бутон \"Покажи решение\" ",
           "default": "Покажи решение"
         },

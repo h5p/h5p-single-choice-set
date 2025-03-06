@@ -92,6 +92,10 @@
           "default": "Neste spørsmål"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Etikett på \"Vis svar\"-knappen",
           "default": "Fasit"
         },

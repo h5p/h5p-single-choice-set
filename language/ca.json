@@ -92,6 +92,10 @@
           "default": "Pregunta següent"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Etiqueta per al botó \"Mostra la solució\"",
           "default": "Mostra la solució"
         },

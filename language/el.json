@@ -92,6 +92,10 @@
           "default": "Επόμενη"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Ετικέτα κουμπιού \"Εμφάνιση λύσης\"",
           "default": "Λύση"
         },

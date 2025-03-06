@@ -65,6 +65,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       shouldSelect: "Should have been selected",
       shouldNotSelect: "Should not have been selected",
       nextButtonLabel: 'Next question',
+      nextButton: 'Next',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
@@ -415,6 +416,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     });
 
     self.solutionView.on('hide', function () {
+      self.showButton('show-solution');
       // re-add tabbable for buttons in result view
       buttons.forEach(function (button) {
         self.setTabbable(button, true);
@@ -424,6 +426,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.focusButton();
     });
 
+    this.hideButton('show-solution');
     self.solutionView.show();
     self.toggleAriaVisibility(false);
   };
@@ -524,7 +527,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.$nextButton = UI.createButton({
         'class': 'h5p-theme-nav-button h5p-theme-next',
         'aria-label': self.l10n.nextButtonLabel,
-         'text': "next",
+        'text': self.l10n.nextButton,
         click: handleNextClick,
         keydown: function (event) {
           switch (event.which) {
@@ -557,7 +560,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           }
         },
         'click': toggleMute,
-        prependTo: self.$container
+        appendTo: self.$container.find('.h5p-question-introduction')
       });
     }
 

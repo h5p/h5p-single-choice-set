@@ -92,6 +92,10 @@
           "default": "Další otázka"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Popisek tlačítka \"Zobrazit řešení\"",
           "default": "Zobrazit řešení"
         },

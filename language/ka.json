@@ -92,6 +92,10 @@
           "default": "შემდეგი შეკითხვა"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "წარწერა \"პასუხის ჩვენების\" ღილაკისთვის",
           "default": "პასუხის ჩვენება"
         },
