@@ -521,7 +521,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       };
 
       self.$footer = H5P.jQuery('<div>', {
-        class: 'h5p-question-set-footer'
+        class: 'h5p-navigation'
       }).appendTo(self.$container);
 
       self.progressbar.appendTo(self.$footer);
