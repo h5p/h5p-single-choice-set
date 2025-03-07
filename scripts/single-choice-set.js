@@ -504,7 +504,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.createQuestion = function () {
     var self = this;
 
-    self.progressbar.appendTo(self.$container);
     self.$container.append(self.$choices);
 
     function toggleMute(event) {
@@ -524,6 +523,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         }
       };
 
+      self.$footer = H5P.jQuery('<div>', {
+        class: 'h5p-navigation'
+      }).appendTo(self.$container);
+
+      self.progressbar.appendTo(self.$footer);
       self.$nextButton = UI.createButton({
         'class': 'h5p-theme-nav-button h5p-theme-next',
         'aria-label': self.l10n.nextButtonLabel,
@@ -537,7 +541,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
               event.preventDefault();
           }
         },
-        appendTo: self.$container
+        appendTo: self.$footer
       });
       self.toggleNextButton(false);
     }

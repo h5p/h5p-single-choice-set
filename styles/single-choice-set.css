@@ -30,13 +30,8 @@
 }
 
 .h5p-single-choice-set .h5p-joubelui-progressbar {
+  position: relative;
   z-index: 1;
-  width: 50%;
-  margin: 0 auto var(--h5p-theme-spacing-m) auto;
-  background-color: var(--h5p-theme-contrast-cta-light);
-  border: 1px solid var(--h5p-theme-contrast-cta-white);
-  border-radius: 8px;
-  padding: 5px;
 }
 
 .h5p-single-choice-set .h5p-joubelui-progressbar-background {
@@ -45,6 +40,10 @@
   margin: 3px 3px 0 3px;
   border-radius: 5px;
   transition: width 1s;
+}
+
+.h5p-single-choice-set .h5p-joubelui-button {
+  margin-bottom: 0;
 }
 
 .h5p-sc-set.h5p-sc-animate {
