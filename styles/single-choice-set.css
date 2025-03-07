@@ -531,8 +531,6 @@ body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-jou
 
 .h5p-standalone.h5p-single-choice-set .h5p-question-set-footer {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .h5p-no-frame .h5p-standalone.h5p-single-choice-set .h5p-sc-alternatives,
