@@ -93,6 +93,15 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
   Alternative.prototype.constructor = Alternative;
 
   /**
+   * Toggle a classList on the alternative element.
+   * @param {string} className The class to toggle.
+   * @param {boolean} [state] True to add the class, false to remove it.
+   */
+  Alternative.prototype.toggleClass = function (className, state) {
+    this.$alternative.get(0).classList.toggle(className, state);
+  };
+
+  /**
    * Is this alternative the correct one?
    *
    * @return {boolean}  Correct or not?

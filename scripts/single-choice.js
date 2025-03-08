@@ -5,7 +5,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
   /**
    * Constructor function.
    */
-  function SingleChoice(options, index, id, isAutoConfinue) {
+  function SingleChoice(options, index, id, isAutoConfinue, selectedIndex) {
     EventDispatcher.call(this);
     // Extend defaults with provided options
     this.options = $.extend(true, {}, {
@@ -17,6 +17,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     this.index = index;
     this.id = id;
     this.answered = false;
+    this.previouslySelectedIndex = selectedIndex;
 
     for (var i = 0; i < this.options.answers.length; i++) {
       this.options.answers[i] = {
@@ -25,6 +26,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
         answerIndex: i
       };
     }
+
     // Randomize alternatives
     this.options.answers = H5P.shuffleArray(this.options.answers);
   }
@@ -70,8 +72,30 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
      * @type {Alternative[]}
      */
     this.alternatives = self.options.answers.map(function (opts) {
-      return new Alternative(opts);
+      const alternative = new Alternative(opts);
+
+      if (typeof self.previouslySelectedIndex === 'number') {
+        if (self.previouslySelectedIndex === opts.answerIndex) {
+          alternative.toggleClass('h5p-sc-selected', true);
+          alternative.toggleClass('h5p-sc-drummed', true);
+        }
+
+        if (opts.correct) {
+          alternative.toggleClass('h5p-sc-selected', true);
+          alternative.toggleClass('h5p-sc-reveal-correct', true);
+        }
+        else {
+          alternative.toggleClass('h5p-sc-reveal-wrong', true);
+        }
+      }
+
+      return alternative;
     });
+
+    if (typeof this.previouslySelectedIndex === 'number') {
+      $alternatives.get(0).classList.add('h5p-sc-selected');
+      this.setAnswered(true);
+    }
 
     /**
      * Handles click on an alternative

@@ -119,7 +119,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
+      var choice = new SingleChoice(
+        this.options.choices[i],
+        i,
+        this.contentId,
+        this.options.behaviour.autoContinue,
+        this.userResponses[i]
+      );
       choice.on('finished', this.handleQuestionFinished, this);
       choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
