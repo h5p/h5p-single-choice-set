@@ -92,6 +92,10 @@
       "label": "กำหนดภาษาในชุดเลือกเดียว",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "ป้ายกำกับสำหรับปุ่ม \"ถัดไป\"",
           "default": "คำถามถัดไป"
         },

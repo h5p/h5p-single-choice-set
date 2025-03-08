@@ -92,6 +92,10 @@
       "label": "Lokaliseer enkel keuse stel",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Etiket vir die \"Volgende\" knoppie",
           "default": "Volgende vraag"
         },

@@ -92,6 +92,10 @@
       "label": "Προσαρμογή",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Ετικέτα κουμπιού \"Επόμενη ερώτηση\"",
           "default": "Επόμενη"
         },

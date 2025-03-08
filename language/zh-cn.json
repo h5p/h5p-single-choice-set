@@ -92,6 +92,10 @@
       "label": "本地化单选题集",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "\"下一个\"按钮的标签",
           "default": "下一题"
         },

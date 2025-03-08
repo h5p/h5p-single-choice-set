@@ -92,6 +92,10 @@
       "label": "Localizar conjunto de opción única",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Etiqueta para el botón \"Siguiente\"",
           "default": "Siguiente pregunta"
         },

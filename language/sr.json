@@ -92,6 +92,10 @@
       "label": "Локализујте један избор",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Ознака за \"Следеће\" дугме",
           "default": "Следеће питање"
         },

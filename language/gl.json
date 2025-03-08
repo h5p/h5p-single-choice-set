@@ -92,6 +92,10 @@
       "label": "Adaptación local do grupo de escolla simple",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Etiqueta para o botón \"Seguinte\"",
           "default": "Seguinte pregunta"
         },

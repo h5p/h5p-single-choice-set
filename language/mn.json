@@ -92,6 +92,10 @@
       "label": "Нэг сонголтой хариуг олох",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "\"Дараагийн\" тэмдэглэгээ",
           "default": "Дараагийн асуулт"
         },

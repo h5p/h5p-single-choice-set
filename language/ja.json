@@ -92,6 +92,10 @@
       "label": "Localize single choice set",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Label for the \"Next\" button",
           "default": "次の質問"
         },

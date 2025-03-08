@@ -92,6 +92,10 @@
       "label": "Prevodi aktivnosti",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Besedilo za gumb \"Naslednje vprašanje\"",
           "default": "Naslednje vprašanje"
         },

@@ -92,6 +92,10 @@
       "label": "Tek seçim soru setinin metinlerini düzenle",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "\"Sonraki\" düğmesi için etiket",
           "default": "Sonraki soru"
         },

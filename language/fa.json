@@ -92,6 +92,10 @@
       "label": "بومی سازی مجموعه سؤال تک گزینه‌ای",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "برچسب دکمه بعدی",
           "default": "سؤال بعدی"
         },

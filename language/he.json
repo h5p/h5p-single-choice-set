@@ -67,6 +67,10 @@
     {
       "label": "התאמת סט בחירה יחידה",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {"label": "תווית לכפתור \"הבא\"", "default": "שאלה הבאה"},
         {"label": "תווית לכפתור \"הצג פתרון\"", "default": "הצג פתרון"},
         {"label": "תווית לכפתור \"ניסיון חוזר\"", "default": "ניסיון חוזר"},

@@ -92,6 +92,10 @@
       "label": "Localitza el conjunt de selecció única",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Etiqueta del botó \"Següent\"",
           "default": "Pregunta següent"
         },

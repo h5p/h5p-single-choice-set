@@ -92,6 +92,10 @@
       "label": "Interface de la série de questions à choix unique",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Texte pour le bouton \"Suivant\"",
           "default": "Question suivante"
         },

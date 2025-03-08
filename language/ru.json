@@ -92,6 +92,10 @@
       "label": "Локализация одиночного выбора",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Надпись для кнопки \"Далее\"",
           "default": "Следующий вопрос"
         },

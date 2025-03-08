@@ -92,6 +92,10 @@
       "label": "Lokalizovat otázku s jedním výběrem",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Popisek tlačítka \"Další\"",
           "default": "Další otázka"
         },

@@ -92,6 +92,10 @@
       "label": "맞춤 설정",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "\"다음\" 버튼 라벨",
           "default": "다음 문제"
         },

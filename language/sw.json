@@ -92,6 +92,10 @@
       "label": "Ujanabishe seti ya chaguo moja",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Lebo ya kitufe cha \"Inayofuata\"",
           "default": "Swali linalofuata"
         },

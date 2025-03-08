@@ -92,6 +92,10 @@
       "label": "Tradução de Perguntas de escolha única",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Rótulo para o botão \"Seguinte\"",
           "default": "Pergunta seguinte"
         },

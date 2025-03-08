@@ -92,6 +92,10 @@
       "label": "Lokalizēt vienas izvēles kopu",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Pogas \"Turpināt\" birka",
           "default": "Nākamais jautājums"
         },

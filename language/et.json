@@ -92,6 +92,10 @@
       "label": "Kohanda ühe valiku kogum",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "\"Järgmine\" nupu silt",
           "default": "Järgmine küsimus"
         },

@@ -219,6 +219,13 @@
     "common": true,
     "fields": [
       {
+        "name": "previousButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Previous\" button",
+        "importance": "low",
+        "default": "Previous question"
+      },
+      {
         "name": "nextButtonLabel",
         "type": "text",
         "label": "Label for the \"Next\" button",

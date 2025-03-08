@@ -92,6 +92,10 @@
       "label": "Lokalizuoti vieno pasirinkimo rinkinį",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Mygtuko \"Kitas\" pavadinimas",
           "default": "Kitas klausimas"
         },

@@ -68,6 +68,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       incorrectText: 'Incorrect!',
       shouldSelect: "Should have been selected",
       shouldNotSelect: "Should not have been selected",
+      previousButtonLabel: 'Previous question',
       nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',

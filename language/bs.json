@@ -92,6 +92,10 @@
       "label": "Podešavanja za Set pitanja",
       "fields": [
         {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
+        {
           "label": "Oznaka za dugme \"Sljedeći\" ",
           "default": "Sljedeće pitanje"
         },
