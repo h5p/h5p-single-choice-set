@@ -12,7 +12,7 @@
   height: 100%;
 }
 
-.h5p-sc-set-wrapper.next-button-mode {
+.h5p-sc-set-wrapper:has(.h5p-ssc-direction-button) {
   margin-bottom: 2.5em;
 }
 
@@ -55,7 +55,7 @@
   display: block;
 }
 
-.h5p-ssc-next-button {
+.h5p-ssc-direction-button {
   display: none;
   position: absolute;
   right: 0.5em;
@@ -66,20 +66,40 @@
   font-family: H5PFontAwesome4;
   text-align: center;
 }
-.h5p-ssc-next-button:before {
+
+.h5p-ssc-direction-button.previous {
+  left: 0.5em;
+}
+
+.h5p-ssc-direction-button.next {
+  right: 0.5em;
+}
+
+
+.h5p-ssc-direction-button:before {
   content: "\f054";
   position: relative;
-  left: 2px;
   padding: 0;
 }
-.h5p-ssc-next-button:active {
+
+.h5p-ssc-direction-button.previous:before {
+  content: "\f053";
+  left: -1px;
+}
+
+.h5p-ssc-direction-button.next:before {
+  content: "\f054";
+  left: 2px;
+}
+
+.h5p-ssc-direction-button:active {
   /* Overriding JoubelUI, which sets it to relative positioning */
   position: absolute;
 }
-.navigatable .h5p-ssc-next-button {
+.navigatable .h5p-ssc-direction-button {
   display: inline-block;
 }
-.h5p-ssc-next-button[aria-disabled="true"] {
+.h5p-ssc-direction-button[aria-disabled="true"] {
   transform: scale(0.01);
   visibility: hidden;
 }

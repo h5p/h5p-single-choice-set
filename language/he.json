@@ -51,6 +51,10 @@
         },
         {"label": "זמן פסק על תשובות נכונות", "description": "ערך במילישניות"},
         {"label": "זמן פסק על תשובות שגויות", "description": "ערך במילישניות"},
+        {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
         {"label": "הפעלת אפקטים קוליים"},
         {"label": "הפעל כפתור ניסיון חוזר"},
         {"label": "הפעל כפתור הצגת פתרון"},

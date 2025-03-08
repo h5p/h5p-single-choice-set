@@ -70,6 +70,10 @@
           "description": "Waarde in milliseconden"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Schakel geluidseffecten in"
         },
         {

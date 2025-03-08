@@ -70,6 +70,10 @@
           "description": "Vrijednost u milisekundama"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Uključi zvučni signal"
         },
         {

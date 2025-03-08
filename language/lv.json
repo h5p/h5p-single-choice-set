@@ -70,6 +70,10 @@
           "description": "Vērtība milisekundēs"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Atļaut skaņas efektus"
         },
         {

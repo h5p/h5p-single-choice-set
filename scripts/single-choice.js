@@ -85,6 +85,9 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
         return;
       }
 
+      // indicate that this question is anwered
+      this.setAnswered(true);
+
       self.trigger('alternative-selected', {
         correct: correct,
         index: self.index,
@@ -98,9 +101,6 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
       }, 700);
 
       $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
-
-      // indicate that this question is anwered
-      this.setAnswered(true);
     };
 
     /**
@@ -193,6 +193,14 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
     if (!this.answered || !this.isAutoConfinue) {
       this.alternatives[index].focus();
     }
+  };
+
+  /**
+   * Determine whether an answer has been given.
+   * @returns {boolean} True if an answer has been given, otherwise false.
+   */
+  SingleChoice.prototype.getAnswerGiven = function () {
+    return this.answered;
   };
 
   /**

@@ -70,6 +70,10 @@
           "description": "Τιμή σε milliseconds"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Ενεργοποίηση εφέ ήχου"
         },
         {

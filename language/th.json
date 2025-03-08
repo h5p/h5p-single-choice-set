@@ -70,6 +70,10 @@
           "description": "ค่าเป็นมิลลิวินาที"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "เปิดใช้เอฟเฟกต์เสียง"
         },
         {

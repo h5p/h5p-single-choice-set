@@ -70,6 +70,10 @@
           "description": "مقدار به میلی‌ثانیه"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "فعال‌سازی افکت صدا"
         },
         {

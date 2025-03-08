@@ -70,6 +70,10 @@
           "description": "밀리초 단위의 값"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "음향 효과 활성화"
         },
         {

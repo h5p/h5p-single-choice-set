@@ -70,6 +70,10 @@
           "description": "Milisaniye cinsinden değer"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Ses efektlerini etkinleştir"
         },
         {
