@@ -206,7 +206,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.lastAnswerIsCorrect = event.data.correct;
 
     if (!this.options.behaviour.autoContinue) {
-      this.updateDirectionButtons();
+      this.updateNavigation();
     }
 
     // Keep track of num correct/wrong answers
@@ -547,6 +547,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         }
       }
 
+      const navigation = document.createElement('div');
+      navigation.setAttribute('class', 'h5p-scs-navigation');
+      self.$container.get(0).append(navigation);
+
       this.directionButtons.previous = UI.createButton({
         'class': 'h5p-ssc-direction-button previous',
         'aria-label': self.l10n.previousButtonLabel, // TODO: Add l10n
@@ -561,8 +565,14 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
               event.preventDefault();
           }
         },
-        appendTo: self.$container
+        appendTo: navigation
       }).get(0);
+
+      this.progressDisplay = document.createElement('div');
+      this.progressDisplay.setAttribute('class', 'h5p-scs-progress-display');
+      // Progress announcement is already handled by the progressbar
+      this.progressDisplay.setAttribute('aria-hidden', 'true');
+      navigation.append(this.progressDisplay);
 
       this.directionButtons.next = UI.createButton({
         'class': 'h5p-ssc-direction-button next',
@@ -578,10 +588,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
               event.preventDefault();
           }
         },
-        appendTo: self.$container
+        appendTo: navigation
       }).get(0);
 
-      this.updateDirectionButtons();
+      this.updateNavigation();
     }
 
     if (self.options.behaviour.soundEffectsEnabled) {
@@ -646,13 +656,19 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   /**
-   * Update direction buttons.
+   * Update navigation.
    */
-  SingleChoiceSet.prototype.updateDirectionButtons = function () {
-    const shouldShowPreviousButton = this.options.behaviour.backwardsNavigationIsAllowed && this.currentIndex > 0;
+  SingleChoiceSet.prototype.updateNavigation = function () {
+    const shouldShowPreviousButton = this.options.behaviour.backwardsNavigationIsAllowed &&
+      this.currentIndex > 0 && this.currentIndex < this.choices.length;
 
     this.toggleDirectionButton('previous', shouldShowPreviousButton);
     this.toggleDirectionButton('next', this.choices[this.currentIndex]?.getAnswerGiven());
+
+    if (this.progressDisplay) {
+      this.progressDisplay.innerText = `${this.currentIndex + 1} / ${this.options.choices.length}`;
+      this.progressDisplay?.classList.toggle('display-none', this.currentIndex >= this.choices.length);
+    }
   };
 
   /**
@@ -718,7 +734,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.currentIndex = index;
 
-    this.updateDirectionButtons();
+    this.updateNavigation();
   };
 
   /**
@@ -897,6 +913,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     H5P.Transition.onTransitionEnd(this.$choices, function () {
       self.removeFeedback();
     }, 600);
+
+    this.updateNavigation();
   };
 
   /**
