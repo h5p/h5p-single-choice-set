@@ -1,4 +1,4 @@
-.h5p-container.h5p-single-choice-set {
+.h5p-single-choice-set {
   overflow: hidden;
 }
 .h5p-container .h5p-sc-set ul {
@@ -16,8 +16,11 @@
   margin-bottom: 0.5em;
 }
 
-.h5p-sc-set {
+.h5p-container.h5p-single-choice-set .h5p-sc-set {
   height: 100%;
+}
+
+.h5p-sc-set {
   padding: 0.5em;
   position: relative;
   box-sizing: border-box;
