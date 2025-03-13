@@ -18,10 +18,6 @@
   height: 100%;
 }
 
-.h5p-sc-set-wrapper.next-button-mode {
-  margin-bottom: 2.5em;
-}
-
 .h5p-sc-set {
   height: 100%;
   padding: 0.5em;
@@ -404,15 +400,6 @@ li.h5p-sc-alternative .h5p-sc-status {
   margin: 0;
   height: 100%;
 }
-/* Hide content in evaluation mode and adjust some other properties to make feedback position in the center    
-body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-single-choice-set .h5p-question-content{
-  display: none;
-}
-
-body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-joubelui-score-bar {
-  width: 50%;
-  margin: 0 auto;
-}*/
 
 .h5p-single-choice-set .h5p-question-feedback-container {
   max-height: initial;
@@ -444,8 +431,13 @@ body:has(.h5p-theme .h5p-question-evaluation-container.evaluation-mode) .h5p-jou
   margin-bottom: 0;
 }
 
+.h5p-single-choice-set:not(:has(.evaluation-mode)) .h5p-question-evaluation-container {
+  display: none;
+}
+
 .h5p-single-choice-set:has(.evaluation-mode) .h5p-sc-sound-control,
-.h5p-single-choice-set:has(.evaluation-mode) .h5p-sc-set-wrapper:not(:has(.h5p-sc-solution-view.visible)) .h5p-sc-set {
+.h5p-single-choice-set:has(.evaluation-mode) .h5p-sc-set-wrapper:not(:has(.h5p-sc-solution-view.visible)),
+.h5p-single-choice-set:has(.evaluation-mode) .h5p-navigation {
   display: none;
 }
 

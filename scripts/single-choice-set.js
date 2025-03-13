@@ -79,7 +79,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
-      'class': 'h5p-sc-set-wrapper navigatable' + (!this.options.behaviour.autoContinue ? ' next-button-mode' : '')
+      'class': 'h5p-sc-set-wrapper navigatable'
     });
 
     this.$slides = [];
