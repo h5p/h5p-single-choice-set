@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Samodejno prestavi na naslednje vprašanje",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "Za zagotovitev dostopne uporabniške izkušnje je treba pri uporabi bralnika zaslona onemogočiti samodejno premikanje."
         },
         {
           "label": "Premor za pravilnim odgovorom",
@@ -112,12 +112,12 @@
           "default": "Nepravilno!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Možnost bi morala biti izbrana",
+          "default": "Možnost bi morala biti izbrana"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Možnost ne bi smela biti izbrana",
+          "default": "Možnost ne bi smela biti izbrana"
         },
         {
           "label": "Besedilo za gumb \"Utišaj\", ki onemogoči zvočne efekte povratnih informacij",
@@ -134,20 +134,20 @@
         },
         {
           "label": "Besedilo, ki ga bralnik zaslona uporabi za izražanje napredka",
-          "default": "Napredek :num od :total"
+          "default": "Dosežene točke: :num od :total"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "Besedilo za zaporedno številko vprašanja na seznamu rešitev",
+          "description": "Sporoči zaporedno številko trenutnega vprašanja na seznamu rešitev. :num je spremenljivka.",
+          "default": "Številka vprašanja: :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Opis gumba \"Prikaži rešitev\" za bralnike zaslona",
+          "default": "Prikaži rešitev. Pravilni odgovori bodo označeni."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Opis gumba \"Poskusi ponovno\" za bralnike zaslona",
+          "default": "Omogoči ponoven poskus. Ponastavi vse odzive in znova zažene nalogo."
         }
       ]
     }
