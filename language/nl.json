@@ -12,7 +12,7 @@
         }
       ],
       "field": {
-        "label": "Vraag &amp; alternatieven",
+        "label": "Vraag & alternatieven",
         "fields": [
           {
             "label": "Vraag"
