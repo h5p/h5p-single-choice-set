@@ -70,6 +70,10 @@
           "description": "القيمة بالميلي ثانية"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "تمكين التأثيرات الصوتية"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "تمركز مجموهة الاختيار الواحد",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "لافتة زر \" التالي \"",
           "default": "Next question"

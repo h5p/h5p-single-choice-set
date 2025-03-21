@@ -27,6 +27,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         autoContinue: true,
         timeoutCorrect: 2000,
         timeoutWrong: 3000,
+        backwardsNavigationIsAllowed: false,
         soundEffectsEnabled: true,
         enableRetry: true,
         enableSolutionsButton: true,
@@ -41,6 +42,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         : [];
     }
     this.currentIndex = this.currentIndex || 0;
+
+    this.directionButtons = {};
+
     this.results = this.results || {
       corrects: 0,
       wrongs: 0
@@ -64,6 +68,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       incorrectText: 'Incorrect!',
       shouldSelect: "Should have been selected",
       shouldNotSelect: "Should not have been selected",
+      previousButtonLabel: 'Previous question',
       nextButtonLabel: 'Next question',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
@@ -78,7 +83,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
-      'class': 'h5p-sc-set-wrapper navigatable' + (!this.options.behaviour.autoContinue ? ' next-button-mode' : '')
+      'class': 'h5p-sc-set-wrapper navigatable'
     });
 
     this.$slides = [];
@@ -115,7 +120,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.progressbar.setProgress(this.currentIndex);
 
     for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
+      var choice = new SingleChoice(
+        this.options.choices[i],
+        i,
+        this.contentId,
+        this.options.behaviour.autoContinue,
+        this.userResponses[i]
+      );
       choice.on('finished', this.handleQuestionFinished, this);
       choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
@@ -194,14 +205,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var self = this;
     this.lastAnswerIsCorrect = event.data.correct;
 
-    self.toggleNextButton(true);
+    if (!this.options.behaviour.autoContinue) {
+      this.updateNavigation();
+    }
 
     // Keep track of num correct/wrong answers
     this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
 
     self.triggerXAPI('interacted');
 
-    // Read and set a11y friendly texts 
+    // Read and set a11y friendly texts
     self.readA11yFriendlyText(event.data.index, event.data.currentIndex)
 
     if (!this.muted) {
@@ -242,7 +255,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.choices[index].setA11yTextReadable();
     if (!self.options.behaviour.autoContinue) {
       // Set focus to next button
-      self.$nextButton.focus();
+      self.directionButtons.next.focus();
       return;
     }
 
@@ -275,6 +288,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         action();
       }
     });
+  };
+
+  /**
+   * Go to previous slide
+   */
+  SingleChoiceSet.prototype.previous = function () {
+    this.move(this.currentIndex - 1);
   };
 
   /**
@@ -508,29 +528,70 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Keep this out of H5P.Question, since we are moving the button & feedback
     // region to the last slide
-    if (!this.options.behaviour.autoContinue) {
+    if (!this.options.behaviour.autoContinue || this.options.behaviour.backwardsNavigationIsAllowed) {
 
-      var handleNextClick = function () {
-        if (self.$nextButton.attr('aria-disabled') !== 'true') {
+      const goTo = (direction) => {
+        if (typeof direction !== 'string') {
+          return;
+        }
+
+        if (!self.directionButtons[direction] || self.directionButtons[direction].getAttribute('aria-disabled') === 'true') {
+          return;
+        }
+
+        if (direction === 'next') {
           self.next();
         }
-      };
+        else if (direction === 'previous') {
+          self.previous();
+        }
+      }
 
-      self.$nextButton = UI.createButton({
-        'class': 'h5p-ssc-next-button',
-        'aria-label': self.l10n.nextButtonLabel,
-        click: handleNextClick,
+      const navigation = document.createElement('div');
+      navigation.setAttribute('class', 'h5p-scs-navigation');
+      self.$container.get(0).append(navigation);
+
+      this.directionButtons.previous = UI.createButton({
+        'class': 'h5p-ssc-direction-button previous',
+        'aria-label': self.l10n.previousButtonLabel, // TODO: Add l10n
+        click: () => {
+          goTo('previous');
+        },
         keydown: function (event) {
           switch (event.which) {
             case 13: // Enter
             case 32: // Space
-              handleNextClick();
+              goTo('previous');
               event.preventDefault();
           }
         },
-        appendTo: self.$container
-      });
-      self.toggleNextButton(false);
+        appendTo: navigation
+      }).get(0);
+
+      this.progressDisplay = document.createElement('div');
+      this.progressDisplay.setAttribute('class', 'h5p-scs-progress-display');
+      // Progress announcement is already handled by the progressbar
+      this.progressDisplay.setAttribute('aria-hidden', 'true');
+      navigation.append(this.progressDisplay);
+
+      this.directionButtons.next = UI.createButton({
+        'class': 'h5p-ssc-direction-button next',
+        'aria-label': self.l10n.nextButtonLabel,
+        click: () => {
+          goTo('next');
+        },
+        keydown: function (event) {
+          switch (event.which) {
+            case 13: // Enter
+            case 32: // Space
+              goTo('next');
+              event.preventDefault();
+          }
+        },
+        appendTo: navigation
+      }).get(0);
+
+      this.updateNavigation();
     }
 
     if (self.options.behaviour.soundEffectsEnabled) {
@@ -582,12 +643,31 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   };
 
   /**
-   * Disable/enable the next button
-   * @param  {boolean} enable
+   * Toggle direction button.
+   * @param {string} direction Direction id of button (e.g. next or previous).
+   * @param {boolean} enable True to enable button, false to disable.
    */
-  SingleChoiceSet.prototype.toggleNextButton = function (enable) {
-    if (this.$nextButton) {
-      this.$nextButton.attr('aria-disabled', !enable);
+  SingleChoiceSet.prototype.toggleDirectionButton = function (direction, enable) {
+    if (typeof direction !== 'string') {
+      return;
+    }
+
+    this.directionButtons[direction]?.setAttribute('aria-disabled', !enable);
+  };
+
+  /**
+   * Update navigation.
+   */
+  SingleChoiceSet.prototype.updateNavigation = function () {
+    const shouldShowPreviousButton = this.options.behaviour.backwardsNavigationIsAllowed &&
+      this.currentIndex > 0 && this.currentIndex < this.choices.length;
+
+    this.toggleDirectionButton('previous', shouldShowPreviousButton);
+    this.toggleDirectionButton('next', this.choices[this.currentIndex]?.getAnswerGiven());
+
+    if (this.progressDisplay) {
+      this.progressDisplay.innerText = `${this.currentIndex + 1} / ${this.options.choices.length}`;
+      this.progressDisplay?.classList.toggle('display-none', this.currentIndex >= this.choices.length);
     }
   };
 
@@ -624,8 +704,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     var $currentSlide = self.$slides[index];
     var isResultSlide = (index >= self.choices.length);
 
-    self.toggleNextButton(false);
-
     H5P.Transition.onTransitionEnd(self.$choices, function () {
       $previousSlide.removeClass('h5p-sc-current-slide');
 
@@ -655,6 +733,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.recklessJump(index);
 
     self.currentIndex = index;
+
+    this.updateNavigation();
   };
 
   /**
@@ -833,6 +913,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     H5P.Transition.onTransitionEnd(this.$choices, function () {
       self.removeFeedback();
     }, 600);
+
+    this.updateNavigation();
   };
 
   /**
@@ -853,9 +935,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   /**
    * Generate A11y friendly text
-   * 
+   *
    * @param  {number} index
-   * @param  {number} currentIndex 
+   * @param  {number} currentIndex
    */
   SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
     var self = this;

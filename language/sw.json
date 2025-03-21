@@ -70,6 +70,10 @@
           "description": "Thamani katika milisekunde"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Washa madhara ya sauti"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Ujanabishe seti ya chaguo moja",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "Lebo ya kitufe cha \"Inayofuata\"",
           "default": "Swali linalofuata"

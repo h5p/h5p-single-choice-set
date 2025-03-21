@@ -70,6 +70,10 @@
           "description": "Värde i millisekunder. (1000 millisekunder = 1 sekund)."
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Aktivera ljudeffekter"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Ändra texter",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "Etikett för knappen \"Nästa\"",
           "default": "Nästa fråga"

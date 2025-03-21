@@ -171,6 +171,14 @@
         }
       },
       {
+        "name": "backwardsNavigationIsAllowed",
+        "type": "boolean",
+        "label": "Allow backwards navigation",
+        "description": "Allow the user to go back to previous questions.",
+        "importance": "low",
+        "default": false
+      },
+      {
         "name": "soundEffectsEnabled",
         "type": "boolean",
         "label": "Enable sound effects",
@@ -210,6 +218,13 @@
     "importance": "low",
     "common": true,
     "fields": [
+      {
+        "name": "previousButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Previous\" button",
+        "importance": "low",
+        "default": "Previous question"
+      },
       {
         "name": "nextButtonLabel",
         "type": "text",

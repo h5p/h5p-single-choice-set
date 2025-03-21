@@ -70,6 +70,10 @@
           "description": "Значение в миллисекундах"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Включить звуковые эффекты"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Локализация одиночного выбора",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "Надпись для кнопки \"Далее\"",
           "default": "Следующий вопрос"

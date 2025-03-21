@@ -70,6 +70,10 @@
           "description": "მნიშვნელობა მილიწამებში"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "დაუშვი ხმოვანი ეფექტები"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "ერთი არჩევნის ნაკრების ლოკალიზება",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "წარწერა \"შემდეგი\" ღილაკისთვის",
           "default": "შემდეგი შეკითხვა"

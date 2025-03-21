@@ -70,6 +70,10 @@
           "description": "Valor en milisegundos"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Habilitar efectos sonoros"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Localizar conjunto de opción única",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "Etiqueta para el botón \"Siguiente\"",
           "default": "Siguiente pregunta"

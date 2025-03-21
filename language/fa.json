@@ -70,6 +70,10 @@
           "description": "مقدار به میلی‌ثانیه"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "فعال‌سازی افکت صدا"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "بومی سازی مجموعه سؤال تک گزینه‌ای",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "برچسب دکمه بعدی",
           "default": "سؤال بعدی"

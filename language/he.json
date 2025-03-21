@@ -51,6 +51,10 @@
         },
         {"label": "זמן פסק על תשובות נכונות", "description": "ערך במילישניות"},
         {"label": "זמן פסק על תשובות שגויות", "description": "ערך במילישניות"},
+        {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
         {"label": "הפעלת אפקטים קוליים"},
         {"label": "הפעל כפתור ניסיון חוזר"},
         {"label": "הפעל כפתור הצגת פתרון"},
@@ -63,6 +67,10 @@
     {
       "label": "התאמת סט בחירה יחידה",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {"label": "תווית לכפתור \"הבא\"", "default": "שאלה הבאה"},
         {"label": "תווית לכפתור \"הצג פתרון\"", "default": "הצג פתרון"},
         {"label": "תווית לכפתור \"ניסיון חוזר\"", "default": "ניסיון חוזר"},

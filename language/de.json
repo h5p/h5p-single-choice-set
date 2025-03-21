@@ -70,6 +70,10 @@
           "description": "Länge in Millisekunden"
         },
         {
+          "label": "Erlaube Navigation zurück",
+          "description": "Erlaube dem Benutzeden, zu vorherigen Fragen zurückzugehen."
+        },
+        {
           "label": "Soundeffekte einschalten"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Sprachanpassungen für Single-Choice-Set",
       "fields": [
+        {
+          "label": "Beschriftung des \"Zurück\"-Buttons",
+          "default": "Zurück"
+        },
         {
           "label": "Beschriftung des \"Weiter\"-Buttons",
           "default": "Weiter"

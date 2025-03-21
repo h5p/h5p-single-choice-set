@@ -70,6 +70,10 @@
           "description": "Milisaniye cinsinden değer"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Ses efektlerini etkinleştir"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Tek seçim soru setinin metinlerini düzenle",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "\"Sonraki\" düğmesi için etiket",
           "default": "Sonraki soru"

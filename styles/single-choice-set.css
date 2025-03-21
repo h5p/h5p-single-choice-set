@@ -1,4 +1,4 @@
-.h5p-container.h5p-single-choice-set {
+.h5p-single-choice-set {
   overflow: hidden;
 }
 .h5p-container .h5p-sc-set ul {
@@ -12,12 +12,15 @@
   height: 100%;
 }
 
-.h5p-sc-set-wrapper.next-button-mode {
-  margin-bottom: 2.5em;
+.h5p-sc-set-wrapper:has(.h5p-scs-navigation) {
+  margin-bottom: 0.5em;
+}
+
+.h5p-container.h5p-single-choice-set .h5p-sc-set {
+  height: 100%;
 }
 
 .h5p-sc-set {
-  height: 100%;
   padding: 0.5em;
   position: relative;
   box-sizing: border-box;
@@ -55,33 +58,59 @@
   display: block;
 }
 
-.h5p-ssc-next-button {
+.h5p-single-choice-set .h5p-scs-navigation {
+  display: grid;
+  grid-template-columns: 2.1875em auto 2.1875em;
+  height: 2em;
+  margin: auto;
+  position: relative;
+  top: -0.5em; /* Account for old layout that probably should not use that much absolute positioning. */
+  width: calc(100% - 2 * 1em);
+}
+
+.h5p-ssc-direction-button {
   display: none;
-  position: absolute;
-  right: 0.5em;
-  bottom: 0;
   width: 2.1875em;
+  margin: 0;
   padding: 0.5em 0;
   transition: transform 0.2s;
   font-family: H5PFontAwesome4;
   text-align: center;
 }
-.h5p-ssc-next-button:before {
+
+.h5p-ssc-direction-button:before {
   content: "\f054";
   position: relative;
-  left: 2px;
   padding: 0;
 }
-.h5p-ssc-next-button:active {
-  /* Overriding JoubelUI, which sets it to relative positioning */
-  position: absolute;
+
+.h5p-ssc-direction-button.previous:before {
+  content: "\f053";
+  left: -1px;
 }
-.navigatable .h5p-ssc-next-button {
+
+.h5p-ssc-direction-button.next:before {
+  content: "\f054";
+  left: 2px;
+}
+
+.navigatable .h5p-ssc-direction-button {
   display: inline-block;
+  margin: 0;
 }
-.h5p-ssc-next-button[aria-disabled="true"] {
+.h5p-ssc-direction-button[aria-disabled="true"] {
   transform: scale(0.01);
   visibility: hidden;
+}
+
+.h5p-single-choice-set .h5p-scs-progress-display {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+.h5p-single-choice-set .h5p-scs-progress-display.display-none {
+  display: none;
 }
 
 ul.h5p-sc-alternatives {

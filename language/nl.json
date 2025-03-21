@@ -70,6 +70,10 @@
           "description": "Waarde in milliseconden"
         },
         {
+          "label": "Allow backwards navigation",
+          "description": "Allow the user to go back to previous questions."
+        },
+        {
           "label": "Schakel geluidseffecten in"
         },
         {
@@ -87,6 +91,10 @@
     {
       "label": "Lokaliseer enkele keuze set",
       "fields": [
+        {
+          "label": "Label for the \"Previous\" button",
+          "default": "Previous question"
+        },
         {
           "label": "Tekst voor \"Volgende\"-knop",
           "default": "Volgende vraag"
