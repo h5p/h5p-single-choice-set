@@ -6,6 +6,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 0;
+}
+.h5p-single-choice-set .h5p-navigation{
+  padding: var(--h5p-theme-spacing-m) 0;
 }
 .h5p-container .h5p-sc-set ul {
   margin: 0;
@@ -64,7 +68,6 @@
 
 ul.h5p-sc-alternatives {
   margin: 0;
-  padding: 0;
 }
 ul.h5p-sc-alternatives li.h5p-sc-alternative {
   position: relative;
