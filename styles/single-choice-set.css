@@ -149,10 +149,10 @@ li.h5p-sc-alternative .h5p-sc-progressbar {
   left: 0;
   height: 100%;
   width: 0%;
-  background: #cee0f4;
-  -webkit-border-radius: 0.25em;
-  -moz-border-radius: 0.25em;
-  border-radius: 0.25em;
+  background: var(--h5p-theme-alternative-darker);
+  -webkit-border-radius: var(--h5p-theme-border-radius-medium);
+  -moz-border-radius: var(--h5p-theme-border-radius-medium);
+  border-radius: var(--h5p-theme-border-radius-medium);
 }
 .h5p-sc-drummed .h5p-sc-progressbar {
   background: transparent;
@@ -308,10 +308,11 @@ li.h5p-sc-alternative .h5p-sc-status {
 }
 .h5p-sc-solution-view-title {
   display: inline-block;
-  font-size: 1.2em;
+  font-size: var(--h5p-theme-font-size-xl);
   text-align: center;
   line-height: 2.75em;
   outline: none;
+  font-weight: 700;
   color: var(--h5p-theme-text-primary);
 }
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view {
@@ -320,8 +321,6 @@ li.h5p-sc-alternative .h5p-sc-status {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 0;
-  background: none;
-  color: #1a73d9;
 }
 
 .h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:active {
@@ -359,9 +358,11 @@ li.h5p-sc-alternative .h5p-sc-status {
   color: var(--h5p-theme-text-secondary);
 }
 .h5p-sc-solution-question {
-  font-weight: bold;
-  margin-bottom: 0.25em;
-  padding-left: 0.5em;
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
+  font-size: var(--h5p-theme-font-size-l);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .h5p-sc-solution-question p {
   margin: 1em 0;
@@ -370,9 +371,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   margin-top: 0;
 }
 .h5p-sc-solution-answer {
-  margin-bottom: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 1.75em;
+  padding-bottom: var(--h5p-theme-spacing-xxs);
   border-bottom: 1px solid var(--h5p-theme-stroke-1);
   position: relative;
 }
@@ -395,7 +394,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   content: "\e903";
   color: var(--h5p-theme-feedback-correct-main);
   position: absolute;
-  left: 0.75em;
+  left: -1.25em;
 }
 
 /* Remove Question margin */
