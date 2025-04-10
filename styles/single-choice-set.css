@@ -91,6 +91,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   line-height: var(--h5p-theme-font-size-xxl);
   font-weight: 600;
   color: var(--h5p-theme-text-secondary);
+  font-size: var(--h5p-theme-font-size-m);
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
