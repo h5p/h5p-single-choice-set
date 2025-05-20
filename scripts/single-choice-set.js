@@ -19,7 +19,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * @type {number[]}
      */
     this.userResponses = [];
-    Question.call(this, 'single-choice-set', true);
+    Question.call(this, 'single-choice-set', { theme: true });
     this.options = $.extend(true, {}, {
       choices: [],
       overallFeedback: [],
