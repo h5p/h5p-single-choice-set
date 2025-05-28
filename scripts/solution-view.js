@@ -33,7 +33,7 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     $('<button>', {
       'role': 'button',
       'aria-label': l10n.closeButtonLabel + '.',
-      'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
+      'class': 'h5p-joubelui-button h5p-sc-close-solution-view h5p-theme-nav-button h5p-theme-previous',
       'click': function () {
         self.hide();
       }
