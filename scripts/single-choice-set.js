@@ -478,7 +478,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         'aria-label': this.l10n.a11yRetry,
       },
       {
-        classes: 'h5p-theme-secondary-cta h5p-theme-retry',
+        styleType: 'secondary',
+        icon: 'retry'
       });
 
       this.hideButton('try-again');
@@ -491,7 +492,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         'aria-label': this.l10n.a11yShowSolution,
       },
       {
-        classes: 'h5p-theme-secondary-cta h5p-theme-show-results',
+        styleType: 'secondary',
+        icon: 'show-results'
       });
 
       this.hideButton('show-solution');
@@ -528,11 +530,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       }).appendTo(self.$container);
 
       self.progressbar.appendTo(self.$footer);
-      self.$nextButton = UI.createButton({
-        'class': 'h5p-theme-nav-button h5p-theme-next',
-        'aria-label': self.l10n.nextButtonLabel,
-        'text': self.l10n.nextButton,
-        click: handleNextClick,
+
+      self.$nextButton = this.addButton(self.l10n.nextbutton, self.l10n.nextButtonLabel, function () {
+        handleNextClick();
+      }, 
+      {
+        'aria-label': this.l10n.nextButtonLabel,
+      },
+      {
+        styleType: 'nav',
+        icon: 'next',
         keydown: function (event) {
           switch (event.which) {
             case 13: // Enter
@@ -541,8 +548,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
               event.preventDefault();
           }
         },
-        appendTo: self.$footer
       });
+
+      self.$footer.append(self.$nextButton);
       self.toggleNextButton(false);
     }
 
