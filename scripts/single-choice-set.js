@@ -478,7 +478,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         'aria-label': this.l10n.a11yRetry,
       },
       {
-        classes: 'h5p-theme-secondary-cta h5p-theme-retry',
+        styleType: 'secondary',
+        icon: 'retry'
       });
 
       this.hideButton('try-again');
@@ -491,7 +492,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         'aria-label': this.l10n.a11yShowSolution,
       },
       {
-        classes: 'h5p-theme-secondary-cta h5p-theme-show-results',
+        styleType: 'secondary',
+        icon: 'show-results'
       });
 
       this.hideButton('show-solution');
@@ -528,21 +530,17 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       }).appendTo(self.$container);
 
       self.progressbar.appendTo(self.$footer);
-      self.$nextButton = UI.createButton({
-        'class': 'h5p-theme-nav-button h5p-theme-next',
-        'aria-label': self.l10n.nextButtonLabel,
-        'text': self.l10n.nextButton,
-        click: handleNextClick,
-        keydown: function (event) {
-          switch (event.which) {
-            case 13: // Enter
-            case 32: // Space
-              handleNextClick();
-              event.preventDefault();
-          }
-        },
-        appendTo: self.$footer
-      });
+
+      self.$nextButton = $(H5P.Components.Button({
+        label: self.l10n.nextButton,
+        ariaLabel: self.l10n.nextButtonLabel,
+        tooltip: self.l10n.nextButtonLabel,
+        onClick: handleNextClick,
+        styleType: 'nav',
+        icon: 'next',
+      }));
+
+      self.$footer.append(self.$nextButton);
       self.toggleNextButton(false);
     }
 
