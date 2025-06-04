@@ -531,24 +531,14 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
       self.progressbar.appendTo(self.$footer);
 
-      self.$nextButton = this.addButton(self.l10n.nextbutton, self.l10n.nextButtonLabel, function () {
-        handleNextClick();
-      }, 
-      {
-        'aria-label': this.l10n.nextButtonLabel,
-      },
-      {
+      self.$nextButton = $(H5P.Components.Button({
+        label: self.l10n.nextButton,
+        ariaLabel: self.l10n.nextButtonLabel,
+        tooltip: self.l10n.nextButtonLabel,
+        onClick: handleNextClick,
         styleType: 'nav',
         icon: 'next',
-        keydown: function (event) {
-          switch (event.which) {
-            case 13: // Enter
-            case 32: // Space
-              handleNextClick();
-              event.preventDefault();
-          }
-        },
-      });
+      }));
 
       self.$footer.append(self.$nextButton);
       self.toggleNextButton(false);
