@@ -46,10 +46,6 @@
   transition: width 1s;
 }
 
-.h5p-single-choice-set .h5p-joubelui-button {
-  margin-bottom: 0;
-}
-
 .h5p-sc-set.h5p-sc-animate {
   transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
@@ -351,27 +347,6 @@ li.h5p-sc-alternative .h5p-sc-status {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 0;
-}
-
-.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:active {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  color: #104888;
-}
-
-.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:focus,
-.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:hover {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  color: #1356a3;
-}
-
-.h5p-single-choice-set .h5p-sc-solution-view .h5p-sc-close-solution-view:before {
-  font-family: H5PFontAwesome4;
-  content: '\f060';
-  padding-right: 0.5em;
 }
 
 .h5p-sc-solution-choices {
