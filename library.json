@@ -35,9 +35,6 @@
       "path": "scripts/result-slide.js"
     },
     {
-      "path": "scripts/solution-view.js"
-    },
-    {
       "path": "scripts/single-choice-alternative.js"
     },
     {

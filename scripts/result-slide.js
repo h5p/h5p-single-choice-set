@@ -12,24 +12,17 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
   function ResultSlide(maxscore) {
     EventDispatcher.call(this);
 
-    this.$feedbackContainer = $('<div>', {
-      'class': 'h5p-sc-feedback-container',
-      'tabindex': '-1'
+    this.$resultSlide = $('<div>', {
+      'class': 'h5p-sc-slide h5p-sc-set-results',
+      'css': {left: (maxscore * 100) + '%'}
     });
 
     this.$buttonContainer = $('<div/>', {
       'class': 'h5p-sc-button-container'
-    });
+    }).appendTo(this.$resultSlide);
 
-    var $resultContainer = $('<div/>', {
-      'class': 'h5p-sc-result-container'
-    }).append(this.$feedbackContainer)
-      .append(this.$buttonContainer);
-
-    this.$resultSlide = $('<div>', {
-      'class': 'h5p-sc-slide h5p-sc-set-results',
-      'css': {left: (maxscore * 100) + '%'}
-    }).append($resultContainer);
+    this.component;
+    this.header;
   }
 
   // inherits from EventDispatchers prototype
@@ -39,10 +32,46 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
   ResultSlide.prototype.constructor = ResultSlide;
 
   /**
-   * Focus feedback container.
+   * Focus the header, in case there are no buttons
    */
   ResultSlide.prototype.focusScore = function () {
-    this.$feedbackContainer.focus();
+    this.header?.focus();
+  };
+
+  /**
+   * Show the result slide, with updated results
+   */
+  ResultSlide.prototype.showSlide = function (params) {
+    if(this.component) {
+      this.component.remove();
+    }
+
+    this.component = H5P.Components.ResultScreen({
+      header: 'TEST',
+      scoreHeader: 'Score test',
+      questionGroups: [{
+        listHeaders: [ 'Question TEST', 'Score TEST' ],
+        questions: [
+          {
+            title: 'task 1',
+            points: '1/4',
+          },
+          {
+            title: 'task 2',
+            points: '1/4',
+          },
+          {
+            title: 'task 3',
+            points: '1/4',
+          },
+        ]
+      }]
+    });
+
+    this.$resultSlide[0].prepend(this.component);
+
+    this.header = this.component.querySelector('.h5p-theme-results-banner');
+    this.header.tabindex = -1;
   };
 
   /**
