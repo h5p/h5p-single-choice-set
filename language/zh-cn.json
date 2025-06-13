@@ -92,6 +92,10 @@
           "default": "下一题"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"显示答案\"按钮的标签",
           "default": "显示答案"
         },

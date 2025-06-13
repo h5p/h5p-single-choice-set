@@ -92,6 +92,10 @@
           "default": "Наступне запитання"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Надпис для кнопки \"Показати відповіді\"",
           "default": "Показати відповіді"
         },

@@ -19,7 +19,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * @type {number[]}
      */
     this.userResponses = [];
-    Question.call(this, 'single-choice-set');
+    Question.call(this, 'single-choice-set', { theme: true });
     this.options = $.extend(true, {}, {
       choices: [],
       overallFeedback: [],
@@ -65,6 +65,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       shouldSelect: "Should have been selected",
       shouldNotSelect: "Should not have been selected",
       nextButtonLabel: 'Next question',
+      nextButton: 'Next',
       showSolutionButtonLabel: 'Show solution',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
@@ -78,7 +79,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
-      'class': 'h5p-sc-set-wrapper navigatable' + (!this.options.behaviour.autoContinue ? ' next-button-mode' : '')
+      'class': 'h5p-sc-set-wrapper navigatable'
     });
 
     this.$slides = [];
@@ -415,6 +416,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     });
 
     self.solutionView.on('hide', function () {
+      self.showButton('show-solution');
       // re-add tabbable for buttons in result view
       buttons.forEach(function (button) {
         self.setTabbable(button, true);
@@ -424,6 +426,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       self.focusButton();
     });
 
+    this.hideButton('show-solution');
     self.solutionView.show();
     self.toggleAriaVisibility(false);
   };
@@ -454,11 +457,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // Register buttons with question.
     this.addButtons();
 
-    // Insert feedback and buttons section on the result slide
-    this.insertSectionAtElement('feedback', this.resultSlide.$feedbackContainer);
-    this.insertSectionAtElement('scorebar', this.resultSlide.$feedbackContainer);
-    this.insertSectionAtElement('buttons', this.resultSlide.$buttonContainer);
-
     // Question is finished
     if (this.options.choices.length === this.currentIndex) {
       this.trigger('question-finished');
@@ -478,7 +476,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.resetTask(true);
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yRetry,
+      },
+      {
+        styleType: 'secondary',
+        icon: 'retry'
       });
+
+      this.hideButton('try-again');
     }
 
     if (this.options.behaviour.enableSolutionsButton) {
@@ -486,7 +490,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         self.showSolutions();
       }, self.results.corrects !== self.options.choices.length, {
         'aria-label': this.l10n.a11yShowSolution,
+      },
+      {
+        styleType: 'secondary',
+        icon: 'show-results'
       });
+
+      this.hideButton('show-solution');
     }
   };
 
@@ -496,7 +506,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.createQuestion = function () {
     var self = this;
 
-    self.progressbar.appendTo(self.$container);
     self.$container.append(self.$choices);
 
     function toggleMute(event) {
@@ -516,20 +525,22 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         }
       };
 
-      self.$nextButton = UI.createButton({
-        'class': 'h5p-ssc-next-button',
-        'aria-label': self.l10n.nextButtonLabel,
-        click: handleNextClick,
-        keydown: function (event) {
-          switch (event.which) {
-            case 13: // Enter
-            case 32: // Space
-              handleNextClick();
-              event.preventDefault();
-          }
-        },
-        appendTo: self.$container
-      });
+      self.$footer = H5P.jQuery('<div>', {
+        class: 'h5p-navigation'
+      }).appendTo(self.$container);
+
+      self.progressbar.appendTo(self.$footer);
+
+      self.$nextButton = $(H5P.Components.Button({
+        label: self.l10n.nextButton,
+        ariaLabel: self.l10n.nextButtonLabel,
+        tooltip: self.l10n.nextButtonLabel,
+        onClick: handleNextClick,
+        styleType: 'nav',
+        icon: 'next',
+      }));
+
+      self.$footer.append(self.$nextButton);
       self.toggleNextButton(false);
     }
 
@@ -551,7 +562,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
           }
         },
         'click': toggleMute,
-        prependTo: self.$container
+        appendTo: self.$container.find('.h5p-question-introduction')
       });
     }
 
@@ -643,6 +654,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // if should show result slide
     if (isResultSlide) {
       self.setScore(self.results.corrects);
+      this.showButton('try-again');
+      this.showButton('show-solution');
     }
 
     self.$container.toggleClass('navigatable', !isResultSlide);
@@ -801,6 +814,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     // Close solution view if visible:
     this.solutionView.hide();
+
+    // Hide result slide buttons
+    this.hideButton('try-again');
+    this.hideButton('show-solution');
 
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];

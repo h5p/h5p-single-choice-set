@@ -92,6 +92,10 @@
           "default": "Sljedeće pitanje"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Oznaka za dugme \"Prikaži rješenje\" ",
           "default": "Prikaži rješenje"
         },

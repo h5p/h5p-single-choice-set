@@ -92,6 +92,10 @@
           "default": "다음 문제"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"해답 보이기\" 버튼 라벨",
           "default": "해답 보이기"
         },

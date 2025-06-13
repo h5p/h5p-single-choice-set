@@ -92,6 +92,10 @@
           "default": "Weiter"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
           "default": "Lösung anzeigen"
         },
