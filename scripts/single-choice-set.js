@@ -135,6 +135,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
+      self.$container.toggleClass('navigatable', false);
       this.setScore(this.results.corrects, true);
     }
 
@@ -384,7 +385,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.$container.addClass('showing-results');
     this.showingResultScreen = true;
     this.resultSlide.showSlide({
-
+      l10n: this.l10n,
+      questions: this.choices,
+      userResponses: this.userResponses,
+      totalScore: this.results.corrects,
     });
 
     if (!noXAPI) {
@@ -444,8 +448,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
         styleType: 'secondary',
         icon: 'retry'
       });
-
-      this.hideButton('try-again');
     }
   };
 
