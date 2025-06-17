@@ -319,8 +319,9 @@ li.h5p-sc-alternative .h5p-sc-status {
   margin-bottom: 0;
 }
 
-.h5p-single-choice-set:not(:has(.evaluation-mode)) .h5p-question-evaluation-container {
+.h5p-single-choice-set:not(:has(.showing-results)) .h5p-question-evaluation-container {
   display: none;
+  padding: 0;
 }
 
 .h5p-single-choice-set:has(.evaluation-mode) .h5p-sc-sound-control,
@@ -329,9 +330,10 @@ li.h5p-sc-alternative .h5p-sc-status {
   display: none;
 }
 
-.h5p-single-choice-set .h5p-question-evaluation-container.evaluation-mode .h5p-question-buttons.h5p-question-visible {
+.h5p-single-choice-set .h5p-question-evaluation-container .h5p-question-buttons {
   text-align: center;
   margin-top: var(--h5p-theme-spacing-m);
+  justify-content: center;
 }
 
 /* IV sepcific styles */

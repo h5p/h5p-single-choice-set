@@ -122,6 +122,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', function() {
       self.resetTask(true);
+      self.$container.removeClass('showing-results');
+      this.showingResultScreen = false;
     }, this);
     this.$slides.push(this.resultSlide.$resultSlide);
 
@@ -370,10 +372,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       return;
     }
 
-    this.resultSlide.showSlide({
-
-    });
-
     if (score === self.options.choices.length) {
       self.hideButton('try-again');
     }
@@ -382,6 +380,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }
     self.handleQueuedButtonChanges();
     self.scoreTimeout = undefined;
+
+    this.$container.addClass('showing-results');
+    this.showingResultScreen = true;
+    this.resultSlide.showSlide({
+
+    });
 
     if (!noXAPI) {
       self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
@@ -525,10 +529,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
   SingleChoiceSet.prototype.resize = function () {
     var self = this;
     var maxHeight = 0;
+
     self.choices.forEach(function (choice) {
       var choiceHeight = choice.$choice.outerHeight();
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
+
+    if (this.showingResultScreen) {
+      let resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
+      maxHeight = resultScreenHeight > maxHeight ? resultScreenHeight : maxHeight;
+    }
 
     // Set minimum height for choices
     self.$choices.css({minHeight: maxHeight + 'px'});
