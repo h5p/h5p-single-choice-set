@@ -53,12 +53,11 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
     }
 
     this.component = H5P.Components.ResultScreen({
-      header: 'Your Result: TEST',
-      scoreHeader: `${params.totalScore} of ${this.maxscore} correct TEST`,
+      header: params.l10n.resultHeader,
+      scoreHeader: params.l10n.totalScore.replace('@score', params.totalScore).replace('@maxScore', this.maxscore),
       questionGroups: [{
-        listHeaders: [ 'Question TEST', 'Score TEST' ],
+        listHeaders: [ params.l10n.resultTableHeader, params.l10n.resultScoreTableHeader ],
         questions: params.questions.map((question, i) => {
-          console.log('i', i, 'user response', structuredClone(params.userResponses), 'answers', question.options.answers); // TODO: remove
           const score = question.options.answers[params.userResponses[i]]?.correct ? '1' : '0';
 
           return {

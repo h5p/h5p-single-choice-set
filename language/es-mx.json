@@ -152,6 +152,22 @@
         {
           "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
           "default": "Vuelva a intentar la tarea. Borre todas sus respuestas y empiece de nuevo."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": "@score of @maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

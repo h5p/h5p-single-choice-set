@@ -323,6 +323,34 @@
         "label": "Assistive technology description for \"Retry\" button",
         "default": "Retry the task. Reset all responses and start the task over again.",
         "importance": "low"
+      },
+      {
+        "name": "resultHeader",
+        "type": "text",
+        "label": "The main header of the result screen",
+        "default": "Your result:",
+        "importance": "low"
+      },
+      {
+        "name": "totalScore",
+        "type": "text",
+        "label": "The score header of the result screen",
+        "default": "@score of @maxScore correct",
+        "importance": "low"
+      },
+      {
+        "name": "resultTableHeader",
+        "type": "text",
+        "label": "The Question header of the result screen table",
+        "default": "Question",
+        "importance": "low"
+      },
+      {
+        "name": "resultScoreTableHeader",
+        "type": "text",
+        "label": "The Score header of the result screen table",
+        "default": "Score",
+        "importance": "low"
       }
     ]
   }

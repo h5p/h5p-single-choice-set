@@ -76,6 +76,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       solutionListQuestionNumber: 'Question :num',
       a11yShowSolution: 'Show the solution. The task will be marked with its correct solution.',
       a11yRetry: 'Retry the task. Reset all responses and start the task over again.',
+      resultHeader: 'Your result:',
+      totalScore: '@score of @maxScore correct',
+      resultTableHeader: 'Question',
+      resultScoreTableHeader: 'Score',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {

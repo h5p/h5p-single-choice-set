@@ -152,6 +152,22 @@
         {
           "label": "Опис допоміжної технології для кнопки «Повторити».",
           "default": "Повторіть завдання. Скиньте всі відповіді та почніть завдання знову."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": "@score of @maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }
