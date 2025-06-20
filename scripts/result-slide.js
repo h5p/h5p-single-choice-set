@@ -12,6 +12,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
   function ResultSlide(maxscore) {
     EventDispatcher.call(this);
 
+    this.maxscore = maxscore;
     this.$resultSlide = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc-set-results',
       'css': {left: (maxscore * 100) + '%'}
@@ -40,6 +41,11 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
   /**
    * Show the result slide, with updated results
+   * 
+   * @param {object} params.l10n Translation strings
+   * @param {[object]} params.questions The question objects, including answers
+   * @param {[object]} params.userResponses What the user has answered
+   * @param {number} params.totalScore The total score
    */
   ResultSlide.prototype.showSlide = function (params) {
     if(this.component) {
@@ -47,24 +53,19 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
     }
 
     this.component = H5P.Components.ResultScreen({
-      header: 'TEST',
-      scoreHeader: 'Score test',
+      header: 'Your Result: TEST',
+      scoreHeader: `${params.totalScore} of ${this.maxscore} correct TEST`,
       questionGroups: [{
         listHeaders: [ 'Question TEST', 'Score TEST' ],
-        questions: [
-          {
-            title: 'task 1',
-            points: '1/4',
-          },
-          {
-            title: 'task 2',
-            points: '1/4',
-          },
-          {
-            title: 'task 3',
-            points: '1/4',
-          },
-        ]
+        questions: params.questions.map((question, i) => {
+          console.log('i', i, 'user response', structuredClone(params.userResponses), 'answers', question.options.answers); // TODO: remove
+          const score = question.options.answers[params.userResponses[i]]?.correct ? '1' : '0';
+
+          return {
+            title: question.options.question,
+            points: `${score}/1`
+          };
+        }),
       }]
     });
 

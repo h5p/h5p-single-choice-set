@@ -197,6 +197,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     // Keep track of num correct/wrong answers
     this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
 
+    // saves user response
+    self.userResponses[event.data.index] = event.data.currentIndex;
+
     self.triggerXAPI('interacted');
 
     // Read and set a11y friendly texts 
@@ -219,12 +222,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     var index = event.data.index;
 
-    // saves user response
-    var userResponse = self.userResponses[index] = event.data.answerIndex;
-
     // trigger answered event
     var duration = this.stopStopWatch(index);
-    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse, duration);
+    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], self.userResponses[index], duration);
 
     self.trigger(xapiEvent);
 
