@@ -152,6 +152,22 @@
         {
           "label": "توصیف تکنولوژی کمکی برای دکمه تلاش مجدد",
           "default": "تلاش مجدد. بازنشانی همه پاسخ‌ها و شروع دوباره تکلیف."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": "@score of @maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }
