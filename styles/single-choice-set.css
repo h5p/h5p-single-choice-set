@@ -12,6 +12,14 @@
 
 .h5p-single-choice-set .h5p-navigation {
   padding: var(--h5p-theme-spacing-m) 0;
+  margin-inline: calc(var(--h5p-theme-spacing-s) / 2);
+  /*
+   * Move the progressbar left to compensate for gap by 3 column grid layout without previous button.
+   * If a "previous" button gets introduced (HFP-4225) this will need adjusting.
+   */
+  .h5p-joubelui-progressbar {
+    margin-left: calc(-1 * var(--h5p-theme-spacing-s));
+  }
 }
 
 .h5p-container .h5p-sc-set ul {
@@ -29,6 +37,7 @@
 .h5p-sc-set {
   height: 100%;
   padding: 0.5em;
+  margin-inline: var(--h5p-theme-spacing-m);
   position: relative;
   box-sizing: border-box;
 }
@@ -417,6 +426,7 @@ li.h5p-sc-alternative .h5p-sc-status {
 .h5p-single-choice-set .h5p-question-content {
   margin: 0;
   height: 100%;
+  padding: 0;
 }
 
 .h5p-single-choice-set .h5p-question-feedback-container {
