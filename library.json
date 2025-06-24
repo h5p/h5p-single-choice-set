@@ -6,7 +6,7 @@
   "author": "Joubel",
   "majorVersion": 1,
   "minorVersion": 11,
-  "patchVersion": 52,
+  "patchVersion": 53,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -19,6 +19,9 @@
   "preloadedCss": [
     {
       "path": "styles/single-choice-set.css"
+    },
+    {
+      "path": "@legacy/styles/single-choice-set.css"
     }
   ],
   "preloadedJs": [
@@ -45,6 +48,30 @@
     },
     {
       "path": "scripts/single-choice-set.js"
+    },
+    {
+      "path": "@legacy/scripts/stop-watch.js"
+    },
+    {
+      "path": "@legacy/scripts/sound-effects.js"
+    },
+    {
+      "path": "@legacy/scripts/xapi-event-builder.js"
+    },
+    {
+      "path": "@legacy/scripts/result-slide.js"
+    },
+    {
+      "path": "@legacy/scripts/solution-view.js"
+    },
+    {
+      "path": "@legacy/scripts/single-choice-alternative.js"
+    },
+    {
+      "path": "@legacy/scripts/single-choice.js"
+    },
+    {
+      "path": "@legacy/scripts/single-choice-set.js"
     }
   ],
   "preloadedDependencies": [
