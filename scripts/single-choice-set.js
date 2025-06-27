@@ -127,7 +127,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.resultSlide.on('retry', function() {
       self.resetTask(true);
       self.$container.removeClass('showing-results');
-      this.showingResultScreen = false;
     }, this);
     this.$slides.push(this.resultSlide.$resultSlide);
 
@@ -624,6 +623,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     $currentSlide.addClass('h5p-sc-current-slide');
     self.recklessJump(index);
 
+    self.trigger('resize');
+
     self.currentIndex = index;
   };
 
@@ -789,6 +790,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
         stopWatch.reset();
       }
     });
+
+    this.showingResultScreen = false;
 
     this.move(0, moveFocus);
 
