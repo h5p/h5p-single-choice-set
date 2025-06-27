@@ -159,7 +159,7 @@
         },
         {
           "label": "The score header of the result screen",
-          "default": "@score of @maxScore correct"
+          "default": ":score of :maxScore correct"
         },
         {
           "label": "The Question header of the result screen table",

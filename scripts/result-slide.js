@@ -54,7 +54,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
     this.component = H5P.Components.ResultScreen({
       header: params.l10n.resultHeader,
-      scoreHeader: params.l10n.totalScore.replace('@score', params.totalScore).replace('@maxScore', this.maxscore),
+      scoreHeader: params.l10n.totalScore.replace(':score', params.totalScore).replace(':maxScore', this.maxscore),
       questionGroups: [{
         listHeaders: [ params.l10n.resultTableHeader, params.l10n.resultScoreTableHeader ],
         questions: params.questions.map((question, i) => {
