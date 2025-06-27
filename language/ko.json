@@ -152,6 +152,22 @@
         {
           "label": "\"Retry\" 버튼에 대한 보조 기술 설명",
           "default": "시도하세요. 모든 답변을 초기화하고 다시 시도하세요."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

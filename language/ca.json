@@ -152,6 +152,22 @@
         {
           "label": "Descripció de la tecnologia d’assistència per al botó \"Torna-ho a provar\"",
           "default": "Intenta de nou la tasca. Reajusta totes les respostes i comença la tasca de nou."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

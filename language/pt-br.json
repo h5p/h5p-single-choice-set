@@ -152,6 +152,22 @@
         {
           "label": "Descrição da tecnologia de assistência para o botão \"Tentar Novamente\"",
           "default": "Tente realizar a tarefa novamente. Reinicialize todas as respostas e recomece."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

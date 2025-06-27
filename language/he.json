@@ -152,6 +152,22 @@
         {
           "label": "תיאור טכנולוגיית עזר לכפתור \"ניסיון חוזר\"",
           "default": "נסה שוב את המשימה. אפס את כל התשובות והתחל את המשימה מחדש."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

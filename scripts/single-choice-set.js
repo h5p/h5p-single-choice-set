@@ -1,6 +1,6 @@
 var H5P = H5P || {};
 
-H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, ResultSlide, SoundEffects, XApiEventBuilder, StopWatch) {
+H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, SoundEffects, XApiEventBuilder, StopWatch) {
   /**
    * @constructor
    * @extends Question
@@ -76,6 +76,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       solutionListQuestionNumber: 'Question :num',
       a11yShowSolution: 'Show the solution. The task will be marked with its correct solution.',
       a11yRetry: 'Retry the task. Reset all responses and start the task over again.',
+      resultHeader: 'Your result:',
+      totalScore: ':score of :maxScore correct',
+      resultTableHeader: 'Question',
+      resultScoreTableHeader: 'Score',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
@@ -91,12 +95,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
      * @type {Array}
      */
     self.buttonsToBeHidden = [];
-
-    /**
-     * The solution dialog
-     * @type {SolutionView}
-     */
-    this.solutionView = new SolutionView(contentId, this.options.choices, this.l10n);
 
     this.$choices = $('<div>', {
       'class': 'h5p-sc-set h5p-sc-animate'
@@ -128,9 +126,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', function() {
       self.resetTask(true);
+      self.$container.removeClass('showing-results');
     }, this);
-    this.resultSlide.on('view-solution', this.handleViewSolution, this);
     this.$slides.push(this.resultSlide.$resultSlide);
+
     this.on('resize', this.resize, this);
 
     // Use the correct starting slide
@@ -139,6 +138,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (this.options.choices.length === this.currentIndex) {
       // Make sure results slide is displayed
       this.resultSlide.$resultSlide.addClass('h5p-sc-current-slide');
+      self.$container.toggleClass('navigatable', false);
       this.setScore(this.results.corrects, true);
     }
 
@@ -200,6 +200,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // Keep track of num correct/wrong answers
     this.results[this.lastAnswerIsCorrect ? 'corrects' : 'wrongs']++;
 
+    // saves user response
+    self.userResponses[event.data.index] = event.data.currentIndex;
+
     self.triggerXAPI('interacted');
 
     // Read and set a11y friendly texts 
@@ -222,12 +225,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     var index = event.data.index;
 
-    // saves user response
-    var userResponse = self.userResponses[index] = event.data.answerIndex;
-
     // trigger answered event
     var duration = this.stopStopWatch(index);
-    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], userResponse, duration);
+    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], self.userResponses[index], duration);
 
     self.trigger(xapiEvent);
 
@@ -376,59 +376,29 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       return;
     }
 
-    var feedbackText = determineOverallFeedback(self.options.overallFeedback , score / self.options.choices.length)
-      .replace(':numcorrect', score)
-      .replace(':maxscore', self.options.choices.length.toString());
-
-    self.setFeedback(feedbackText, score, self.options.choices.length, self.l10n.scoreBarLabel);
-
     if (score === self.options.choices.length) {
       self.hideButton('try-again');
-      self.hideButton('show-solution');
     }
     else {
       self.showButton('try-again');
-      self.showButton('show-solution');
     }
     self.handleQueuedButtonChanges();
     self.scoreTimeout = undefined;
+
+    this.$container.addClass('showing-results');
+    this.showingResultScreen = true;
+    this.resultSlide.showSlide({
+      l10n: this.l10n,
+      questions: this.choices,
+      userResponses: this.userResponses,
+      totalScore: this.results.corrects,
+    });
 
     if (!noXAPI) {
       self.triggerXAPIScored(score, self.options.choices.length, 'completed', true, (100 * score / self.options.choices.length) >= self.options.behaviour.passPercentage);
     }
 
     self.trigger('resize');
-  };
-
-  /**
-   * Handler invoked when view solution is selected
-   */
-  SingleChoiceSet.prototype.handleViewSolution = function () {
-    var self = this;
-
-    var $tryAgainButton = $('.h5p-question-try-again', self.$container);
-    var $showSolutionButton = $('.h5p-question-show-solution', self.$container);
-    var buttons = [self.$muteButton, $tryAgainButton, $showSolutionButton];
-
-    // remove tabbable for buttons in result view
-    buttons.forEach(function (button) {
-      self.setTabbable(button, false);
-    });
-
-    self.solutionView.on('hide', function () {
-      self.showButton('show-solution');
-      // re-add tabbable for buttons in result view
-      buttons.forEach(function (button) {
-        self.setTabbable(button, true);
-      });
-      self.toggleAriaVisibility(true);
-      // Focus on first button when closing solution view
-      self.focusButton();
-    });
-
-    this.hideButton('show-solution');
-    self.solutionView.show();
-    self.toggleAriaVisibility(false);
   };
 
   /**
@@ -481,22 +451,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         styleType: 'secondary',
         icon: 'retry'
       });
-
-      this.hideButton('try-again');
-    }
-
-    if (this.options.behaviour.enableSolutionsButton) {
-      this.addButton('show-solution', this.l10n.showSolutionButtonLabel, function () {
-        self.showSolutions();
-      }, self.results.corrects !== self.options.choices.length, {
-        'aria-label': this.l10n.a11yShowSolution,
-      },
-      {
-        styleType: 'secondary',
-        icon: 'show-results'
-      });
-
-      this.hideButton('show-solution');
     }
   };
 
@@ -515,7 +469,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       $button.attr('aria-pressed', self.muted);
     }
 
-    // Keep this out of H5P.Question, since we are moving the button & feedback
+    // Keep this out of H5P.Question, since we are moving the button
     // region to the last slide
     if (!this.options.behaviour.autoContinue) {
 
@@ -566,9 +520,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       });
     }
 
-    // Append solution view - hidden by default:
-    self.solutionView.appendTo(self.$container);
-
     self.resize();
 
     // Hide all other slides than the current one:
@@ -583,10 +534,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.resize = function () {
     var self = this;
     var maxHeight = 0;
+
     self.choices.forEach(function (choice) {
       var choiceHeight = choice.$choice.outerHeight();
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
+
+    if (this.showingResultScreen) {
+      const resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
+      maxHeight = resultScreenHeight > maxHeight ? resultScreenHeight : maxHeight;
+    }
 
     // Set minimum height for choices
     self.$choices.css({minHeight: maxHeight + 'px'});
@@ -655,7 +612,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     if (isResultSlide) {
       self.setScore(self.results.corrects);
       this.showButton('try-again');
-      this.showButton('show-solution');
     }
 
     self.$container.toggleClass('navigatable', !isResultSlide);
@@ -666,6 +622,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     // move to slide
     $currentSlide.addClass('h5p-sc-current-slide');
     self.recklessJump(index);
+
+    self.trigger('resize');
 
     self.currentIndex = index;
   };
@@ -800,10 +758,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     }
   };
 
-  SingleChoiceSet.prototype.showSolutions = function () {
-    this.handleViewSolution();
-  };
-
   /**
    * Reset all answers. This is equal to refreshing the quiz
    * @param {boolean} moveFocus True to move the focus
@@ -812,12 +766,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
   SingleChoiceSet.prototype.resetTask = function (moveFocus = false) {
     var self = this;
 
-    // Close solution view if visible:
-    this.solutionView.hide();
-
     // Hide result slide buttons
     this.hideButton('try-again');
-    this.hideButton('show-solution');
 
     // Reset the user's answers
     var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
@@ -841,15 +791,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
       }
     });
 
+    this.showingResultScreen = false;
+
     this.move(0, moveFocus);
 
     // Reset userResponses as well
     this.userResponses = [];
-
-    // Wait for transition, then remove feedback.
-    H5P.Transition.onTransitionEnd(this.$choices, function () {
-      self.removeFeedback();
-    }, 600);
   };
 
   /**
@@ -892,28 +839,5 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
     self.read(selectedOptionText);
   };
 
-  /**
-   * Determine the overall feedback to display for the question.
-   * Returns empty string if no matching range is found.
-   *
-   * @param {Object[]} feedbacks
-   * @param {number} scoreRatio
-   * @return {string}
-   */
-  var determineOverallFeedback = function (feedbacks, scoreRatio) {
-    scoreRatio = Math.floor(scoreRatio * 100);
-
-    for (var i = 0; i < feedbacks.length; i++) {
-      var feedback = feedbacks[i];
-      var hasFeedback = (feedback.feedback !== undefined && feedback.feedback.trim().length !== 0);
-
-      if (feedback.from <= scoreRatio && feedback.to >= scoreRatio && hasFeedback) {
-        return feedback.feedback;
-      }
-    }
-
-    return '';
-  };
-
   return SingleChoiceSet;
-})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.SolutionView, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);
+})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);

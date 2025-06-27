@@ -152,6 +152,22 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Ponovo zadatak. Resetiraj sve odgovore i počni zadatak ispočetka."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

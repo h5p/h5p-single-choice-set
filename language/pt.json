@@ -152,6 +152,22 @@
         {
           "label": "Descrição da tecnologia assistiva para o botão \"Tentar novamente\"",
           "default": "Repetir a atividade. Apagar todas as respostas e reiniciar a atividade."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

@@ -152,6 +152,22 @@
         {
           "label": "Описание за помощни технологии бутон \"Опитай пак\" ",
           "default": "Опитай задачата отново. Нулиране на всички отговори и започване на задачата отначало."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }

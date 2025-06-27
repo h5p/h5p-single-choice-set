@@ -152,6 +152,22 @@
         {
           "label": "Descrición para as tecnoloxías de asistencia do botón \"Reintentar\"",
           "default": "Reintenta a tarefa. Borras todas as respostas e empeza a tarefa de novo."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
         }
       ]
     }
