@@ -541,7 +541,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     });
 
     if (this.showingResultScreen) {
-      let resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
+      const resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
       maxHeight = resultScreenHeight > maxHeight ? resultScreenHeight : maxHeight;
     }
 
