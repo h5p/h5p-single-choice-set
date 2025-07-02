@@ -40,7 +40,7 @@
   margin-inline: var(--h5p-theme-spacing-m);
   position: relative;
   box-sizing: border-box;
-  margin-bottom: var(--h5p-theme-spcing-xxs);
+  margin-bottom: var(--h5p-theme-spacing-xxs);
 }
 
 .h5p-single-choice-set .h5p-joubelui-progressbar {
