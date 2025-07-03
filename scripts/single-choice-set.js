@@ -540,8 +540,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     });
 
     if (this.showingResultScreen) {
-      const resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
-      maxHeight = resultScreenHeight > maxHeight ? resultScreenHeight : maxHeight;
+      let resultScreenHeight = this.resultSlide.component.scrollHeight
+
+      const listContainer = self.$container.find('.h5p-theme-results-list-container')[0];
+
+      if (listContainer) {
+        const containerStyle = getComputedStyle(listContainer);
+        const bottomPadding = parseInt(containerStyle.paddingBottom) || 0;
+        const bottomMargin = parseInt(containerStyle.marginBottom) || 0;
+        maxHeight = resultScreenHeight + bottomPadding + bottomMargin;
+      }
     }
 
     // Set minimum height for choices
