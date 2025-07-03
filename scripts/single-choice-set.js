@@ -126,7 +126,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', function() {
       self.resetTask(true);
-      self.$container.removeClass('showing-results');
     }, this);
     this.$slides.push(this.resultSlide.$resultSlide);
 
@@ -792,6 +791,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     });
 
     this.showingResultScreen = false;
+
+    this.$container.removeClass('showing-results');
 
     this.move(0, moveFocus);
 
