@@ -40,6 +40,7 @@
   margin-inline: var(--h5p-theme-spacing-m);
   position: relative;
   box-sizing: border-box;
+  margin-bottom: var(--h5p-theme-spacing-m);
 }
 
 .h5p-single-choice-set .h5p-joubelui-progressbar {
@@ -67,7 +68,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  padding-bottom: .5em;
 }
 
 .initialized .h5p-sc-slide {
@@ -105,6 +105,9 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   font-weight: 600;
   color: var(--h5p-theme-text-secondary);
   font-size: var(--h5p-theme-font-size-m);
+}
+.h5p-sc-alternatives li.h5p-sc-alternative:last-child {
+  margin-bottom: 0;
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
