@@ -126,7 +126,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.resultSlide.appendTo(this.$choices);
     this.resultSlide.on('retry', function() {
       self.resetTask(true);
-      self.$container.removeClass('showing-results');
     }, this);
     this.$slides.push(this.resultSlide.$resultSlide);
 
@@ -541,8 +540,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     });
 
     if (this.showingResultScreen) {
-      const resultScreenHeight = this.resultSlide.$resultSlide[0].scrollHeight;
-      maxHeight = resultScreenHeight > maxHeight ? resultScreenHeight : maxHeight;
+      let resultScreenHeight = this.resultSlide.component.scrollHeight
+
+      const listContainer = self.$container.find('.h5p-theme-results-list-container')[0];
+
+      if (listContainer) {
+        const containerStyle = getComputedStyle(listContainer);
+        const bottomPadding = parseInt(containerStyle.paddingBottom) || 0;
+        const bottomMargin = parseInt(containerStyle.marginBottom) || 0;
+        maxHeight = resultScreenHeight + bottomPadding + bottomMargin;
+      }
     }
 
     // Set minimum height for choices
@@ -792,6 +799,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     });
 
     this.showingResultScreen = false;
+
+    this.$container.removeClass('showing-results');
 
     this.move(0, moveFocus);
 
