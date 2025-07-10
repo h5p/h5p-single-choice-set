@@ -60,19 +60,8 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
         questions: params.questions.map((question, i) => {
           const score = question.options.answers[params.userResponses[i]]?.correct ? '1' : '0';
 
-          // Decode and escape HTML
-          const escapeHtml = (str) => {
-            const decoder = document.createElement('div');
-            decoder.innerHTML = str;
-            const decoded = decoder.textContent || decoder.innerText || '';
-
-            const escaper = document.createElement('div');
-            escaper.textContent = decoded;
-            return escaper.innerHTML;
-          };
-
           return {
-            title: escapeHtml(question.options.question),
+            title: question.options.question,
             points: `${score}/1`
           };
         }),
