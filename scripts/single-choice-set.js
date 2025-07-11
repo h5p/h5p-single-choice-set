@@ -80,6 +80,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       totalScore: ':score of :maxScore correct',
       resultTableHeader: 'Question',
       resultScoreTableHeader: 'Score',
+      correctAnswerIntroduction: 'Correct answer',
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
