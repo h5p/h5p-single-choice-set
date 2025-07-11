@@ -52,6 +52,12 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
       this.component.remove();
     }
 
+    const stripHtml = (html) => {
+      const decoder = document.createElement('div');
+      decoder.innerHTML = html;
+      return decoder.textContent || decoder.innerText || '';
+    }
+
     this.component = H5P.Components.ResultScreen({
       header: params.l10n.resultHeader,
       scoreHeader: params.l10n.totalScore.replace(':score', params.totalScore).replace(':maxScore', this.maxscore),
@@ -59,10 +65,13 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
         listHeaders: [ params.l10n.resultTableHeader, params.l10n.resultScoreTableHeader ],
         questions: params.questions.map((question, i) => {
           const score = question.options.answers[params.userResponses[i]]?.correct ? '1' : '0';
-
           return {
             title: question.options.question,
-            points: `${score}/1`
+            points: `${score}/1`,
+            isCorrect: score === '1',
+            userAnswer: stripHtml(question.options.answers[params.userResponses[i]].text),
+            correctAnswer: stripHtml(question.options.answers.find(a => a.correct).text),
+            correctAnswerPrepend: `${params.l10n.correctAnswerIntroduction}: `
           };
         }),
       }]

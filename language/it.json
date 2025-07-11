@@ -168,6 +168,10 @@
         {
           "label": "The Score header of the result screen table",
           "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Risposta giusta"
         }
       ]
     }

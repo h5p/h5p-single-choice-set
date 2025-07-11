@@ -154,20 +154,24 @@
           "default": "Die Aufgabe wiederholen. Alle Versuche werden zurückgesetzt und die Aufgabe wird erneut gestartet."
         },
         {
-          "label": "The main header of the result screen",
-          "default": "Your result:"
+          "label": "Haupt-Kopfzeile auf dem Ergebnisbildschirm",
+          "default": "Dein Ergebnis:"
         },
         {
-          "label": "The score header of the result screen",
-          "default": ":score of :maxScore correct"
+          "label": "Punkte-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": ":score von :maxScore korrekt"
         },
         {
-          "label": "The Question header of the result screen table",
-          "default": "Question"
+          "label": "Frage-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": "Frage"
         },
         {
-          "label": "The Score header of the result screen table",
-          "default": "Score"
+          "label": "Punkte-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": "Punkte"
+        },
+        {
+          "label": "Einleitung für die korrekte Antwort",
+          "default": "Richtige Antwort"
         }
       ]
     }

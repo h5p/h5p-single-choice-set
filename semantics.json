@@ -351,6 +351,13 @@
         "label": "The Score header of the result screen table",
         "default": "Score",
         "importance": "low"
+      },
+      {
+        "name": "correctAnswerIntroduction",
+        "type": "text",
+        "label": "Correct answer introduction",
+        "default": "Correct answer",
+        "importance": "low"
       }
     ]
   }
