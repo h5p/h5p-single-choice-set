@@ -41,7 +41,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
   /**
    * Show the result slide, with updated results
-   * 
+   *
    * @param {object} params.l10n Translation strings
    * @param {[object]} params.questions The question objects, including answers
    * @param {[object]} params.userResponses What the user has answered
@@ -67,7 +67,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
           const score = question.options.answers[params.userResponses[i]]?.correct ? '1' : '0';
           return {
             title: question.options.question,
-            points: `${score}/1`,
+            points: score,
             isCorrect: score === '1',
             userAnswer: stripHtml(question.options.answers[params.userResponses[i]].text),
             correctAnswer: stripHtml(question.options.answers.find(a => a.correct).text),
