@@ -214,7 +214,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }
 
     if (event.data.index + 1 >= self.choices.length) {
-      self.nav.setCanShowLast(true);
+      self.nav?.setCanShowLast(true);
     }
   };
 
