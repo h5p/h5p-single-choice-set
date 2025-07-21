@@ -1,0 +1,159 @@
+{
+  "semantics": [
+    {
+      "label": "Listă de întrebări",
+      "entity": "întrebare",
+      "widgets": [
+        {
+          "label": "Implicit"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Întrebare & alternative",
+        "fields": [
+          {
+            "label": "Întrebare"
+          },
+          {
+            "label": "Alternative - prima alternativă este cea corectă.",
+            "entity": "răspuns",
+            "field": {
+              "label": "Alternativă"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Feedback general",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Implicit"
+            }
+          ],
+          "label": "Definiți feedback personalizat pentru orice interval de scor",
+          "description": "Apăsați butonul „Adaugă interval” pentru a adăuga oricâte intervale aveți nevoie. Exemplu: 0-20% Scor slab, 21-91% Scor mediu, 91-100% Scor excelent!",
+          "entity": "interval",
+          "field": {
+            "fields": [
+              {
+                "label": "Interval de scor"
+              },
+              {},
+              {
+                "label": "Feedback pentru intervalul de scor definit",
+                "placeholder": "Completați feedback-ul"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Setări de comportament",
+      "fields": [
+        {
+          "label": "Continuare automată",
+          "description": "Treceți automat la următoarea întrebare când este selectată o alternativă. Aceasta trebuie dezactivată pentru a face conținutul complet accesibil la utilizarea unui cititor de ecran."
+        },
+        {
+          "label": "Timp de așteptare la răspunsuri corecte",
+          "description": "Valoare în milisecunde"
+        },
+        {
+          "label": "Timp de așteptare la răspunsuri greșite",
+          "description": "Valoare în milisecunde"
+        },
+        {
+          "label": "Activează efecte sonore"
+        },
+        {
+          "label": "Activează butonul de reîncercare"
+        },
+        {
+          "label": "Activează butonul de afișare a soluției"
+        },
+        {
+          "label": "Procentaj de promovare",
+          "description": "Procentajul din scorul total necesar pentru a promova testul."
+        }
+      ]
+    },
+    {
+      "label": "Localizare set de alegere unică",
+      "fields": [
+        {
+          "label": "Etichetă pentru butonul „Următorul”",
+          "default": "Întrebarea următoare"
+        },
+        {
+          "label": "Etichetă vizuală pentru butonul „Următorul”",
+          "default": "Următorul"
+        },
+        {
+          "label": "Etichetă pentru butonul „Arată soluția”",
+          "default": "Arată soluția"
+        },
+        {
+          "label": "Etichetă pentru butonul „Reîncearcă”",
+          "default": "Reîncearcă"
+        },
+        {
+          "label": "Titlu pentru vizualizarea soluției",
+          "default": "Listă de soluții"
+        },
+        {
+          "label": "Text pentru cititorul de ecran pentru răspuns corect",
+          "default": "Corect!"
+        },
+        {
+          "label": "Text pentru cititorul de ecran pentru răspuns incorect",
+          "default": "Incorect!"
+        },
+        {
+          "label": "Opțiunea ar fi trebuit selectată",
+          "default": "Ar fi trebuit selectată"
+        },
+        {
+          "label": "Opțiunea nu ar fi trebuit selectată",
+          "default": "Nu ar fi trebuit selectată"
+        },
+        {
+          "label": "Etichetă pentru butonul „dezactivare sunet”, pentru a opri sunetul de feedback",
+          "default": "Dezactivează sunetul de feedback"
+        },
+        {
+          "label": "Etichetă pentru butonul „Închide”",
+          "default": "Închide"
+        },
+        {
+          "label": "Text număr diapozitiv",
+          "description": "Anunță diapozitivul curent și numărul total de diapozitive, variabilele sunt :num și :total",
+          "default": "Diapozitivul :num din :total"
+        },
+        {
+          "label": "Reprezentarea textuală a barei de scor pentru cei care utilizează un cititor de ecran",
+          "default": "Ați obținut :num din :total puncte"
+        },
+        {
+          "label": "Etichetă pentru numărul întrebării în lista de soluții",
+          "description": "Anunță indexul întrebării curente în lista de soluții, variabila este :num",
+          "default": "Întrebarea :num"
+        },
+        {
+          "label": "Descriere pentru tehnologia asistivă pentru butonul „Arată soluția”",
+          "default": "Arată soluția. Sarcina va fi marcată cu soluția sa corectă."
+        },
+        {
+          "label": "Descriere pentru tehnologia asistivă pentru butonul „Reîncearcă”",
+          "default": "Reîncearcă sarcina. Resetează toate răspunsurile și începe sarcina din nou."
+        }
+      ]
+    }
+  ]
+}
