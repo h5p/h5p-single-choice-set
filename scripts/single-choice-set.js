@@ -213,6 +213,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       // accepted on iPad. Therefore we are playing it here with a delay instead
       SoundEffects.play(this.lastAnswerIsCorrect ? 'positive-short' : 'negative-short', 700);
     }
+
+    if (event.data.index + 1 >= self.choices.length) {
+      self.nav?.setCanShowLast(true);
+    }
   };
 
   /**
@@ -476,26 +480,33 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       var handleNextClick = function () {
         if (self.$nextButton.attr('aria-disabled') !== 'true') {
           self.next();
+          return true;
         }
+        return false;
       };
 
-      self.$footer = H5P.jQuery('<div>', {
-        class: 'h5p-navigation'
-      }).appendTo(self.$container);
+      const nav = H5P.Components.Navigation({
+        variant: '2-split-next',
+        progressType: 'bar',
+        handleNext: handleNextClick,
+        handleLast: () => {
+          self.move(self.currentIndex + 1);
+        },
+        index: this.currentIndex,
+        navigationLength: this.choices.length,
+        texts: {
+          nextButton: this.l10n.nextButton,
+          nextButtonAria: this.l10n.nextButtonLabel,
+          tooltip: this.l10n.nextButtonLabel,
+          lastButton: this.l10n.showSolutionButtonLabel
+        },
+      });
+      self.$container[0].appendChild(nav);
+      self.$nextButton = $(nav.querySelector('.h5p-theme-next'));
+      self.lastButton = nav.querySelector('.h5p-theme-submit');
 
-      self.progressbar.appendTo(self.$footer);
-
-      self.$nextButton = $(H5P.Components.Button({
-        label: self.l10n.nextButton,
-        ariaLabel: self.l10n.nextButtonLabel,
-        tooltip: self.l10n.nextButtonLabel,
-        onClick: handleNextClick,
-        styleType: 'nav',
-        icon: 'next',
-      }));
-
-      self.$footer.append(self.$nextButton);
       self.toggleNextButton(false);
+      self.nav = nav;
     }
 
     if (self.options.behaviour.soundEffectsEnabled) {
@@ -807,6 +818,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     // Reset userResponses as well
     this.userResponses = [];
+
+    if (this.nav) {
+      this.nav.setCanShowLast(false);
+      this.nav.setCurrentIndex(0);
+    }
   };
 
   /**
