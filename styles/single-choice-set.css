@@ -1,3 +1,7 @@
+.h5p-single-choice-set .h5p-sc-question {
+  width: 100%;
+}
+
 .h5p-container.h5p-single-choice-set {
   overflow: hidden;
 }
@@ -78,8 +82,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   overflow: hidden;
   transition: -webkit-transform 0.5s ease-in-out, width 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
-  display: flex;
-  align-items: center;
   padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
   margin: var(--h5p-theme-spacing-xxs) 0;
   background: var(--h5p-theme-alternative-base);
