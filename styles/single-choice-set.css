@@ -1,3 +1,7 @@
+.h5p-single-choice-set .h5p-sc-question {
+  width: 100%;
+}
+
 .h5p-container.h5p-single-choice-set {
   overflow: hidden;
 }
