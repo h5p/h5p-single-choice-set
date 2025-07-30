@@ -1,3 +1,7 @@
+.h5p-theme .h5p-sc-set .h5p-question-introduction {
+  font-weight: inherit; /* Override H5P.Question */
+}
+
 .h5p-single-choice-set .h5p-sc-question {
   width: 100%;
 }
@@ -92,7 +96,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   box-shadow: none;
   text-align: left;
   line-height: var(--h5p-theme-font-size-xxl);
-  font-weight: 600;
   color: var(--h5p-theme-text-secondary);
   font-size: var(--h5p-theme-font-size-m);
 }
@@ -260,8 +263,16 @@ li.h5p-sc-alternative .h5p-sc-status {
   box-sizing: border-box;
 }
 
+.h5p-sc-set-results .h5p-theme-results-question {
+  font-weight: inherit;
+}
+
 .h5p-sc-set-results .h5p-theme-results-question p {
   margin: 0;
+}
+
+.h5p-sc-set-results .h5p-theme-results-answer .h5p-theme-results-solution {
+  font-weight: inherit;
 }
 
 .h5p-sc-sound-control {
