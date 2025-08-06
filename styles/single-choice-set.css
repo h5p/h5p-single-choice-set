@@ -263,10 +263,6 @@ li.h5p-sc-alternative .h5p-sc-status {
   box-sizing: border-box;
 }
 
-.h5p-sc-set-results .h5p-theme-results-question {
-  font-weight: inherit;
-}
-
 .h5p-sc-set-results .h5p-theme-results-question p {
   margin: 0;
 }
