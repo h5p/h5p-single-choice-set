@@ -508,11 +508,17 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.$container.append(self.$choices);
 
+    function updateMuteButton() {
+      if (self.$muteButton) {
+        self.$muteButton.attr('aria-pressed', self.muted);
+      }
+    }
+
     function toggleMute(event) {
       var $button = $(event.target);
       event.preventDefault();
       self.muted = !self.muted;
-      $button.attr('aria-pressed', self.muted);
+      updateMuteButton();
     }
 
     // Keep this out of H5P.Question, since we are moving the button & feedback
@@ -551,18 +557,15 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
         'role': 'button',
         'aria-label': self.l10n.muteButtonLabel,
         'aria-pressed': false,
-        'on': {
-          'keydown': function (event) {
-            switch (event.which) {
-              case 13: // Enter
-              case 32: // Space
-                toggleMute(event);
-                break;
-            }
-          }
-        },
-        'click': toggleMute,
-        appendTo: self.$container.find('.h5p-question-introduction')
+      }).appendTo(self.$container.find('.h5p-question-introduction'));
+      self.$muteButton.on('click', toggleMute);
+      self.$muteButton.on('keydown', function (event) {
+        switch (event.which) {
+          case 13: // Enter
+          case 32: // Space
+            toggleMute(event);
+            break;
+        }
       });
     }
 
