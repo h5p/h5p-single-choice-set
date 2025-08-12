@@ -38,6 +38,11 @@
   margin-bottom: var(--h5p-theme-spacing-m);
 }
 
+.h5p-no-frame .h5p-theme.h5p-single-choice-set.h5p-standalone .h5p-sc-set {
+  padding: 0;
+  margin: 0;
+}
+
 .h5p-single-choice-set .h5p-joubelui-progressbar {
   position: relative;
   z-index: 1;
