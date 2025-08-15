@@ -38,6 +38,10 @@
   margin-bottom: var(--h5p-theme-spacing-m);
 }
 
+.h5p-sc-set:has(.h5p-sc-current-slide.h5p-sc-set-results) {
+  margin-inline: 0;
+}
+
 .h5p-no-frame .h5p-theme.h5p-single-choice-set.h5p-standalone .h5p-sc-set {
   padding: 0;
   margin: 0;
