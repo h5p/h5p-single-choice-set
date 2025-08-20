@@ -25,7 +25,7 @@ H5P.SingleChoiceSet.Alternative = (function ($, EventDispatcher) {
     };
 
     this.$alternative = $('<li>', {
-      'class': 'h5p-sc-alternative h5p-sc-is-' + (this.options.correct ? 'correct' : 'wrong'),
+      'class': 'h5p-sc-alternative',
       'role': 'radio',
       'tabindex': -1,
       'on': {
