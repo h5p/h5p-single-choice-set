@@ -202,7 +202,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     self.triggerXAPI('interacted');
 
-    // Read and set a11y friendly texts 
+    // Read and set a11y friendly texts
     self.readA11yFriendlyText(event.data.index, event.data.currentIndex)
 
     if (!this.muted) {
@@ -764,6 +764,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
     var result = XApiEventBuilder.createResult()
       .score(self.getScore(), self.getMaxScore())
+      .completion(true)
+      .success(self.getScore() >= self.getMaxScore() * self.options.behaviour.passPercentage / 100)
       .duration(self.getTotalPassedTime())
       .build();
 
@@ -870,9 +872,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, SolutionView, Re
 
   /**
    * Generate A11y friendly text
-   * 
+   *
    * @param  {number} index
-   * @param  {number} currentIndex 
+   * @param  {number} currentIndex
    */
   SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
     var self = this;
