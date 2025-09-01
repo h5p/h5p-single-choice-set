@@ -107,6 +107,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   line-height: var(--h5p-theme-font-size-xxl);
   color: var(--h5p-theme-text-secondary);
   font-size: var(--h5p-theme-font-size-m);
+  font-weight: bold;
 }
 .h5p-sc-alternatives li.h5p-sc-alternative:last-child {
   margin-bottom: 0;
