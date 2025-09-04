@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Oznaka za dugme \"Prikaži rješenje\" ",
-          "default": "Prikaži rješenje"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Oznaka za dugme \"Ponovi\" ",

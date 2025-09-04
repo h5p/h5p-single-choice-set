@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"Çözümü göster\" düğmesi için etiket",
-          "default": "Çözümü göster"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"Yeniden dene\" düğmesi için etiket",

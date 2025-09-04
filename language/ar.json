@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "لافتة زر \" اظهر الحل \"",
-          "default": "Show solution"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "لافتة زر \" اعادة المحاولة\"",

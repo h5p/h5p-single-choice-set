@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Надпись для кнопки \"Показать решение\"",
-          "default": "Показать решение"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Надпись для кнопки \"Повторить\"",

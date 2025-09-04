@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "წარწერა \"პასუხის ჩვენების\" ღილაკისთვის",
-          "default": "პასუხის ჩვენება"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "წარწერა \"თავიდან ცდის\" ღილაკისთვის",

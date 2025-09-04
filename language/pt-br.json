@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Rótulo para o botão \"Mostrar Solução\"",
-          "default": "Mostrar Solução"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Rótulo para o botão \"Tentar Novamente\"",

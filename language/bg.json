@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Етикет за бутон \"Покажи решение\" ",
-          "default": "Покажи решение"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Етикет за бутон \"Опитай пак\" ",

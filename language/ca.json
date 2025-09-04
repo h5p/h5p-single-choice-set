@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etiqueta per al botó \"Mostra la solució\"",
-          "default": "Mostra la solució"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etiqueta del botó \"Torna-ho a provar\"",

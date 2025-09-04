@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etiqueta para o botón \"Amosar solución\"",
-          "default": "Amosar solución"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etiqueta para o botón \"Reintentar\"",

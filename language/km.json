@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Label for the \"Show solution\" button",
-          "default": "បង្ហាញចម្លើយត្រឹមត្រូវ"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Label for the \"Retry\" button",

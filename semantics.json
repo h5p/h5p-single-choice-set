@@ -226,11 +226,11 @@
         "default": "Next"
       },
       {
-        "name": "showSolutionButtonLabel",
+        "name": "showResultsButtonLabel",
         "type": "text",
-        "label": "Label for the \"Show solution\" button",
+        "label": "Label for the \"Show results\" button",
         "importance": "low",
-        "default": "Show solution"
+        "default": "Show results"
       },
       {
         "name": "retryButtonLabel",

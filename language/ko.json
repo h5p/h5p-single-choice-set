@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"해답 보이기\" 버튼 라벨",
-          "default": "해답 보이기"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"재시도\" 버튼 라벨",

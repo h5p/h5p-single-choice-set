@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Tekst voor \"Toon oplossing\"-knop",
-          "default": "Toon oplossing"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Tekst voor \"Opnieuw\"-knop",

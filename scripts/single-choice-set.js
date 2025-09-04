@@ -67,7 +67,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       shouldNotSelect: "Should not have been selected",
       nextButtonLabel: 'Next question',
       nextButton: 'Next',
-      showSolutionButtonLabel: 'Show solution',
+      showResultsButtonLabel: 'Show results',
       retryButtonLabel: 'Retry',
       closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
@@ -506,12 +506,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
           nextButton: this.l10n.nextButton,
           nextButtonAria: this.l10n.nextButtonLabel,
           tooltip: this.l10n.nextButtonLabel,
-          lastButton: this.l10n.showSolutionButtonLabel
+          lastButton: this.l10n.showResultsButtonLabel
         },
       });
       self.$container[0].appendChild(nav);
       self.$nextButton = $(nav.querySelector('.h5p-theme-next'));
-      self.lastButton = nav.querySelector('.h5p-theme-submit');
+      self.lastButton = nav.querySelector('.h5p-show-results');
 
       self.toggleNextButton(false);
       self.nav = nav;

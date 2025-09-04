@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"Näita lahendust\" nupu silt",
-          "default": "Näita lahendust"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"Proovi uuesti\" nupu silt",

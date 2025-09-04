@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Popisek tlačítka \"Zobrazit řešení\"",
-          "default": "Zobrazit řešení"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Popisek tlačítka \"Opakovat\"",

@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"Erakutsi emaitza\" botoiarentzako etiketa",
-          "default": "Erakutsi emaitza"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"Saiatu berriro\" botoiarentzako etiketa",

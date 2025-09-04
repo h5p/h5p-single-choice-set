@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "ป้ายกำกับสำหรับปุ่ม \"แสดงคำตอบ\"",
-          "default": "แสดงคำตอบ"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "ป้ายกำกับสำหรับปุ่ม \"ลองใหม่\"",

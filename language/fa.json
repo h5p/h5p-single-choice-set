@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "برچسب دکمه نمایش پاسخ صحیح",
-          "default": "نمایش پاسخ صحیح"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "برچسب دکمه تلاش مجدد",

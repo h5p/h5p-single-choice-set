@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "תווית לכפתור \"הצג פתרון\"",
-          "default": "הצג פתרון"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "תווית לכפתור \"ניסיון חוזר\"",

@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"显示答案\"按钮的标签",
-          "default": "显示答案"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"重做\"按钮的标签",

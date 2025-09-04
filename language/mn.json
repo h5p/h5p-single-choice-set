@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "\"Хариулт харуулах\" товчны нэр",
-          "default": "Хариулт харуулах"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"Дахин оролдох\" товчны нэр",

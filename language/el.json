@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Ετικέτα κουμπιού \"Εμφάνιση λύσης\"",
-          "default": "Λύση"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Ετικέτα κουμπιού \"Επανάληψη\"",
