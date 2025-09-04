@@ -19,6 +19,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
      * @type {number[]}
      */
     this.userResponses = [];
+    this.userAnswerIndex = [];
     Question.call(this, 'single-choice-set', { theme: true });
     this.options = $.extend(true, {}, {
       choices: [],
@@ -202,6 +203,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     // saves user response
     self.userResponses[event.data.index] = event.data.currentIndex;
+    self.userAnswerIndex[event.data.index] = event.data.answerIndex;
 
     self.triggerXAPI('interacted');
 
@@ -733,7 +735,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     // create array with userAnswer
     var children =  self.options.choices.map(function (question, index) {
-      var userResponse = self.userResponses[index] >= 0 ? self.userResponses[index] : '';
+      var userResponse = self.userAnswerIndex[index] >= 0 ? self.userAnswerIndex[index] : '';
       var duration = self.timePassedInStopWatch(index);
       var event = self.createXApiAnsweredEvent(question, userResponse, duration);
 
