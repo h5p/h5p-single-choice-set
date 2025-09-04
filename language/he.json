@@ -76,7 +76,8 @@
           "label": "הפעל כפתור ניסיון חוזר"
         },
         {
-          "label": "הפעל כפתור הצגת פתרון"
+          "label": "הפעל כפתור הצגת פתרון",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "אחוז מעבר",

@@ -76,7 +76,8 @@
           "label": "Schakel \"Opnieuw\"-knop in"
         },
         {
-          "label": "Schakel \"Toon oplossing\"-knop in"
+          "label": "Schakel \"Toon oplossing\"-knop in",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Slagingspercentage",

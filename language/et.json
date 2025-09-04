@@ -76,7 +76,8 @@
           "label": "Luba Proovi uuesti nupp"
         },
         {
-          "label": "Luba Näita lahendust nupp"
+          "label": "Luba Näita lahendust nupp",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Edenemise protsent",

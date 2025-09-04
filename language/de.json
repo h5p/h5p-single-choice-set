@@ -76,7 +76,8 @@
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {
-          "label": "\"Lösung anzeigen\" ermöglichen"
+          "label": "\"Lösung anzeigen\" ermöglichen",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Prozentsatz zum Bestehen",

@@ -76,7 +76,8 @@
           "label": "Įjungti pakartotinio bandymo mygtuką"
         },
         {
-          "label": "Įjungti sprendimo rodymo mygtuką"
+          "label": "Įjungti sprendimo rodymo mygtuką",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Išlaikymo procentas",

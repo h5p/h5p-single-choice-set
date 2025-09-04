@@ -76,7 +76,8 @@
           "label": "Prikaži dugme \"Ponovi\""
         },
         {
-          "label": "Prikaži dugme \"Prikaži rješenje\""
+          "label": "Prikaži dugme \"Prikaži rješenje\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Minimalno procenata za prolaz",

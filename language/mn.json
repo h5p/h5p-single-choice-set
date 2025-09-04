@@ -76,7 +76,8 @@
           "label": "Дахин эхлэх товчийг идэвхжүүлэх"
         },
         {
-          "label": "Хариултыг харуулахыг зөвшөөрөх"
+          "label": "Хариултыг харуулахыг зөвшөөрөх",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Давах хувь",

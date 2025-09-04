@@ -76,7 +76,8 @@
           "label": "재시도 버튼 활성화"
         },
         {
-          "label": "해답 보이기 버튼 활성화"
+          "label": "해답 보이기 버튼 활성화",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "통과 백분율",

@@ -76,7 +76,8 @@
           "label": "Включити кнопку повтора"
         },
         {
-          "label": "Включити кнопку показу відповідей"
+          "label": "Включити кнопку показу відповідей",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Прохідний відсоток",

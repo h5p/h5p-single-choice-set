@@ -76,7 +76,8 @@
           "label": "Povolit tlačítko opakování"
         },
         {
-          "label": "Povolit tlačítko ukázat řešení"
+          "label": "Povolit tlačítko ukázat řešení",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Procento úspěšnosti",

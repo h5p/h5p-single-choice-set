@@ -76,7 +76,8 @@
           "label": "เปิดใช้ปุ่มลองใหม่"
         },
         {
-          "label": "เปิดใช้ปุ่มแสดงคำตอบ"
+          "label": "เปิดใช้ปุ่มแสดงคำตอบ",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "ร้อยละที่ผ่าน",

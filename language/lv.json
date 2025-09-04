@@ -76,7 +76,8 @@
           "label": "Atļaut atkārtošanas pogu"
         },
         {
-          "label": "Atļaut risinājuma rādīšanas pogu"
+          "label": "Atļaut risinājuma rādīšanas pogu",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Nokārtošanas procents",

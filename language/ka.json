@@ -76,7 +76,8 @@
           "label": "დაუშვი თავიდან ცდის ღილაკი"
         },
         {
-          "label": "დაუშვი პასუხის ჩვენების ღილაკი"
+          "label": "დაუშვი პასუხის ჩვენების ღილაკი",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "გადალახვის პროცენტი",

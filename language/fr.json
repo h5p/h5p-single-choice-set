@@ -76,7 +76,8 @@
           "label": "Activer le bouton \"Recommencer\""
         },
         {
-          "label": "Activer le bouton \"Voir la correction\""
+          "label": "Activer le bouton \"Voir la correction\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Pourcentage de réussite",

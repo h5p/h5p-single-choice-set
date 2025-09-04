@@ -76,7 +76,8 @@
           "label": "\"Prøv igjen\"-knapp"
         },
         {
-          "label": "\"Vis svar\"-knapp"
+          "label": "\"Vis svar\"-knapp",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Krav for å bestå",

@@ -76,7 +76,8 @@
           "label": "启用重试按钮"
         },
         {
-          "label": "启用显示答案按钮"
+          "label": "启用显示答案按钮",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "及格分数",
