@@ -188,6 +188,7 @@
         "name": "enableSolutionsButton",
         "type": "boolean",
         "label": "Enable show solution button",
+        "description": "This feature is not applicable when the new look and feel is enabled.",
         "importance": "low",
         "default": true
       },
