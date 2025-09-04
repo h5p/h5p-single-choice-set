@@ -76,7 +76,8 @@
           "label": "Habilitar botón Reintentar"
         },
         {
-          "label": "Habilitar botón Mostrar solución"
+          "label": "Habilitar botón Mostrar solución",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Porcentaje aprobatorio",

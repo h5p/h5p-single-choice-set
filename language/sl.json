@@ -76,7 +76,8 @@
           "label": "Omogoči gumb \"Poskusi ponovno\""
         },
         {
-          "label": "Omogoči gumb \"Prikaži rešitev\""
+          "label": "Omogoči gumb \"Prikaži rešitev\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Prag za napredovanje",

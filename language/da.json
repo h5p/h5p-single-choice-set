@@ -76,7 +76,8 @@
           "label": "Enable retry button"
         },
         {
-          "label": "Enable show solution button"
+          "label": "Enable show solution button",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Pass percentage",

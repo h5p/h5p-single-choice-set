@@ -76,7 +76,8 @@
           "label": "Attiva il pulsante Riprova"
         },
         {
-          "label": "Attiva il pulsante Mostra soluzione"
+          "label": "Attiva il pulsante Mostra soluzione",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Percentuale di superamento della prova",

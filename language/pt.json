@@ -76,7 +76,8 @@
           "label": "Ativar botão Tentar novamente"
         },
         {
-          "label": "Ativar botão Mostrar solução"
+          "label": "Ativar botão Mostrar solução",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Percentagem de aprovação",

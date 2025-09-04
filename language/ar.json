@@ -76,7 +76,8 @@
           "label": "تمكين زر \"اعادة المحاولة \""
         },
         {
-          "label": "تمكين زر \" اظهر الحل \""
+          "label": "تمكين زر \" اظهر الحل \"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "نسبة النجاح",

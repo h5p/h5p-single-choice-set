@@ -76,7 +76,8 @@
           "label": "Washa kitufe cha jaribu tena"
         },
         {
-          "label": "Washa kitufe cha kuonyesha suluhisho"
+          "label": "Washa kitufe cha kuonyesha suluhisho",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Asilimia ya ufaulu",

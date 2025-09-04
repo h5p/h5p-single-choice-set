@@ -76,7 +76,8 @@
           "label": "Ενεργοποίηση κουμπιού \"Επανάληψη\""
         },
         {
-          "label": "Ενεργοποίηση κουμπιού \"Λύση\""
+          "label": "Ενεργοποίηση κουμπιού \"Λύση\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Ποσοστό επιτυχίας",
