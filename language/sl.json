@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Besedilo za gumb \"Prikaži rešitev\"",
-          "default": "Prikaži rešitev"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Besedilo za gumb \"Poskusi ponovno\"",

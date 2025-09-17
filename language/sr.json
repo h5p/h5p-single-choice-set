@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Ознака за \"Прикажи решења\" дугме",
-          "default": "Прикажи решења"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Ознака за \"Врати\" дугме",

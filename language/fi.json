@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Painikkeen \"Katso vastaus\" nimi",
-          "default": "Katso vastaus"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Painikkeen \"Yritä uudelleen\" nimi",

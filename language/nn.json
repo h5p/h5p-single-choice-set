@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etikett på \"Vis svar\" knappen",
-          "default": "Fasit"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etikett på \"Prøv igjen\" knappen",

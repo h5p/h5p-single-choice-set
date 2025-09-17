@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
-          "default": "Lösung anzeigen"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Beschriftung des \"Wiederholen\"-Buttons",

@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Lebo ya kitufe cha \"Onyesha suluhisho\"",
-          "default": "Onyesha suluhisho"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Lebo ya kitufe cha \"Jaribu tena\"",

@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Mygtuko \"Rodyti sprendimą\" pavadinimas",
-          "default": "Rodyti sprendimą"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Mygtuko \"Bandyti dar kartą\" pavadinimas",

@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etichetta per il pulsante \"Mostra soluzione\"",
-          "default": "Mostra soluzione"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etichetta per il pulsante \"Riprova\"",

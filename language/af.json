@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etiket vir \"Wys antwoord\" knoppie",
-          "default": "Wys antwoord"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etiket vir die \"Probeer weer\" knoppie",

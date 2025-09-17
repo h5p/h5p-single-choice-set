@@ -97,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Etikett för knappen \"Visa lösning\"",
-          "default": "Visa lösning"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etikett för knappen \"Försök igen\"",
