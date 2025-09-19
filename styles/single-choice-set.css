@@ -123,10 +123,10 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:focus,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative:focus-visible,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:focus {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong:focus-visible {
   background: var(--h5p-theme-alternative-base);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -136,7 +136,7 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:focus {
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:focus-visible {
   background: var(--h5p-theme-feedback-correct-secondary);
   color: var(--h5p-theme-feedback-correct-main);
   border-color: var(h5p-theme-feedback-correct-third);
@@ -156,7 +156,7 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:hover,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:active,
-ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus,
+ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-wrong.h5p-sc-selected:focus-visible,
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-is-wrong.h5p-sc-selected.h5p-sc-reveal-wrong .h5p-sc-progressbar {
   background: var(--h5p-theme-feedback-incorrect-secondary);
   color: var(--h5p-theme-feedback-incorrect-main);
