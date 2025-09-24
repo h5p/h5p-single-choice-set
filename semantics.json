@@ -218,6 +218,13 @@
         "default": "Next question"
       },
       {
+        "name": "nextButton",
+        "type": "text",
+        "label": "Visual label for the \"Next\" button",
+        "importance": "low",
+        "default": "Next"
+      },
+      {
         "name": "showSolutionButtonLabel",
         "type": "text",
         "label": "Label for the \"Show solution\" button",

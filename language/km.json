@@ -92,6 +92,10 @@
           "default": "សំណួរបន្ទាប់"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Label for the \"Show solution\" button",
           "default": "បង្ហាញចម្លើយត្រឹមត្រូវ"
         },

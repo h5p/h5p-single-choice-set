@@ -52,11 +52,17 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
     var questionId = 'single-choice-' + self.id + '-question-' + self.index;
 
-    this.$choice.append($('<div>', {
+    const $introduction = $('<div>', {
+      'class': 'h5p-question-introduction',
+    });
+
+    $introduction.append($('<div>', {
       'id': questionId,
       'class': 'h5p-sc-question',
       'html': this.options.question
     }));
+
+    this.$choice.append($introduction);
 
     var $alternatives = $('<ul>', {
       'class': 'h5p-sc-alternatives',

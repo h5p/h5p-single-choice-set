@@ -30,14 +30,14 @@ H5P.SingleChoiceSet.SolutionView = (function ($, EventDispatcher) {
     this.$header.append(this.$title);
 
     // Close solution view button
-    $('<button>', {
-      'role': 'button',
-      'aria-label': l10n.closeButtonLabel + '.',
-      'class': 'h5p-joubelui-button h5p-sc-close-solution-view',
-      'click': function () {
-        self.hide();
-      }
-    }).appendTo(this.$header);
+    this.$header[0].appendChild(H5P.Components.Button({
+      ariaLabel: l10n.closeButtonLabel,
+      tooltip: l10n.closeButtonLabel,
+      styleType: 'nav',
+      icon: 'previous',
+      onClick: () => self.hide(),
+      classes: 'h5p-sc-close-solution-view'
+    }));
 
     self.populate();
   }

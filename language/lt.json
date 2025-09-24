@@ -92,6 +92,10 @@
           "default": "Kitas klausimas"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Mygtuko \"Rodyti sprendimą\" pavadinimas",
           "default": "Rodyti sprendimą"
         },

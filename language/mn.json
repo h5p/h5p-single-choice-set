@@ -92,6 +92,10 @@
           "default": "Дараагийн асуулт"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"Хариулт харуулах\" товчны нэр",
           "default": "Хариулт харуулах"
         },

@@ -92,6 +92,10 @@
           "default": "Volgende vraag"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Etiket vir \"Wys antwoord\" knoppie",
           "default": "Wys antwoord"
         },

@@ -92,6 +92,10 @@
           "default": "Neste spørsmål"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Namn på \"Vis svar\"-knapp",
           "default": "Vis svar"
         },

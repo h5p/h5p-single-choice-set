@@ -92,6 +92,10 @@
           "default": "Sonraki soru"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "\"Çözümü göster\" düğmesi için etiket",
           "default": "Çözümü göster"
         },

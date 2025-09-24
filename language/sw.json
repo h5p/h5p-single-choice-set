@@ -92,6 +92,10 @@
           "default": "Swali linalofuata"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Lebo ya kitufe cha \"Onyesha suluhisho\"",
           "default": "Onyesha suluhisho"
         },

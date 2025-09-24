@@ -92,6 +92,10 @@
           "default": "Next question"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "لافتة زر \" اظهر الحل \"",
           "default": "Show solution"
         },

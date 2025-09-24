@@ -92,6 +92,10 @@
           "default": "次の質問"
         },
         {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
           "label": "Label for the \"Show solution\" button",
           "default": "正解"
         },
