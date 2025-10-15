@@ -75,7 +75,6 @@ ul.h5p-sc-alternatives {
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative {
   position: relative;
-  cursor: pointer;
   box-sizing: border-box;
   list-style: none;
   overflow: hidden;
@@ -96,6 +95,10 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   font-weight: 600;
   color: var(--h5p-theme-text-secondary);
   font-size: var(--h5p-theme-font-size-m);
+}
+
+ul.h5p-sc-alternatives:not(.h5p-sc-selected) li.h5p-sc-alternative {
+  cursor: pointer;
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
