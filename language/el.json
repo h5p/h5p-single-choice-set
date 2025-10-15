@@ -116,12 +116,12 @@
           "default": "Λάθος!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Η επιλογή θα έπρεπε να είχε επιλεγεί",
+          "default": "Θα έπρεπε να είχε επιλεγεί"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Η επιλογή δεν θα έπρεπε να είχε επιλεγεί",
+          "default": "Δεν θα έπρεπε να είχε επιλεγεί"
         },
         {
           "label": "Ετικέτα κουμπιού \"Σίγαση\", για απενεργοποίηση του ήχου ανατροφοδότησης",
