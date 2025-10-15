@@ -8,17 +8,17 @@
           "label": "Standard"
         },
         {
-          "label": "Tekstlig"
+          "label": "Tekstbasert"
         }
       ],
       "field": {
-        "label": "Spørsmål &amp; alternativer",
+        "label": "Spørsmål og alternativer",
         "fields": [
           {
             "label": "Spørsmål"
           },
           {
-            "label": "Alternativer. Det første alternativet er rett.",
+            "label": "Alternativer. Det første alternativet er riktig.",
             "entity": "svar",
             "field": {
               "label": "Alternativ"
@@ -28,7 +28,7 @@
       }
     },
     {
-      "label": "Samlet tilbakemelding",
+      "label": "Samla tilbakemelding",
       "fields": [
         {
           "widgets": [
@@ -36,8 +36,8 @@
               "label": "Standard"
             }
           ],
-          "label": "Definer standard tilbakemelding for alle poengsummer",
-          "description": "Klikk på \"Legg til poengområde\" knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "label": "Opprett poengområder og legg inn tilbakemeldinger",
+          "description": "Klikk på knappen \"Legg til poengområde\" og legg til så mange poengområder du trenger. Eksempel: 0–40 % Svakt resultat, 41–80 % Gjennomsnittlig resultat, 81–100 % Flott resultat!",
           "entity": "område",
           "field": {
             "fields": [
@@ -47,7 +47,7 @@
               {},
               {
                 "label": "Tilbakemelding for definert poengområde",
-                "placeholder": "Fyll inn tilbakemelding"
+                "placeholder": "Skriv inn tilbakemelding"
               }
             ]
           }
@@ -55,40 +55,40 @@
       ]
     },
     {
-      "label": "Innstillinger for oppgaveoppførsel",
+      "label": "Oppgaveinnstillinger",
       "fields": [
         {
           "label": "Fortsett automatisk",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "Fortsett automatisk til neste spørsmål når et alternativ er valgt. Denne funksjonen må være deaktivert for at oppgaven skal være fullt tilgjengelig med skjermleser."
         },
         {
-          "label": "Pause ved korrekt svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "label": "Pause ved riktig svar",
+          "description": "Verdi i millisekunder (1000 millisekunder = 1 sekund)"
         },
         {
           "label": "Pause ved feil svar",
-          "description": "Verdien er i millisekunder (1000 millisekunder = 1 sekund)"
+          "description": "Verdi i millisekunder (1000 millisekunder = 1 sekund)"
         },
         {
-          "label": "Lydeffekter"
+          "label": "Bruk lydeffekter"
         },
         {
-          "label": "\"Prøv igjen\"-knapp"
+          "label": "Aktiver \"Prøv igjen\"-knapp"
         },
         {
-          "label": "\"Vis svar\"-knapp"
+          "label": "Aktiver \"Vis svar\"-knapp"
         },
         {
           "label": "Krav for å bestå",
-          "description": "Antall prosent riktig som kreves for å bestå spørsmålssettet."
+          "description": "Prosentandel riktige svar som kreves for å bestå."
         }
       ]
     },
     {
-      "label": "Ledetekster",
+      "label": "Tilpass språk i ledetekster",
       "fields": [
         {
-          "label": "Etikett for \"Neste\"-knappen",
+          "label": "Navn på \"Neste\"-knapp",
           "default": "Neste spørsmål"
         },
         {
@@ -96,62 +96,62 @@
           "default": "Next"
         },
         {
-          "label": "Etikett på \"Vis svar\"-knappen",
-          "default": "Fasit"
+          "label": "Navn på \"Vis svar\"-knapp",
+          "default": "Vis svar"
         },
         {
-          "label": "Etikett på \"Prøv igjen\"-knappen",
+          "label": "Navn på \"Prøv igjen\"-knapp",
           "default": "Prøv igjen"
         },
         {
-          "label": "Tittelen på svarvisnings-siden",
-          "default": "Svar"
+          "label": "Tittel på fasitside",
+          "default": "Riktige svar"
         },
         {
-          "label": "Rett svar tekst for hjelpemiddelteknologi",
+          "label": "Skjermlesertekst ved riktig svar",
           "default": "Riktig"
         },
         {
-          "label": "Galt svar tekst for hjelpemiddelteknologi",
+          "label": "Skjermlesertekst ved feil svar",
           "default": "Feil"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Alternativet skulle vært valgt",
+          "default": "Skulle vært valgt"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Alternativet skulle ikke vært valgt",
+          "default": "Skulle ikke vært valgt"
         },
         {
-          "label": "Merkelapp for \"mute\"-knappen",
-          "default": "Skru av tilbakemeldingslyd"
+          "label": "Navn på \"Lyd av\"-knapp",
+          "default": "Slå av lyd"
         },
         {
-          "label": "Merkelapp for \"Lukk\"-knappen",
+          "label": "Navn på \"Lukk\"-knapp",
           "default": "Lukk"
         },
         {
-          "label": "Sidenummer-tekst",
-          "description": "Viser hvilket nummer gjeldende side har og det totale antall sider. Variablene er :num av :total",
+          "label": "Tekst for sidenummer",
+          "description": "Viser sidenummer for aktuell side og totalt antall sider. Variablene er :num av :total.",
           "default": "Side :num av :total"
         },
         {
-          "label": "Tekstlig gjengivelse av poengsum for hjelpemiddelteknologi",
-          "default": "Du fikk :num av :total poeng"
+          "label": "Tekstalternativ til resultatlinja (for skjermlesere)",
+          "default": "Du fikk :num av :total poeng."
         },
         {
-          "label": "Tekst for spørsmålsindeks i svarvisningslisten",
-          "description": "Annonserer spørsmålsindeksen i svarvisningslisten. Variabler som kan brukes er: :num",
+          "label": "Tekst for spørsmålsnummer i lista med riktige svar",
+          "description": "Leser opp nummeret på spørsmålet i lista med riktige svar. Variabel som kan brukes, er :num.",
           "default": "Spørsmål :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Beskrivelse av \"Vis svar\"-knapp (for assisterende teknologi)",
+          "default": "Vis svar. Oppgaven blir merka med riktige svar."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Beskrivelse av \"Prøv igjen\"-knapp (for assisterende teknologi)",
+          "default": "Prøv igjen. Alle svar blir nullstilt, og oppgaven starter på nytt."
         }
       ]
     }
