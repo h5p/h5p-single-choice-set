@@ -88,6 +88,8 @@ ul.h5p-sc-alternatives {
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative {
+  --status-icon-size: 1.5;
+
   position: relative;
   cursor: pointer;
   box-sizing: border-box;
@@ -95,7 +97,8 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   overflow: hidden;
   transition: -webkit-transform 0.5s ease-in-out, width 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
+  padding-block: var(--h5p-theme-spacing-xs);
+  padding-inline: var(--h5p-theme-spacing-s);
   margin: var(--h5p-theme-spacing-xxs) 0;
   background: var(--h5p-theme-alternative-base);
   border-radius: var(--h5p-theme-border-radius-medium);
@@ -140,6 +143,7 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-corre
   background: var(--h5p-theme-feedback-correct-secondary);
   color: var(--h5p-theme-feedback-correct-main);
   border-color: var(--h5p-theme-feedback-correct-third);
+  padding-inline-end: calc(var(--h5p-theme-spacing-s) + 1em * var(--status-icon-size));
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h5p-sc-reveal-correct .h5p-sc-progressbar {
@@ -161,6 +165,7 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-is-wrong.h5p
   background: var(--h5p-theme-feedback-incorrect-secondary);
   color: var(--h5p-theme-feedback-incorrect-main);
   border-color: var(--h5p-theme-feedback-incorrect-third);
+  padding-inline-end: calc(var(--h5p-theme-spacing-s) + 1em * var(--status-icon-size));
 }
 
 li.h5p-sc-alternative .h5p-sc-progressbar {
@@ -215,6 +220,9 @@ li.h5p-sc-alternative .h5p-sc-label {
 
 li.h5p-sc-alternative .h5p-sc-label p {
   margin: 0.75em 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 li.h5p-sc-alternative .h5p-sc-label p:first-child {
@@ -227,10 +235,10 @@ li.h5p-sc-alternative .h5p-sc-label p:last-child {
 
 li.h5p-sc-alternative .h5p-sc-status {
   font-family: 'h5p-theme';
-  font-size: 1.5em;
-  width: 1.5em;
-  height: 1.5em;
-  line-height: 1.5;
+  font-size: calc(1em * var(--status-icon-size));
+  width: calc(1em * var(--status-icon-size));
+  height: calc(1em * var(--status-icon-size));
+  line-height: var(--status-icon-size);
   position: absolute;
   top: 0;
   right: 0;
