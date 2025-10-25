@@ -139,13 +139,13 @@ ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-corre
 ul.h5p-sc-alternatives.h5p-sc-selected li.h5p-sc-alternative.h5p-sc-reveal-correct:focus-visible {
   background: var(--h5p-theme-feedback-correct-secondary);
   color: var(--h5p-theme-feedback-correct-main);
-  border-color: var(h5p-theme-feedback-correct-third);
+  border-color: var(--h5p-theme-feedback-correct-third);
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h5p-sc-reveal-correct .h5p-sc-progressbar {
   background: var(--h5p-theme-feedback-correct-secondary);
   color: var(--h5p-theme-feedback-correct-main);
-  border-color: var(h5p-theme-feedback-correct-third);
+  border-color: var(--h5p-theme-feedback-correct-third);
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
