@@ -8,9 +8,6 @@
 
 .h5p-theme .h5p-sc-set .h5p-theme-results-question-container .h5p-theme-results-box-small {
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .h5p-single-choice-set .h5p-sc-question {
