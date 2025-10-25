@@ -2,6 +2,17 @@
   font-weight: 600; /* Override H5P.Question */
 }
 
+.h5p-theme .h5p-sc-set .h5p-theme-results-question-container {
+  overflow: hidden;
+}
+
+.h5p-theme .h5p-sc-set .h5p-theme-results-question-container .h5p-theme-results-box-small {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .h5p-single-choice-set .h5p-sc-question {
   width: 100%;
 }
@@ -279,6 +290,10 @@ li.h5p-sc-alternative .h5p-sc-status {
 
 .h5p-sc-set-results .h5p-theme-results-answer .h5p-theme-results-solution {
   font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .h5p-sc-sound-control {
