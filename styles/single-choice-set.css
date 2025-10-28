@@ -61,7 +61,6 @@
 }
 
 .h5p-sc-set.h5p-sc-animate {
-  transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
 }
 
@@ -95,7 +94,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   box-sizing: border-box;
   list-style: none;
   overflow: hidden;
-  transition: -webkit-transform 0.5s ease-in-out, width 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, width 0.5s ease-in-out;
   padding-block: var(--h5p-theme-spacing-xs);
   padding-inline: var(--h5p-theme-spacing-s);
@@ -153,7 +151,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-is-correct.h5p-sc-selected.h
 }
 
 ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
-  -webkit-transform: scale(.95);
   transform: scale(.95);
 }
 
@@ -324,7 +321,6 @@ li.h5p-sc-alternative .h5p-sc-status {
 
 .h5p-single-choice-set .h5p-sc-result-container {
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   position: absolute;
   width: 100%;
