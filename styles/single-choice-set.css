@@ -224,9 +224,7 @@ li.h5p-sc-alternative .h5p-sc-label {
 
 li.h5p-sc-alternative .h5p-sc-label p {
   margin: 0.75em 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-word;
 }
 
 li.h5p-sc-alternative .h5p-sc-label p:first-child {
