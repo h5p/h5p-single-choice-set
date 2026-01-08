@@ -298,6 +298,7 @@ li.h5p-sc-alternative .h5p-sc-status {
   text-align: left;
   color: var(--h5p-theme-text-secondary);
   cursor: pointer;
+  padding-left: var(--h5p-theme-spacing-m);
 }
 
 .h5p-sc-sound-control:hover {
