@@ -76,7 +76,8 @@
           "label": "Enable retry button"
         },
         {
-          "label": "Enable show solution button"
+          "label": "Enable show solution button",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Pass percentage",
@@ -92,8 +93,12 @@
           "default": "下一個問題"
         },
         {
-          "label": "Label for the \"Show solution\" button",
-          "default": "解答"
+          "label": "Visual label for the \"Next\" button",
+          "default": "下一個"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "顯示結果"
         },
         {
           "label": "Label for the \"Retry\" button",
@@ -148,6 +153,26 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "重新嘗試。重置所有回答，重新開始測試。"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Correct Answer"
         }
       ]
     }

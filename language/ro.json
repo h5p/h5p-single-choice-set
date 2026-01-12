@@ -12,7 +12,7 @@
         }
       ],
       "field": {
-        "label": "Întrebare & alternative",
+        "label": "Întrebare &amp; alternative",
         "fields": [
           {
             "label": "Întrebare"
@@ -76,7 +76,8 @@
           "label": "Activează butonul de reîncercare"
         },
         {
-          "label": "Activează butonul de afișare a soluției"
+          "label": "Enable show solution button",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Procentaj de promovare",
@@ -96,8 +97,8 @@
           "default": "Următorul"
         },
         {
-          "label": "Etichetă pentru butonul „Arată soluția”",
-          "default": "Arată soluția"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etichetă pentru butonul „Reîncearcă”",
@@ -152,6 +153,26 @@
         {
           "label": "Descriere pentru tehnologia asistivă pentru butonul „Reîncearcă”",
           "default": "Reîncearcă sarcina. Resetează toate răspunsurile și începe sarcina din nou."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Correct answer"
         }
       ]
     }
