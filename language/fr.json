@@ -5,7 +5,7 @@
       "entity": "question",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Par défaut"
         },
         {
           "label": "Textual"
@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Continuer automatiquement",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "Passer automatiquement à la question suivante lorsqu'une alternative est sélectionnée. Ceci doit être désactivé pour rendre le contenu entièrement accessible lors de l'utilisation d'un lecteur d'écran."
         },
         {
           "label": "Temps de pause en cas de réponse correcte",
@@ -92,8 +92,8 @@
           "default": "Question suivante"
         },
         {
-          "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "label": "Libellé visuel pour le bouton \"Suivant\"",
+          "default": "Suivant"
         },
         {
           "label": "Texte pour le bouton \"Voir la solution\"",
@@ -116,12 +116,12 @@
           "default": "Incorrect !"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "L'option aurait dû être sélectionnée",
+          "default": "Aurait dû être sélectionné"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "L'option n'aurait pas dû être sélectionnée",
+          "default": "N'aurait pas dû être sélectionné"
         },
         {
           "label": "Étiquette pour le bouton \"Muet\", pour désactiver la rétroaction sonore",
@@ -141,17 +141,17 @@
           "default": "Vous avez :num points sur un total de :total"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
+          "label": "Libellé du numéro de question dans la liste des solutions",
+          "description": "Annonce l'index de la question actuelle dans la liste des solutions, les variables sont :num",
           "default": "Question :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "Description pour les technologies d'assistance du bouton \"Afficher la solution\"",
+          "default": "Afficher la solution. La tâche sera marquée avec sa solution correcte."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Description pour les technologies d'assistance du bouton \"Recommencer\"",
+          "default": "Recommencer la tâche. Réinitialiser toutes les réponses et recommencer la tâche."
         }
       ]
     }
