@@ -91,6 +91,7 @@
           "label": "Label for the \"Next\" button",
           "default": "下一個問題"
         },
+        {},
         {
           "label": "Label for the \"Show solution\" button",
           "default": "解答"
