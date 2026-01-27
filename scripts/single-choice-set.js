@@ -427,6 +427,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Called from H5P.Question.
    */
   SingleChoiceSet.prototype.registerDomElements = function () {
+    var self = this;
     // Register task content area.
     this.setContent(this.createQuestion());
 
@@ -438,7 +439,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       this.trigger('question-finished');
     }
 
-    this.trigger('resize');
+    requestAnimationFrame(() => {self.trigger('resize')});
   };
 
   /**
