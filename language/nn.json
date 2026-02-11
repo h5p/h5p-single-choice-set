@@ -92,8 +92,8 @@
           "default": "Neste spørsmål"
         },
         {
-          "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "label": "Visuell merkelapp for \"Neste\"-knapp",
+          "default": "Neste"
         },
         {
           "label": "Namn på \"Vis svar\"-knapp",
