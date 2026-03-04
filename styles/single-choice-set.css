@@ -104,7 +104,6 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   --status-icon-size: 1.5;
 
   position: relative;
-  cursor: pointer;
   box-sizing: border-box;
   list-style: none;
   overflow: hidden;
@@ -127,8 +126,11 @@ ul.h5p-sc-alternatives li.h5p-sc-alternative {
   margin-bottom: 0;
 }
 
-ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
+ul.h5p-sc-alternatives:not(.h5p-sc-selected) li.h5p-sc-alternative {
   cursor: pointer;
+}
+
+ul.h5p-sc-alternatives li.h5p-sc-alternative:hover {
   filter: none;
   border-color: transparent;
   background-color: var(--h5p-theme-alternative-dark);
