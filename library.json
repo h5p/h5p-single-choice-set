@@ -6,7 +6,7 @@
   "author": "Joubel",
   "majorVersion": 1,
   "minorVersion": 11,
-  "patchVersion": 44,
+  "patchVersion": 86,
   "runnable": 1,
   "fullscreen": 0,
   "embedTypes": [
@@ -14,7 +14,7 @@
   ],
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 19
+    "minorVersion": 28
   },
   "preloadedCss": [
     {
@@ -33,9 +33,6 @@
     },
     {
       "path": "scripts/result-slide.js"
-    },
-    {
-      "path": "scripts/solution-view.js"
     },
     {
       "path": "scripts/single-choice-alternative.js"

@@ -76,7 +76,8 @@
           "label": "Povolit tlačítko opakování"
         },
         {
-          "label": "Povolit tlačítko ukázat řešení"
+          "label": "Povolit tlačítko ukázat řešení",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Procento úspěšnosti",
@@ -92,8 +93,12 @@
           "default": "Další otázka"
         },
         {
-          "label": "Popisek tlačítka \"Zobrazit řešení\"",
-          "default": "Zobrazit řešení"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Popisek tlačítka \"Opakovat\"",
@@ -148,6 +153,26 @@
         {
           "label": "Popisek podpůrné technologie pro tlačítko „Opakovat“",
           "default": "Zopakovat úkol. Resetovat všechny odpovědi a spustit úlohu znovu."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Správná odpověď"
         }
       ]
     }

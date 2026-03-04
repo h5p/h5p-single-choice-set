@@ -55,7 +55,7 @@
       ]
     },
     {
-      "label": "Indstillinger for opgave-opførsel",
+      "label": "Behavioural settings",
       "fields": [
         {
           "label": "Auto continue",
@@ -90,31 +90,31 @@
       "fields": [
         {
           "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "default": "下一個問題"
         },
         {
           "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "default": "下一個"
         },
         {
           "label": "Label for the \"Show results\" button",
-          "default": "Show results"
+          "default": "顯示結果"
         },
         {
           "label": "Label for the \"Retry\" button",
-          "default": "Retry"
+          "default": "重試"
         },
         {
           "label": "Title for the show solution view",
-          "default": "Solution"
+          "default": "Solution list"
         },
         {
           "label": "Readspeaker text for correct answer",
-          "default": "Correct!"
+          "default": "正確"
         },
         {
           "label": "Readspeaker text for incorrect answer",
-          "default": "Incorrect!"
+          "default": "不正確"
         },
         {
           "label": "Option should have been selected",
@@ -130,7 +130,7 @@
         },
         {
           "label": "Label for the \"Close\" button",
-          "default": "Luk"
+          "default": "关闭"
         },
         {
           "label": "Slide number text",
@@ -148,11 +148,11 @@
         },
         {
           "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "default": "顯示解答。此測試會以正解評分。"
         },
         {
           "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "default": "重新嘗試。重置所有回答，重新開始測試。"
         },
         {
           "label": "The main header of the result screen",
@@ -172,7 +172,7 @@
         },
         {
           "label": "Correct answer introduction",
-          "default": "Rigtigt svar"
+          "default": "Correct Answer"
         }
       ]
     }

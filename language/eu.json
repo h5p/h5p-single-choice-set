@@ -76,7 +76,8 @@
           "label": "Gaitu \"Saiatu berriro\" botoia"
         },
         {
-          "label": "Gaitu erakutsi emaitza botoia"
+          "label": "Gaitu erakutsi emaitza botoia",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Gainditzeko ehunekoa",
@@ -92,8 +93,12 @@
           "default": "Hurrengo galdera"
         },
         {
-          "label": "\"Erakutsi emaitza\" botoiarentzako etiketa",
-          "default": "Erakutsi emaitza"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"Saiatu berriro\" botoiarentzako etiketa",
@@ -148,6 +153,26 @@
         {
           "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako etiketa",
           "default": "Zeregina berriz egiten saiatu. Berrabiarazi erantzun guztiak eta hasi zeregina berriz."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Erantzun zuzena"
         }
       ]
     }

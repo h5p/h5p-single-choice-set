@@ -76,7 +76,8 @@
           "label": "Ενεργοποίηση κουμπιού \"Επανάληψη\""
         },
         {
-          "label": "Ενεργοποίηση κουμπιού \"Λύση\""
+          "label": "Ενεργοποίηση κουμπιού \"Λύση\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Ποσοστό επιτυχίας",
@@ -92,8 +93,12 @@
           "default": "Επόμενη"
         },
         {
-          "label": "Ετικέτα κουμπιού \"Εμφάνιση λύσης\"",
-          "default": "Λύση"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Ετικέτα κουμπιού \"Επανάληψη\"",
@@ -101,7 +106,7 @@
         },
         {
           "label": "Τίτλος για την προβολή λύσης",
-          "default": "Λύση"
+          "default": "Απάντηση"
         },
         {
           "label": "Κείμενο ακουστικής υποβοήθησης για σωστή απάντηση",
@@ -112,12 +117,12 @@
           "default": "Λάθος!"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "Η επιλογή θα έπρεπε να είχε επιλεγεί",
+          "default": "Θα έπρεπε να είχε επιλεγεί"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "Η επιλογή δεν θα έπρεπε να είχε επιλεγεί",
+          "default": "Δεν θα έπρεπε να είχε επιλεγεί"
         },
         {
           "label": "Ετικέτα κουμπιού \"Σίγαση\", για απενεργοποίηση του ήχου ανατροφοδότησης",
@@ -148,6 +153,26 @@
         {
           "label": "Περιγραφή υποστηρικτικών τεχνολογιών για το πλήκτρο \"Επανάληψη\"",
           "default": "Επανάληψη της εργασίας. Επαναφορά όλων των απαντήσεων και έναρξη από την αρχή."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Σωστή απάντηση"
         }
       ]
     }

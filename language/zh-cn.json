@@ -76,7 +76,8 @@
           "label": "启用重试按钮"
         },
         {
-          "label": "启用显示答案按钮"
+          "label": "启用显示答案按钮",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "及格分数",
@@ -92,8 +93,12 @@
           "default": "下一题"
         },
         {
-          "label": "\"显示答案\"按钮的标签",
-          "default": "显示答案"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"重做\"按钮的标签",
@@ -148,6 +153,26 @@
         {
           "label": "“重试”按钮的辅助技术说明",
           "default": "重试该任务。重置所有响应并重新开始任务。"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "正确答案"
         }
       ]
     }

@@ -76,7 +76,8 @@
           "label": "Schakel \"Opnieuw\"-knop in"
         },
         {
-          "label": "Schakel \"Toon oplossing\"-knop in"
+          "label": "Schakel \"Toon oplossing\"-knop in",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Slagingspercentage",
@@ -92,8 +93,12 @@
           "default": "Volgende vraag"
         },
         {
-          "label": "Tekst voor \"Toon oplossing\"-knop",
-          "default": "Toon oplossing"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Tekst voor \"Opnieuw\"-knop",
@@ -148,6 +153,26 @@
         {
           "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\"-knop",
           "default": "Probeer de taak opnieuw. Reset alle antwoorden en start de taak opnieuw."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Juist antwoord"
         }
       ]
     }
