@@ -858,16 +858,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
     let selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText;
     // Announce by ARIA label
-    if (!self.options.behaviour.autoContinue) {
-      // Set text for a11y
-      selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText + self.l10n.shouldSelect : self.l10n.incorrectText + self.l10n.shouldNotSelect;
-      self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.shouldSelect);
-      self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
-      self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
+    selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText + self.l10n.shouldSelect : self.l10n.incorrectText + self.l10n.shouldNotSelect;
+    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.shouldSelect);
+    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
+    self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
 
-      // Utilize same variable for the read text
-      selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
-    }
+    selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
+    
     self.read(selectedOptionText);
   };
 
