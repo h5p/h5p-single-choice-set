@@ -9,7 +9,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @param {Object} contentData H5P instance data
    */
   function SingleChoiceSet(options, contentId, contentData) {
-    var self = this;
+    const self = this;
 
     // Extend defaults with provided options
     this.contentId = contentId;
@@ -31,8 +31,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
         soundEffectsEnabled: true,
         enableRetry: true,
         enableSolutionsButton: true,
-        passPercentage: 100
-      }
+        passPercentage: 100,
+      },
     }, options);
     if (contentData && contentData.previousState !== undefined) {
       this.currentIndex = contentData.previousState.progress;
@@ -44,7 +44,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.currentIndex = this.currentIndex || 0;
     this.results = this.results || {
       corrects: 0,
-      wrongs: 0
+      wrongs: 0,
     };
 
     if (!this.options.behaviour.autoContinue) {
@@ -63,8 +63,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.l10n = H5P.jQuery.extend({
       correctText: 'Correct!',
       incorrectText: 'Incorrect!',
-      shouldSelect: "Should have been selected",
-      shouldNotSelect: "Should not have been selected",
+      shouldSelect: 'Should have been selected',
+      shouldNotSelect: 'Should not have been selected',
       nextButtonLabel: 'Next question',
       nextButton: 'Next',
       showResultsButtonLabel: 'Show results',
@@ -72,7 +72,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       closeButtonLabel: 'Close',
       solutionViewTitle: 'Solution',
       slideOfTotal: 'Slide :num of :total',
-      muteButtonLabel: "Mute feedback sound",
+      muteButtonLabel: 'Mute feedback sound',
       scoreBarLabel: 'You got :num out of :total points',
       solutionListQuestionNumber: 'Question :num',
       a11yShowSolution: 'Show the solution. The task will be marked with its correct solution.',
@@ -85,7 +85,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }, options.l10n !== undefined ? options.l10n : {});
 
     this.$container = $('<div>', {
-      'class': 'h5p-sc-set-wrapper navigatable'
+      class: 'h5p-sc-set-wrapper navigatable',
     });
 
     this.$slides = [];
@@ -99,24 +99,22 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     self.buttonsToBeHidden = [];
 
     this.$choices = $('<div>', {
-      'class': 'h5p-sc-set h5p-sc-animate'
+      class: 'h5p-sc-set h5p-sc-animate',
     });
 
     // sometimes an empty object is in the choices
-    this.options.choices = this.options.choices.filter(function (choice) {
-      return choice !== undefined && !!choice.answers;
-    });
+    this.options.choices = this.options.choices.filter((choice) => choice !== undefined && !!choice.answers);
 
-    var numQuestions = this.options.choices.length;
+    const numQuestions = this.options.choices.length;
 
     // Create progressbar
     self.progressbar = UI.createProgressbar(numQuestions + 1, {
-      progressText: this.l10n.slideOfTotal
+      progressText: this.l10n.slideOfTotal,
     });
     self.progressbar.setProgress(this.currentIndex);
 
-    for (var i = 0; i < this.options.choices.length; i++) {
-      var choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
+    for (let i = 0; i < this.options.choices.length; i++) {
+      const choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
       choice.on('finished', this.handleQuestionFinished, this);
       choice.on('alternative-selected', this.handleAlternativeSelected, this);
       choice.appendTo(this.$choices, (i === this.currentIndex));
@@ -126,7 +124,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     this.resultSlide = new ResultSlide(this.options.choices.length);
     this.resultSlide.appendTo(this.$choices);
-    this.resultSlide.on('retry', function() {
+    this.resultSlide.on('retry', () => {
       self.resetTask(true);
     }, this);
     this.$slides.push(this.resultSlide.$resultSlide);
@@ -144,7 +142,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }
 
     if (!this.muted) {
-      setTimeout(function () {
+      setTimeout(() => {
         SoundEffects.setup(self.getLibraryFilePath(''));
       }, 1);
     }
@@ -159,7 +157,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.superHideButton = self.hideButton;
     this.hideButton = (function () {
       return function (id) {
-
         if (!self.scoreTimeout) {
           return self.superHideButton(id);
         }
@@ -167,7 +164,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
         self.buttonsToBeHidden.push(id);
         return this;
       };
-    })();
+    }());
   }
 
   SingleChoiceSet.prototype = Object.create(Question.prototype);
@@ -193,7 +190,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @param  {Object} event Event that was fired
    */
   SingleChoiceSet.prototype.handleAlternativeSelected = function (event) {
-    var self = this;
+    const self = this;
     this.lastAnswerIsCorrect = event.data.correct;
 
     self.toggleNextButton(true);
@@ -207,8 +204,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     self.triggerXAPI('interacted');
 
-    // Read and set a11y friendly texts 
-    self.readA11yFriendlyText(event.data.index, event.data.currentIndex)
+    // Read and set a11y friendly texts
+    self.readA11yFriendlyText(event.data.index, event.data.currentIndex);
 
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
@@ -227,13 +224,13 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @param  {object} event An object containing a single boolean property: "correct".
    */
   SingleChoiceSet.prototype.handleQuestionFinished = function (event) {
-    var self = this;
+    const self = this;
 
-    var index = event.data.index;
+    const { index } = event.data;
 
     // trigger answered event
-    var duration = this.stopStopWatch(index);
-    var xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], self.userResponses[index], duration);
+    const duration = this.stopStopWatch(index);
+    const xapiEvent = self.createXApiAnsweredEvent(self.options.choices[index], self.userResponses[index], duration);
 
     self.trigger(xapiEvent);
 
@@ -244,7 +241,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Setup auto continue
    */
   SingleChoiceSet.prototype.continue = function (index) {
-    var self = this;
+    const self = this;
 
     self.choices[index].setA11yTextReadable();
     if (!self.options.behaviour.autoContinue) {
@@ -253,15 +250,15 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       return;
     }
 
-    var timeout;
-    var letsMove = function () {
+    let timeout;
+    const letsMove = function () {
       // Handle impatient users
       self.$container.off('click.impatient keydown.impatient');
       clearTimeout(timeout);
       self.next();
     };
 
-    timeout = setTimeout(function () {
+    timeout = setTimeout(() => {
       letsMove();
     }, self.lastAnswerIsCorrect ? self.options.behaviour.timeoutCorrect : self.options.behaviour.timeoutWrong);
 
@@ -276,9 +273,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.$container.off('click.impatient keydown.impatient');
 
     this.$container.one('click.impatient', action);
-    this.$container.one('keydown.impatient', function (event) {
+    this.$container.one('keydown.impatient', (event) => {
       // If return, space or right arrow
-      if ([13,32,39].indexOf(event.which)) {
+      if ([13, 32, 39].indexOf(event.which)) {
         action();
       }
     });
@@ -301,19 +298,19 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @return {H5P.XAPIEvent}
    */
   SingleChoiceSet.prototype.createXApiAnsweredEvent = function (question, userAnswer, duration) {
-    var self = this;
-    var types = XApiEventBuilder.interactionTypes;
+    const self = this;
+    const types = XApiEventBuilder.interactionTypes;
 
     // creates the definition object
-    var definition = XApiEventBuilder.createDefinition()
+    const definition = XApiEventBuilder.createDefinition()
       .interactionType(types.CHOICE)
       .description(question.question)
       .correctResponsesPattern(self.getXApiCorrectResponsePattern())
-      .optional( self.getXApiChoices(question.answers))
+      .optional(self.getXApiChoices(question.answers))
       .build();
 
     // create the result object
-    var result = XApiEventBuilder.createResult()
+    const result = XApiEventBuilder.createResult()
       .response(userAnswer.toString())
       .duration(duration)
       .score((userAnswer === 0) ? 1 : 0, 1)
@@ -347,12 +344,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @return {{ choices: []}}
    */
   SingleChoiceSet.prototype.getXApiChoices = function (answers) {
-    var choices = answers.map(function (answer, index) {
-      return XApiEventBuilder.createChoice(index.toString(), answer);
-    });
+    const choices = answers.map((answer, index) => XApiEventBuilder.createChoice(index.toString(), answer));
 
     return {
-      choices: choices
+      choices,
     };
   };
 
@@ -360,10 +355,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Handles buttons that are queued for hiding
    */
   SingleChoiceSet.prototype.handleQueuedButtonChanges = function () {
-    var self = this;
+    const self = this;
 
     if (self.buttonsToBeHidden.length) {
-      self.buttonsToBeHidden.forEach(function (id) {
+      self.buttonsToBeHidden.forEach((id) => {
         self.superHideButton(id);
       });
     }
@@ -376,7 +371,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @params {Number} score Number of correct answers
    */
   SingleChoiceSet.prototype.setScore = function (score, noXAPI) {
-    var self = this;
+    const self = this;
 
     if (!self.choices.length) {
       return;
@@ -413,8 +408,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @param {boolean} enable Make elements visible
    */
   SingleChoiceSet.prototype.toggleAriaVisibility = function (enable) {
-    var self = this;
-    var ariaHidden = enable ? '' : 'true';
+    const self = this;
+    const ariaHidden = enable ? '' : 'true';
     if (self.$muteButton) {
       self.$muteButton.attr('aria-hidden', ariaHidden);
     }
@@ -427,7 +422,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Called from H5P.Question.
    */
   SingleChoiceSet.prototype.registerDomElements = function () {
-    var self = this;
+    const self = this;
     // Register task content area.
     this.setContent(this.createQuestion());
 
@@ -439,25 +434,33 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       this.trigger('question-finished');
     }
 
-    requestAnimationFrame(() => {self.trigger('resize')});
+    requestAnimationFrame(() => {
+      self.trigger('resize');
+    });
   };
 
   /**
    * Add Buttons to question.
    */
   SingleChoiceSet.prototype.addButtons = function () {
-    var self = this;
+    const self = this;
 
     if (this.options.behaviour.enableRetry) {
-      this.addButton('try-again', this.l10n.retryButtonLabel, function () {
-        self.resetTask(true);
-      }, self.results.corrects !== self.options.choices.length, {
-        'aria-label': this.l10n.a11yRetry,
-      },
-      {
-        styleType: 'secondary',
-        icon: 'retry'
-      });
+      this.addButton(
+        'try-again',
+        this.l10n.retryButtonLabel,
+        () => {
+          self.resetTask(true);
+        },
+        self.results.corrects !== self.options.choices.length,
+        {
+          'aria-label': this.l10n.a11yRetry,
+        },
+        {
+          styleType: 'secondary',
+          icon: 'retry',
+        },
+      );
     }
   };
 
@@ -465,7 +468,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Create main content
    */
   SingleChoiceSet.prototype.createQuestion = function () {
-    var self = this;
+    const self = this;
 
     self.$container.append(self.$choices);
 
@@ -476,7 +479,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }
 
     function toggleMute(event) {
-      var $button = $(event.target);
+      const $button = $(event.target);
       event.preventDefault();
       self.muted = !self.muted;
       updateMuteButton();
@@ -485,8 +488,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     // Keep this out of H5P.Question, since we are moving the button
     // region to the last slide
     if (!this.options.behaviour.autoContinue) {
-
-      var handleNextClick = function () {
+      const handleNextClick = function () {
         if (self.$nextButton.attr('aria-disabled') !== 'true') {
           self.next();
           return true;
@@ -507,7 +509,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
           nextButton: this.l10n.nextButton,
           nextButtonAria: this.l10n.nextButtonLabel,
           tooltip: this.l10n.nextButtonLabel,
-          lastButton: this.l10n.showResultsButtonLabel
+          lastButton: this.l10n.showResultsButtonLabel,
         },
       });
       self.$container[0].appendChild(nav);
@@ -520,14 +522,14 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     if (self.options.behaviour.soundEffectsEnabled) {
       self.$muteButton = $('<div>', {
-        'class': 'h5p-sc-sound-control',
-        'tabindex': 0,
-        'role': 'button',
+        class: 'h5p-sc-sound-control',
+        tabindex: 0,
+        role: 'button',
         'aria-label': self.l10n.muteButtonLabel,
         'aria-pressed': false,
       }).appendTo(self.$container.find('.h5p-question-introduction'));
       self.$muteButton.on('click', toggleMute);
-      self.$muteButton.on('keydown', function (event) {
+      self.$muteButton.on('keydown', (event) => {
         switch (event.which) {
           case 13: // Enter
           case 32: // Space
@@ -549,16 +551,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * Resize if something outside resizes
    */
   SingleChoiceSet.prototype.resize = function () {
-    var self = this;
-    var maxHeight = 0;
+    const self = this;
+    let maxHeight = 0;
 
-    self.choices.forEach(function (choice) {
-      var choiceHeight = choice.$choice.outerHeight();
+    self.choices.forEach((choice) => {
+      const choiceHeight = choice.$choice.outerHeight();
       maxHeight = choiceHeight > maxHeight ? choiceHeight : maxHeight;
     });
 
     if (this.showingResultScreen) {
-      let resultScreenHeight = this.resultSlide.component.scrollHeight
+      const resultScreenHeight = this.resultSlide.component.scrollHeight;
 
       const listContainer = self.$container.find('.h5p-theme-results-list-container')[0];
 
@@ -571,7 +573,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     }
 
     // Set minimum height for choices
-    self.$choices.css({minHeight: maxHeight + 'px'});
+    self.$choices.css({ minHeight: `${maxHeight}px` });
   };
 
   /**
@@ -591,12 +593,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @public
    */
   SingleChoiceSet.prototype.recklessJump = function (index) {
-    var tX = 'translateX(' + (-index * 100) + '%)';
+    const tX = `translateX(${-index * 100}%)`;
     this.$choices.css({
       '-webkit-transform': tX,
       '-moz-transform': tX,
       '-ms-transform': tX,
-      'transform': tX
+      transform: tX,
     });
     this.progressbar.setProgress(index + 1);
   };
@@ -607,19 +609,19 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @param {boolean} moveFocus True to set focus on first alternative
    */
   SingleChoiceSet.prototype.move = function (index, moveFocus = true) {
-    var self = this;
-    if (index === this.currentIndex || index > self.$slides.length-1) {
+    const self = this;
+    if (index === this.currentIndex || index > self.$slides.length - 1) {
       return;
     }
 
-    var $previousSlide = self.$slides[self.currentIndex];
-    var $currentChoice = self.choices[index];
-    var $currentSlide = self.$slides[index];
-    var isResultSlide = (index >= self.choices.length);
+    const $previousSlide = self.$slides[self.currentIndex];
+    const $currentChoice = self.choices[index];
+    const $currentSlide = self.$slides[index];
+    const isResultSlide = (index >= self.choices.length);
 
     self.toggleNextButton(false);
 
-    H5P.Transition.onTransitionEnd(self.$choices, function () {
+    H5P.Transition.onTransitionEnd(self.$choices, () => {
       $previousSlide.removeClass('h5p-sc-current-slide');
 
       // on slides with answers focus on first alternative
@@ -685,10 +687,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     if (this.stopWatches[index] !== undefined) {
       return this.stopWatches[index].passedTime();
     }
-    else {
-      // if not created, return no passed time,
-      return 0;
-    }
+
+    // if not created, return no passed time,
+    return 0;
   };
 
   /**
@@ -698,12 +699,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    */
   SingleChoiceSet.prototype.getTotalPassedTime = function () {
     return this.stopWatches
-      .filter(function (watch) {
-        return watch != undefined;
-      })
-      .reduce(function (sum, watch) {
-        return sum + watch.passedTime();
-      }, 0);
+      .filter((watch) => watch != undefined)
+      .reduce((sum, watch) => sum + watch.passedTime(), 0);
   };
 
   /**
@@ -732,30 +729,30 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @return {object}
    */
   SingleChoiceSet.prototype.getXAPIData = function () {
-    var self = this;
+    const self = this;
 
     // create array with userAnswer
-    var children =  self.options.choices.map(function (question, index) {
-      var userResponse = self.userAnswerIndex[index] >= 0 ? self.userAnswerIndex[index] : '';
-      var duration = self.timePassedInStopWatch(index);
-      var event = self.createXApiAnsweredEvent(question, userResponse, duration);
+    const children = self.options.choices.map((question, index) => {
+      const userResponse = self.userAnswerIndex[index] >= 0 ? self.userAnswerIndex[index] : '';
+      const duration = self.timePassedInStopWatch(index);
+      const event = self.createXApiAnsweredEvent(question, userResponse, duration);
 
       return {
-        statement: event.data.statement
+        statement: event.data.statement,
       };
     });
 
-    var result = XApiEventBuilder.createResult()
+    const result = XApiEventBuilder.createResult()
       .score(self.getScore(), self.getMaxScore())
       .duration(self.getTotalPassedTime())
       .build();
 
     // creates the definition object
-    var definition = XApiEventBuilder.createDefinition()
+    const definition = XApiEventBuilder.createDefinition()
       .interactionType(XApiEventBuilder.interactionTypes.COMPOUND)
       .build();
 
-    var xAPIEvent = XApiEventBuilder.create()
+    const xAPIEvent = XApiEventBuilder.create()
       .verb(XApiEventBuilder.verbs.ANSWERED)
       .contentId(self.contentId, self.subContentId)
       .context(self.getParentAttribute('contentId'), self.getParentAttribute('subContentId'))
@@ -765,7 +762,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     return {
       statement: xAPIEvent.data.statement,
-      children: children
+      children,
     };
   };
 
@@ -776,7 +773,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @return {*|undefined}
    */
   SingleChoiceSet.prototype.getParentAttribute = function (attributeName) {
-    var self = this;
+    const self = this;
 
     if (self.parent !== undefined) {
       return self.parent[attributeName];
@@ -789,28 +786,28 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * This prevents loss of focus if reset from within content
    */
   SingleChoiceSet.prototype.resetTask = function (moveFocus = false) {
-    var self = this;
+    const self = this;
 
     // Hide result slide buttons
     this.hideButton('try-again');
 
     // Reset the user's answers
-    var classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
-    for (var i = 0; i < classes.length; i++) {
-      this.$choices.find('.' + classes[i]).removeClass(classes[i]);
+    const classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
+    for (let i = 0; i < classes.length; i++) {
+      this.$choices.find(`.${classes[i]}`).removeClass(classes[i]);
     }
     this.results = {
       corrects: 0,
-      wrongs: 0
+      wrongs: 0,
     };
 
-    this.choices.forEach(function (choice) {
+    this.choices.forEach((choice) => {
       choice.setAnswered(false);
       choice.resetA11yText();
       choice.resetAriaAttributes();
     });
 
-    this.stopWatches.forEach(function (stopWatch) {
+    this.stopWatches.forEach((stopWatch) => {
       if (stopWatch) {
         stopWatch.reset();
       }
@@ -842,20 +839,20 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       ? {
         progress: this.currentIndex,
         answers: this.results,
-        userResponses: this.userResponses
+        userResponses: this.userResponses,
       }
       : undefined;
   };
 
   /**
    * Generate A11y friendly text
-   * 
+   *
    * @param  {number} index
-   * @param  {number} currentIndex 
+   * @param  {number} currentIndex
    */
   SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
-    var self = this;
-    var correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+    const self = this;
+    const correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
     let selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText;
     // Announce by ARIA label
     if (!self.options.behaviour.autoContinue) {
@@ -872,4 +869,4 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
   };
 
   return SingleChoiceSet;
-})(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch);
+}(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch));
