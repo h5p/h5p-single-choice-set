@@ -76,7 +76,8 @@
           "label": "הפעל כפתור ניסיון חוזר"
         },
         {
-          "label": "הפעל כפתור הצגת פתרון"
+          "label": "הפעל כפתור הצגת פתרון",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "אחוז מעבר",
@@ -96,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "תווית לכפתור \"הצג פתרון\"",
-          "default": "הצג פתרון"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "תווית לכפתור \"ניסיון חוזר\"",
@@ -152,6 +153,26 @@
         {
           "label": "תיאור טכנולוגיית עזר לכפתור \"ניסיון חוזר\"",
           "default": "נסה שוב את המשימה. אפס את כל התשובות והתחל את המשימה מחדש."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "תשובות נכונות"
         }
       ]
     }

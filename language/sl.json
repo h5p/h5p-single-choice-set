@@ -76,7 +76,8 @@
           "label": "Omogoči gumb \"Poskusi ponovno\""
         },
         {
-          "label": "Omogoči gumb \"Prikaži rešitev\""
+          "label": "Omogoči gumb \"Prikaži rešitev\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Prag za napredovanje",
@@ -96,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Besedilo za gumb \"Prikaži rešitev\"",
-          "default": "Prikaži rešitev"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Besedilo za gumb \"Poskusi ponovno\"",
@@ -150,8 +151,28 @@
           "default": "Prikaži rešitev. Pravilni odgovori bodo označeni."
         },
         {
-          "label": "Opis gumba \"Poskusi ponovno\" za bralnike zaslona",
-          "default": "Omogoči ponoven poskus. Ponastavi vse odzive in znova zažene nalogo."
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Prikaži rešitev"
         }
       ]
     }

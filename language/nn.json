@@ -76,7 +76,8 @@
           "label": "Aktiver \"Prøv igjen\"-knapp"
         },
         {
-          "label": "Aktiver \"Vis svar\"-knapp"
+          "label": "\"Vis svar\" knapp",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Krav for å bestå",
@@ -96,8 +97,8 @@
           "default": "Next"
         },
         {
-          "label": "Namn på \"Vis svar\"-knapp",
-          "default": "Vis svar"
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Namn på \"Prøv igjen\"-knapp",
@@ -150,8 +151,28 @@
           "default": "Vis løysing. Oppgåva blir merkt med rette svar."
         },
         {
-          "label": "Beskriving av \"Prøv igjen\"-knapp (for assisterande teknologi)",
-          "default": "Prøv igjen. Alle svara blir nullstilte, og oppgåva startar på nytt."
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Riktig svar"
         }
       ]
     }
