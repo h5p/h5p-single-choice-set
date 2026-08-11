@@ -1,4 +1,4 @@
-var H5P = H5P || {};
+var H5P = window.H5P = window.H5P || {};
 
 H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, SoundEffects, XApiEventBuilder, StopWatch) {
   /**
