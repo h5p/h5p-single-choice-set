@@ -76,7 +76,8 @@
           "label": "Attiva il pulsante Riprova"
         },
         {
-          "label": "Attiva il pulsante Mostra soluzione"
+          "label": "Attiva il pulsante Mostra soluzione",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Percentuale di superamento della prova",
@@ -92,8 +93,12 @@
           "default": "Prossima domanda"
         },
         {
-          "label": "Etichetta per il pulsante \"Mostra soluzione\"",
-          "default": "Mostra soluzione"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etichetta per il pulsante \"Riprova\"",
@@ -148,6 +153,26 @@
         {
           "label": "Descrizione delle tecnologie assistive per il pulsante \"Riprova\"",
           "default": "Riprova"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Risposta giusta"
         }
       ]
     }

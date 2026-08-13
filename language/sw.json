@@ -76,7 +76,8 @@
           "label": "Washa kitufe cha jaribu tena"
         },
         {
-          "label": "Washa kitufe cha kuonyesha suluhisho"
+          "label": "Washa kitufe cha kuonyesha suluhisho",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Asilimia ya ufaulu",
@@ -92,8 +93,12 @@
           "default": "Swali linalofuata"
         },
         {
-          "label": "Lebo ya kitufe cha \"Onyesha suluhisho\"",
-          "default": "Onyesha suluhisho"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Lebo ya kitufe cha \"Jaribu tena\"",
@@ -148,6 +153,26 @@
         {
           "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Jaribu tena\"",
           "default": "Jaribu tena kazi hiyo. Weka upya majibu yote na uanze kazi tena."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Jibu sahihi"
         }
       ]
     }

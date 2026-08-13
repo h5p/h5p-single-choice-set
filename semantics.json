@@ -188,6 +188,7 @@
         "name": "enableSolutionsButton",
         "type": "boolean",
         "label": "Enable show solution button",
+        "description": "This feature is not applicable when the new look and feel is enabled.",
         "importance": "low",
         "default": true
       },
@@ -218,11 +219,18 @@
         "default": "Next question"
       },
       {
-        "name": "showSolutionButtonLabel",
+        "name": "nextButton",
         "type": "text",
-        "label": "Label for the \"Show solution\" button",
+        "label": "Visual label for the \"Next\" button",
         "importance": "low",
-        "default": "Show solution"
+        "default": "Next"
+      },
+      {
+        "name": "showResultsButtonLabel",
+        "type": "text",
+        "label": "Label for the \"Show results\" button",
+        "importance": "low",
+        "default": "Show results"
       },
       {
         "name": "retryButtonLabel",
@@ -315,6 +323,41 @@
         "type": "text",
         "label": "Assistive technology description for \"Retry\" button",
         "default": "Retry the task. Reset all responses and start the task over again.",
+        "importance": "low"
+      },
+      {
+        "name": "resultHeader",
+        "type": "text",
+        "label": "The main header of the result screen",
+        "default": "Your result:",
+        "importance": "low"
+      },
+      {
+        "name": "totalScore",
+        "type": "text",
+        "label": "The score header of the result screen",
+        "default": ":score of :maxScore correct",
+        "importance": "low"
+      },
+      {
+        "name": "resultTableHeader",
+        "type": "text",
+        "label": "The Question header of the result screen table",
+        "default": "Question",
+        "importance": "low"
+      },
+      {
+        "name": "resultScoreTableHeader",
+        "type": "text",
+        "label": "The Score header of the result screen table",
+        "default": "Score",
+        "importance": "low"
+      },
+      {
+        "name": "correctAnswerIntroduction",
+        "type": "text",
+        "label": "Correct answer introduction",
+        "default": "Correct answer",
         "importance": "low"
       }
     ]

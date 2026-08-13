@@ -76,7 +76,8 @@
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {
-          "label": "\"Lösung anzeigen\" ermöglichen"
+          "label": "\"Lösung anzeigen\" ermöglichen",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Prozentsatz zum Bestehen",
@@ -92,8 +93,12 @@
           "default": "Weiter"
         },
         {
-          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
-          "default": "Lösung anzeigen"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Beschriftung des \"Wiederholen\"-Buttons",
@@ -148,6 +153,26 @@
         {
           "label": "Beschreibung des \"Wiederholen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
           "default": "Die Aufgabe wiederholen. Alle Versuche werden zurückgesetzt und die Aufgabe wird erneut gestartet."
+        },
+        {
+          "label": "Haupt-Kopfzeile auf dem Ergebnisbildschirm",
+          "default": "Dein Ergebnis:"
+        },
+        {
+          "label": "Punkte-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": ":score von :maxScore korrekt"
+        },
+        {
+          "label": "Frage-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": "Frage"
+        },
+        {
+          "label": "Punkte-Kopfzeile in der Tabelle auf dem Ergebnisbildschirm",
+          "default": "Punkte"
+        },
+        {
+          "label": "Einleitung für die korrekte Antwort",
+          "default": "Richtige Antwort"
         }
       ]
     }

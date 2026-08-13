@@ -76,7 +76,8 @@
           "label": "เปิดใช้ปุ่มลองใหม่"
         },
         {
-          "label": "เปิดใช้ปุ่มแสดงคำตอบ"
+          "label": "เปิดใช้ปุ่มแสดงคำตอบ",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "ร้อยละที่ผ่าน",
@@ -92,8 +93,12 @@
           "default": "คำถามถัดไป"
         },
         {
-          "label": "ป้ายกำกับสำหรับปุ่ม \"แสดงคำตอบ\"",
-          "default": "แสดงคำตอบ"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "ป้ายกำกับสำหรับปุ่ม \"ลองใหม่\"",
@@ -148,6 +153,26 @@
         {
           "label": "คำอธิบายเทคโนโลยีช่วยให้เข้าใจสำหรับปุ่ม \"ลองใหม่\"",
           "default": "ลองทำงานใหม่ เริ่มต้นการตอบสนองใหม่ทั้งหมด"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "คำตอบที่ถูกต้อง"
         }
       ]
     }

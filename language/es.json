@@ -76,7 +76,8 @@
           "label": "Habilitar botón \"Intentar de nuevo\""
         },
         {
-          "label": "Habilitar botón Mostrar solución"
+          "label": "Habilitar botón Mostrar solución",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Porcentaje aprobatorio",
@@ -92,8 +93,12 @@
           "default": "Siguiente pregunta"
         },
         {
-          "label": "Etiqueta para el botón \"Mostrar solución\"",
-          "default": "Mostrar solución"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Etiqueta para el botón \"Intentar de nuevo\"",
@@ -148,6 +153,26 @@
         {
           "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
           "default": "Vuelve a intentar la tarea. Borra todas tus respuestas y empieza de nuevo."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Respuesta correcta"
         }
       ]
     }

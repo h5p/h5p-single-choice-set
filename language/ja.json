@@ -76,7 +76,8 @@
           "label": "Enable retry button"
         },
         {
-          "label": "Enable show solution button"
+          "label": "Enable show solution button",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "合格パーセンテージ",
@@ -89,19 +90,23 @@
       "fields": [
         {
           "label": "Label for the \"Next\" button",
-          "default": "Next question"
+          "default": "次の質問"
         },
         {
-          "label": "Label for the \"Show solution\" button",
-          "default": "解を表示"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Label for the \"Retry\" button",
-          "default": "リトライ"
+          "default": "もう一度やってみる​"
         },
         {
           "label": "Title for the show solution view",
-          "default": "Solution"
+          "default": "正解"
         },
         {
           "label": "正解のためのリードスピーカー用テキスト",
@@ -143,11 +148,31 @@
         },
         {
           "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "default": "どれが正解か、確認しましょう。"
         },
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Correct answer"
         }
       ]
     }

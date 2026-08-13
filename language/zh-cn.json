@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "自动继续",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "选择选项时，自动转到下一个问题。在使用屏幕阅读器时，需要关闭该选项以使内容完全可访问。"
         },
         {
           "label": "正确答案超时",
@@ -76,7 +76,8 @@
           "label": "启用重试按钮"
         },
         {
-          "label": "启用显示答案按钮"
+          "label": "启用显示答案按钮",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "及格分数",
@@ -92,8 +93,12 @@
           "default": "下一题"
         },
         {
-          "label": "\"显示答案\"按钮的标签",
-          "default": "显示答案"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "\"重做\"按钮的标签",
@@ -112,12 +117,12 @@
           "default": "错误！"
         },
         {
-          "label": "Option should have been selected",
-          "default": "Should have been selected"
+          "label": "选项应该已被选中",
+          "default": "应该被选中的"
         },
         {
-          "label": "Option should not have been selected",
-          "default": "Should not have been selected"
+          "label": "选项不应该被选中",
+          "default": "不应该被选中"
         },
         {
           "label": "\"静音\"按钮的标签，以关闭反馈声音",
@@ -133,21 +138,41 @@
           "default": "幻灯片 :num of :total"
         },
         {
-          "label": "得分情况的文本描述",
-          "default": "总分 :total 分，您的得分为:num 分。"
+          "label": "使用朗读器的学生的分数栏的文本描述",
+          "default": "总分:total 分，您的得分为:num 分"
         },
         {
-          "label": "Label for the question number in the solution list",
-          "description": "Announces current question index in solution list, variables are :num",
-          "default": "Question :num"
+          "label": "在答案列表中标注问题编号",
+          "description": "在答案列表中公布当前问题索引，变量为:num",
+          "default": "问题 :num"
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The task will be marked with its correct solution."
+          "label": "“显示答案”按钮的辅助技术说明",
+          "default": "展示答案。该任务将标有正确的答案。"
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "“重试”按钮的辅助技术说明",
+          "default": "重试该任务。重置所有响应并重新开始任务。"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "正确答案"
         }
       ]
     }

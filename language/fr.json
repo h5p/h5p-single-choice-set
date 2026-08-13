@@ -76,7 +76,8 @@
           "label": "Activer le bouton \"Recommencer\""
         },
         {
-          "label": "Activer le bouton \"Voir la correction\""
+          "label": "Activer le bouton \"Voir la correction\"",
+          "description": "This feature is not applicable when the new look and feel is enabled."
         },
         {
           "label": "Pourcentage de réussite",
@@ -92,8 +93,12 @@
           "default": "Question suivante"
         },
         {
-          "label": "Texte pour le bouton \"Voir la solution\"",
-          "default": "Voir la solution"
+          "label": "Visual label for the \"Next\" button",
+          "default": "Next"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Show results"
         },
         {
           "label": "Texte pour le mode \"Correction\"",
@@ -148,6 +153,26 @@
         {
           "label": "Assistive technology description for \"Retry\" button",
           "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Your result:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore correct"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Question"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Réponse correcte"
         }
       ]
     }
