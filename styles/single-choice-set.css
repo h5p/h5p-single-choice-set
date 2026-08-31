@@ -448,3 +448,21 @@ li.h5p-sc-alternative .h5p-sc-status {
   min-height: initial;
   max-height: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .h5p-single-choice-set .h5p-joubelui-progressbar-background,
+  .h5p-sc-set.h5p-sc-animate,
+  ul.h5p-sc-alternatives li.h5p-sc-alternative,
+  .h5p-sc-drummed .h5p-sc-progressbar {
+    transition: none !important;
+  }
+
+  ul.h5p-sc-alternatives li.h5p-sc-alternative.h5p-sc-reveal-wrong {
+    transform: none;
+  }
+
+  li.h5p-sc-alternative.h5p-sc-selected .h5p-sc-progressbar {
+    animation: none !important;
+    width: 100%;
+  }
+}

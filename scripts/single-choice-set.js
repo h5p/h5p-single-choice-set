@@ -210,7 +210,8 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     if (!this.muted) {
       // Can't play it after the transition end is received, since this is not
       // accepted on iPad. Therefore we are playing it here with a delay instead
-      SoundEffects.play(this.lastAnswerIsCorrect ? 'positive-short' : 'negative-short', 700);
+      SoundEffects.play(this.lastAnswerIsCorrect ? 'positive-short' : 'negative-short',
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700);
     }
 
     if (event.data.index + 1 >= self.choices.length) {
@@ -614,6 +615,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       return;
     }
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const $previousSlide = self.$slides[self.currentIndex];
     const $currentChoice = self.choices[index];
     const $currentSlide = self.$slides[index];
@@ -621,7 +623,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     self.toggleNextButton(false);
 
-    H5P.Transition.onTransitionEnd(self.$choices, () => {
+    const handleTransitionEnd = () => {
       $previousSlide.removeClass('h5p-sc-current-slide');
 
       // on slides with answers focus on first alternative
@@ -629,11 +631,22 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       if (!isResultSlide && (moveFocus || self.isRoot())) {
         $currentChoice.focusOnAlternative(0);
       }
-      // on last slide, focus on try again button
       else {
+        // on last slide, focus on try again button
         self.resultSlide.focusScore();
       }
-    }, 600);
+    };
+
+    if (prefersReducedMotion) {
+      handleTransitionEnd();
+    }
+    else {
+      H5P.Transition.onTransitionEnd(
+        self.$choices,
+        handleTransitionEnd,
+        600
+      );
+    }
 
     // if should show result slide
     if (isResultSlide) {
@@ -653,6 +666,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     self.trigger('resize');
 
     self.currentIndex = index;
+
+    // Get focus on first alternative when reduced motion
+    if (prefersReducedMotion) {
+      requestAnimationFrame(handleTransitionEnd);
+    }
   };
 
   /**
