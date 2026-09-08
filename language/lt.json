@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Klausimų sąrašas",
-      "entity": "klausimas",
+      "entity": "klausimą",
       "widgets": [
         {
           "label": "Numatytas"
@@ -19,7 +19,7 @@
           },
           {
             "label": "Alternatyvos - pirmoji alternatyva yra teisinga.",
-            "entity": "atsakymas",
+            "entity": "atsakymą",
             "field": {
               "label": "Alternatyva"
             }
