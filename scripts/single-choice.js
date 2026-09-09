@@ -96,12 +96,18 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
         currentIndex: $element.index(),
       });
 
-      H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), () => {
+      $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         $element.addClass('h5p-sc-drummed');
         self.showResult(correct, answerIndex);
-      }, 700);
-
-      $element.addClass('h5p-sc-selected').parent().addClass('h5p-sc-selected');
+      }
+      else {
+        H5P.Transition.onTransitionEnd($element.find('.h5p-sc-progressbar'), () => {
+          $element.addClass('h5p-sc-drummed');
+          self.showResult(correct, answerIndex);
+        }, 700);
+      }
 
       // indicate that this question is anwered
       this.setAnswered(true);
