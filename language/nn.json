@@ -76,8 +76,8 @@
           "label": "Aktiver \"Prøv igjen\"-knapp"
         },
         {
-          "label": "\"Vis svar\" knapp",
-          "description": "This feature is not applicable when the new look and feel is enabled."
+          "label": "\"Vis svar\"-knapp",
+          "description": "Denne funksjonen er ikkje tilgjengeleg når det nye utsjånaden er aktivert."
         },
         {
           "label": "Krav for å bestå",
@@ -93,12 +93,12 @@
           "default": "Neste spørsmål"
         },
         {
-          "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "label": "Synleg etikett for \"Neste\"-knappen",
+          "default": "Neste"
         },
         {
-          "label": "Label for the \"Show results\" button",
-          "default": "Show results"
+          "label": "Etikett for \"Vis resultat\"-knappen",
+          "default": "Vis resultat"
         },
         {
           "label": "Namn på \"Prøv igjen\"-knapp",
@@ -134,11 +134,11 @@
         },
         {
           "label": "Tekst for sidenummer",
-          "description": "Viser sidenummer for aktuell side og totalt sidetal. Variablane er :num av :total",
+          "description": "Viser sidenummer for aktuell side og totalt sidetal. Variablane er :num av :total.",
           "default": "Side :num av :total"
         },
         {
-          "label": "Tekstalternativ til resultatlinja (for skjermlesere)",
+          "label": "Tekstalternativ til resultatlinja (for skjermlesarar)",
           "default": "Du fekk :num av :total poeng."
         },
         {
@@ -151,28 +151,28 @@
           "default": "Vis løysing. Oppgåva blir merkt med rette svar."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Beskriving for assisterande teknologi for \"Prøv igjen\"-knappen",
+          "default": "Prøv oppgåva på nytt. Tilbakestill alle svar og start oppgåva på nytt."
         },
         {
-          "label": "The main header of the result screen",
-          "default": "Your result:"
+          "label": "Hovudoverskrift på resultatskjermen",
+          "default": "Resultatet ditt:"
         },
         {
-          "label": "The score header of the result screen",
-          "default": ":score of :maxScore correct"
+          "label": "Poengoverskrift på resultatskjermen",
+          "default": ":score av :maxScore rette"
         },
         {
-          "label": "The Question header of the result screen table",
-          "default": "Question"
+          "label": "Spørsmålsoverskrift i tabellen på resultatskjermen",
+          "default": "Spørsmål"
         },
         {
-          "label": "The Score header of the result screen table",
-          "default": "Score"
+          "label": "Poengoverskrift i tabellen på resultatskjermen",
+          "default": "Poeng"
         },
         {
-          "label": "Correct answer introduction",
-          "default": "Riktig svar"
+          "label": "Introduksjon til rett svar",
+          "default": "Rett svar"
         }
       ]
     }
