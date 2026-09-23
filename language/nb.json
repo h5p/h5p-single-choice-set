@@ -28,7 +28,7 @@
       }
     },
     {
-      "label": "Samla tilbakemelding",
+      "label": "Samlet tilbakemelding",
       "fields": [
         {
           "widgets": [
@@ -77,7 +77,7 @@
         },
         {
           "label": "\"Vis svar\"-knapp",
-          "description": "This feature is not applicable when the new look and feel is enabled."
+          "description": "Denne funksjonen er ikke tilgjengelig når det nye utseendet er aktivert."
         },
         {
           "label": "Krav for å bestå",
@@ -93,12 +93,12 @@
           "default": "Neste spørsmål"
         },
         {
-          "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "label": "Synlig etikett for \"Neste\"-knappen",
+          "default": "Neste"
         },
         {
-          "label": "Label for the \"Show results\" button",
-          "default": "Show results"
+          "label": "Etikett for \"Vis resultat\"-knappen",
+          "default": "Vis resultat"
         },
         {
           "label": "Navn på \"Prøv igjen\"-knapp",
@@ -151,27 +151,27 @@
           "default": "Vis svar. Oppgaven blir merka med riktige svar."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Beskrivelse for assisterende teknologi for \"Prøv igjen\"-knappen",
+          "default": "Prøv oppgaven på nytt. Tilbakestill alle svar og start oppgaven på nytt."
         },
         {
-          "label": "The main header of the result screen",
-          "default": "Your result:"
+          "label": "Hovedoverskrift på resultatskjermen",
+          "default": "Ditt resultat:"
         },
         {
-          "label": "The score header of the result screen",
-          "default": ":score of :maxScore correct"
+          "label": "Poengoverskrift på resultatskjermen",
+          "default": ":score av :maxScore riktige"
         },
         {
-          "label": "The Question header of the result screen table",
-          "default": "Question"
+          "label": "Spørsmålsoverskrift i tabellen på resultatskjermen",
+          "default": "Spørsmål"
         },
         {
-          "label": "The Score header of the result screen table",
-          "default": "Score"
+          "label": "Poengoverskrift i tabellen på resultatskjermen",
+          "default": "Poeng"
         },
         {
-          "label": "Correct answer introduction",
+          "label": "Introduksjon til riktig svar",
           "default": "Riktig svar"
         }
       ]
