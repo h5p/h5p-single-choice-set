@@ -59,7 +59,7 @@
       "fields": [
         {
           "label": "Αυτόματη συνέχιση",
-          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+          "description": "Αυτόματη μετάβαση στην επόμενη ερώτηση όταν επιλέγεται μια εναλλακτική λύση. Αυτό πρέπει να απενεργοποιηθεί για να κάνετε το περιεχόμενο πλήρως προσβάσιμο όταν χρησιμοποιείτε ένα πρόγραμμα ανάγνωσης οθόνης."
         },
         {
           "label": "Χρονικό όριο για τις σωστές απαντήσεις",
@@ -77,7 +77,7 @@
         },
         {
           "label": "Ενεργοποίηση κουμπιού \"Λύση\"",
-          "description": "This feature is not applicable when the new look and feel is enabled."
+          "description": "Αυτή η λειτουργία δεν είναι διαθέσιμη όταν είναι ενεργοποιημένη η νέα εμφάνιση και αίσθηση."
         },
         {
           "label": "Ποσοστό επιτυχίας",
@@ -93,12 +93,12 @@
           "default": "Επόμενη"
         },
         {
-          "label": "Visual label for the \"Next\" button",
-          "default": "Next"
+          "label": "Οπτική ετικέτα για το κουμπί \"Επόμενη\"",
+          "default": "Επόμενη"
         },
         {
-          "label": "Label for the \"Show results\" button",
-          "default": "Show results"
+          "label": "Ετικέτα για το κουμπί \"Εμφάνιση αποτελεσμάτων\"",
+          "default": "Εμφάνιση αποτελεσμάτων"
         },
         {
           "label": "Ετικέτα κουμπιού \"Επανάληψη\"",
