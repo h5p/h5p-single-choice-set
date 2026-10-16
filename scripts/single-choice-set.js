@@ -102,16 +102,14 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       class: 'h5p-sc-set h5p-sc-animate',
     });
 
+    // Assertive ariaLive for slide numbers (can't use the polite version from this.read)
+    this.assertiveRead = document.createElement('div');
+    this.assertiveRead.ariaLive = 'assertive';
+    this.assertiveRead.classList.add('h5p-hidden-read');
+    this.$container[0].appendChild(this.assertiveRead);
+
     // sometimes an empty object is in the choices
     this.options.choices = this.options.choices.filter((choice) => choice !== undefined && !!choice.answers);
-
-    const numQuestions = this.options.choices.length;
-
-    // Create progressbar
-    self.progressbar = UI.createProgressbar(numQuestions + 1, {
-      progressText: this.l10n.slideOfTotal,
-    });
-    self.progressbar.setProgress(this.currentIndex);
 
     for (let i = 0; i < this.options.choices.length; i++) {
       const choice = new SingleChoice(this.options.choices[i], i, this.contentId, this.options.behaviour.autoContinue);
@@ -414,7 +412,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     if (self.$muteButton) {
       self.$muteButton.attr('aria-hidden', ariaHidden);
     }
-    self.progressbar.$progressbar.attr('aria-hidden', ariaHidden);
+
     self.$choices.attr('aria-hidden', ariaHidden);
   };
 
@@ -601,7 +599,16 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       '-ms-transform': tX,
       transform: tX,
     });
-    this.progressbar.setProgress(index + 1);
+
+    this.assertiveRead.textContent = this.l10n.slideOfTotal
+      .replace(':num', index + 1)
+      .replace(':total', this.options.choices.length + 1);
+
+    const self = this;
+      // Remove when done reading
+    setTimeout(function () {
+      self.assertiveRead.textContent = '';
+    }, 100);
   };
 
   /**
@@ -871,15 +878,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
   SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
     const self = this;
     const correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
-    let selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText;
+    const selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
     // Announce by ARIA label
-    selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText + self.l10n.shouldSelect : self.l10n.incorrectText + self.l10n.shouldNotSelect;
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.shouldSelect);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
 
-    selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
-    
     self.read(selectedOptionText);
   };
 
