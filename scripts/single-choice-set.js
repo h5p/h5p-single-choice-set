@@ -884,14 +884,24 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
   SingleChoiceSet.prototype.readA11yFriendlyText = function (index, currentIndex) {
     const self = this;
     const correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
-    const selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + correctAnswer + self.l10n.shouldSelect;
+    const selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + ' ' + correctAnswer + ' ' + self.l10n.shouldSelect;
+    
     // Announce by ARIA label
-    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.shouldSelect);
-    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.shouldNotSelect);
+    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.correctText);
+    self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.incorrectText);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
 
     self.read(selectedOptionText);
   };
 
   return SingleChoiceSet;
-}(H5P.jQuery, H5P.JoubelUI, H5P.Question, H5P.SingleChoiceSet.SingleChoice, H5P.SingleChoiceSet.ResultSlide, H5P.SingleChoiceSet.SoundEffects, H5P.SingleChoiceSet.XApiEventBuilder, H5P.SingleChoiceSet.StopWatch));
+}(
+  H5P.jQuery,
+  H5P.JoubelUI,
+  H5P.Question,
+  H5P.SingleChoiceSet.SingleChoice,
+  H5P.SingleChoiceSet.ResultSlide,
+  H5P.SingleChoiceSet.SoundEffects,
+  H5P.SingleChoiceSet.XApiEventBuilder,
+  H5P.SingleChoiceSet.StopWatch
+));
