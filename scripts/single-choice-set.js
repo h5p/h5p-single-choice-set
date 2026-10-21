@@ -244,6 +244,12 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
 
     self.choices[index].setA11yTextReadable();
     if (!self.options.behaviour.autoContinue) {
+      // If last question, focus Show Results
+      if (index + 1 >= this.choices.length) {
+        self.lastButton.focus();
+        return;
+      }
+
       // Set focus to next button
       self.$nextButton.focus();
       return;
@@ -513,7 +519,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       });
       self.$container[0].appendChild(nav);
       self.$nextButton = $(nav.querySelector('.h5p-theme-next'));
-      self.lastButton = nav.querySelector('.h5p-show-results');
+      self.lastButton = nav.querySelector('.h5p-theme-show-results');
 
       self.toggleNextButton(false);
       self.nav = nav;
@@ -640,7 +646,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       }
       else {
         // on last slide, focus on try again button
-        self.resultSlide.focusScore();
+        self.resultSlide.setFocus();
       }
     };
 

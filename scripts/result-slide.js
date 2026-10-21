@@ -33,9 +33,9 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
   ResultSlide.prototype.constructor = ResultSlide;
 
   /**
-   * Focus the header, in case there are no buttons
+   * Focus the header, in case there are no buttons, and for screen reader
    */
-  ResultSlide.prototype.focusScore = function () {
+  ResultSlide.prototype.setFocus = function () {
     this.header?.focus();
   };
 
