@@ -15,7 +15,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
     this.maxscore = maxscore;
     this.$resultSlide = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc-set-results',
-      'css': {left: (maxscore * 100) + '%'}
+      'css': {left: (maxscore * 150) + '%'}
     });
 
     this.$buttonContainer = $('<div/>', {

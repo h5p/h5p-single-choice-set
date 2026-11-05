@@ -593,7 +593,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
    * @public
    */
   SingleChoiceSet.prototype.recklessJump = function (index) {
-    const tX = `translateX(${-index * 100}%)`;
+    const tX = `translateX(${-index * 150}%)`;
     this.$choices.css({
       '-webkit-transform': tX,
       '-moz-transform': tX,
