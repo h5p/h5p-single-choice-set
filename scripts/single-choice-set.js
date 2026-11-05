@@ -102,12 +102,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       class: 'h5p-sc-set h5p-sc-animate',
     });
 
-    // Assertive ariaLive for slide numbers (can't use the polite version from this.read)
-    this.assertiveRead = document.createElement('div');
-    this.assertiveRead.ariaLive = 'assertive';
-    this.assertiveRead.classList.add('h5p-hidden-read');
-    this.$container[0].appendChild(this.assertiveRead);
-
     // sometimes an empty object is in the choices
     this.options.choices = this.options.choices.filter((choice) => choice !== undefined && !!choice.answers);
 
@@ -388,7 +382,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     else {
       self.showButton('try-again');
     }
-    self.handleQueuedButtonChanges();
+
     self.scoreTimeout = undefined;
 
     this.$container.addClass('showing-results');
@@ -516,6 +510,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
           tooltip: this.l10n.nextButtonLabel,
           lastButton: this.l10n.showResultsButtonLabel,
         },
+        showDisabledButtons: true,
       });
       self.$container[0].appendChild(nav);
       self.$nextButton = $(nav.querySelector('.h5p-theme-next'));
@@ -605,21 +600,11 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       '-ms-transform': tX,
       transform: tX,
     });
-
-    this.assertiveRead.textContent = this.l10n.slideOfTotal
-      .replace(':num', index + 1)
-      .replace(':total', this.options.choices.length + 1);
-
-    const self = this;
-      // Remove when done reading
-    setTimeout(function () {
-      self.assertiveRead.textContent = '';
-    }, 100);
   };
 
   /**
    * Move to slide n
-   * @param  {number} index The slide number    to move to
+   * @param  {number} index The slide number to move to
    * @param {boolean} moveFocus True to set focus on first alternative
    */
   SingleChoiceSet.prototype.move = function (index, moveFocus = true) {
@@ -637,19 +622,46 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     self.toggleNextButton(false);
 
     const handleTransitionEnd = () => {
-      $previousSlide.removeClass('h5p-sc-current-slide');
+      // Wait for screen reader to read out slide change before focusing
+      setTimeout(() => {
+        // on slides with answers focus on first alternative
+        // if content is root and not on result slide - always move focus
+        if (!isResultSlide && (moveFocus || self.isRoot())) {
+          $currentChoice.focusOnAlternative(0);
+        }
+        else {
+          // on last slide, focus on try again button
+          self.resultSlide.setFocus();
+        }
 
-      // on slides with answers focus on first alternative
-      // if content is root and not on result slide - always move focus
-      if (!isResultSlide && (moveFocus || self.isRoot())) {
-        $currentChoice.focusOnAlternative(0);
-      }
-      else {
-        // on last slide, focus on try again button
-        self.resultSlide.setFocus();
-      }
+        $previousSlide.removeClass('h5p-sc-current-slide');
+        self.handleQueuedButtonChanges();
+      }, 400);
     };
 
+    // if should show result slide
+    if (isResultSlide) {
+      self.setScore(self.results.corrects);
+    }
+
+    self.$container.toggleClass('navigatable', !isResultSlide);
+
+    // Read slide change to screen reader,
+    // so they know the context has changed
+    this.read(this.l10n.slideOfTotal
+    .replace(':num', index + 1)
+    .replace(':total', this.options.choices.length + 1));
+
+    // start timing of new slide
+    this.startStopWatch(index);
+
+    // move to slide
+    $currentSlide.addClass('h5p-sc-current-slide');
+    self.recklessJump(index);
+
+    self.currentIndex = index;
+
+    // Get focus on first alternative when reduced motion
     if (prefersReducedMotion) {
       handleTransitionEnd();
     }
@@ -661,29 +673,7 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
       );
     }
 
-    // if should show result slide
-    if (isResultSlide) {
-      self.setScore(self.results.corrects);
-      this.showButton('try-again');
-    }
-
-    self.$container.toggleClass('navigatable', !isResultSlide);
-
-    // start timing of new slide
-    this.startStopWatch(index);
-
-    // move to slide
-    $currentSlide.addClass('h5p-sc-current-slide');
-    self.recklessJump(index);
-
     self.trigger('resize');
-
-    self.currentIndex = index;
-
-    // Get focus on first alternative when reduced motion
-    if (prefersReducedMotion) {
-      requestAnimationFrame(handleTransitionEnd);
-    }
   };
 
   /**
@@ -819,9 +809,6 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
   SingleChoiceSet.prototype.resetTask = function (moveFocus = false) {
     const self = this;
 
-    // Hide result slide buttons
-    this.hideButton('try-again');
-
     // Reset the user's answers
     const classes = ['h5p-sc-reveal-wrong', 'h5p-sc-reveal-correct', 'h5p-sc-selected', 'h5p-sc-drummed', 'h5p-sc-correct-answer'];
     for (let i = 0; i < classes.length; i++) {
@@ -849,6 +836,9 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     this.$container.removeClass('showing-results');
 
     this.move(0, moveFocus);
+
+    // Hide result slide buttons
+    this.hideButton('try-again');
 
     // Reset userResponses as well
     this.userResponses = [];
@@ -885,11 +875,10 @@ H5P.SingleChoiceSet = (function ($, UI, Question, SingleChoice, ResultSlide, Sou
     const self = this;
     const correctAnswer = self.$choices.find('.h5p-sc-is-correct')[index].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
     const selectedOptionText = this.lastAnswerIsCorrect ? self.l10n.correctText : self.l10n.incorrectText + ' ' + correctAnswer + ' ' + self.l10n.shouldSelect;
-    
+
     // Announce by ARIA label
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-correct .h5p-sc-a11y').text(self.l10n.correctText);
     self.$choices.find('.h5p-sc-current-slide .h5p-sc-is-wrong .h5p-sc-a11y').text(self.l10n.incorrectText);
-    self.$choices.find('.h5p-sc-current-slide .h5p-sc-alternative').eq(currentIndex).find('.h5p-sc-a11y').text(selectedOptionText);
 
     self.read(selectedOptionText);
   };

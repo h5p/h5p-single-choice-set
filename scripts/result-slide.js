@@ -79,8 +79,8 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
     this.$resultSlide[0].prepend(this.component);
 
-    this.header = this.component.querySelector('.h5p-theme-results-banner');
-    this.header.tabindex = -1;
+    this.header = this.component.querySelector('.h5p-theme-results-title');
+    this.header.tabIndex = -1;
   };
 
   /**
