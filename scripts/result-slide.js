@@ -15,7 +15,7 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
     this.maxscore = maxscore;
     this.$resultSlide = $('<div>', {
       'class': 'h5p-sc-slide h5p-sc-set-results',
-      'css': {left: (maxscore * 100) + '%'}
+      'css': {left: (maxscore * 150) + '%'}
     });
 
     this.$buttonContainer = $('<div/>', {
@@ -33,9 +33,9 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
   ResultSlide.prototype.constructor = ResultSlide;
 
   /**
-   * Focus the header, in case there are no buttons
+   * Focus the header, in case there are no buttons, and for screen reader
    */
-  ResultSlide.prototype.focusScore = function () {
+  ResultSlide.prototype.setFocus = function () {
     this.header?.focus();
   };
 
@@ -79,8 +79,8 @@ H5P.SingleChoiceSet.ResultSlide = (function ($, EventDispatcher) {
 
     this.$resultSlide[0].prepend(this.component);
 
-    this.header = this.component.querySelector('.h5p-theme-results-banner');
-    this.header.tabindex = -1;
+    this.header = this.component.querySelector('.h5p-theme-results-title');
+    this.header.tabIndex = -1;
   };
 
   /**

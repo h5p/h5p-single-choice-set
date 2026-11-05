@@ -47,7 +47,7 @@ H5P.SingleChoiceSet.SingleChoice = (function ($, EventDispatcher, Alternative) {
 
     this.$choice = $('<div>', {
       class: `h5p-sc-slide h5p-sc${isCurrent ? ' h5p-sc-current-slide' : ''}`,
-      css: { left: `${self.index * 100}%` },
+      css: { left: `${self.index * 150}%` },
     });
 
     const questionId = `single-choice-${self.id}-question-${self.index}`;
