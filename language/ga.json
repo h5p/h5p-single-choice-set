@@ -1,0 +1,180 @@
+{
+  "semantics": [
+    {
+      "label": "List of questions",
+      "entity": "question",
+      "widgets": [
+        {
+          "label": "Default"
+        },
+        {
+          "label": "Textual"
+        }
+      ],
+      "field": {
+        "label": "Question &amp; alternatives",
+        "fields": [
+          {
+            "label": "Question"
+          },
+          {
+            "label": "Alternatives - first alternative is the correct one.",
+            "entity": "answer",
+            "field": {
+              "label": "Alternative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Auto continue",
+          "description": "Automatically go to next question when alternative is selected. This needs to be turned off to make the content fully accessible when using a screen reader."
+        },
+        {
+          "label": "Timeout on correct answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Timeout on wrong answers",
+          "description": "Value in milliseconds"
+        },
+        {
+          "label": "Enable sound effects"
+        },
+        {
+          "label": "Enable retry button"
+        },
+        {
+          "label": "Enable show solution button",
+          "description": "This feature is not applicable when the new look and feel is enabled."
+        },
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of Total score required for passing the quiz."
+        }
+      ]
+    },
+    {
+      "label": "Localize single choice set",
+      "fields": [
+        {
+          "label": "Label for the \"Next\" button",
+          "default": "Ar aghaidh"
+        },
+        {
+          "label": "Visual label for the \"Next\" button",
+          "default": "Ar aghaidh"
+        },
+        {
+          "label": "Label for the \"Show results\" button",
+          "default": "Taispeáin torthaí"
+        },
+        {
+          "label": "Label for the \"Retry\" button",
+          "default": "Atriail"
+        },
+        {
+          "label": "Title for the show solution view",
+          "default": "Freagraí"
+        },
+        {
+          "label": "Readspeaker text for correct answer",
+          "default": "Ceart!"
+        },
+        {
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Mícheart!"
+        },
+        {
+          "label": "Option should have been selected",
+          "default": "Ba cheart a roghnú"
+        },
+        {
+          "label": "Option should not have been selected",
+          "default": "Níor cheart a mhúchadh"
+        },
+        {
+          "label": "Label for the \"mute\" button, to disable feedback sound",
+          "default": "Múch fuaim"
+        },
+        {
+          "label": "Label for the \"Close\" button",
+          "default": "Dún"
+        },
+        {
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Sleamhnán :num de :total"
+        },
+        {
+          "label": "Textual representation of the score bar for those using a readspeaker",
+          "default": "Fuair tú :num as :total points"
+        },
+        {
+          "label": "Label for the question number in the solution list",
+          "description": "Announces current question index in solution list, variables are :num",
+          "default": "Ceist :num"
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Taispeán an freagra"
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Atriail an tasc"
+        },
+        {
+          "label": "The main header of the result screen",
+          "default": "Do thoradh:"
+        },
+        {
+          "label": "The score header of the result screen",
+          "default": ":score of :maxScore ceart"
+        },
+        {
+          "label": "The Question header of the result screen table",
+          "default": "Ceist"
+        },
+        {
+          "label": "The Score header of the result screen table",
+          "default": "Scór"
+        },
+        {
+          "label": "Correct answer introduction",
+          "default": "Freagra ceart"
+        }
+      ]
+    }
+  ]
+}
